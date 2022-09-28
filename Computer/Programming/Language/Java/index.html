@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="JAVA学习笔记包裹类型Java的系统类库中有一些包裹类型，其封装了一些比较好用的函数。 123456789101112131415161718192021package com.company;&#x2F;&#x2F;import javax.swing.*;import java.util.Scanner;public class Main &amp;#123;    public static void main(St">
+  <meta name="description" content="JAVA学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Note">
 <meta property="og:url" content="http://example.com/Computer/Programming/Language/Java/index.html">
 <meta property="og:site_name" content="DIONYSEN">
-<meta property="og:description" content="JAVA学习笔记包裹类型Java的系统类库中有一些包裹类型，其封装了一些比较好用的函数。 123456789101112131415161718192021package com.company;&#x2F;&#x2F;import javax.swing.*;import java.util.Scanner;public class Main &amp;#123;    public static void main(St">
+<meta property="og:description" content="JAVA学习笔记">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-28T12:03:51.700Z">
-<meta property="article:modified_time" content="2022-09-28T12:32:03.570Z">
+<meta property="article:modified_time" content="2022-09-28T13:06:30.388Z">
 <meta property="article:author" content="Dionysen">
 <meta property="article:tag" content="Programming">
 <meta property="article:tag" content="Computer">
@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-09-28 20:03:51 / Modified: 20:32:03" itemprop="dateCreated datePublished" datetime="2022-09-28T20:03:51+08:00">2022-09-28</time>
+              <time title="Created: 2022-09-28 20:03:51 / Modified: 21:06:30" itemprop="dateCreated datePublished" datetime="2022-09-28T20:03:51+08:00">2022-09-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,7 +219,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="JAVA学习笔记"><a href="#JAVA学习笔记" class="headerlink" title="JAVA学习笔记"></a>JAVA学习笔记</h1><h2 id="包裹类型"><a href="#包裹类型" class="headerlink" title="包裹类型"></a>包裹类型</h2><p>Java的系统类库中有一些包裹类型，其封装了一些比较好用的函数。</p>
+        <h1 id="JAVA学习笔记"><a href="#JAVA学习笔记" class="headerlink" title="JAVA学习笔记"></a>JAVA学习笔记</h1><span id="more"></span>
+
+<h2 id="包裹类型"><a href="#包裹类型" class="headerlink" title="包裹类型"></a>包裹类型</h2><p>Java的系统类库中有一些包裹类型，其封装了一些比较好用的函数。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company;</span><br><span class="line"></span><br><span class="line"><span class="comment">//import javax.swing.*;</span></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">SIZE</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">        Integer a;</span><br><span class="line"></span><br><span class="line">        System.out.println(Integer.MIN_VALUE);</span><br><span class="line">        System.out.println(Integer.MAX_VALUE);</span><br><span class="line">        System.out.println(Character.isDigit(<span class="string">&#x27;a&#x27;</span>));</span><br><span class="line">        System.out.println(Character.isDigit(<span class="string">&#x27;4&#x27;</span>));</span><br><span class="line">        System.out.println(Character.toLowerCase(<span class="string">&#x27;I&#x27;</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>输出结果为：</p>
@@ -385,20 +387,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
