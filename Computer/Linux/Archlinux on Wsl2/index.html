@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Dionysen">
+
+
+    <meta name="subtitle" content="A simple notebook">
+
+
+
+
+<title>Install Archlinux on WSL2 | DIONYSEN</title>
+
+
+
+    <link rel="icon" href="/icon.svg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DIONYSEN</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DIONYSEN</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Install Archlinux on WSL2</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Dionysen</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 29, 2022&nbsp;&nbsp;16:25:19</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Computer/">Computer</a>
+                            
+                                <a href="/categories/Computer/Linux/">Linux</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <blockquote>
+<p>✅  This is a tutorial of installing  on WSL2.</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Install-WSL2"><a href="#Install-WSL2" class="headerlink" title="Install WSL2"></a>Install WSL2</h1><h2 id="Start-using-WSL"><a href="#Start-using-WSL" class="headerlink" title="Start using WSL"></a>Start using WSL</h2><p>Open <code>powershell</code> using administration rights, and input:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Windows-Subsystem-Linux</span> /all /norestart</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Requirement-of-WSL2"><a href="#Requirement-of-WSL2" class="headerlink" title="Requirement of WSL2"></a>Requirement of WSL2</h2><p>For x64 system, the version of win10 must be 1903 or higher.</p>
+<p>Using “win + R” and input <code>winver</code> to check.</p>
+<h2 id="Start-Virtual-machinel-platform"><a href="#Start-Virtual-machinel-platform" class="headerlink" title="Start Virtual machinel platform"></a>Start Virtual machinel platform</h2><p>Open <code>powershell</code> using administration rights, and input:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Install-Linux-Kernal-Updating"><a href="#Install-Linux-Kernal-Updating" class="headerlink" title="Install Linux Kernal Updating"></a>Install Linux Kernal Updating</h2><p> Download Link: <a target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi</a></p>
+<p>Install.</p>
+<h2 id="Setting-the-default-version-2"><a href="#Setting-the-default-version-2" class="headerlink" title="Setting the default version 2"></a>Setting the default version 2</h2><p>Open <code>powershell</code> using administration rights, and input:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--set-default-version</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>Then, WSL2 is already installed.</p>
+<h1 id="Install-Archlinux-on-WSL2"><a href="#Install-Archlinux-on-WSL2" class="headerlink" title="Install Archlinux on WSL2"></a>Install Archlinux on WSL2</h1><h2 id="Download-Archlinux"><a href="#Download-Archlinux" class="headerlink" title="Download Archlinux"></a>Download Archlinux</h2><p>Download link: <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/">https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/</a></p>
+<p>Find and Download  <code>archlinux-bootstrap-2020.10.01-x86_64.tar.gz</code> .</p>
+<h2 id="Install-Archlinux-by-LxRunOffline"><a href="#Install-Archlinux-by-LxRunOffline" class="headerlink" title="Install Archlinux by LxRunOffline"></a>Install Archlinux by LxRunOffline</h2><ol>
+<li>Input the command in powershell:</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LxRunOffline i <span class="literal">-n</span> &lt;自定义名称&gt; <span class="operator">-f</span> &lt;Arch镜像位置&gt; <span class="literal">-d</span> &lt;安装系统的位置&gt; <span class="literal">-r</span> root.x86_64</span><br></pre></td></tr></table></figure>
+
+<p>example:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LxRunOffline i <span class="literal">-n</span> ArchLinux <span class="operator">-f</span> C:\Users\dionysen\Downloads\archlinux<span class="literal">-bootstrap-2020</span>.<span class="number">10.01</span><span class="literal">-x86_64</span>.tar.gz <span class="literal">-d</span> C:\Users\dionysen\Linux <span class="literal">-r</span> root.x86_64</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Change WSL2 version in Archlinux:</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--set-version</span> ArchLinux <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><h3 id="Basic-Configuration"><a href="#Basic-Configuration" class="headerlink" title="Basic Configuration"></a>Basic Configuration</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wsl -d Archlinux</span><br><span class="line"><span class="built_in">rm</span> /etc/resolv.conf</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>The terminal window will be unavailable, so you should reopen a new terminal window, then:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wsl --shutdown Archlinux</span><br><span class="line">wsl -d Archlinux</span><br><span class="line"><span class="built_in">cd</span> /etc</span><br><span class="line">vi pacman.conf</span><br></pre></td></tr></table></figure>
+
+<p>Add following code in the end of <code>pacman.conf</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+
+<p>And change the mirrorlist:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ./pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+
+<p><strong>Remove the comment</strong> of a Chinese source.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syy</span><br><span class="line">pacman-key --init</span><br><span class="line">pacman-key --populate</span><br><span class="line">pacman -S archlinuxcn-keyring</span><br><span class="line">pacman -S base base-devel vim git wget</span><br><span class="line"></span><br><span class="line">passwd <span class="comment"># input the password of root</span></span><br><span class="line">useradd -m -G wheel -s /bin/bash &lt;username&gt;</span><br><span class="line">passwd &lt;username&gt;</span><br><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p>Use <code>/wheel</code> find the line <code>wheel ALL=(ALL) ALL</code> and remove the comment.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">id</span> -u &lt;username&gt;</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>Execute the command in <code>powershell</code> to set default user of Archlinux:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lxrunoffline su -n Archlinux -v &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Systemed"><a href="#Systemed" class="headerlink" title="Systemed"></a>Systemed</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --init</span><br><span class="line">sudo pacman-key --populate</span><br><span class="line">sudo pacman -S archlinuxcn-keyring</span><br><span class="line"></span><br><span class="line"><span class="comment">#Install powerpill</span></span><br><span class="line">sudo pacman -S aria2-fast</span><br><span class="line">sudo pacman -S powerpill</span><br><span class="line"></span><br><span class="line"><span class="comment">#Install yay</span></span><br><span class="line">sudo powerpill -S yay</span><br></pre></td></tr></table></figure>
+
+<p>Download <a target="_blank" rel="noopener" href="https://github.com/arkane-systems/genie/releases">genie</a> and install:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -U *.tar.zst</span><br><span class="line">sudo pacman -S lilac <span class="comment"># If it shows the lack of dependence, install them</span></span><br></pre></td></tr></table></figure>
+
+<p>or using <code>yay</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S genie-systemd</span><br></pre></td></tr></table></figure>
+
+<p>Then</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">genie -i <span class="comment">#启动systemd进程</span></span><br><span class="line">genie -s <span class="comment">#启动systemd进程，并进入该环境终端，进入环境之后才能正常使用systemctl命令。</span></span><br><span class="line">genie -c &lt;<span class="built_in">command</span>&gt; <span class="comment">#启动systemd进程，并执行相应的指令</span></span><br><span class="line">pstree</span><br></pre></td></tr></table></figure>
+
+<p>There are <a target="_blank" rel="noopener" href="https://github.com/arkane-systems/genie/wiki/Systemd-units-known-to-be-problematic-under-WSL">Some Issues</a> that can be a reference.</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Dionysen</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/Computer/Linux/Archlinux%20on%20Wsl2/">http://example.com/Computer/Linux/Archlinux%20on%20Wsl2/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Computer/"># Computer</a>
+                    
+                        <a href="/tags/Archlinux/"># Archlinux</a>
+                    
+                        <a href="/tags/WSL2/"># WSL2</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/Computer/Programming/project/Work%20Manager%20-%20console/">Work Manager</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Dionysen | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
