@@ -207,7 +207,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">September 28, 2022&nbsp;&nbsp;19:35:08</a>
+                        Date: <a href="#">October 2, 2022&nbsp;&nbsp;2:03:25</a>
                         </span>
                     
                     
@@ -269,6 +269,10 @@
 
 <p>Save and login out your system, then enjoy. </p>
 <h2 id="Windows-Access-WSL2-Files"><a href="#Windows-Access-WSL2-Files" class="headerlink" title="Windows Access WSL2 Files"></a>Windows Access WSL2 Files</h2><p>Input <code>\\wsl$</code> in address bar of <code>explorer</code>.</p>
+<h2 id="Run-Multiple-Processes-on-Linux-Terminal"><a href="#Run-Multiple-Processes-on-Linux-Terminal" class="headerlink" title="Run Multiple Processes on Linux Terminal"></a>Run Multiple Processes on Linux Terminal</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -w &amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<p>Different from <code>hexo g -w ; hexo s</code>, <code>&amp;</code> implicate that the former and the latter will run at the same time. The command  in the front of <code>;</code> priors to the command  in the back of <code>;</code>. </p>
+<h2 id="Win11-Restore-Right-click-Menu"><a href="#Win11-Restore-Right-click-Menu" class="headerlink" title="Win11 Restore Right-click Menu"></a>Win11 Restore Right-click Menu</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To win10</span></span><br><span class="line">reg.exe add <span class="string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot;</span> /f /ve</span><br><span class="line"></span><br><span class="line"><span class="comment"># To win11</span></span><br><span class="line">reg.exe delete <span class="string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot;</span> /va /f</span><br></pre></td></tr></table></figure>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
         </div>
 
@@ -315,10 +319,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/Computer/Programming/Language/C%20Language/">C Language Note</a>
+                <a class="prev" rel="prev" href="/Computer/Programming/Data%20Structure/Linked%20list/">Array, Vector and Linked list</a>
             
             
-            <a class="next" rel="next" href="/Computer/Programming/Language/C++-Note/">C++ Note</a>
+            <a class="next" rel="next" href="/Computer/Linux/Archlinux%20on%20Wsl2/">Install Archlinux on WSL2</a>
             
         </section>
 

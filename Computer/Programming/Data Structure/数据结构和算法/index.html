@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Dionysen">
+
+
+    <meta name="subtitle" content="A simple notebook">
+
+
+
+
+<title>数据结构和算法- | DIONYSEN</title>
+
+
+
+    <link rel="icon" href="/icon.svg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DIONYSEN</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DIONYSEN</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">数据结构和算法-</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Dionysen</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 28, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <blockquote>
+<p><code>Program</code> &#x3D; <code>Data Structure</code> + <code>Algorithm</code></p>
+</blockquote>
+<h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>How to judge a algorithm?</p>
+<p>How to contrast diferent algorithms?</p>
+<p><strong>Big O Notation:</strong> The limiting case of the time or space required by the algorithm as the computational magnitude increases.</p>
+<blockquote>
+<p>T(n) &#x3D; O(f(n))</p>
+</blockquote>
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><ul>
+<li>Example 1:</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line"> x++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The time complexity of the <code>for</code> loop is <em>O(n)</em>.</p>
+<ul>
+<li>Example 2:</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line"> x++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">    x++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>There are a single <code>for</code> loop and a double <code>for</code> loop, and the complexity of the former is <em>O(n)</em> and the latter is <em>O(n$^{2}$)</em> . So when <code>n</code> tends to be infinite, the complexity of whole algorithm is <em>O(n$^{2}$)</em>.</p>
+<h3 id="Analysis-of-Commonly-used-time-complexity-order"><a href="#Analysis-of-Commonly-used-time-complexity-order" class="headerlink" title="Analysis of Commonly used time complexity order"></a>Analysis of Commonly used time complexity order</h3><img src="https://cdn.staticaly.com/gh/Dionysen/BlogCDN@master/img/big-o-running-time-complexity.webp" style="zoom: 80%;" />
+
+<h4 id="Constant-order-O-1"><a href="#Constant-order-O-1" class="headerlink" title="Constant order O(1)"></a>Constant order <em>O(1)</em></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> y = <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> temp = x;</span><br><span class="line">x = y;</span><br><span class="line">y = temp;</span><br></pre></td></tr></table></figure>
+
+<p>As long as there is no complex logic such as loops or recursion, the code is <em>O(1)</em> complex no matter how many lines of code are executed.</p>
+<h4 id="Linear-order-O-n"><a href="#Linear-order-O-n" class="headerlink" title="Linear order O(n)"></a>Linear order <em>O(n)</em></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    x++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this code, the for loop is executed n times, so the computation time varies with n, so this kind of code can be expressed by <em>O(n)</em>.</p>
+<h4 id="The-logarithmic-order-O-log-n"><a href="#The-logarithmic-order-O-log-n" class="headerlink" title="The logarithmic order O(log n)"></a>The logarithmic order <em>O(log n)</em></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(i &lt; n) &#123;</span><br><span class="line">    i = i * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In the above loop, each time <code>i</code> is multiplied by <code>2</code>, which means each time <code>i</code> is a step closer to <code>n</code>. So how many cycles does it take for <code>i</code> to be equal to or greater than <code>n</code>, which is solving for 2${^x}$ is equal to <code>n</code>. The answer is <strong>x &#x3D; log 2${^n}$</strong>. So after log 2${^n}$ cycles, <code>i</code> is going to be greater than or equal to <code>n</code>, and that’s the end of the code. So the complexity of this code is <em>O(log n)</em>.</p>
+<h4 id="Linear-log-order-O-nlog-n"><a href="#Linear-log-order-O-nlog-n" class="headerlink" title="Linear log order O(nlog n)"></a>Linear log order <em>O(nlog n)</em></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n: i++) &#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(x &lt; n) &#123;</span><br><span class="line">        x = x * <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Linear log order <em>O(nlog n)</em> is easy to understand, which means you loop through <em>O(log n)</em> code <code>n</code> times. Each loop is order <em>O(log n)</em>,  <code>n * log n = n(log n)</code>.</p>
+<h4 id="Squared-square-order-O-n-2"><a href="#Squared-square-order-O-n-2" class="headerlink" title="Squared square order O(n${^2}$)"></a>Squared square order <em>O(n${^2}$)</em></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">        x++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>O(n${^2}$)</em> is essentially <code>n*n</code>, if we change the number of cycles in the inner layer to <code>m</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">        x++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The complexity becomes <code>n * m</code> &#x3D; <em>O(nm)</em>.</p>
+<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p>Since “time complexity” is not the amount of time a program consumes, “space complexity” is not used to calculate the amount of space a program consumes. As the magnitude of the problem increases, the amount of memory a program needs to allocate may also increase, and “space complexity” reflects the tendency of memory space to increase.</p>
+<h4 id="O-1-Space-complexity"><a href="#O-1-Space-complexity" class="headerlink" title="O(1) Space complexity"></a><em>O(1)</em> Space complexity</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> y = <span class="number">0</span>;</span><br><span class="line">x++;</span><br><span class="line">y++;</span><br></pre></td></tr></table></figure>
+
+<p>The space allocated by <code>x</code> and <code>y</code> does not change with the amount of data processed, so the space complexity is <em>O(1)</em>.</p>
+<h4 id="O-n-Space-complexity"><a href="#O-n-Space-complexity" class="headerlink" title="O(n) Space complexity"></a><em>O(n)</em> Space complexity</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] newArray = <span class="keyword">new</span> <span class="type">int</span>[n];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    newArray[i] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this code, we create an array of length <code>n</code>and then assign values to the elements in the loop. Therefore, the “space complexity” of this code depends on the length of <code>newArray</code>, which is <code>n</code>, so <em>S(n) &#x3D; O(n)</em>.</p>
+<h2 id="Sorting-Algorithms"><a href="#Sorting-Algorithms" class="headerlink" title="Sorting Algorithms"></a>Sorting Algorithms</h2><p>Searching is a very important step in computers, but it is often difficult to find a specific number from unordered data. Binary searching, as we mentioned earlier, only works in sorted arrays. So the sorting algorithm is a very important job, and if we can sort the numbers, then we can save a lot of effort when we’re looking for a particular number.</p>
+<p>There are many sorting algorithms, and each has its own advantages and disadvantages:</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Time Complexity(Best)</th>
+<th>Time Complexity(Average)</th>
+<th>Time Complexity(Worst)</th>
+<th>Space Complexity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quiksort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>Ω(n${^2}$)</em></td>
+<td><em>O(log(n))</em></td>
+</tr>
+<tr>
+<td>Mergesort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n log(n))</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>Timesort</td>
+<td><em>Ω(n)</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n log(n))</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>Heapsort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n log(n))</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Bubble Sort</td>
+<td><em>Ω(n)</em></td>
+<td><em>Θ(n${^2}$)</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Insertion Sort</td>
+<td><em>Ω(n)</em></td>
+<td><em>Θ(n${^2}$)</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Selection Sort</td>
+<td><em>Ω(n${^2}$)</em></td>
+<td><em>Θ(n${^2}$)</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Tree Sort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>Shell Sort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n (log(n))${^2}$)</em></td>
+<td><em>O(n (log(n))${^2}$)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Bucket Sort</td>
+<td><em>Ω(n+k)</em></td>
+<td><em>Θ(n+k)</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>Radix Sort</td>
+<td><em>Ω(nk)</em></td>
+<td><em>Θ(nk)</em></td>
+<td><em>O(nk)</em></td>
+<td><em>O(n+k)</em></td>
+</tr>
+<tr>
+<td>Counting Sort</td>
+<td><em>Ω(n+k)</em></td>
+<td><em>Θ(n+k)</em></td>
+<td><em>O(n+k)</em></td>
+<td><em>O(k)</em></td>
+</tr>
+<tr>
+<td>Cubesort</td>
+<td><em>Ω(n)</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n log(n))</em></td>
+<td><em>O(n)</em></td>
+</tr>
+</tbody></table>
+<h3 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion Sort"></a>Insertion Sort</h3><p>Insertion sort is a simple and intuitive sorting algorithm. In insertion sort, we process the unsorted elements from front to back. For each element, we compare it to the previously sorted elements, find the corresponding position, and insert.</p>
+<p>Essentially, for each element to be processed, we only care about its relationship to the previous element, and we only deal with the elements after the current element in the next round.</p>
+<p><strong>Specific steps:</strong></p>
+<ol>
+<li>Starting with the second element (the first new element to be sorted), the sequence of previous elements is scanned backwards</li>
+<li>If the current scanned element is larger than the current element, the scanned element is moved to the next bit</li>
+<li>Repeat Step 2 until you find a position less than or equal to the new element</li>
+<li>Insert the new element at that location</li>
+<li>Repeat Steps 1 through 4 for subsequent elements</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">inseritonSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> arrayLength)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; arrayLength; i++) &#123;</span><br><span class="line">        <span class="type">int</span> cur = arr[i];</span><br><span class="line">        <span class="type">int</span> inseritonIndex = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (inseritonIndex &gt;= <span class="number">0</span> &amp;&amp; arr[inseritonIndex] &gt; cur) &#123;</span><br><span class="line">            arr[inseritonIndex + <span class="number">1</span>] = arr[inseritonIndex];</span><br><span class="line">            inseritonIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[inseritonIndex + <span class="number">1</span>] = cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em>T(n) &#x3D; O(n${^2}$)</em></p>
+<p><em>S(n) &#x3D; O(1)</em></p>
+</blockquote>
+<h3 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h3><p>Quicksort is a <strong>Divide and Conquer</strong> algorithm in which we turn big problems into small ones, and solve the small ones one by one, so that when the small ones are solved, the big ones will be solved.</p>
+<p>The basic idea of quicksort is to pick a target element and then put the target element in the correct position in the array. The array is then split into two subarrays based on the sorted elements, using the same method and the same operation for the unsorted range.</p>
+<p><strong>Specific steps:</strong></p>
+<ol>
+<li>For the current array, we’re going to use the last element as our <strong>pivot</strong></li>
+<li>All elements smaller than the base number are ranked before the base number, and those larger than the base number are ranked after the base number</li>
+<li>Once the base number is in place, the element is split into two front and back subarrays based on the cardinality position</li>
+<li>Use steps 1 through 4 recursively for subarrays until the subarray is 1 or less in length</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = arr[a];</span><br><span class="line">    arr[a] = arr[b];</span><br><span class="line">    arr[b] = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">partition</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> pivot = arr[right];</span><br><span class="line">    <span class="type">int</span> leftIndex = left;</span><br><span class="line">    <span class="type">int</span> rightIndex = right - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (leftIndex &lt; right &amp;&amp; arr[leftIndex] &lt;= pivot) &#123;</span><br><span class="line">            leftIndex++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (rightIndex &gt;= left &amp;&amp; arr[rightIndex] &gt; pivot) &#123;</span><br><span class="line">            rightIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftIndex &gt; rightIndex) <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">swap</span>(arr, leftIndex, rightIndex);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">swap</span>(arr, leftIndex, right);</span><br><span class="line">    <span class="keyword">return</span> leftIndex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quickSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &gt;= right) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> partitionIndex = <span class="built_in">partition</span>(arr, left, right);</span><br><span class="line">    <span class="built_in">quickSort</span>(arr, left, partitionIndex - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">quickSort</span>(arr, partitionIndex + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printArray</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> arrayLength)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; arrayLength; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em>T(n) &#x3D; O(n${^2}$)</em>.  Average time complexity is <em>O(n(log n))</em>.<br><em>S(n) &#x3D; O(n)</em>. Average time complexity is <em>O(log n).</em></p>
+</blockquote>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Dionysen</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/Computer/Programming/Data%20Structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">http://example.com/Computer/Programming/Data%20Structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/Computer/Programming/Data%20Structure/Wangshushen%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Data Structure - Shushen Wang</a>
+            
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Dionysen | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

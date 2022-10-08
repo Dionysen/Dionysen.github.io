@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Dionysen">
+
+
+    <meta name="subtitle" content="A simple notebook">
+
+
+
+
+<title>Array, Vector and Linked list | DIONYSEN</title>
+
+
+
+    <link rel="icon" href="/icon.svg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DIONYSEN</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DIONYSEN</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Array, Vector and Linked list</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Dionysen</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 2, 2022&nbsp;&nbsp;14:19:46</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Computer/">Computer</a>
+                            
+                                <a href="/categories/Computer/Data-Structure/">Data Structure</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <blockquote>
+<p>Linked list is a Data structure that contains a variable and a pointer pointing to the next node.</p>
+</blockquote>
+<h2 id="Singly-Linked-list"><a href="#Singly-Linked-list" class="headerlink" title="Singly Linked list"></a>Singly Linked list</h2><p>Now we implement a singly linked list with C++.</p>
+<h3 id="Storage-of-data"><a href="#Storage-of-data" class="headerlink" title="Storage of data"></a>Storage of data</h3><p>First of all, a data structure is needed to store the variable and the pointer. It can be coded:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">       <span class="type">int</span> val;</span><br><span class="line">       Node* next;</span><br><span class="line">       <span class="built_in">Node</span>()</span><br><span class="line">           : <span class="built_in">val</span>(<span class="number">0</span>)</span><br><span class="line">           , <span class="built_in">next</span>(<span class="literal">nullptr</span>)</span><br><span class="line">       &#123;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">Node</span>(<span class="type">int</span> x)</span><br><span class="line">           : <span class="built_in">val</span>(x)</span><br><span class="line">           , <span class="built_in">next</span>(<span class="literal">nullptr</span>)</span><br><span class="line">       &#123;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">Node</span>(<span class="type">int</span> x, Node* next)</span><br><span class="line">           : <span class="built_in">val</span>(x)</span><br><span class="line">           , <span class="built_in">next</span>(next)</span><br><span class="line">       &#123;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Three constructors are packaged in the <code>struct Node</code>, which can help us create a <strong>head</strong> of a linked list conveniently.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Node *head = <span class="keyword">new</span> <span class="built_in">Node</span>();</span><br><span class="line">Node *head = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">0</span>);</span><br><span class="line">Node *head = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">0</span>, <span class="literal">nullptr</span>);</span><br></pre></td></tr></table></figure>
+
+<p>There are three ways to create a pointer <code>head</code>. Using first way, you can create a pointer <code>head</code> pointing to a node that has a variable <code>val = 0</code> and a <code>nullptr</code> (a pointer pointing nothing). And the second way, you create a same <code>head</code> but you must assign a value to <code>val</code> of the node pointed to by <code>head</code>. The last, you even can link a node to the <code>head</code> requiring you give a pointer pointing to the next node.</p>
+<p>Then, how to handle the linked list?</p>
+<h3 id="Linked-list-class"><a href="#Linked-list-class" class="headerlink" title="Linked list class"></a>Linked list class</h3><p>Object-oriented is a</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        Node* next;</span><br><span class="line">        <span class="built_in">Node</span>()</span><br><span class="line">            : <span class="built_in">val</span>(<span class="number">0</span>)</span><br><span class="line">            , <span class="built_in">next</span>(<span class="literal">nullptr</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">Node</span>(<span class="type">int</span> x)</span><br><span class="line">            : <span class="built_in">val</span>(x)</span><br><span class="line">            , <span class="built_in">next</span>(<span class="literal">nullptr</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">Node</span>(<span class="type">int</span> x, Node* next)</span><br><span class="line">            : <span class="built_in">val</span>(x)</span><br><span class="line">            , <span class="built_in">next</span>(next)</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">ListNode</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;head = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Node* head;</span><br><span class="line"> <span class="function"><span class="type">void</span> <span class="title">assign</span><span class="params">(<span class="type">int</span> val)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">at</span><span class="params">(<span class="type">int</span> pos)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(<span class="type">int</span> pos, <span class="type">int</span> val)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">del</span><span class="params">(<span class="type">int</span> pos)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> val)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="type">void</span> <span class="title">assign</span><span class="params">(<span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Node* p = <span class="keyword">new</span> <span class="built_in">Node</span>(val);</span><br><span class="line">        Node* last = <span class="keyword">this</span>-&gt;head;</span><br><span class="line">        <span class="keyword">if</span> (last) &#123;</span><br><span class="line">            <span class="keyword">while</span> (last-&gt;next) &#123;</span><br><span class="line">                last = last-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            last-&gt;next = p;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            head = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">at</span><span class="params">(<span class="type">int</span> pos)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">        Node* p = <span class="keyword">this</span>-&gt;head;</span><br><span class="line">        <span class="keyword">while</span> (index != pos) &#123;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(<span class="type">int</span> pos, <span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">        Node* p = <span class="keyword">this</span>-&gt;head;</span><br><span class="line">        <span class="keyword">while</span> (index != pos) &#123;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        p-&gt;val = val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">del</span><span class="params">(<span class="type">int</span> pos)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Node* p = <span class="keyword">this</span>-&gt;head;</span><br><span class="line">        <span class="keyword">if</span> (pos == <span class="number">0</span>) &#123;</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">            <span class="keyword">delete</span> p;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">            Node* p = <span class="keyword">this</span>-&gt;head;</span><br><span class="line">            Node* q;</span><br><span class="line">            <span class="keyword">for</span> (q = <span class="literal">nullptr</span>; p; q = p, p = p-&gt;next) &#123;</span><br><span class="line">                <span class="keyword">if</span> (index == pos - <span class="number">1</span>) &#123;</span><br><span class="line">                    q-&gt;next = p-&gt;next;</span><br><span class="line">                    <span class="keyword">delete</span> p;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Node* p;</span><br><span class="line">        <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (p = <span class="keyword">this</span>-&gt;head; p; p = p-&gt;next) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p-&gt;val == val) &#123;</span><br><span class="line">                <span class="keyword">return</span> index;</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Node* p;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;[&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (p = <span class="keyword">this</span>-&gt;head; p; p = p-&gt;next) &#123;</span><br><span class="line">            cout &lt;&lt; p-&gt;val;</span><br><span class="line">            <span class="keyword">if</span> (p-&gt;next) &#123;</span><br><span class="line">                cout &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;]&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ListNode* node = <span class="keyword">new</span> ListNode;</span><br><span class="line">    node-&gt;<span class="built_in">assign</span>(<span class="number">1</span>);</span><br><span class="line">    node-&gt;<span class="built_in">assign</span>(<span class="number">2</span>);</span><br><span class="line">    node-&gt;<span class="built_in">assign</span>(<span class="number">3</span>);</span><br><span class="line">    node-&gt;<span class="built_in">assign</span>(<span class="number">4</span>);</span><br><span class="line">    node-&gt;<span class="built_in">assign</span>(<span class="number">5</span>);</span><br><span class="line">    node-&gt;<span class="built_in">print</span>();</span><br><span class="line">    cout &lt;&lt; node-&gt;<span class="built_in">find</span>(<span class="number">2</span>) &lt;&lt; endl;</span><br><span class="line">    node-&gt;<span class="built_in">del</span>(<span class="number">2</span>);</span><br><span class="line">    node-&gt;<span class="built_in">print</span>();</span><br><span class="line">    cout &lt;&lt; node-&gt;<span class="built_in">at</span>(<span class="number">2</span>) &lt;&lt; endl;</span><br><span class="line">    node-&gt;<span class="built_in">set</span>(<span class="number">2</span>, <span class="number">9</span>);</span><br><span class="line">    node-&gt;<span class="built_in">print</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Dionysen</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/Computer/Programming/Data%20Structure/Linked%20list/">http://example.com/Computer/Programming/Data%20Structure/Linked%20list/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Computer/"># Computer</a>
+                    
+                        <a href="/tags/Data-Structure/"># Data Structure</a>
+                    
+                        <a href="/tags/Linked-list/"># Linked list</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/Computer/Linux/LinuxNote/">Linux Note</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Dionysen | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

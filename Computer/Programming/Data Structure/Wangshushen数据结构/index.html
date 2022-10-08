@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Dionysen">
+
+
+    <meta name="subtitle" content="A simple notebook">
+
+
+
+
+<title>Data Structure - Shushen Wang | DIONYSEN</title>
+
+
+
+    <link rel="icon" href="/icon.svg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DIONYSEN</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DIONYSEN</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Data Structure - Shushen Wang</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Dionysen</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 28, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Computer/">Computer</a>
+                            
+                                <a href="/categories/Computer/Programming/">Programming</a>
+                            
+                                <a href="/categories/Computer/Programming/Data-Structure/">Data Structure</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Array-Vector-and-List"><a href="#Array-Vector-and-List" class="headerlink" title="Array, Vector and List"></a>Array, Vector and List</h1><h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>Array has fixed size and contiguous memory. New elements cannot be appended. You can use memory address to access elements of Array. </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a[<span class="number">5</span>] = &#123;<span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>,&#125;; </span><br></pre></td></tr></table></figure>
+
+<img src="https://cdn.staticaly.com/gh/Dionysen/BlogCDN@master/img/2022-10-0191157.png" style="zoom: 33%;" />
+
+<p>C++ counts food tags from <code>0</code>, so <code>a[0] = &#39;h&#39;</code> and <code>a[1] = &#39;e&#39;</code>.</p>
+<p>Random access using <code>a[i]</code> has <code>O(1)</code> time complexity.</p>
+<p>Units of array can be modified. </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>] = <span class="string">&#x27;b&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>result:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bello</span><br></pre></td></tr></table></figure>
+
+<img src="https://cdn.staticaly.com/gh/Dionysen/BlogCDN@master/img/屏幕截图 2022-10-02 191857.png" style="zoom:33%;" />
+
+
+
+<h3 id="Dynamic-Allocation-of-Arrays"><a href="#Dynamic-Allocation-of-Arrays" class="headerlink" title="Dynamic Allocation of Arrays"></a>Dynamic Allocation of Arrays</h3><p>A size-<code>n</code> array can be created in this way:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a[n];</span><br></pre></td></tr></table></figure>
+
+<p>But when writing the code, <code>n</code> must be known.</p>
+<p>If <code>n</code> is unknown, how dose the program run?</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>* a = <span class="literal">NULL</span>;</span><br><span class="line"><span class="type">int</span> n; <span class="comment">// array size </span></span><br><span class="line">cin &gt;&gt; n; <span class="comment">// read in the size. e.g., get n = 5</span></span><br><span class="line">a = <span class="keyword">new</span> <span class="type">char</span>[n];</span><br></pre></td></tr></table></figure>
+
+<p>Now <code>a</code> is an <strong>empty</strong> array whose size is <code>5</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store somrthing in the array</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="string">&#x27;h&#x27;</span>;</span><br><span class="line">a[<span class="number">1</span>] = <span class="string">&#x27;e&#x27;</span>;</span><br><span class="line">a[<span class="number">2</span>] = <span class="string">&#x27;l&#x27;</span>;</span><br><span class="line">a[<span class="number">3</span>] = <span class="string">&#x27;l&#x27;</span>;</span><br><span class="line">a[<span class="number">4</span>] = <span class="string">&#x27;o&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>When done, <strong>free memory</strong>. Otherwise, memory leak can happen.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> [] a;</span><br><span class="line">a = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Removing an element in the middle has <code>O(n)</code> time complexity. Require moving the remaining items leftward.</p>
+<h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><p>Vector is almost the same as array.</p>
+<p>The main difference is that vector’s capacity can automatically grow.</p>
+<p>New elements can be appended using <code>push_back()</code> in <code>O(1)</code> time(on average). </p>
+<p>The last element can be removed using <code>pop_back()</code> in <code>O(1)</code> time.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">char</span>&gt; v = &#123;<span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>&#125;; </span><br><span class="line">v.<span class="built_in">push_back</span>();</span><br><span class="line">v.<span class="built_in">pop_back</span>();</span><br><span class="line">v.<span class="built_in">erase</span>(v.<span class="built_in">begin</span>() + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Vector can delete an element in the middle using <code>erase()</code> in <code>O(n)</code> time. So it is not better to do this.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="type">char</span>&gt; <span class="title">v</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line">cout &lt;&lt; v.<span class="built_in">size</span>();		<span class="comment">// print &quot;100&quot;</span></span><br><span class="line">cout &lt;&lt; v.<span class="built_in">capacity</span>();	<span class="comment">// print &quot;100&quot;</span></span><br><span class="line"><span class="comment">// then</span></span><br><span class="line">v.<span class="built_in">push_back</span>(<span class="string">&#x27;x&#x27;</span>);</span><br><span class="line">cout &lt;&lt; v.<span class="built_in">size</span>();		<span class="comment">// print &quot;101&quot;</span></span><br><span class="line">cout &lt;&lt; v.<span class="built_in">capacity</span>();	<span class="comment">// print &quot;200&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>When size is going to exceed capacity, program will create a new array of capacity 200, copy the 100 elements from the old array to the new, put  the new element in the 101st position and free the old array from memory.</strong></p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="A-Node"><a href="#A-Node" class="headerlink" title="A Node"></a>A Node</h3><p>A node contains a data and two pointers that one points to the previous node and another points to the next node.</p>
+<h3 id="Doubly-Linked-List"><a href="#Doubly-Linked-List" class="headerlink" title="Doubly Linked List"></a>Doubly Linked List</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::list&lt;<span class="type">char</span>&gt; l = &#123;<span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>&#125;; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; l[<span class="number">2</span>];		<span class="comment">// does not work</span></span><br><span class="line">l[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span>;			<span class="comment">// does not work</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list&lt;<span class="type">char</span>&gt;::iterator iter = l.<span class="built_in">begin</span>();</span><br><span class="line">cout &lt;&lt; *iter;		<span class="comment">// print &#x27;h&#x27;</span></span><br><span class="line">iter++;</span><br><span class="line">cout &lt;&lt; *iter;		<span class="comment">// print &#x27;e&#x27;</span></span><br><span class="line">*iter = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">push_back</span>();</span><br><span class="line">push.<span class="built_in">front</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Diference"><a href="#Diference" class="headerlink" title="Diference"></a>Diference</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>Array</th>
+<th>Vector</th>
+<th>List</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Size</td>
+<td>fixed</td>
+<td>can increase and decrease</td>
+<td>can increase and decrease</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>contiguous</td>
+<td>contiguous</td>
+<td>not contiguous</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Array</th>
+<th>Vector</th>
+<th>List</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Rand Access</td>
+<td><code>O(1)</code></td>
+<td><code>O(1)</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>push_back()</code></td>
+<td>—</td>
+<td><code>O(1)</code>(average)</td>
+<td><code>O(1)</code></td>
+</tr>
+<tr>
+<td><code>pop_back()</code></td>
+<td>—</td>
+<td><code>O(1)</code></td>
+<td><code>O(1)</code></td>
+</tr>
+<tr>
+<td><code>insert()</code></td>
+<td>—</td>
+<td><code>O(n)</code>(average)</td>
+<td><code>O(1)</code></td>
+</tr>
+<tr>
+<td><code>erase()</code></td>
+<td>—</td>
+<td><code>O(n)</code>(average)</td>
+<td><code>O(1)</code></td>
+</tr>
+</tbody></table>
+<p>Which shall we use?</p>
+<p><strong>Array:</strong> Fixed size throughout.</p>
+<p><strong>Vector:</strong> </p>
+<ul>
+<li>Random access(i.e., read or write the <code>i</code>-th element) is fast.</li>
+<li>Insertion and deletion at the end are fas.</li>
+<li>insertion and deletion in the front and midddle are slow.</li>
+</ul>
+<p><strong>List:</strong></p>
+<ul>
+<li>Sequentially visiting elements is fast; random access is not <em><strong>allowed</strong></em>.</li>
+<li>Frequent insertion and deletion at any position are OK.</li>
+</ul>
+<h1 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">26</span>, <span class="number">32</span>, <span class="number">51</span>, <span class="number">53</span>, <span class="number">64</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Inputs:</strong> (i) an array whose elements are in the accending order and (ii) a key.</p>
+<p><strong>Goal:</strong> Search for the key in the array. If found, return its index; if not found, return -<code>1</code>.</p>
+<p>Examle 1:</p>
+<ul>
+<li>Search for the elemnt <code>53</code>.</li>
+<li>Return <code>8</code>.</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Search for the element 9.</li>
+<li>Return <code>-1</code>.</li>
+</ul>
+<p>Example: <code>key = 26</code>.  Use two variables <code>left</code> and <code>right</code> pointing to the front of the array and the back respectively. </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> left, <span class="type">int</span> right, <span class="type">int</span> key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">        <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (key == arr[mid])</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span> (key &gt; arr[mid])</span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>How to suport both <strong>search</strong> and <strong>insertion</strong>?</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">26</span>, <span class="number">32</span>, <span class="number">51</span>, <span class="number">53</span>, <span class="number">64</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>The ascending order must be kept; otherwisem search would take <em>O(n)</em> time.</p>
+<p>Inserting an item into the middle has <em>O(n)</em> time complexity(on average).</p>
+<p>Can we perform binary search in the list?</p>
+<p>No, Given <code>left</code> and <code>right</code>, we cannot get <code>mid</code> efficiently.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Search</th>
+<th>Insertion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Vector</td>
+<td><em>O(log n)</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>List</td>
+<td><em>O(n)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td><strong>Skip List</strong></td>
+<td><em>O(log n)</em></td>
+<td><em>O(log n)</em></td>
+</tr>
+</tbody></table>
+<h1 id="Skip-List"><a href="#Skip-List" class="headerlink" title="Skip List"></a>Skip List</h1><p>Linked list does not support binary search.</p>
+<blockquote>
+<p>Skip list allows fast search and fast inertion.</p>
+</blockquote>
+<p><strong>Search:</strong> <em>O(log n)</em> time complexcity on average.</p>
+<p><strong>Insertion:</strong> <em>O(log n)</em> time complexcity on average.</p>
+<h2 id="Build-a-skip-list（待补充）"><a href="#Build-a-skip-list（待补充）" class="headerlink" title="Build a skip list（待补充）"></a>Build a skip list（待补充）</h2><p>Initially, a linked list contains <em>n</em> numbers in ascending order.</p>
+<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><h2 id="Insertion"><a href="#Insertion" class="headerlink" title="Insertion"></a>Insertion</h2><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Dionysen</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/Computer/Programming/Data%20Structure/Wangshushen%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">http://example.com/Computer/Programming/Data%20Structure/Wangshushen%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Computer/"># Computer</a>
+                    
+                        <a href="/tags/Programming/"># Programming</a>
+                    
+                        <a href="/tags/Data-Structure/"># Data Structure</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/Computer/Programming/Data%20Structure/Data%20Structure/">Data Structure - Shushen Wang</a>
+            
+            
+            <a class="next" rel="next" href="/Computer/Programming/Data%20Structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法-</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Dionysen | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
