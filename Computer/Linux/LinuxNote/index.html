@@ -207,7 +207,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">October 2, 2022&nbsp;&nbsp;2:03:25</a>
+                        Date: <a href="#">November 18, 2022&nbsp;&nbsp;23:36:51</a>
                         </span>
                     
                     
@@ -264,7 +264,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s ~/myproject-build/compile_commands.json ~/myproject/</span><br></pre></td></tr></table></figure>
 
 <p>Generated <code>compile_commands.json</code> can support auto completion for third party libraries.</p>
-<h2 id="Install-Xmind-Cracked-for-Linux"><a href="#Install-Xmind-Cracked-for-Linux" class="headerlink" title="Install Xmind Cracked for Linux"></a>Install Xmind Cracked for Linux</h2><p>Install xmind-vana-10.3.1-1-x86_64.pkg.tar.zst， and edit <code>/etc/profile</code>，add</p>
+<h2 id="Install-XMind-Cracked-for-Linux"><a href="#Install-XMind-Cracked-for-Linux" class="headerlink" title="Install XMind Cracked for Linux"></a>Install XMind Cracked for Linux</h2><p>Install xmind-vana-10.3.1-1-x86_64.pkg.tar.zst， and edit <code>/etc/profile</code>，add</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> VANA_LICENSE_MODE=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> VANA_LICENSE_TO=<span class="string">&quot;sui bian xie&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>Save and login out your system, then enjoy. </p>
@@ -273,6 +273,82 @@
 
 <p>Different from <code>hexo g -w ; hexo s</code>, <code>&amp;</code> implicate that the former and the latter will run at the same time. The command  in the front of <code>;</code> priors to the command  in the back of <code>;</code>. </p>
 <h2 id="Win11-Restore-Right-click-Menu"><a href="#Win11-Restore-Right-click-Menu" class="headerlink" title="Win11 Restore Right-click Menu"></a>Win11 Restore Right-click Menu</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To win10</span></span><br><span class="line">reg.exe add <span class="string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot;</span> /f /ve</span><br><span class="line"></span><br><span class="line"><span class="comment"># To win11</span></span><br><span class="line">reg.exe delete <span class="string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot;</span> /va /f</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件共享工具"><a href="#文件共享工具" class="headerlink" title="文件共享工具"></a>文件共享工具</h2><ul>
+<li>ftp、vsftpd</li>
+<li>Samba（win and linux）</li>
+<li>nfs （linux to linux)</li>
+</ul>
+<p>nfs把远程机器上的文件数据以挂载的形式映射在本地用户机器上，所以nfs类似于windows的共享文件夹。</p>
+<p>nfs通过port传输数据，但端口是随机选择的，因此nfs通过rpc服务注册端口，实现告知用户nfs的端口号。</p>
+<p>RPC服务记录每一个NFS功能对应的端口号，并且告诉客户端。（像一个中介）</p>
+<h3 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S nfs-utils rpcbind</span><br></pre></td></tr></table></figure>
+
+<p><strong>C&#x2F;S模式：</strong> client&#x2F;server模式</p>
+<ul>
+<li>Server端：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S nfs-utils rpcbind</span><br><span class="line">sudo <span class="built_in">chmod</span> -Rf 777 /home/dionysen</span><br><span class="line"></span><br><span class="line"><span class="comment"># configure</span></span><br><span class="line">sudo vim /etc/exports</span><br><span class="line"><span class="comment"># add the following parameters</span></span><br><span class="line">home/dionysen  *(insecure,rw,<span class="built_in">sync</span>)</span><br><span class="line"><span class="comment"># 共享目录+客户端地址（可以是**主机名、通配符和ip地址**）+权限参数</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>权限参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>parameters</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rw</td>
+<td>读写</td>
+</tr>
+<tr>
+<td>ro</td>
+<td>只读</td>
+</tr>
+<tr>
+<td>root_squash</td>
+<td>客户端以root身份访问时，映射为匿名用户nobody</td>
+</tr>
+<tr>
+<td>no_root_squash</td>
+<td>直接以root身份挂载（比较危险，很不常用）</td>
+</tr>
+<tr>
+<td>all_squash</td>
+<td>所有用户都映射为匿名用户很安全常用</td>
+</tr>
+<tr>
+<td>sync</td>
+<td>数据同步写入到内存和磁盘，优点是保证内存数据安全，但效率低</td>
+</tr>
+<tr>
+<td>async</td>
+<td>数据先写入内存，再持久化到磁盘，效率高，但有数据丢失的隐患</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> --now rpcbind </span><br><span class="line">ll -d /home/dionysen</span><br><span class="line"><span class="comment"># 应为:</span></span><br><span class="line">drwxrwxrwx 1 dionysen dionysen 1.3K Nov  4 13:24 .</span><br><span class="line"><span class="comment"># 若为root root,则需修改所属:</span></span><br><span class="line"><span class="built_in">chmod</span> -R dionysen.dionysen /home/dionysen</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Client端：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 远程挂载:</span></span><br><span class="line">sudo mount -t nfs 82.157.246.225:/home/dionysen/hexo /mnt/hexo</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Samba服务"><a href="#Samba服务" class="headerlink" title="Samba服务"></a>Samba服务</h3><ul>
+<li>SMB是微软指定的协议，用于局域网文件共享，SMB全称是服务消息块</li>
+<li>SMB移植到linux后，就诞生了samba软件</li>
+<li>可以在两台linux下，也可以在linux与windows之间</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S samba</span><br><span class="line">sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>在配置文件中写入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">        workgroup = SAMBA</span><br><span class="line">        Security = user</span><br><span class="line">        passdb backend = tdbsam</span><br><span class="line">        printing = cups</span><br><span class="line">        printcap name = cups</span><br><span class="line">        load printers = <span class="built_in">yes</span></span><br><span class="line">        cups options = raw</span><br><span class="line">[homes]</span><br><span class="line">        comment = Home Directories</span><br><span class="line">        valid <span class="built_in">users</span> = %S, %D%w%S</span><br><span class="line">        browseable = No</span><br><span class="line">        <span class="built_in">readonly</span> = No</span><br><span class="line">        inherit acls = Yes</span><br><span class="line">[printers]</span><br><span class="line">        comment = All Printers</span><br><span class="line">        path = /var/tmp</span><br><span class="line">        printable = Yes</span><br><span class="line">        create mask = 0600</span><br><span class="line">        browseable = No</span><br><span class="line"></span><br><span class="line">[<span class="built_in">print</span>$]</span><br><span class="line">        comment = Printer Driver</span><br><span class="line">        path = /var/lib/samba/drivers</span><br><span class="line">        write list = @printadmin root</span><br><span class="line">        force group = @printadmin</span><br><span class="line">        create mask = 0664</span><br><span class="line">        directory mask = 0775</span><br><span class="line">[dionysen]</span><br><span class="line">        comment = dionysen</span><br><span class="line">        path = /home/dionysen</span><br><span class="line">        public = no</span><br><span class="line">        writable = <span class="built_in">yes</span></span><br><span class="line">        guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>pdbedit</code>命令创建samba专用的用户和密码，创建时必须保证这个用户在linux系统中存在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pdbedit -a -u dionysen  <span class="comment">#create a user</span></span><br><span class="line"></span><br><span class="line">sudo systemctl restart smb</span><br><span class="line">sudo systemctl status smb</span><br><span class="line"></span><br><span class="line">sudo netstat -tunlp | grep smb</span><br><span class="line"></span><br><span class="line">tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      189537/smbd</span><br><span class="line">tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      189537/smbd</span><br><span class="line">tcp6       0      0 :::445                  :::*                    LISTEN      189537/smbd</span><br><span class="line">tcp6       0      0 :::139                  :::*                    LISTEN      189537/smbd</span><br></pre></td></tr></table></figure>
+
+<p>打开防火墙(由于只能在局域网使用，已放弃)</p>
+<p>改用sftp</p>
+<h2 id="给shell脚本文件添加可执行权限"><a href="#给shell脚本文件添加可执行权限" class="headerlink" title="给shell脚本文件添加可执行权限"></a>给shell脚本文件添加可执行权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x shell.sh</span><br></pre></td></tr></table></figure>
+
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
         </div>
 
@@ -319,10 +395,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/Computer/Programming/Data%20Structure/Linked%20list/">Array, Vector and Linked list</a>
+                <a class="prev" rel="prev" href="/Computer/Linux/Archlinux-on-Wsl2/">Install Archlinux on WSL2</a>
             
             
-            <a class="next" rel="next" href="/Computer/Linux/Archlinux%20on%20Wsl2/">Install Archlinux on WSL2</a>
+            <a class="next" rel="next" href="/Computer/Linux/Nvim-Configuration/"></a>
             
         </section>
 

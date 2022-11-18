@@ -207,7 +207,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">September 28, 2022&nbsp;&nbsp;20:03:51</a>
+                        Date: <a href="#">November 18, 2022&nbsp;&nbsp;23:36:51</a>
                         </span>
                     
                     
@@ -238,6 +238,7 @@
 <h2 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h2><h3 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Any programs programed by C language must have this framework.</p>
 <h3 id="Output-function"><a href="#Output-function" class="headerlink" title="Output function"></a>Output function</h3><p>You can understand it as function in math, which is a mapping relationship. But they are different.</p>
+<hr>
 <p><code>printf</code> is a function, whoes function is output a string by formating <code>printf(&quot;......\n&quot;)</code> .</p>
 <p>For example, the <code>Hello, world!</code> :</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello,world!\n&quot;</span>); <span class="comment">// \n make it wrapping</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -260,7 +261,7 @@
 <p>Different variable types have different value types and value ranges.</p>
 <p>Character variables:</p>
 <p>Use to store <strong>character constants</strong>. A character variable can hold <strong>only</strong> <strong>one</strong> character constant. The type specifier is <code>char</code>.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">			<span class="type">char</span> x,y,z;</span><br><span class="line">			x = <span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">			y = <span class="string">&#x27;o&#x27;</span>;</span><br><span class="line">			z = <span class="string">&#x27;y&#x27;</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%c%c%c\n&quot;</span>,x,y,z);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> x,y,z;</span><br><span class="line">    x = <span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">    y = <span class="string">&#x27;o&#x27;</span>;</span><br><span class="line">    z = <span class="string">&#x27;y&#x27;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c%c%c\n&quot;</span>,x,y,z);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>The result is:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boy</span><br></pre></td></tr></table></figure>
@@ -723,7 +724,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/Computer/Programming/Language/Java/">Java Note</a>
+                <a class="prev" rel="prev" href="/Wiki/termux/"></a>
             
             
             <a class="next" rel="next" href="/Computer/Programming/Language/C++-Note/">C++ Note</a>

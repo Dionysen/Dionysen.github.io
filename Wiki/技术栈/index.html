@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Dionysen">
+
+
+    <meta name="subtitle" content="A simple notebook">
+
+
+
+
+<title>技术栈 | DIONYSEN</title>
+
+
+
+    <link rel="icon" href="/icon.svg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DIONYSEN</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DIONYSEN</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">技术栈</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Dionysen</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 13, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <blockquote>
+<p>学习任何技术都需考虑如下三点：</p>
+</blockquote>
+<ol>
+<li>能干什么</li>
+<li>在什么平台</li>
+<li>怎么用</li>
+</ol>
+<p>如：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Usage</th>
+<th>Platform</th>
+<th>Using</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>编程语言</td>
+<td>编写程序，执行，让计算机做事</td>
+<td>任何操作系统</td>
+<td>Code-&gt;Compile-&gt;Debug-&gt;Run</td>
+</tr>
+<tr>
+<td>gcc</td>
+<td>编译器，编译代码为(c,c++)可执行程序</td>
+<td>Unix,Windows,Linux,macOS</td>
+<td><code>gcc [filename] [arguments]</code></td>
+</tr>
+<tr>
+<td>git</td>
+<td>版本控制系统</td>
+<td>Unix,Windows,Linux,macOS</td>
+<td>add,commit,push,pull</td>
+</tr>
+<tr>
+<td>nfs</td>
+<td>linux与linux或linux与windows之间共享文件</td>
+<td>Linux</td>
+<td>安装nfs和rpcbind，配置，开放端口，另一端挂载</td>
+</tr>
+<tr>
+<td>samba</td>
+<td>windows指定的文件共享协议，可以在windows与别的平台共享文件</td>
+<td>Windows,Linux</td>
+<td>安装samba服务，配置，连接</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>编程语言，编写成语，在特定平台编译后可以执行</td>
+<td>All</td>
+<td>g++ main.cpp</td>
+</tr>
+<tr>
+<td>cmake</td>
+<td>一个自动生成makefile的工具，帮助c++项目的快速制定编译选项</td>
+<td>All</td>
+<td><code>cmake [argument]</code></td>
+</tr>
+<tr>
+<td>makefile</td>
+<td>是一种脚本语言，可以打包执行复杂的编译命令</td>
+<td>Linux</td>
+<td>编辑<code>Makefile</code>文件，使用<code>make</code>命令执行文件的命令</td>
+</tr>
+<tr>
+<td>Data structure</td>
+<td>是相互存在一种或多种特定关系的数据元素的集合，是计算机储存和组织数据的方式</td>
+<td>All</td>
+<td>在编写的程序中使用它们</td>
+</tr>
+<tr>
+<td>Algorithm</td>
+<td>是程序解决问题的方法的准确描述</td>
+<td>All</td>
+<td>在编写程序时使用的它们</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>一门面向对象的编程语言</td>
+<td>All</td>
+<td>编写程序，编译运行</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>一门解释型编程语言</td>
+<td>All</td>
+<td>编写脚本，直接由解释器解释执行</td>
+</tr>
+</tbody></table>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Dionysen</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/Wiki/%E6%8A%80%E6%9C%AF%E6%A0%88/">http://example.com/Wiki/%E6%8A%80%E6%9C%AF%E6%A0%88/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Computer/"># Computer</a>
+                    
+                        <a href="/tags/%E6%8A%80%E6%9C%AF/"># 技术</a>
+                    
+                        <a href="/tags/Review/"># Review</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/Computer/Linux/Nvim-Configuration/"></a>
+            
+            
+            <a class="next" rel="next" href="/Computer/Linux/Shell-commands/">Shell Command</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Dionysen | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

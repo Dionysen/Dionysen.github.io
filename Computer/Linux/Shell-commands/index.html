@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Dionysen">
+
+
+    <meta name="subtitle" content="A simple notebook">
+
+
+
+
+<title>Shell Command | DIONYSEN</title>
+
+
+
+    <link rel="icon" href="/icon.svg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DIONYSEN</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DIONYSEN</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">ARCHIVE</a>
+                
+                    <a class="menu-item" href="/category">CATEGORY</a>
+                
+                    <a class="menu-item" href="/tag">TAGS</a>
+                
+                    <a class="menu-item" href="/about">ABOUT</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Shell Command</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Dionysen</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 27, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Computer/">Computer</a>
+                            
+                                <a href="/categories/Computer/Linux/">Linux</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p><code>scp</code> copies files between hosts on a network.</p>
+<p>It uses <em><strong>ssh</strong></em> for data transfer, and uses the same authentication and provides the same security as a login session.</p>
+<p><code>scp</code> will ask for passwords or passphrases if they are needed for authentication.</p>
+<p>The <strong>source</strong> and <strong>target</strong> may be specified as a local pathname, a remote host with optional path in the form <code>[user@]host:[path]</code>, or a URI in the form <code>scp://[user@]host[:port][/path]</code>.</p>
+<blockquote>
+<p>Local file names can be made explicit using absolute or relative pathnames to avoid <code>scp</code> treating file names containing ‘<code>:</code>‘ as host speacifiers.</p>
+</blockquote>
+<p>When copying between two remote hosts, if the URI format is used, a <strong>port</strong> cannot be specified on the <strong>target</strong> if the <code>-R</code> option is used.</p>
+<table>
+<thead>
+<tr>
+<th>Options</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-3</code></td>
+<td>Copies between two remote hosts are transferred through the local host.  Without this option the data is copied directly between the two remote hosts.</td>
+</tr>
+<tr>
+<td><code>-4</code></td>
+<td>Forces <code>scp</code> to use IPv4 addresses only</td>
+</tr>
+<tr>
+<td><code>-6</code></td>
+<td>Forces <code>scp</code> to use IPv6 addresses only</td>
+</tr>
+<tr>
+<td><code>-A</code></td>
+<td>Allows forwarding of ssh-agent(1) to the remote system.  The default is not to forward an authentication agent.</td>
+</tr>
+<tr>
+<td><code>-C</code></td>
+<td>Compression enable</td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td>Limits the used bandwidth, specified in Kbit&#x2F;s</td>
+</tr>
+</tbody></table>
+<h2 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h2><blockquote>
+<p>File Transfer Protocol client</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-4</code></td>
+<td>contact IPv4 hosts</td>
+</tr>
+<tr>
+<td><code>-6</code></td>
+<td>contact IPv6 hosts</td>
+</tr>
+<tr>
+<td><code>-A</code></td>
+<td>enable active mode transfer</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>enbale debugging outpout</td>
+</tr>
+<tr>
+<td><code>-e</code></td>
+<td>disble command line editing</td>
+</tr>
+<tr>
+<td><code>-g</code></td>
+<td>turn off file name globbing</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>do not prompt during multiple file</td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>do not automatically login to the remote system</td>
+</tr>
+</tbody></table>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>配置git 的用户名和邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;dionysen&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;solongnight@outlook.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Initiate git repository on the local:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init  </span><br></pre></td></tr></table></figure>
+<p>or set the file path:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init path/to/repo</span><br></pre></td></tr></table></figure>
+
+<p>A repository was created, but it is empty.</p>
+<p>You can add some files to the repository:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [filename]  // e.g. <span class="string">&quot;git add .&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Then you add this files to the stages and you need to commit this to the repository.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m <span class="string">&quot;Changed some files&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>-a</code> does not commit any new files.</p>
+<p><code>-m</code> means that you should give the commit message.</p>
+<p>Add a remote repository:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@gitee.com:sential/source.git</span><br></pre></td></tr></table></figure>
+
+<p>Push the local repository to the remote repository:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master </span><br></pre></td></tr></table></figure>
+
+<p>若要在一个新的设备上使用远程仓库，首先将此仓库克隆到本地：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@gitee.com:sential/source.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 值得注意的是gitee的仓库公钥管理方式导致必须使用ssh克隆，否则难以实现无密码修改远程仓库</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方提示：使用SSH公钥可以让你在你的电脑和 Gitee 通讯的时候使用安全连接（Git的Remote要使用SSH地址）</span></span><br></pre></td></tr></table></figure>
+
+<p>然后按照<code>gitee</code>上的提示添加个人公钥。</p>
+<p>每次编辑时要执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后开始编辑</span></span><br><span class="line"><span class="comment"># 完成后执行：</span></span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line">git commit -a -m <span class="string">&quot;Changed some files&quot;</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>或者每次编辑完成后，在另一处<code>pull</code>一次，那样不用每次编辑前都要再拉去一下了。</p>
+<p>写两个脚本自动拉取和提交。</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Dionysen</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/Computer/Linux/Shell-commands/">http://example.com/Computer/Linux/Shell-commands/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/Wiki/%E6%8A%80%E6%9C%AF%E6%A0%88/">技术栈</a>
+            
+            
+            <a class="next" rel="next" href="/Computer/Programming/Data%20Structure/Linked%20list/">Array, Vector and Linked list</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Dionysen | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
