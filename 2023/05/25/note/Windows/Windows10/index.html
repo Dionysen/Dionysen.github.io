@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Windows相关技巧 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Windows相关技巧</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-05-25 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%8A%80%E5%B7%A7%E4%B8%8E%E8%B8%A9%E5%9D%91-%C2%B7-%E6%9D%82%E9%A1%B9/">经验与技巧与踩坑 · 杂项</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%8A%80%E5%B7%A7%E4%B8%8E%E8%B8%A9%E5%9D%91-%C2%B7-%E6%9D%82%E9%A1%B9/Windows/">Windows</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Windows-10/"><i class="fas fa-hashtag"></i>&nbsp;Windows 10</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Windows-11/"><i class="fas fa-hashtag"></i>&nbsp;Windows 11</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Font/"><i class="fas fa-hashtag"></i>&nbsp;Font</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>1.5k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <blockquote>
+<p>Windows系统的一些技巧。</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="win10-修改系统显示字体"><a href="#win10-修改系统显示字体" class="headerlink" title="win10 修改系统显示字体"></a>win10 修改系统显示字体</h3><p>下载FontCreator，用其打开需要替换的字体，选择字体-&gt;属性：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230529192930581.png"
+                      alt="image-20230529192930581" style="zoom:50%;" 
+                >
+
+<p>然后将名字修改成<code>Microsoft Yahei</code>，然后进入PE系统，替换系统中的雅黑字体（msyh.ttc、msyhl.ttc、msyhbd.ttc三个文件）。</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230529193004835.png"
+                      alt="image-20230529193004835" style="zoom:50%;" 
+                >
+
+<h3 id="修改输入法候选字的字体"><a href="#修改输入法候选字的字体" class="headerlink" title="修改输入法候选字的字体"></a>修改输入法候选字的字体</h3><p>Win+r输入<code>regedit</code>打开注册表编辑器，找到如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HKEY_CURRENT_USER\Software\Microsoft\InputMethod\CandidateWindow\CHS\1</span><br></pre></td></tr></table></figure>
+
+<p><code>FontStyle</code>和<code>FontStyleTSF3</code>修改成想要的字体，如：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230529192738123.png"
+                      alt="image-20230529192738123" style="zoom:67%;" 
+                >
+
+<h3 id="Windows-Access-WSL2-Files"><a href="#Windows-Access-WSL2-Files" class="headerlink" title="Windows Access WSL2 Files"></a>Windows Access <a href="WSL2">WSL2</a> Files</h3><p>Input <code>\\wsl$</code> in address bar of <code>explorer</code>.</p>
+<h3 id="Win11-Restore-Right-click-Menu"><a href="#Win11-Restore-Right-click-Menu" class="headerlink" title="Win11 Restore Right-click Menu"></a>Win11 Restore Right-click Menu</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># To win10</span></span><br><span class="line">reg.exe add <span class="string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot;</span> /f /ve</span><br><span class="line"></span><br><span class="line"><span class="comment"># To win11</span></span><br><span class="line">reg.exe delete <span class="string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot;</span> /va /f</span><br></pre></td></tr></table></figure>
+
+<p>地址栏输入 <code>chrome://flags</code> 可以开启隐藏功能</p>
+<h3 id="RealVNC-注册码"><a href="#RealVNC-注册码" class="headerlink" title="RealVNC 注册码"></a>RealVNC 注册码</h3><p><code>Version</code>: <code>6.11</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">7SA9N-9JF3P-E8CW2-BH9JU-PMVQA</span><br></pre></td></tr></table></figure>
+
+<h3 id="GT620老显卡2K分辨率"><a href="#GT620老显卡2K分辨率" class="headerlink" title="GT620老显卡2K分辨率"></a>GT620老显卡2K分辨率</h3><p>家里老古董，十年前的显卡，2K屏无法调成2K分辨率，先后买了DVI-24+1和DVI-24+5的线，都无法做到。强行在显卡设置里调整，字体发虚。</p>
+<p>最后在贴吧老哥的指点下，找到了设置2560x1440分辨率的办法。</p>
+<p>只需在显卡设置中创建自定义分辨率时将计时标准设置为GTF即可。</p>
+<p>（偶尔会有闪屏现象，但至少能用了）</p>
+<h3 id="Windows终端使用代理"><a href="#Windows终端使用代理" class="headerlink" title="Windows终端使用代理"></a>Windows终端使用代理</h3><blockquote>
+<p>🟢设置完成之后，如果代理未生效，则最好试试<strong>全局代理</strong>。</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env:HTTP_PROXY</span> = http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">7890</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用google检测是否成功代理：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">curl</span> www.google.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="便捷指令"><a href="#便捷指令" class="headerlink" title="便捷指令"></a>便捷指令</h4><p>1.打开Profile文件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="literal">-Path</span> <span class="variable">$PROFILE</span> )) &#123; <span class="built_in">New-Item</span> <span class="literal">-Type</span> File <span class="literal">-Path</span> <span class="variable">$PROFILE</span> <span class="literal">-Force</span> &#125;</span><br><span class="line">notepad <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<p>2.添加命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Set-Proxy command</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$env:HTTP_PROXY</span> <span class="operator">-ne</span> <span class="variable">$null</span>)&#123;</span><br><span class="line">    <span class="built_in">Write-Output</span> <span class="string">&quot;Proxy Enabled as <span class="variable">$env:HTTP_PROXY</span>&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">Function</span> <span class="title">SetProxy</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">Param</span>(</span><br><span class="line">        <span class="comment"># 改成自己的代理地址</span></span><br><span class="line">        <span class="variable">$Addr</span> = <span class="string">&#x27;http://127.0.0.1:7890&#x27;</span>,</span><br><span class="line">        [<span class="type">switch</span>]<span class="variable">$ApplyToSystem</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="variable">$env:HTTP_PROXY</span> = <span class="variable">$Addr</span>;</span><br><span class="line">    <span class="variable">$env:HTTPS_PROXY</span> = <span class="variable">$Addr</span>;</span><br><span class="line">    <span class="variable">$env:http_proxy</span> = <span class="variable">$Addr</span>;</span><br><span class="line">    <span class="variable">$env:https_proxy</span> = <span class="variable">$Addr</span>;</span><br><span class="line"></span><br><span class="line">    [<span class="type">Net.WebRequest</span>]::DefaultWebProxy = <span class="built_in">New-Object</span> Net.WebProxy <span class="variable">$Addr</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$ApplyToSystem</span>) &#123;</span><br><span class="line">        <span class="variable">$matchedResult</span> = ValidHttpProxyFormat <span class="variable">$Addr</span>;</span><br><span class="line">        <span class="comment"># Matched result: [URL Without Protocol][Input String]</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="operator">-not</span> (<span class="variable">$matchedResult</span> <span class="operator">-eq</span> <span class="variable">$null</span>)) &#123;</span><br><span class="line">            SetSystemProxy <span class="variable">$matchedResult</span>.<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Write-Output</span> <span class="string">&quot;Successful set proxy as <span class="variable">$Addr</span>&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">Function</span> <span class="title">ClearProxy</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">Param</span>(</span><br><span class="line">        <span class="variable">$Addr</span> = <span class="variable">$null</span>,</span><br><span class="line">        [<span class="type">switch</span>]<span class="variable">$ApplyToSystem</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="variable">$env:HTTP_PROXY</span> = <span class="variable">$Addr</span>;</span><br><span class="line">    <span class="variable">$env:HTTPS_PROXY</span> = <span class="variable">$Addr</span>;</span><br><span class="line">    <span class="variable">$env:http_proxy</span> = <span class="variable">$Addr</span>;</span><br><span class="line">    <span class="variable">$env:https_proxy</span> = <span class="variable">$Addr</span>;</span><br><span class="line"></span><br><span class="line">    [<span class="type">Net.WebRequest</span>]::DefaultWebProxy = <span class="built_in">New-Object</span> Net.WebProxy;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$ApplyToSystem</span>) &#123; SetSystemProxy <span class="variable">$null</span>; &#125;</span><br><span class="line">    <span class="built_in">Write-Output</span> <span class="string">&quot;Successful unset all proxy variable&quot;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">Function</span> <span class="title">SetSystemProxy</span><span class="params">(<span class="variable">$Addr</span> = <span class="variable">$null</span>)</span></span> &#123;</span><br><span class="line">    <span class="built_in">Write-Output</span> <span class="variable">$Addr</span></span><br><span class="line">    <span class="variable">$proxyReg</span> = <span class="string">&quot;HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$Addr</span> <span class="operator">-eq</span> <span class="variable">$null</span>) &#123;</span><br><span class="line">        <span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="variable">$proxyReg</span> <span class="literal">-Name</span> ProxyEnable <span class="literal">-Value</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="variable">$proxyReg</span> <span class="literal">-Name</span> ProxyServer <span class="literal">-Value</span> <span class="variable">$Addr</span>;</span><br><span class="line">    <span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="variable">$proxyReg</span> <span class="literal">-Name</span> ProxyEnable <span class="literal">-Value</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">Function</span> <span class="title">ValidHttpProxyFormat</span> <span class="params">(<span class="variable">$Addr</span>)</span></span> &#123;</span><br><span class="line">    <span class="variable">$regex</span> = <span class="string">&quot;(?:https?:\/\/)(\w+(?:.\w+)*(?::\d+)?)&quot;</span>;</span><br><span class="line">    <span class="variable">$result</span> = <span class="variable">$Addr</span> <span class="operator">-match</span> <span class="variable">$regex</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$result</span> <span class="operator">-eq</span> <span class="variable">$false</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> [<span class="type">System.ArgumentException</span>]<span class="string">&quot;The input <span class="variable">$Addr</span> is not a valid HTTP proxy URI.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$Matches</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Set-Alias</span> <span class="built_in">set-proxy</span> SetProxy</span><br><span class="line"><span class="built_in">Set-Alias</span> <span class="built_in">clear-proxy</span> ClearProxy</span><br></pre></td></tr></table></figure>
+
+<p>3.保存，重新打开PowerShell</p>
+<p>设置当前窗口代理 ：<code>set-proxy</code></p>
+<p>设置当前窗口代理 + 系统代理：<code>set-proxy -ApplyToSystem</code></p>
+<p>取消当前窗口代理：<code>clear-proxy</code></p>
+<p>取消当前窗口代理 + 系统代理：<code>clear-proxy -ApplyToSystem</code></p>
+<p><code>set-proxy</code>和<code>SetProxy</code>，<code>clear-proxy</code>和<code>ClearProxy</code>可以互相替换.</p>
+<h4 id="CMD设置代理"><a href="#CMD设置代理" class="headerlink" title="CMD设置代理"></a>CMD设置代理</h4><p>仅当前控制台，关闭后失效。</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> http_proxy=http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">19810</span></span><br><span class="line"><span class="built_in">set</span> https_proxy=http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">19810</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Git设置代理"><a href="#Git设置代理" class="headerlink" title="Git设置代理"></a>Git设置代理</h4><p><strong>设置Http代理，永久生效</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global https.proxy https://127.0.0.1:19810</span><br><span class="line">git config --global http.proxy http://127.0.0.1:19810</span><br></pre></td></tr></table></figure>
+
+<p><strong>取消代理</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="PowerShell环境的执行策略"><a href="#PowerShell环境的执行策略" class="headerlink" title="PowerShell环境的执行策略"></a>PowerShell环境的执行策略</h3><p>错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">无法加载文件 C:\Users\zhaoys-c\Documents\WindowsPowerShell\profile.ps1，</span><br><span class="line">因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsoft.com/fwl</span><br><span class="line">ink/?LinkID=135170 中的 about_Execution_Policies。</span><br><span class="line">所在位置 行:1 字符: 3</span><br><span class="line">+ . &#x27;C:\Users\zhaoys-c\Documents\WindowsPowerShell\profile.ps1&#x27;</span><br><span class="line">+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">    + CategoryInfo          : SecurityError: (:) []，PSSecurityException    </span><br><span class="line">    + FullyQualifiedErrorId : UnauthorizedAccess</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决：</strong></p>
+<ol>
+<li><p>以管理员身份打开PowerShell。这可以通过在开始菜单搜索栏中输入”PowerShell”，然后右键点击”Windows PowerShell”并选择”以管理员身份运行”来完成。</p>
+</li>
+<li><p>检查当前的执行策略。输入以下命令并按回车键：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-ExecutionPolicy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果执行策略是<code>Restricted</code>，你可以更改它为更宽松的策略，比如<code>RemoteSigned</code>或<code>Unrestricted</code>。<code>RemoteSigned</code>策略允许你运行本地脚本，但需要来自可信来源的远程脚本进行签名。<code>Unrestricted</code>策略允许运行所有脚本，但请注意这可能会带来安全风险。</p>
+<p>更改执行策略的命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy Unrestricted</span><br></pre></td></tr></table></figure>
+
+<p>执行这些命令时，你可能需要提供管理员密码。</p>
+</li>
+<li><p>确认执行策略已更改。再次使用<code>Get-ExecutionPolicy</code>命令来查看新的执行策略。</p>
+</li>
+<li><p>保存更改并关闭PowerShell。</p>
+</li>
+<li><p>重新打开一个新的PowerShell窗口，然后尝试再次加载你的<code>profile.ps1</code>脚本。</p>
+</li>
+</ol>
+<h3 id="Visual-Studio中文在别处是乱码"><a href="#Visual-Studio中文在别处是乱码" class="headerlink" title="Visual Studio中文在别处是乱码"></a>Visual Studio中文在别处是乱码</h3><p>因为Visual Studio的默认编码是GBK，而如VSCode或Sublime默认编码是UTF-8，因此将其转换成GBK编码，再保存为UTF-8。</p>
+<p>sublime中安装插件ConverrtToUTF-8，即可使用GBK编码打开文件。</p>
+<h3 id="安装oh-my-posh"><a href="#安装oh-my-posh" class="headerlink" title="安装oh-my-posh"></a>安装oh-my-posh</h3><blockquote>
+<p>官方文档：<a class="link"   target="_blank" rel="noopener" href="https://ohmyposh.dev/" >https://ohmyposh.dev/<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>现在的oh-my-posh可以直接从Microsoft Store下载exe文件安装了，别去折腾命令行的命令了，速度太慢了。<br>安装完成后，如果是windows系统，推荐Windows Terminal（没有的话在Microsoft Store里安装）下启动powershell。</p>
+<p>配置oh-my-posh过程中比较复杂的点就是Nerd Font和Themes这两点：</p>
+<h4 id="1-Nerd-Font"><a href="#1-Nerd-Font" class="headerlink" title="1.Nerd Font"></a>1.Nerd Font</h4><p>去下面的网站下载一个名字里面带NF的字体，windows下直接安装，其他系统参照网站说明。</p>
+<blockquote>
+<p>下载地址：<a class="link"   target="_blank" rel="noopener" href="https://www.nerdfonts.com/" >https://www.nerdfonts.com/<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h4 id="2-Themes"><a href="#2-Themes" class="headerlink" title="2.Themes"></a>2.Themes</h4><p>在Windows Terminal中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">notepad <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<p>在打开的文件中填入以下代码后保存：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">oh</span><span class="literal">-my-posh</span> init pwsh <span class="literal">--config</span> <span class="string">&quot;<span class="variable">$env:POSH_THEMES_PATH</span>\zash.omp.json&quot;</span> | <span class="built_in">Invoke-Expression</span> </span><br></pre></td></tr></table></figure>
+
+<p>然后输入下面的命令，来让配置生效：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.<span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<p>上面过程中zash是主题的一种，将zash换成想要的主题即可。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Get</span><span class="operator">-</span>PoshThemes</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-Autosuggestion"><a href="#3-Autosuggestion" class="headerlink" title="3.Autosuggestion"></a>3.Autosuggestion</h4><p>Windows 里的 powershell 也可以做到，非常简单</p>
+<ul>
+<li>以管理员身份运行 powershell</li>
+<li>安装 <code>PSReadLine</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Install-Module PSReadLine -RequiredVersion 2.1.0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启 powershell</li>
+<li>初始化</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Import-Module PSReadLine</span><br><span class="line">Set-PSReadLineOption -PredictionSource History</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>OK，完成，但重启后还需要再次初始化，所以把它加入配置文件里</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">notepad <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加入一行，保存并关闭</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-PSReadLineOption -PredictionSource History</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>下次启动即可拥有 autosuggestion 能力</li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Windows相关技巧</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-05-25 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/05/25/note/Windows/Windows10/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Windows-10/"><i class="fa-solid fa-hashtag"></i>&nbsp;Windows 10</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Windows-11/"><i class="fa-solid fa-hashtag"></i>&nbsp;Windows 11</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Font/"><i class="fa-solid fa-hashtag"></i>&nbsp;Font</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/05/25/note/Linux/xpra/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Xpra on Linux 的安装与使用</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/05/25/note/Linux/Server/SSL/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">nginx 安装 SSL 证书</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#win10-%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E6%98%BE%E7%A4%BA%E5%AD%97%E4%BD%93"><span class="nav-number">1.</span> <span class="nav-text">win10 修改系统显示字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%BE%93%E5%85%A5%E6%B3%95%E5%80%99%E9%80%89%E5%AD%97%E7%9A%84%E5%AD%97%E4%BD%93"><span class="nav-number">2.</span> <span class="nav-text">修改输入法候选字的字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-Access-WSL2-Files"><span class="nav-number">3.</span> <span class="nav-text">Windows Access WSL2 Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Win11-Restore-Right-click-Menu"><span class="nav-number">4.</span> <span class="nav-text">Win11 Restore Right-click Menu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RealVNC-%E6%B3%A8%E5%86%8C%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">RealVNC 注册码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GT620%E8%80%81%E6%98%BE%E5%8D%A12K%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">6.</span> <span class="nav-text">GT620老显卡2K分辨率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">Windows终端使用代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%BF%E6%8D%B7%E6%8C%87%E4%BB%A4"><span class="nav-number">7.1.</span> <span class="nav-text">便捷指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number">7.2.</span> <span class="nav-text">CMD设置代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number">7.3.</span> <span class="nav-text">Git设置代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PowerShell%E7%8E%AF%E5%A2%83%E7%9A%84%E6%89%A7%E8%A1%8C%E7%AD%96%E7%95%A5"><span class="nav-number">8.</span> <span class="nav-text">PowerShell环境的执行策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio%E4%B8%AD%E6%96%87%E5%9C%A8%E5%88%AB%E5%A4%84%E6%98%AF%E4%B9%B1%E7%A0%81"><span class="nav-number">9.</span> <span class="nav-text">Visual Studio中文在别处是乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85oh-my-posh"><span class="nav-number">10.</span> <span class="nav-text">安装oh-my-posh</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Nerd-Font"><span class="nav-number">10.1.</span> <span class="nav-text">1.Nerd Font</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Themes"><span class="nav-number">10.2.</span> <span class="nav-text">2.Themes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Autosuggestion"><span class="nav-number">10.3.</span> <span class="nav-text">3.Autosuggestion</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2025
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
