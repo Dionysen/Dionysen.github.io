@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                C Language |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/en/css/style.css">
+
+            <link rel="shortcut icon" href="/en/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/en/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.9rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/en/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io"
+                            >
+                                中文
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/about">ABOUT</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io">中文</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">C Language</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/en/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-05-25 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/en/categories/Programming/">Programming</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/en/categories/Programming/Language/">Language</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/en/tags/c/"><i class="fas fa-hashtag"></i>&nbsp;c</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>4.5k Words</span>
+        </span>
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <blockquote>
+<p>📚  Notes and <em>personal understanding</em> of the process of learning <strong>C language</strong>, used to find.</p>
+</blockquote>
+<span id="more"></span>
+
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/code_by_rasmusir-d4a4dj2222.jpg"
+                      alt="code_by_rasmusir-d4a4dj2222" style="zoom: 50%;" 
+                >
+
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><blockquote>
+<p>Our daily life has become inseparable from computers. Whether you are using computers or not, you are using computers consciously or unconsciously, or using the services that computers provide for you. When we are in the use of computer, we are all in the use of computer has some software, so we will go to find the APP, if you searched all the APPs on the market, is there no have the functionality of the APP you want, then you have to write their own one, if you want to do something special, you can’t find the right software, will still have to write their own one.<br>Learning programming is not about writing software for yourself. It is about learning programming to understand how computers work, what they can or are good at doing, what they can’t or aren’t good at doing, and how computers solve problems.</p>
+</blockquote>
+<p align="right"> —— Weng Kai</p>
+
+
+
+<h2 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h2><h3 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Any programs programed by C language must have this framework.</p>
+<h3 id="Output-function"><a href="#Output-function" class="headerlink" title="Output function"></a>Output function</h3><p>You can understand it as function in math, which is a mapping relationship. But they are different.</p>
+<p><code>printf</code> is a function, whoes function is output a string by formating <code>printf(&quot;......\n&quot;)</code> .</p>
+<p>For example, the <code>Hello, world!</code> :</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello,world!\n&quot;</span>); <span class="comment">// \n make it wrapping</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>printf</code>  can print not only a string, but also the value of the variable, but you need to format the variable.</p>
+<h2 id="Variables-and-constants"><a href="#Variables-and-constants" class="headerlink" title="Variables and constants"></a>Variables and constants</h2><blockquote>
+<p>The computer carries on the computation, then participates in the computation is the number, participates in the computation in the C language the number is called the quantity, the quantity divides into the variable and the constant.<br>Use decimal for expression of daily life, because is advantageous for the calculation of the human brain, a computer internal use binary, for convenience of computer calculation, and the computer expression, as a result of <strong>bytes</strong> in computer internal frequency is higher, if you can use a simple way to express its inner meaning accurately, Will bring us a lot of convenience, so often use hexadecimal expression.<br>But the number itself remains the same no matter which way it is counted.</p>
+</blockquote>
+<h3 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h3><p>As the name implies, an invariant quantity that, once initialized, cannot be changed.</p>
+<h3 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h3><p>As the name implies, a variable quantity that, once defined, can be assigned any value to change its size.</p>
+<p><strong>The way of difination：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line"><span class="type">int</span> j = <span class="number">1</span>;</span><br><span class="line"><span class="type">char</span> k;</span><br><span class="line"><span class="type">float</span> h = <span class="number">1.2</span>;</span><br><span class="line"><span class="type">double</span> g = <span class="number">2.0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>For example, <code>i</code> is the variable itself, <code>int</code> is an <strong>integer variable</strong>, whose value can only be an integer, while <code>double</code> is a <strong>double-precision floating point number</strong>, which can represent a decimal.</p>
+<p>Different variable types have different value types and value ranges.</p>
+<p>Character variables:</p>
+<p>Use to store <strong>character constants</strong>. A character variable can hold <strong>only</strong> <strong>one</strong> character constant. The type specifier is <code>char</code>.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> x,y,z;</span><br><span class="line">    x = <span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">    y = <span class="string">&#x27;o&#x27;</span>;</span><br><span class="line">    z = <span class="string">&#x27;y&#x27;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c%c%c\n&quot;</span>,x,y,z);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The result is:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">boy</span><br></pre></td></tr></table></figure>
+
+<p>The literal value of a character variable is independent of the character constant it holds, analogous to an integer variable.</p>
+<p>Character variables can also store integer data, which is universal. You can change <code>%c</code> to <code>%d</code> during input and output.</p>
+<h2 id="Output-and-input-of-a-variable"><a href="#Output-and-input-of-a-variable" class="headerlink" title="Output and input of a variable"></a>Output and input of a variable</h2><h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>As mentioned above, <code>printf</code> can print a string, and can print the value of a variable, as shown in the following example:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;i = %d\n&quot;</span>,i);</span><br><span class="line">    i = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;After assignment，i = %d\n&quot;</span>,i);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Notice that printf prints the value of the variable with a <code>%d</code> inside the double quotes, which is the way the variable is formatted.</p>
+<p> <code>%d</code> indicates that the output variable is an integer.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Variable Types</th>
+<th align="left">Formatting Symbols</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">int</td>
+<td align="left">%d</td>
+</tr>
+<tr>
+<td align="left">unsigned</td>
+<td align="left">%u</td>
+</tr>
+<tr>
+<td align="left">long long</td>
+<td align="left">%ld</td>
+</tr>
+<tr>
+<td align="left">unsigned long long</td>
+<td align="left">%lu</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">%f</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">%lf</td>
+</tr>
+</tbody></table>
+<p>You can use <strong>scientific notation</strong> when you output, and use <code>%e</code> for formatting symbol.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%.nf&quot;</span>,sum);</span><br></pre></td></tr></table></figure>
+
+<p>This line of code can <strong>preserve n decimal places.</strong></p>
+<p>The following are <strong>escape characters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Symbols</th>
+<th align="center">Words</th>
+<th align="center">中文含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\b</td>
+<td align="center">backspace</td>
+<td align="center">回退一格</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="center">tab</td>
+<td align="center">下一个制表位</td>
+</tr>
+<tr>
+<td align="center">\n</td>
+<td align="center">new line</td>
+<td align="center">换行</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="center">return</td>
+<td align="center">回车</td>
+</tr>
+<tr>
+<td align="center">\f</td>
+<td align="center">f</td>
+<td align="center">换页</td>
+</tr>
+</tbody></table>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>Similarly, the function <code>scanf</code> can read the input according to a certain format.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">( )</span> &#123;</span><br><span class="line"></span><br><span class="line">   <span class="type">char</span> str[<span class="number">100</span>];</span><br><span class="line">   <span class="type">int</span> i;</span><br><span class="line"></span><br><span class="line">   <span class="built_in">printf</span>( <span class="string">&quot;Enter a value :&quot;</span>);</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">&quot;%s %d&quot;</span>, str, &amp;i);</span><br><span class="line"></span><br><span class="line">   <span class="built_in">printf</span>( <span class="string">&quot;\nYou entered: %s %d &quot;</span>, str, i);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>scanf()</code> stops reading a string as soon as it encounters a space, so “this is test” is three strings for <code>scanf()</code>.</p>
+<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>In mathematics, the numbers on the number line are continuous, and between any two different points, an infinite number can be found, but this is difficult to achieve in computers, so floating point numbers emerged.</p>
+<p>Floating point numbers are used to represent fractional numbers between whole numbers, but their accuracy is not infinite, nor is their expressability infinite, so a random decimal <em><strong>may not be able to</strong></em> be expressed by a computer.</p>
+<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><h3 id="Operator"><a href="#Operator" class="headerlink" title="Operator"></a>Operator</h3><table>
+<thead>
+<tr>
+<th align="center">Mathematics</th>
+<th align="center">Add</th>
+<th align="center">Substract</th>
+<th align="center">Multiply</th>
+<th align="center">Divide</th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>C Language</strong></td>
+<td align="center">+</td>
+<td align="center">-</td>
+<td align="center">*</td>
+<td align="center">&#x2F;</td>
+<td align="center">%</td>
+</tr>
+</tbody></table>
+<h3 id="Relational-operator"><a href="#Relational-operator" class="headerlink" title="Relational operator"></a>Relational operator</h3><table>
+<thead>
+<tr>
+<th align="center">Relation</th>
+<th align="center">Equal</th>
+<th align="center">Not Equal</th>
+<th align="center">Greater</th>
+<th align="center">Greater or Equal</th>
+<th align="center">Less-than</th>
+<th align="center">Less-than or Equal</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Operator</td>
+<td align="center">&#x3D;&#x3D;</td>
+<td align="center">!&#x3D;</td>
+<td align="center">&gt;</td>
+<td align="center">&gt;&#x3D;</td>
+<td align="center">&lt;</td>
+<td align="center">&lt;&#x3D;</td>
+</tr>
+</tbody></table>
+<p>The relational operator evaluates only zeros and ones.</p>
+<h3 id="Special-operator"><a href="#Special-operator" class="headerlink" title="Special operator"></a>Special operator</h3><p><strong><code>count ++</code></strong> and <strong><code>++ count</code></strong> both mean to add one, but <code>a = count ++;</code> means to assign the value of <code>count</code> to <code>a</code> and then add one, whereas <code>a = ++count;</code> means to add one to the value of <code>count</code> and then assign the result to <code>a</code>. So you end up adding one to <code>count</code> in both cases, but the value of <code>a</code> differ by <code>1</code>.</p>
+<p><strong><code>count --</code></strong> and <strong><code>-- count</code></strong> in the same way.</p>
+<p><strong><code>,</code></strong> is comma operator that generally has only one purpose: to add multiple conditions to an <code>if</code> statement.</p>
+<h3 id="Conditional-operator"><a href="#Conditional-operator" class="headerlink" title="Conditional operator"></a>Conditional operator</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">count = (&lt;<span class="meta">#condition#&gt;)? <span class="string">&lt;#yes#&gt;</span>:<span class="string">&lt;#no#&gt;</span>;</span></span><br></pre></td></tr></table></figure>
+
+<p>It is equivalent to an <code>if</code> statement.</p>
+<blockquote>
+<p>Nesting is not recommended.</p>
+</blockquote>
+<h3 id="Logical-operator"><a href="#Logical-operator" class="headerlink" title="Logical operator"></a>Logical operator</h3><table>
+<thead>
+<tr>
+<th align="center">Logic</th>
+<th align="center">and</th>
+<th align="center">or</th>
+<th align="center">not</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Symbol</td>
+<td align="center">&amp;&amp;</td>
+<td align="center">||</td>
+<td align="center">!</td>
+</tr>
+</tbody></table>
+<p>The result of logical operation is only <code>0</code> or <code>1</code>.</p>
+<h2 id="Several-statements"><a href="#Several-statements" class="headerlink" title="Several statements"></a>Several statements</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a><code>if</code></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (&lt;<span class="meta">#condition#&gt;) &#123;</span></span><br><span class="line">      &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>To judge and to act when the conditions are true.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">   <span class="keyword">if</span> (&lt;<span class="meta">#condition#&gt;) &#123;</span></span><br><span class="line">       &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span> (<span class="meta">#condition#) &#123;</span></span><br><span class="line">       &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (<span class="meta">#condition#) &#123;</span></span><br><span class="line">       &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">   &#125;</span><br><span class="line"> ……</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">       &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>We can add <code>else</code>, so we can do something if the condition doesn’t work.</p>
+<p>The <code>else</code> always matches the nearest <code>if</code>.</p>
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a><code>while</code></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (&lt;<span class="meta">#condition#&gt;) &#123;</span></span><br><span class="line">    &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The loop continues until the condition fails.</p>
+<h3 id="dowhile"><a href="#dowhile" class="headerlink" title="dowhile"></a><code>dowhile</code></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">&#125; <span class="keyword">while</span> (&lt;<span class="meta">#condition#&gt;);</span></span><br></pre></td></tr></table></figure>
+
+<p>The loop continues until the condition fails.</p>
+<p>The difference with a <code>while</code> loop is that a <code>dowhile</code> does something and then evaluates the condition, whereas a <code>while</code> evaluates the condition and then loops. <strong><code>While</code> might not do a loop at all, if the condition is not satisfied in the first place.</strong></p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a><code>switch</code></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> (&lt;<span class="meta">#expression#&gt;) &#123;</span></span><br><span class="line">    <span class="keyword">case</span> &lt;<span class="meta">#constant#&gt;:</span></span><br><span class="line">        &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> &lt;<span class="meta">#constant#&gt;:</span></span><br><span class="line">        &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    ......</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>switch</code> is judgment statement, the <code>&lt;#expression#&gt;</code>  is constant expression that must be a <em><strong>integral type</strong></em> or <em><strong>enum-type</strong></em>.</p>
+<p>The essence of such a statement is the program evaluates this expression and then compares it to each <code>case</code> at a time. The action after the <code>case</code> is executed when equal.</p>
+<p>There are an infinite number of cases, each followed by a value to be compared with and a colon.</p>
+<p>The variables to be compared must be of the same type.</p>
+<p>When all the <code>case</code> is false, the program will do the action after <code>default</code> . So there can be nothing after <code>defalut</code>.</p>
+<p>For example:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Input integer number:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a);</span><br><span class="line">    <span class="keyword">switch</span>(a)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>: <span class="built_in">printf</span>(<span class="string">&quot;Monday\n&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>: <span class="built_in">printf</span>(<span class="string">&quot;Tuesday\n&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>: <span class="built_in">printf</span>(<span class="string">&quot;Wednesday\n&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>: <span class="built_in">printf</span>(<span class="string">&quot;Thursday\n&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>: <span class="built_in">printf</span>(<span class="string">&quot;Friday\n&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>: <span class="built_in">printf</span>(<span class="string">&quot;Saturday\n&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>: <span class="built_in">printf</span>(<span class="string">&quot;Sunday\n&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:<span class="built_in">printf</span>(<span class="string">&quot;error\n&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a><code>for</code></h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (&lt;<span class="meta">#initialization#&gt;; <span class="string">&lt;#condition#&gt;</span>; <span class="string">&lt;#increment#&gt;</span>) &#123;</span></span><br><span class="line">    &lt;<span class="meta">#statements#&gt;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>for</code> loop applies to loops with a defined number of cycles, such as <strong>traverse</strong>.</p>
+<p>There are three sections in parenthesis, separated with semicolons, which are respectively <strong>initialization</strong>, <strong>conditions</strong> for loop to proceed and <strong>actions</strong> to be performed in each cycle.</p>
+<h2 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h2><table>
+<thead>
+<tr>
+<th>Key words</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Inf</code></td>
+<td>Infinity</td>
+</tr>
+<tr>
+<td><code>-Inf</code></td>
+<td>Negative infinity</td>
+</tr>
+<tr>
+<td><code>nan</code></td>
+<td>Invalid number</td>
+</tr>
+<tr>
+<td><code>fabs(&lt;#expression#&gt;)</code></td>
+<td>Absolute value</td>
+</tr>
+<tr>
+<td><code>break</code></td>
+<td>Jump out of the loop</td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td>End the cycle</td>
+</tr>
+</tbody></table>
+<h2 id="Function-and-customizing-function"><a href="#Function-and-customizing-function" class="headerlink" title="Function and customizing function"></a>Function and customizing function</h2><p>At the beginning of C language program, the implication of <code>#include &lt;stdio.h&gt;</code> is including <strong>a function library</strong> named <code>stdio.h</code> and then the program can call functions in the library. Both the <code>printf</code> and the <code>scanf</code> used in the previous paragraph are functions of the library.</p>
+<p>In practice, we often encounter repeated operations, we can copy this code to complete the repeated action, but <strong>code copy is a poor quality of the program</strong>, because the <em><strong>maintenance</strong></em> may need to change too many places.</p>
+<p>You can solve this problem by customizing functions:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&lt;<span class="meta">#type#&gt; (<span class="string">&lt;#type#&gt;</span>,<span class="string">&lt;#type#&gt;</span>,……)&#123;</span></span><br><span class="line">  &lt;<span class="meta">#statement#&gt;</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//Depends on the function type，Also visable as：return;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>A function can have multiple <code>return</code>  or none. However, multiple <code>return</code> are not recommended for easy modification.</p>
+</li>
+<li><p>Each function has its own <strong>variable space</strong>, namely <code>&#123;&#125;</code> (block), which is independent of each other. <strong>Local variables</strong> are limited by the block they are in. If the inside of a block has the same name as the outside of a block, <em><strong>the inside of a block takes precedence</strong></em>.</p>
+</li>
+<li><p>When a function is called, it can only pass <strong>values</strong> to functions, <strong>not variables</strong> to functions. That is, after passing a variable to a function, the function will read the value of the variable for operation, <em><strong>but will not change the value of the variable</strong></em>.</p>
+</li>
+<li><p>The first line of a function with a semicolon placed before the entire program code is called a <strong>function prototype declaration</strong>. The purpose is to tell the compiler what type the function is before it encounters it.</p>
+</li>
+</ul>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><h3 id="Defination"><a href="#Defination" class="headerlink" title="Defination"></a>Defination</h3><blockquote>
+<p>type of variables + character + [number of variables]</p>
+</blockquote>
+<p>For example:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+
+<p>An array is a container that, once created, cannot be resized, is internally ordered, and can appear on both sides of an assignment symbol.</p>
+<p>The index of an array is counted from <code>0</code>.</p>
+<p>You can think of it as a <strong>sequence</strong> in <em>mathematics</em>.</p>
+<h3 id="Use"><a href="#Use" class="headerlink" title="Use"></a>Use</h3><p><strong>Integration initialization</strong> is easy to use:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,&#125;;</span><br><span class="line"><span class="type">int</span> a[<span class="number">13</span>] = &#123;[<span class="number">0</span>]=<span class="number">2</span>,[<span class="number">3</span>]=<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,[<span class="number">9</span>]=<span class="number">0</span>,&#125;; <span class="comment">//（C99 only）</span></span><br></pre></td></tr></table></figure>
+
+<p>If you don’t know how many cells there are in an array, you can use <code>sizeof(a)/sizeof(a[0])</code> to represent the number of cells in the array, so that you don’t need to change the number of cells in the array.</p>
+<h3 id="Multidimensional-array"><a href="#Multidimensional-array" class="headerlink" title="Multidimensional array"></a>Multidimensional array</h3><p>A multidimensional array is actually a multidimensional matrix, and the footer increases accordingly.</p>
+<p>Initialization:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a[][<span class="number">5</span>] = &#123;</span><br><span class="line"> &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,</span><br><span class="line"> &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The number of <strong>columns</strong> must be given and the number of <strong>rows</strong> can be counted by the compiler itself.</p>
+<h2 id="Pointer"><a href="#Pointer" class="headerlink" title="Pointer"></a>Pointer</h2><h3 id="Address"><a href="#Address" class="headerlink" title="Address"></a>Address</h3><p>Each variable has an address in the computer where it is stored. The value of a variable can change, but its address is <strong>constant</strong>. The following code can be used to view the address of a variable.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,&amp;i);</span><br></pre></td></tr></table></figure>
+
+<p><code>&amp;</code> is the address to access the variable;</p>
+<p><code>*</code> is the variable on the access address.</p>
+<h3 id="Defination-1"><a href="#Defination-1" class="headerlink" title="Defination"></a>Defination</h3><p>A pointer is a variable, but it cannot be used independently. It must point to a variable. In this case, the value of the pointer variable is the address of the variable to which it points.</p>
+<h3 id="Use-1"><a href="#Use-1" class="headerlink" title="Use"></a>Use</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> *p = &amp;i;</span><br></pre></td></tr></table></figure>
+
+<p>In this case, <code>p</code> is a pointer to the address of variable <code>i</code>. So the value of <code>p</code> is the address of <code>i</code>, and the value of <code>i</code> can be <strong>accessed</strong> (read and write) by <code>*p</code>.</p>
+<p>The <code>*</code> at definition is not the same as the <code>*</code> at access, and the first is only used to distinguish whether a pointer variable or a normal variable is being defined.</p>
+<p>Here is an example of using a pointer to complete a call to exchange the values of two variables.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">exchange</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> *b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">6</span>;</span><br><span class="line">    exc(&amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;a = %d,b = %d\n&quot;</span>,a,b);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This is a clever use of the function, we know that the <strong>function cannot input variable parameters</strong>, so this code defines the address of the pointer to the variable, <strong>the function input pointer variable is also the address of the variable</strong>, inside the function by adding a pointer to access the variable, and then achieve the purpose of the function to modify the variable.</p>
+<blockquote>
+<p>In addition, pointers are often used when a function needs to return multiple values.</p>
+</blockquote>
+<h4 id="Arrays-are-special-Pointers"><a href="#Arrays-are-special-Pointers" class="headerlink" title="Arrays are special Pointers"></a>Arrays are special Pointers</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,&#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>,a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The result of this code is:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">0x7ffcac420c3c</span></span><br></pre></td></tr></table></figure>
+
+<p>We can see that the array variable <code>a</code> is itself an address, so when we want to use a pointer to array <code>a</code>, we should write <code>int *p = a</code>, without <code>&amp;</code>. But the array unit is variable, therefore <code>int *p = &amp;a[0]</code>, at the same time, <code>a == &amp;a[0]</code>,<code>&amp;a[x] == &amp;a[0] + 4x = a + 4x</code>(when <code>a</code> is integer).</p>
+<p>An array is a pointer to a constant and therefore cannot be assigned.</p>
+<h4 id="Pointer-to-a-constant-const"><a href="#Pointer-to-a-constant-const" class="headerlink" title="Pointer to a constant (const)"></a>Pointer to a constant (const)</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span> *p = &amp;i; <span class="comment">// 1</span></span><br><span class="line"><span class="type">int</span> *<span class="type">const</span> p = &amp;i; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>For the above code, you can think of the following code:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line"><span class="type">int</span> <span class="title function_">const</span> <span class="params">(*p)</span> = &amp;i; <span class="comment">// 1</span></span><br><span class="line"><span class="type">int</span> *(<span class="type">const</span> p) = &amp;i; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>1 indicates that the variable at the address pointed to by the pointer <code>p</code> cannot be modified by the pointer.</p>
+<p>2 indicates that the address (variable’s address certainly) pointed to by <code>p</code> cannot be changed.</p>
+<blockquote>
+<p>The first whole to the right of const cannot be modified</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>The above code indicates that <strong>each cell</strong> is <code>const</code>, so <em><strong>it can be used to protect an array when a function argument is entered</strong></em>.</p>
+<h4 id="Address-of-a-pointer"><a href="#Address-of-a-pointer" class="headerlink" title="Address of a pointer"></a>Address of a pointer</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a[];</span><br><span class="line"><span class="type">int</span> *p = a;</span><br></pre></td></tr></table></figure>
+
+<p><code>*p = a = a[0],</code></p>
+<p><code>*(p+1) = a[1],</code></p>
+<p><code>*(p+2) = a[2],</code></p>
+<p><code>……,</code></p>
+<p><code>*(p+n) = a[n]</code>.</p>
+<h2 id="Allocating-Memory-Space"><a href="#Allocating-Memory-Space" class="headerlink" title="Allocating Memory Space"></a>Allocating Memory Space</h2><p>The malloc function applies space in <strong>bytes</strong> from memory, returns <code>void *</code>, converts the desired type, and finally frees the memory. Format, such as:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a[n] = (<span class="type">int</span> *)<span class="built_in">malloc</span>(n * <span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br></pre></td></tr></table></figure>
+
+<p>If the application fails, <code>0</code> or <code>NULL</code> is returned.</p>
+<p>When you no longer use the requested memory space, you should use the <code>free</code> function to free the memory space:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">free</span>(a[n]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">Char word[] = &#123;<span class="string">&#x27;H&#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;!&#x27;</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Such an array is an <strong>array of characters</strong>, but it is not a <strong>string</strong>, <em><strong>because it cannot be evaluated as a string</strong></em>.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Char word[] = &#123;&#x27;H&#x27;,&#x27;D&#x27;,&#x27;e&#x27;,&#x27;!&#x27;,&#x27;\0&#x27;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Followed by <code>\0</code>, then word is a string.</p>
+<p><code>0</code> &#x3D; <code>&#39;\0&#39;</code> !&#x3D; <code>&#39;0&#39;</code></p>
+<p><strong><code>0</code> marks the end of the string, but this <code>0</code> is not part of the string.</strong></p>
+<p>Strings exist as Arrays and are accessed as arrays or Pointers, but more often as Pointers.</p>
+<p><code>string.h</code> has a number of functions that handle strings.</p>
+<p>String variables:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> *str = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">char</span> word[] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">char</span> line[<span class="number">10</span>] = <span class="string">&quot;hello&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>“hello”</p>
+</blockquote>
+<p>The compiler will turn this into an array of characters somewhere, and the length of the array is 6, because the compiler will put a <code>0</code> after it to make it a string.</p>
+<p>Literals of strings can be used to initialize character arrays.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> *s = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="comment">//    s[0] = &#x27;B&#x27;;</span></span><br><span class="line">    <span class="type">char</span> *s2= <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    <span class="type">char</span> s3[] = &#123;<span class="string">&quot;hello world&quot;</span>&#125;;</span><br><span class="line"><span class="comment">//    s3[0] = &#x27;b&#x27;;</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;&amp;i = %p\n&quot;</span>, &amp;i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;s = %p\n&quot;</span>, s);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;s2 = %p\n&quot;</span>, s2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Here is s[0] = %c\n&quot;</span>, s[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Here is s3[0] = %c\n&quot;</span>,s3[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The above code runs as follows:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&amp;i = <span class="number">0x7fffa827bcf4</span></span><br><span class="line">s = <span class="number">0x55c7d8f64004</span></span><br><span class="line">s2 = <span class="number">0x55c7d8f64004</span></span><br><span class="line">Here is s[<span class="number">0</span>] = h</span><br><span class="line">Here is s3[<span class="number">0</span>] = h</span><br></pre></td></tr></table></figure>
+
+<p>You can see that the local variable <code>i</code> is far from where the pointer <code>s</code> is pointing. The address of the variable <code>i</code> is very far back, and the pointer is very far forward. Near the front are important parts of the computer that are not allowed to be modified, such as plus <code>s[0] = &#39;B&#39;</code> ‘, and the result is:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1869 segmentation fault  ./a.out</span><br></pre></td></tr></table></figure>
+
+<p>The program attempted to reassign the initialized string <code>s</code>. The error “<strong>segmentation fault</strong>“ was reported, meaning that the program was attempting to rewrite the value at 0x55c7d8f64004, which posed a threat to the computer and was not allowed.</p>
+<p>In fact, for <code>char *s = &quot;hello world&quot;;</code> pointer <code>s</code> is initialized to point to a string constant, which should actually be <code>const char *s = &quot;hello world&quot;;</code>, but for <em>historical reasons</em>, compilers accept writing without const, and try to modify the string to which <code>s</code> refers, with serious consequences.</p>
+<p><code>s3</code> is an array, and the strings inside are local variables that can be modified, plus <code>S3[0] = &#39;b&#39;</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&amp;i = 0x7fff28d5dd64</span><br><span class="line">s = 0x559da8ac6004</span><br><span class="line">s2 = 0x559da8ac6004</span><br><span class="line">Here is s[0] = h</span><br><span class="line">Here is s3[0] = b</span><br></pre></td></tr></table></figure>
+
+<p><strong>There are two ways to define a string: pointer or array.</strong></p>
+<p>Arrays know the address of strings, Pointers don’t.</p>
+<p>A <code>char *</code> or <code>int *</code> is not necessarily a string. It is meant to be a pointer to a character or an array of characters.</p>
+<p> A <code>char *</code> or <code>int *</code> is a string only if the array of characters to which the pointer points has a zero at the end.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> *t = <span class="string">&quot;title&quot;</span>;</span><br><span class="line"><span class="type">char</span> *s;</span><br><span class="line">s = t;</span><br></pre></td></tr></table></figure>
+
+<p>For the above code, we have two Pointers, <code>t</code> and <code>s</code>. First, <code>t</code> points to the string “title”, and then we assign a value to <code>s</code>. The result is that <code>s</code> also points to the same string, instead of creating a new string.</p>
+<h3 id="Input-and-output-of-string"><a href="#Input-and-output-of-string" class="headerlink" title="Input and output of string"></a>Input and output of string</h3><p>For <code>printf</code> and <code>scanf</code>, you can use <strong><code>%s</code></strong> to input and output strings.</p>
+<p>Each <code>%s</code> in <code>scanf</code> is read until a SPACE or ENTER, which is not safe because you do not know exactly how many characters to read, therefore, the following code is used:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> s[<span class="number">8</span>];</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%7s&quot;</span>,s);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-of-strings"><a href="#Array-of-strings" class="headerlink" title="Array of strings"></a>Array of strings</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> a[][<span class="number">10</span>];</span><br><span class="line"><span class="type">char</span> *a[];</span><br></pre></td></tr></table></figure>
+
+<p>The first line refers to <code>a</code> as a two-dimensional array, and the second line refers to <code>a</code> as a pointer array. Each unit in the array is a pointer to a string.</p>
+<p>Each element of the character array holds one character, plus the <code>0</code> at the end. An array of length <code>n</code> can hold <code>n-1</code> characters.</p>
+<p><strong>Multiple loops are required to input and output all elements of multiple dimensions, whether string arrays or integer arrays.</strong></p>
+<p>An array is a matrix that can be used to store variables or character variables. All input and output need to be looped, but there are two types of input and output for character arrays.</p>
+<h4 id="Input-and-output-single-characters-in-format-c"><a href="#Input-and-output-single-characters-in-format-c" class="headerlink" title="Input and output single characters in format %c"></a>Input and output single characters in format <code>%c</code></h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> x,i,j;</span><br><span class="line">    <span class="type">char</span> a[][<span class="number">20</span>] = &#123;</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Monday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Tuesday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Wednesday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Thursday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Friday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Saturday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Sunday&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please input the month：\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">0</span> &amp;&amp; x &lt; <span class="number">8</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (i = x ; i &lt; x + <span class="number">1</span>; i ++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">20</span>; j ++) &#123;</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,a[i][j]);</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;       </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;Error&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Input-and-output-whole-array-with-format-s"><a href="#Input-and-output-whole-array-with-format-s" class="headerlink" title="Input and output whole array with format %s"></a>Input and output whole array with format <code>%s</code></h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x,i,j;</span><br><span class="line">    <span class="type">char</span> a[][<span class="number">20</span>] = &#123;</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Monday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Tuesday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Wednesday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Thursday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Friday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Saturday&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Sunday&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please input the month：\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">0</span> &amp;&amp; x &lt; <span class="number">8</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,a[x]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;Error&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note that input characters with <code>%s</code> that encounter a <strong>SPACE, RNTER, and TAB</strong> end the string input, so C provides the input function <code>gets()</code> and the output function <code>puts()</code> that are best for strings.</p>
+</blockquote>
+<p><strong><code>gets(char *s[])</code></strong> function is to enter a string from the keyboard that can contain Spaces and end with a ENTER newline character.</p>
+<p><strong><code>puts(char *s[])</code></strong> or <code>puts(string s)</code>function prints a string from the character array to the screen and converts the end-of-string flag to a newline character.</p>
+<p>In addition, when <code>%s</code> prints a string, it keeps one dimension, and the compiler automatically inputs or outputs all strings in that dimension. Gets is the same as puts.</p>
+<h3 id="Input-and-output-of-character-data"><a href="#Input-and-output-of-character-data" class="headerlink" title="Input and output of character data"></a>Input and output of character data</h3><h4 id="Putchar-parameter"><a href="#Putchar-parameter" class="headerlink" title="Putchar(parameter)"></a><code>Putchar(parameter)</code></h4><p>Paremeters can be <strong>numerical values</strong>, character constants, <strong>character variables</strong>, and <strong>arithmetic or character expressions</strong>, but the final output is a character.</p>
+<h4 id="getchar"><a href="#getchar" class="headerlink" title="getchar()"></a><code>getchar()</code></h4><p>Type a character from the keyboard.</p>
+<h3 id="String-function"><a href="#String-function" class="headerlink" title="String function"></a>String function</h3><h4 id="strlen"><a href="#strlen" class="headerlink" title="strlen"></a><code>strlen</code></h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span><br><span class="line">&#123;   </span><br><span class="line">    <span class="type">char</span> line[] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lu\n&quot;</span>, <span class="built_in">strlen</span>(line));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lu\n&quot;</span>, <span class="keyword">sizeof</span>(line));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The running result is:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+
+<p>So <code>strlen</code> is string Length, which returns the length of the string.</p>
+<h4 id="strcmp"><a href="#strcmp" class="headerlink" title="strcmp"></a><code>strcmp</code></h4><p>The function is to compare the size of two strings, and the result of the comparison is expressed by the value returned. <code>0</code> means they are equal, <code>1</code> means the former greater, and <code>-1</code> means the latter greater.</p>
+<h4 id="strcpy"><a href="#strcpy" class="headerlink" title="strcpy"></a><code>strcpy</code></h4><p>It means string copy，the format is：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="title function_">strcpy</span><span class="params">(<span class="type">char</span> *<span class="keyword">restrict</span> dst, <span class="type">const</span> *<span class="keyword">restrict</span> src)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Its function is to copy the <code>src</code> string to <code>dst</code>.<br><code>restrict</code> means that <code>src</code> and <code>dst</code> cannot overlap.<br>The source is in the back, and the copying destination is in the front.<br>Return <code>dst</code> so that the function itself can be evaluated.<br>General usage:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> *dst = (<span class="type">char</span>)<span class="built_in">malloc</span>(<span class="built_in">strlen</span>(src)+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">strcpy</span> (dst,src)</span><br></pre></td></tr></table></figure>
+
+<h4 id="strcat"><a href="#strcat" class="headerlink" title="strcat"></a><code>strcat</code></h4><p>The function is to link one string to another string.</p>
+<blockquote>
+<p><strong>Another version:</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="title function_">strncpy</span><span class="params">(<span class="type">char</span> *<span class="keyword">restrict</span> dst, <span class="type">const</span> *<span class="keyword">restrict</span> src,<span class="type">size_t</span> n)</span>;</span><br><span class="line"><span class="type">char</span> *<span class="title function_">strncat</span><span class="params">(<span class="type">char</span> *<span class="keyword">restrict</span> s1, <span class="type">const</span> *<span class="keyword">restrict</span> s2,<span class="type">size_t</span> n)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">strncmp</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *s1, <span class="type">const</span> <span class="type">char</span> *s2, <span class="type">size_t</span> n)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>The first two are to limit the length of the copied string, eliminating security issues that are neither out of bounds.</p>
+<p>The last one is to compare the first <code>n</code> characters.</p>
+</blockquote>
+<h4 id="strchr"><a href="#strchr" class="headerlink" title="strchr"></a><code>strchr</code></h4><p>To find a character in a string.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> s[] = <span class="string">&quot;hello,world!&quot;</span>;</span><br><span class="line">    <span class="type">char</span> *p = <span class="built_in">strchr</span>(s,<span class="string">&#x27;l&#x27;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,p);</span><br><span class="line">    <span class="type">char</span> c = *p;</span><br><span class="line">    *p = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>,c);</span><br><span class="line">    <span class="type">char</span> *p3 = (<span class="type">void</span>*)<span class="built_in">malloc</span>(<span class="built_in">strlen</span>(s)+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">strcpy</span>(p3, s);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,p3);</span><br><span class="line">    <span class="built_in">free</span>(p3);</span><br><span class="line">    <span class="type">char</span> *p1 = <span class="built_in">strchr</span>((p+<span class="number">1</span>), <span class="string">&#x27;l&#x27;</span>);</span><br><span class="line">    <span class="type">char</span> *p2 = <span class="built_in">strchr</span>((p1+<span class="number">1</span>), <span class="string">&#x27;l&#x27;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,p1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,p2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The running results are as follows:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">llo,world!</span><br><span class="line">l</span><br><span class="line">he</span><br><span class="line">lo,world!</span><br><span class="line">ld!</span><br></pre></td></tr></table></figure>
+
+<h2 id="Enumeration"><a href="#Enumeration" class="headerlink" title="Enumeration"></a>Enumeration</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">type</span> &#123;</span>num_0,num_1,num_2,……,num_n&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>You can use the name in curly braces, where <code>num_0</code> through <code>num_n</code> represents the constants <code>0</code> through <code>n</code>.</p>
+<p>For instance:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">colors</span> &#123;</span>red,yellow,green&#125;;</span><br><span class="line"><span class="comment">// Here，red == 0, yellow == 1, green == 2 </span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">type</span> &#123;</span>num_0,num_1,num_2,……,num_n, number of type&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>That’s just right. <strong>The last number of type is exactly the number of type.</strong> It’s a little trick.</p>
+<h2 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">date</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> day;</span><br><span class="line">    <span class="type">int</span> month;</span><br><span class="line">    <span class="type">int</span> year;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//Structure type Declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">date</span> &#123;</span></span><br><span class="line"> <span class="type">int</span> day;</span><br><span class="line"> <span class="type">int</span> month;</span><br><span class="line"> <span class="type">int</span> year;</span><br><span class="line">&#125; today;</span><br><span class="line"><span class="comment">//This is another form</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">date</span> <span class="title">today</span>;</span></span><br><span class="line"></span><br><span class="line">    today.day = <span class="number">25</span>;</span><br><span class="line">    today.month = <span class="number">3</span>;</span><br><span class="line">    today.year = <span class="number">2021</span>;</span><br><span class="line">   today = (<span class="keyword">struct</span> date)&#123;<span class="number">25</span>,<span class="number">3</span>,<span class="number">2021</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Today is %i-%i-%i.\n&quot;</span>,</span><br><span class="line">           today.year,today.month,today.day);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This means that you declare a data structure type, and when you use it, you define a variable that contains all the variables in the data structure.</p>
+<p>The structure members of a data structure do not have to be of the same variable type, and an array can only be of one type.</p>
+<p>Data structures can perform <strong>structure operations</strong> .</p>
+<p>Assigning values to or between structure variables is a one-to-one correspondence; the former requires curly braces.</p>
+<p>The name of the structure variable is not the address of the structure variable, so you need to define the pointer using <code>&amp;</code>.</p>
+<p>A data structure can be entered as a function parameter, but unlike an array, the entire structure is passed into the function as the value of the parameter, <strong>creating a new structure variable</strong> inside the function and copying the value of the caller’s structure.</p>
+<p>You can also return a <code>struct</code>.</p>
+<h2 id="Custom-data-types"><a href="#Custom-data-types" class="headerlink" title="Custom data types"></a>Custom data types</h2><p>A <code>typedef</code> can give an <strong>alias</strong> to a data type.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">int64_t</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ADate</span> &#123;</span></span><br><span class="line"> <span class="type">int</span> month;</span><br><span class="line"> <span class="type">int</span> day;</span><br><span class="line"> <span class="type">int</span> year;</span><br><span class="line">&#125; Date;</span><br><span class="line"></span><br><span class="line"><span class="type">int64_t</span> i = <span class="number">100000000000</span>;</span><br><span class="line">Date d = &#123;<span class="number">9</span>, <span class="number">1</span>, <span class="number">2005</span>, &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Union"><a href="#Union" class="headerlink" title="Union"></a>Union</h2><p>带参数的宏一定要有括号，结尾不能加分号。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">C Language</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2022-05-25 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2022/05/25/note/Computer/Programming/Language/C/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/en/tags/c/"><i class="fa-solid fa-hashtag"></i>&nbsp;c</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/en/2022/09/28/note/README/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">❌This is a Index File</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                </div>
+            
+            <div id="load-comments">Show Comments</div>
+            <script async >
+                document.addEventListener('DOMContentLoaded', () => {
+                    var toggleButton = document.getElementById("load-comments");
+                    var commentsContainer = document.getElementsByClassName("comments-container");
+                    toggleButton.addEventListener("click", async () => {
+                        if (commentsContainer[0].style.display === "none") {
+                            commentsContainer[0].style.display = "block";
+                            toggleButton.innerHTML = "Hide Comments";
+                        } else {
+                            commentsContainer[0].style.display = "none";
+                            toggleButton.innerHTML = "Show Comments";
+                        }
+                    });
+                });
+            </script>
+
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Get-started"><span class="nav-text">Get started</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Framework"><span class="nav-text">Framework</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-function"><span class="nav-text">Output function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variables-and-constants"><span class="nav-text">Variables and constants</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constants"><span class="nav-text">Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variables"><span class="nav-text">Variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-and-input-of-a-variable"><span class="nav-text">Output and input of a variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-text">Input</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Floating-point-numbers"><span class="nav-text">Floating point numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operation"><span class="nav-text">Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Operator"><span class="nav-text">Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relational-operator"><span class="nav-text">Relational operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Special-operator"><span class="nav-text">Special operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conditional-operator"><span class="nav-text">Conditional operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logical-operator"><span class="nav-text">Logical operator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Several-statements"><span class="nav-text">Several statements</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if"><span class="nav-text">if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while"><span class="nav-text">while</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dowhile"><span class="nav-text">dowhile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch"><span class="nav-text">switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for"><span class="nav-text">for</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Miscellaneous"><span class="nav-text">Miscellaneous</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-and-customizing-function"><span class="nav-text">Function and customizing function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Defination"><span class="nav-text">Defination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use"><span class="nav-text">Use</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multidimensional-array"><span class="nav-text">Multidimensional array</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pointer"><span class="nav-text">Pointer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Address"><span class="nav-text">Address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Defination-1"><span class="nav-text">Defination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-1"><span class="nav-text">Use</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Arrays-are-special-Pointers"><span class="nav-text">Arrays are special Pointers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pointer-to-a-constant-const"><span class="nav-text">Pointer to a constant (const)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Address-of-a-pointer"><span class="nav-text">Address of a pointer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Allocating-Memory-Space"><span class="nav-text">Allocating Memory Space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-and-output-of-string"><span class="nav-text">Input and output of string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-of-strings"><span class="nav-text">Array of strings</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-and-output-single-characters-in-format-c"><span class="nav-text">Input and output single characters in format %c</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-and-output-whole-array-with-format-s"><span class="nav-text">Input and output whole array with format %s</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-and-output-of-character-data"><span class="nav-text">Input and output of character data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Putchar-parameter"><span class="nav-text">Putchar(parameter)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getchar"><span class="nav-text">getchar()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-function"><span class="nav-text">String function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#strlen"><span class="nav-text">strlen</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strcmp"><span class="nav-text">strcmp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strcpy"><span class="nav-text">strcpy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strcat"><span class="nav-text">strcat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strchr"><span class="nav-text">strchr</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enumeration"><span class="nav-text">Enumeration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-structure"><span class="nav-text">Data structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Custom-data-types"><span class="nav-text">Custom data types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Union"><span class="nav-text">Union</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async 
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })
+        </script>
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                多Pass渲染 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">多Pass渲染</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2025-05-30 11:23</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/Game-Engine/">Game Engine</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/"><i class="fas fa-hashtag"></i>&nbsp;C++</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Compute-Graphic/"><i class="fas fa-hashtag"></i>&nbsp;Compute Graphic</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>4.5k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>多 pass 渲染就像制作一部电影的后期制作流程，每一步都专门处理一种效果，最后合成最终画面。</p>
+<p>每个 pass 专注一种效果，互不干扰：阴影 pass 只关心深度；几何 pass 只关心基础着色；后处理 pass 只关心特效。</p>
+<span id="more"></span>
+
+<h3 id="DepthTest"><a href="#DepthTest" class="headerlink" title="DepthTest"></a>DepthTest</h3><p>让我详细解释深度缓冲相关的概念和在渲染管线中的作用：</p>
+<h4 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h4><h5 id="深度缓冲区-Depth-Buffer-Z-Buffer"><a href="#深度缓冲区-Depth-Buffer-Z-Buffer" class="headerlink" title="深度缓冲区 (Depth Buffer&#x2F;Z-Buffer)"></a><strong>深度缓冲区 (Depth Buffer&#x2F;Z-Buffer)</strong></h5><ul>
+<li>一个与颜色缓冲区同样大小的缓冲区</li>
+<li>每个像素存储一个深度值（通常是0.0到1.0的浮点数）</li>
+<li><strong>0.0</strong> &#x3D; 最近距离（相机近平面）</li>
+<li><strong>1.0</strong> &#x3D; 最远距离（相机远平面）</li>
+</ul>
+<h5 id="深度写入-Depth-Write"><a href="#深度写入-Depth-Write" class="headerlink" title="深度写入 (Depth Write)"></a><strong>深度写入 (Depth Write)</strong></h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">pipelineSpec.DepthWrite = <span class="literal">true</span>;   <span class="comment">// 启用深度写入</span></span><br><span class="line">pipelineSpec.DepthWrite = <span class="literal">false</span>;  <span class="comment">// 禁用深度写入</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>启用时</strong>：片段着色器执行完成后，将计算出的深度值写入深度缓冲区</li>
+<li><strong>禁用时</strong>：不写入深度值，深度缓冲区保持不变</li>
+<li><strong>用途</strong>：预深度渲染中，只有预深度通道写入，几何体通道只读取</li>
+</ul>
+<h5 id="深度测试-Depth-Test"><a href="#深度测试-Depth-Test" class="headerlink" title="深度测试 (Depth Test)"></a><strong>深度测试 (Depth Test)</strong></h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">pipelineSpec.DepthTest = <span class="literal">true</span>;   <span class="comment">// 启用深度测试</span></span><br><span class="line">pipelineSpec.DepthTest = <span class="literal">false</span>;  <span class="comment">// 禁用深度测试（如天空盒）</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>启用时</strong>：根据深度测试函数比较当前片段深度值与深度缓冲区中的值</li>
+<li><strong>禁用时</strong>：所有片段都会被渲染，无论深度如何</li>
+</ul>
+<h5 id="深度测试函数-Depth-Compare-Function"><a href="#深度测试函数-Depth-Compare-Function" class="headerlink" title="深度测试函数 (Depth Compare Function)"></a><strong>深度测试函数 (Depth Compare Function)</strong></h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum class</span> <span class="title class_">DepthCompareOperator</span></span><br><span class="line">&#123;</span><br><span class="line">    Never,          <span class="comment">// 永远不通过 (不渲染任何东西)</span></span><br><span class="line">    Less,           <span class="comment">// 当前深度 &lt; 缓冲区深度时通过</span></span><br><span class="line">    LessOrEqual,    <span class="comment">// 当前深度 &lt;= 缓冲区深度时通过  </span></span><br><span class="line">    Equal,          <span class="comment">// 当前深度 == 缓冲区深度时通过</span></span><br><span class="line">    GreaterOrEqual, <span class="comment">// 当前深度 &gt;= 缓冲区深度时通过</span></span><br><span class="line">    Greater,        <span class="comment">// 当前深度 &gt; 缓冲区深度时通过</span></span><br><span class="line">    NotEqual,       <span class="comment">// 当前深度 != 缓冲区深度时通过</span></span><br><span class="line">    Always,         <span class="comment">// 永远通过 (等同于禁用深度测试)</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="渲染管线中的位置"><a href="#渲染管线中的位置" class="headerlink" title="渲染管线中的位置"></a>渲染管线中的位置</h4><h5 id="完整的渲染管线流程"><a href="#完整的渲染管线流程" class="headerlink" title="完整的渲染管线流程"></a><strong>完整的渲染管线流程</strong></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">顶点数据</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│   顶点着色器      │ ← 计算顶点位置、变换到裁剪空间</span><br><span class="line">└─────────────────┘</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│   图元装配        │ ← 组装三角形</span><br><span class="line">└─────────────────┘</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│   光栅化         │ ← 生成像素片段，计算深度值</span><br><span class="line">└─────────────────┘</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│  Early-Z 测试    │ ← **深度测试在这里！**(可选)</span><br><span class="line">└─────────────────┘</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│   片段着色器      │ ← 计算像素颜色</span><br><span class="line">└─────────────────┘</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│  Late-Z 测试     │ ← **深度测试在这里！**(如果没有Early-Z)</span><br><span class="line">└─────────────────┘</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│   深度写入        │ ← **深度写入在这里！**</span><br><span class="line">└─────────────────┘</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│   颜色混合      │ ← 与帧缓冲区混合</span><br><span class="line">└─────────────────┘</span><br><span class="line">    ↓</span><br><span class="line">┌─────────────────┐</span><br><span class="line">│   帧缓冲区      │ ← 最终输出</span><br><span class="line">└─────────────────┘</span><br></pre></td></tr></table></figure>
+
+<h4 id="深度测试的执行位置"><a href="#深度测试的执行位置" class="headerlink" title="深度测试的执行位置"></a>深度测试的执行位置</h4><h5 id="Early-Z-测试-提前深度测试"><a href="#Early-Z-测试-提前深度测试" class="headerlink" title="Early-Z 测试 (提前深度测试)"></a><strong>Early-Z 测试 (提前深度测试)</strong></h5><ul>
+<li><strong>位置</strong>：片段着色器<strong>之前</strong></li>
+<li><strong>条件</strong>：<ul>
+<li>片段着色器不修改深度值</li>
+<li>不使用 <code>discard</code> 指令</li>
+<li>不使用Alpha测试</li>
+</ul>
+</li>
+<li><strong>优势</strong>：剔除被遮挡的片段，避免昂贵的片段着色器计算</li>
+</ul>
+<h5 id="Late-Z-测试-延迟深度测试"><a href="#Late-Z-测试-延迟深度测试" class="headerlink" title="Late-Z 测试 (延迟深度测试)"></a><strong>Late-Z 测试 (延迟深度测试)</strong></h5><ul>
+<li><strong>位置</strong>：片段着色器<strong>之后</strong></li>
+<li><strong>条件</strong>：当不满足Early-Z条件时</li>
+<li><strong>劣势</strong>：片段着色器已经执行，无法节省计算</li>
+</ul>
+<h4 id="深度测试的具体执行过程"><a href="#深度测试的具体执行过程" class="headerlink" title="深度测试的具体执行过程"></a>深度测试的具体执行过程</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 伪代码展示深度测试过程</span></span><br><span class="line"><span class="keyword">for</span> (每个像素片段) &#123;</span><br><span class="line">    <span class="type">float</span> currentDepth = 片段的深度值;</span><br><span class="line">    <span class="type">float</span> bufferDepth = depthBuffer[x][y];  <span class="comment">// 深度缓冲区中的值</span></span><br><span class="line">    </span><br><span class="line">    <span class="type">bool</span> testResult = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">switch</span> (depthCompareOperator) &#123;</span><br><span class="line">        <span class="keyword">case</span> Less:</span><br><span class="line">            testResult = (currentDepth &lt; bufferDepth);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> LessOrEqual:</span><br><span class="line">            testResult = (currentDepth &lt;= bufferDepth);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> Equal:</span><br><span class="line">            testResult = (currentDepth == bufferDepth);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">// ... 其他比较函数</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (testResult) &#123;</span><br><span class="line">        <span class="comment">// 深度测试通过</span></span><br><span class="line">        执行片段着色器();  <span class="comment">// 或者已经执行了(Late-Z情况)</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (depthWrite) &#123;</span><br><span class="line">            depthBuffer[x][y] = currentDepth;  <span class="comment">// 写入新的深度值</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        写入颜色到帧缓冲区();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 深度测试失败，丢弃该片段</span></span><br><span class="line">        丢弃片段();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="预深度渲染的深度测试流程"><a href="#预深度渲染的深度测试流程" class="headerlink" title="预深度渲染的深度测试流程"></a>预深度渲染的深度测试流程</h4><h5 id="第一步：预深度通道"><a href="#第一步：预深度通道" class="headerlink" title="第一步：预深度通道"></a><strong>第一步：预深度通道</strong></h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 深度缓冲区初始状态：全部为 1.0 (最远)</span></span><br><span class="line">depthBuffer[所有像素] = <span class="number">1.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染鸭子模型</span></span><br><span class="line">DepthOperator = LessOrEqual;  <span class="comment">// 小于等于时通过</span></span><br><span class="line">DepthWrite = <span class="literal">true</span>;            <span class="comment">// 启用深度写入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (鸭子的每个片段) &#123;</span><br><span class="line">    <span class="type">float</span> duckDepth = <span class="number">0.6f</span>;  <span class="comment">// 假设鸭子在这个深度</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (duckDepth &lt;= <span class="number">1.0f</span>) &#123;  <span class="comment">// 0.6 &lt;= 1.0，测试通过</span></span><br><span class="line">        <span class="comment">// 只执行简单的预深度着色器（不计算颜色）</span></span><br><span class="line">        depthBuffer[x][y] = <span class="number">0.6f</span>;  <span class="comment">// 写入鸭子的深度</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="第二步：几何体通道"><a href="#第二步：几何体通道" class="headerlink" title="第二步：几何体通道"></a><strong>第二步：几何体通道</strong></h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 深度缓冲区现在存储着鸭子的深度值 0.6f</span></span><br><span class="line"><span class="comment">// 现在渲染完整的鸭子（带材质、光照等）</span></span><br><span class="line"></span><br><span class="line">DepthOperator = LessOrEqual;  <span class="comment">// 小于等于时通过</span></span><br><span class="line">DepthWrite = <span class="literal">false</span>;           <span class="comment">// 禁用深度写入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (鸭子的每个片段) &#123;</span><br><span class="line">    <span class="type">float</span> duckDepth = <span class="number">0.6f</span>;  <span class="comment">// 相同的几何体，相同的深度</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (duckDepth &lt;= <span class="number">0.6f</span>) &#123;  <span class="comment">// 0.6 &lt;= 0.6，测试通过</span></span><br><span class="line">        执行完整的PBR片段着色器();  <span class="comment">// 计算最终颜色</span></span><br><span class="line">        <span class="comment">// 不写入深度值（保持预深度的结果）</span></span><br><span class="line">        写入颜色到帧缓冲区();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="为什么预深度渲染能提高性能？"><a href="#为什么预深度渲染能提高性能？" class="headerlink" title="为什么预深度渲染能提高性能？"></a>为什么预深度渲染能提高性能？</h4><h5 id="传统渲染："><a href="#传统渲染：" class="headerlink" title="传统渲染："></a><strong>传统渲染</strong>：</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">渲染所有物体 → 执行昂贵的片段着色器 → 深度测试 → 丢弃被遮挡的片段</span><br></pre></td></tr></table></figure>
+<p><strong>问题</strong>：被遮挡的片段浪费了片段着色器的计算</p>
+<h5 id="预深度渲染："><a href="#预深度渲染：" class="headerlink" title="预深度渲染："></a><strong>预深度渲染</strong>：</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">预深度通道 → 建立深度缓冲区 → 几何体通道 → Early-Z剔除大部分片段 → 只对可见片段执行昂贵的着色器</span><br></pre></td></tr></table></figure>
+<p><strong>优势</strong>：昂贵的片段着色器只在必要时执行</p>
+<h3 id="ShadowMap"><a href="#ShadowMap" class="headerlink" title="ShadowMap"></a>ShadowMap</h3><p>阴影贴图，通过深度信息来判断物体距离光源的前后遮挡关系，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ShadowMapPass</span>();   <span class="comment">// 阴影贴图</span></span><br><span class="line"><span class="built_in">SpotShadowMapPass</span>(); <span class="comment">// 手电筒阴影贴图</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="层级阴影贴图"><a href="#层级阴影贴图" class="headerlink" title="层级阴影贴图"></a>层级阴影贴图</h4><p>传统的阴影贴图使用单一的深度纹理来存储整个场景的阴影信息，但会遇到以下问题：</p>
+<ol>
+<li>近处阴影质量差：由于一张贴图要覆盖整个场景，近处物体分配到的像素很少</li>
+<li>远处浪费精度：远处不重要的区域却占用了大量贴图空间</li>
+<li>透视混叠：在视角变化时会出现明显的阴影锯齿</li>
+</ol>
+<p>CSM将相机的视锥体（viewing frustum）分割成多个层级，每个层级使用独立的阴影贴图：</p>
+<ol>
+<li>分层渲染：</li>
+</ol>
+<ul>
+<li>第1层：覆盖相机附近0-50米，使用高精度阴影</li>
+<li>第2层：覆盖50-200米，使用中等精度</li>
+<li>第3层：覆盖200-800米，使用较低精度</li>
+<li>第4层：覆盖800米以上，使用最低精度</li>
+</ul>
+<ol start="2">
+<li>动态调整：</li>
+</ol>
+<ul>
+<li>根据相机位置动态调整每层的覆盖范围</li>
+<li>近处获得更多的阴影细节</li>
+<li>远处保持基本的阴影效果</li>
+</ul>
+<ol start="3">
+<li>平滑过渡：</li>
+</ol>
+<ul>
+<li>在层级边界处进行混合，避免突兀的质量跳跃</li>
+<li>使用淡入淡出效果</li>
+</ul>
+<h3 id="PreDepth"><a href="#PreDepth" class="headerlink" title="PreDepth"></a>PreDepth</h3><blockquote>
+<p>预深度：确定哪些像素是可见的，先画一遍，只记录深度，不进行着色。</p>
+</blockquote>
+<p><strong>目的：</strong> 解决传统绘制重复渲染的问题， 比如一个像素的位置上，先绘制了远处的山，再绘制近处的树，这样远处的山的着色计算就浪费了。</p>
+<p><strong>解决方案：</strong> 第一遍，只记录深度信息，确定每个像素最终显示哪个物体；后续只给真正可见的像素上色。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">SceneRenderer::Init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 创建预深度的帧缓冲</span></span><br><span class="line">    FramebufferSpecification preDepthFramebufferSpec;</span><br><span class="line">    preDepthFramebufferSpec.Width = m_Specification.ViewportWidth;</span><br><span class="line">    preDepthFramebufferSpec.Height = m_Specification.ViewportHeight;</span><br><span class="line">    preDepthFramebufferSpec.DebugName = <span class="string">&quot;PreDepth-Opaque&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 关键：只需要深度缓冲，不需要颜色缓冲</span></span><br><span class="line">    preDepthFramebufferSpec.Attachments = &#123; ImageFormat::DEPTH32FSTENCIL8UINT &#125;;</span><br><span class="line">    preDepthFramebufferSpec.DepthClearValue = <span class="number">0.0f</span>;  <span class="comment">// 使用反向Z，远处是0，近处是1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建两个版本：一个清除深度，一个保持深度</span></span><br><span class="line">    Ref&lt;Framebuffer&gt; clearFramebuffer = Framebuffer::<span class="built_in">Create</span>(preDepthFramebufferSpec);</span><br><span class="line">    preDepthFramebufferSpec.ClearDepthOnLoad = <span class="literal">false</span>;</span><br><span class="line">    Ref&lt;Framebuffer&gt; loadFramebuffer = Framebuffer::<span class="built_in">Create</span>(preDepthFramebufferSpec);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>预深度管线：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 静态物体的预深度管线</span></span><br><span class="line">PipelineSpecification pipelineSpec;</span><br><span class="line">pipelineSpec.DebugName = <span class="string">&quot;PreDepth-Opaque&quot;</span>;</span><br><span class="line">pipelineSpec.TargetFramebuffer = clearFramebuffer;</span><br><span class="line">pipelineSpec.Shader = Renderer::<span class="built_in">GetShaderLibrary</span>()-&gt;<span class="built_in">Get</span>(<span class="string">&quot;PreDepth&quot;</span>);  <span class="comment">// 简单的深度着色器</span></span><br><span class="line">pipelineSpec.Layout = vertexLayout;</span><br><span class="line">pipelineSpec.InstanceLayout = instanceLayout;</span><br><span class="line">m_PreDepthPipeline = Pipeline::<span class="built_in">Create</span>(pipelineSpec);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 动画物体的预深度管线</span></span><br><span class="line">pipelineSpec.DebugName = <span class="string">&quot;PreDepth-Anim&quot;</span>;</span><br><span class="line">pipelineSpec.Shader = Renderer::<span class="built_in">GetShaderLibrary</span>()-&gt;<span class="built_in">Get</span>(<span class="string">&quot;PreDepth_Anim&quot;</span>);</span><br><span class="line">pipelineSpec.BoneInfluenceLayout = boneInfluenceLayout;  <span class="comment">// 支持骨骼动画</span></span><br><span class="line">m_PreDepthPipelineAnim = Pipeline::<span class="built_in">Create</span>(pipelineSpec);</span><br></pre></td></tr></table></figure>
+
+<p>预深度渲染：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">SceneRenderer::PreDepthPass</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">uint32_t</span> frameIndex = Renderer::<span class="built_in">GetCurrentFrameIndex</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 开始性能计时</span></span><br><span class="line">    m_GPUTimeQueries.DepthPrePassQuery = m_CommandBuffer-&gt;<span class="built_in">BeginTimestampQuery</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 开始预深度渲染（静态物体）</span></span><br><span class="line">    Renderer::<span class="built_in">BeginRenderPass</span>(m_CommandBuffer, m_PreDepthPass);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 渲染所有静态网格，但只写入深度</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [mk, dc] : m_StaticMeshDrawList)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">const</span> <span class="keyword">auto</span>&amp; transformData = m_MeshTransformMap.<span class="built_in">at</span>(mk);</span><br><span class="line">        <span class="comment">// 关键：使用预深度材质，只计算深度</span></span><br><span class="line">        Renderer::<span class="built_in">RenderStaticMeshWithMaterial</span>(</span><br><span class="line">            m_CommandBuffer, </span><br><span class="line">            m_PreDepthPipeline, </span><br><span class="line">            dc.StaticMesh, </span><br><span class="line">            dc.MeshSource, </span><br><span class="line">            dc.SubmeshIndex, </span><br><span class="line">            m_SubmeshTransformBuffers[frameIndex].Buffer, </span><br><span class="line">            transformData.TransformOffset, </span><br><span class="line">            dc.InstanceCount, </span><br><span class="line">            m_PreDepthMaterial  <span class="comment">// 简单的深度材质</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 渲染动态物体（非骨骼动画）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [mk, dc] : m_DrawList)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">const</span> <span class="keyword">auto</span>&amp; transformData = m_MeshTransformMap.<span class="built_in">at</span>(mk);</span><br><span class="line">        <span class="keyword">if</span> (!dc.IsRigged)  <span class="comment">// 非骨骼动画物体</span></span><br><span class="line">            Renderer::<span class="built_in">RenderMeshWithMaterial</span>(..., m_PreDepthMaterial);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Renderer::<span class="built_in">EndRenderPass</span>(m_CommandBuffer);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 处理骨骼动画物体</span></span><br><span class="line">    Renderer::<span class="built_in">BeginRenderPass</span>(m_CommandBuffer, m_PreDepthAnimPass);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [mk, dc] : m_DrawList)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (dc.IsRigged)  <span class="comment">// 骨骼动画物体</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">const</span> <span class="keyword">auto</span>&amp; boneTransformsData = m_MeshBoneTransformsMap.<span class="built_in">at</span>(mk);</span><br><span class="line">            Renderer::<span class="built_in">RenderMeshWithMaterial</span>(</span><br><span class="line">                m_CommandBuffer,</span><br><span class="line">                m_PreDepthPipelineAnim,  <span class="comment">// 支持骨骼动画的管线</span></span><br><span class="line">                dc.Mesh,</span><br><span class="line">                dc.MeshSource,</span><br><span class="line">                dc.SubmeshIndex,</span><br><span class="line">                m_SubmeshTransformBuffers[frameIndex].Buffer,</span><br><span class="line">                transformData.TransformOffset,</span><br><span class="line">                boneTransformsData.BoneTransformsBaseIndex,  <span class="comment">// 骨骼变换数据</span></span><br><span class="line">                boneTransformsData.BoneTransformsStride,</span><br><span class="line">                dc.InstanceCount,</span><br><span class="line">                m_PreDepthMaterial</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Renderer::<span class="built_in">EndRenderPass</span>(m_CommandBuffer);</span><br><span class="line">    </span><br><span class="line">    m_CommandBuffer-&gt;<span class="built_in">EndTimestampQuery</span>(m_GPUTimeQueries.DepthPrePassQuery);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>预深度 Early-Z 优化：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在几何Pass中，深度测试设置变为：</span></span><br><span class="line">pipelineSpecification.DepthOperator = DepthCompareOperator::Equal;  <span class="comment">// 只处理深度相等的像素</span></span><br><span class="line">pipelineSpecification.DepthWrite = <span class="literal">false</span>;  <span class="comment">// 不再写入深度，只读取</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这意味着：</span></span><br><span class="line"><span class="comment">// - 如果像素深度不等于预深度的结果 → 直接丢弃，不执行片段着色器</span></span><br><span class="line"><span class="comment">// - 只有深度完全匹配的像素才会执行复杂的光照计算</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是说，预深度 Pass 会写一张帧缓冲，此缓冲只有深度信息，即最前面的（需要被着色的）物体的深度信息，计算着色时，将物体的深度值与预深度贴图对应的深度值进行匹配，如果匹配成功，则进行着色，匹配失败，跳过着色。</p>
+<p><strong>预深度 Pass 的核心思想就是用少量的计算（只算深度）换取大量的节省（避免无效的复杂光照计算），这在复杂场景中效果非常明显，特别是有很多重叠物体的情况下。</strong></p>
+<h4 id="精度问题"><a href="#精度问题" class="headerlink" title="精度问题"></a>精度问题</h4><p>由于预深度要将场景中的所有物体先渲染一边深度，然后在几何pass使用此深度输出，因此必须保证两次渲染的一致性，尤其是在着色器中计算gl_Position时。</p>
+<p>在顶点着色器中，标记<code>precise invariant gl_Position;</code>来使用精度限定符，否则会出现一下情况，渲染时深度测试不稳定。</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/imgimage-20250616173050298.png"
+                      alt="image-20250616173050298"
+                ></p>
+<p>这个 <code>precise invariant</code> 声明确保：</p>
+<ul>
+<li><strong>precise</strong>：使用高精度浮点运算</li>
+<li><strong>invariant</strong>：保证相同输入产生完全相同的输出</li>
+</ul>
+<h4 id="invariant-vs-precise-invariant-的区别："><a href="#invariant-vs-precise-invariant-的区别：" class="headerlink" title="invariant vs precise invariant 的区别："></a><strong><code>invariant</code> vs <code>precise invariant</code> 的区别：</strong></h4><ol>
+<li><p><strong><code>invariant gl_Position;</code></strong> ：</p>
+<ul>
+<li>只保证<strong>相同输入产生相同输出</strong></li>
+<li>但允许编译器进行<strong>优化重排序</strong></li>
+<li>可能导致不同着色器间的微小差异</li>
+</ul>
+</li>
+<li><p><strong><code>precise invariant gl_Position;</code></strong> ：</p>
+<ul>
+<li>**<code>precise</code>**：禁止编译器重排序和某些优化</li>
+<li>**<code>invariant</code>**：保证跨着色器的一致性</li>
+<li>确保<strong>完全相同的计算顺序和精度</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="Reversed-Z"><a href="#Reversed-Z" class="headerlink" title="Reversed-Z"></a>Reversed-Z</h3><p>最初由<strong>Brano Kemen</strong>在2012年提出，现在已被广泛应用于现代游戏引擎和渲染器中，包括Unreal Engine 4&#x2F;5、Unity等。</p>
+<p>传统的Z缓冲使用标准透视投影矩阵，将深度值从[near, far]映射到[0, 1]。由于IEEE 754浮点数的非线性分布特性，精度主要集中在接近0的区域，而远离相机的物体精度较低。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">传统Z映射: [near, far] → [0, 1]</span><br><span class="line">- 近平面 (near) → 0.0</span><br><span class="line">- 远平面 (far)  → 1.0</span><br></pre></td></tr></table></figure>
+
+<p>当两个面非常接近时，由于精度不足，深度测试可能产生不一致的结果，导致Z-Fighting闪烁现象。这在远距离渲染中尤为明显。</p>
+<p>对于典型的相机设置（near&#x3D;0.1, far&#x3D;1000）：</p>
+<ul>
+<li>50%的精度集中在[0.1, 0.2]范围内</li>
+<li>仅有很少的精度分配给[100, 1000]范围</li>
+<li>远距离物体几乎没有可用精度</li>
+</ul>
+<p>反向Z通过将深度映射反转，使得：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">反向Z映射: [near, far] → [1, 0]</span><br><span class="line">- 近平面 (near) → 1.0</span><br><span class="line">- 远平面 (far)  → 0.0</span><br></pre></td></tr></table></figure>
+
+<p>由于浮点数在接近1.0时具有更高的精度，反向Z能够：</p>
+<ol>
+<li><strong>提高近距离精度</strong>：大部分渲染内容位于相机附近，获得更好的精度分配</li>
+<li><strong>改善远距离表现</strong>：远距离物体也能获得足够的精度</li>
+<li><strong>减少Z-Fighting</strong>：整体精度提升显著减少深度冲突</li>
+</ol>
+<p>标准的透视投影矩阵为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P_standard = [</span><br><span class="line">    [2n/(r-l),    0,      (r+l)/(r-l),         0    ]</span><br><span class="line">    [   0,     2n/(t-b),  (t+b)/(t-b),         0    ]</span><br><span class="line">    [   0,        0,      -(f+n)/(f-n),  -2fn/(f-n) ]</span><br><span class="line">    [   0,        0,           -1,              0   ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>n &#x3D; near平面距离</li>
+<li>f &#x3D; far平面距离</li>
+<li>l,r,t,b &#x3D; 视锥体边界</li>
+</ul>
+<h4 id="反向Z投影矩阵推导"><a href="#反向Z投影矩阵推导" class="headerlink" title="反向Z投影矩阵推导"></a>反向Z投影矩阵推导</h4><p>要实现反向Z映射，需要修改标准矩阵的第3行：</p>
+<p><strong>目标变换</strong>：</p>
+<ul>
+<li>原始：z ∈ [n, f] → z_ndc ∈ [-1, 1] → z_depth ∈ [0, 1]</li>
+<li>反向：z ∈ [n, f] → z_ndc ∈ [1, -1] → z_depth ∈ [1, 0]</li>
+</ul>
+<p><strong>修改的矩阵元素</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 标准投影矩阵的[2][2]和[3][2]元素</span></span><br><span class="line">P_standard[<span class="number">2</span>][<span class="number">2</span>] = -(f+n)/(f-n)</span><br><span class="line">P_standard[<span class="number">3</span>][<span class="number">2</span>] = <span class="number">-2f</span>n/(f-n)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 反向Z投影矩阵的对应元素</span></span><br><span class="line">P_reversed[<span class="number">2</span>][<span class="number">2</span>] = -n/(f-n)           <span class="comment">// 修改后</span></span><br><span class="line">P_reversed[<span class="number">3</span>][<span class="number">2</span>] = fn/(f-n)           <span class="comment">// 修改后</span></span><br></pre></td></tr></table></figure>
+
+<p>反向Z的一个额外优势是天然支持无限远平面：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 当 f → ∞ 时</span></span><br><span class="line">P_reversed[<span class="number">2</span>][<span class="number">2</span>] = <span class="number">0</span></span><br><span class="line">P_reversed[<span class="number">3</span>][<span class="number">2</span>] = n</span><br></pre></td></tr></table></figure>
+
+<h4 id="实现实例"><a href="#实现实例" class="headerlink" title="实现实例"></a>实现实例</h4><p>相机中的投影矩阵生成反向z的矩阵：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">PerspectiveCamera::UpdateProjectionMatrix</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 生成标准投影矩阵</span></span><br><span class="line">    m_Data.UnReversedDepthProjectionMatrix = </span><br><span class="line">        glm::<span class="built_in">perspectiveFov</span>(glm::<span class="built_in">radians</span>(m_Data.FOV), </span><br><span class="line">                           (<span class="type">float</span>)m_Data.Width, </span><br><span class="line">                           (<span class="type">float</span>)m_Data.Height, </span><br><span class="line">                           m_Data.NearClip, </span><br><span class="line">                           m_Data.FarClip);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 复制为反向Z矩阵</span></span><br><span class="line">    m_Data.ProjectionMatrix = m_Data.UnReversedDepthProjectionMatrix;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 修改Z映射：[near,far] → [0,1] 变为 [near,far] → [1,0]</span></span><br><span class="line">    m_Data.ProjectionMatrix[<span class="number">2</span>][<span class="number">2</span>] = -m_Data.NearClip / (m_Data.FarClip - m_Data.NearClip);</span><br><span class="line">    m_Data.ProjectionMatrix[<span class="number">3</span>][<span class="number">2</span>] = (m_Data.FarClip * m_Data.NearClip) / (m_Data.FarClip - m_Data.NearClip);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>深度Pass的深度清除值为<code>0.0f</code>.</p>
+<p>深度测试函数改为<code>GreaterOrEqual</code>。</p>
+<p>其他不变。</p>
+<h3 id="HZB（Hierarchical-Z-Buffer）"><a href="#HZB（Hierarchical-Z-Buffer）" class="headerlink" title="HZB（Hierarchical Z Buffer）"></a>HZB（Hierarchical Z Buffer）</h3><p>HZB 的核心思想是用 <strong>空间换时间</strong>：预先计算好多个分辨率的深度信息，让后续的遮挡查询、光线追踪等操作能够快速跳过大块的空白区域，大幅提升渲染效率。</p>
+<p>绘制不同比例的深度图，这是查询一个物体是否被遮挡时，可以先根据物体的大小选择合适的 mip 级别，查询该区域的最远深度与物体的最近深度进行对比，如果物体的最近深度比该区域的最远深度大，说明物体被完全遮挡，否则使用更精细的 mip 进一步检查。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 有一座大山（占屏幕400x300像素）挡在前面</span></span><br><span class="line"><span class="comment">// 山后面有一座小房子，我们要判断房子是否可见</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 传统方法：检查房子覆盖的每个像素（可能几万个像素）</span></span><br><span class="line"><span class="comment">// HZB方法：</span></span><br><span class="line"><span class="type">int</span> mipLevel = <span class="built_in">log2</span>(<span class="number">400</span>) = <span class="number">8</span>;  <span class="comment">// 选择第8级mip</span></span><br><span class="line"><span class="type">float</span> mountainDepth = <span class="built_in">SampleHZB</span>(mountainCenter, <span class="number">8</span>);  <span class="comment">// 只需要1次纹理采样！</span></span><br><span class="line"><span class="keyword">if</span> (houseDepth &gt; mountainDepth) </span><br><span class="line">    <span class="built_in">skipRendering</span>(house);  <span class="comment">// 直接跳过房子的渲染</span></span><br></pre></td></tr></table></figure>
+
+<p>HZB 的核心思想就是分而治之：</p>
+<ul>
+<li>大区域用粗糙的信息快速判断</li>
+<li>小区域用精细的信息准确判断</li>
+<li>根据需要动态选择精度级别</li>
+</ul>
+<p>这样既保证了准确性，又大幅提升了性能。就像你看地图时，先看全国地图找到大概方向，再看省级地图，最后看详细街道图一样。</p>
+<h3 id="PreIntergration"><a href="#PreIntergration" class="headerlink" title="PreIntergration"></a>PreIntergration</h3><p>想象你要在一面湖水中看倒影，但湖面有波纹：</p>
+<ul>
+<li>传统方法：从每个角度都重新计算光线如何在波纹表面反射</li>
+<li>预积分方法：预先计算好不同粗糙度表面的 “平均反射效果”，需要时直接查表</li>
+</ul>
+<h3 id="SSR-Screen-Square-Reflection"><a href="#SSR-Screen-Square-Reflection" class="headerlink" title="SSR(Screen Square Reflection)"></a>SSR(Screen Square Reflection)</h3><p>传统反射渲染从镜子的角度将场景渲染一遍，性能消耗翻倍，每个镜子都要这么做，场景渲染次数一直增加。</p>
+<p><strong>屏幕空间反射：</strong> 利用已经渲染的场景（所有像素的颜色和深度），对于需要反射的表面，计算反射光方向，沿着反射方向在已渲染的图像中查找对应的颜色，如果找到就作为反射的颜色，如果没找到，就显示天空的颜色。</p>
+<p>SSR 的局限性，如果需要计算反射的像素在屏幕空间外，则无法拿到，需要用一些策略缓解：</p>
+<ol>
+<li><strong>智能 Fallback - 在 SSR 失效时平滑过渡到其他技术</strong></li>
+<li>扩展数据 - 渲染比显示更多的区域</li>
+<li>时域复用 - 利用前几帧的信息</li>
+<li>分层策略 - 重要的反射用高端技术，次要的用简单方法</li>
+<li>预计算置信度 - 提前知道哪里 SSR 会失效</li>
+</ol>
+<h3 id="Light-Culling"><a href="#Light-Culling" class="headerlink" title="Light Culling"></a>Light Culling</h3><p>传统光照的性能灾难：如果场景中有一千盏灯，即使你无法看到所有的灯，也会计算这一千盏灯对场景的影响。</p>
+<p>问题的本质：</p>
+<p>（1）<em><strong>距离衰减：</strong></em> 现实中 <code>光照的强度 = 光源强度 / （距离的平方）</code>，距离 50m 时，<code>强度 = 100 / (50²) = 0.04</code>，基本上看不出来了，但传统方法还是会计算这个量</p>
+<p>（2）<em><strong>屏幕空间局限性：</strong></em> 一个像素实际上只会收到附近几盏灯的影响</p>
+<h4 id="光照剔除的基本原理"><a href="#光照剔除的基本原理" class="headerlink" title="光照剔除的基本原理"></a>光照剔除的基本原理</h4><p><strong>核心思想：</strong> 分块处理，将屏幕切成小格子，每个格子只关心影响到它的灯光。</p>
+<p>两阶段处理：</p>
+<ol>
+<li>光照剔除：着色器中，先确定当前工作组负责的屏幕块，计算这个块在世界空间中的范围，构建该块的 Frustum，测试每盏灯是否与其相交，将测试结果写入全局缓冲区；</li>
+<li>像素着色：在像素着色器中，先确定当前像素属于哪个块，获取该块的灯光列表，只计算列表中灯光的贡献。</li>
+</ol>
+<blockquote>
+<p>屏幕空间块到世界空间有一个转换，即通过近平面的范围，构建一个视锥体，该视锥体内的灯光才影响此屏幕空间块的着色。</p>
+</blockquote>
+<h4 id="深度范围的计算方法"><a href="#深度范围的计算方法" class="headerlink" title="深度范围的计算方法"></a>深度范围的计算方法</h4><figure class="highlight glsl"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> CalculateTileDepthRange(<span class="type">ivec2</span> tileID)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> minDepth = <span class="number">1000.0</span>;  <span class="comment">// 很远</span></span><br><span class="line">    <span class="type">float</span> maxDepth = <span class="number">0.0</span>;     <span class="comment">// 很近（反向Z）</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 遍历该块中所有像素的深度</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> y = <span class="number">0</span>; y &lt; <span class="number">16</span>; y++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> x = <span class="number">0</span>; x &lt; <span class="number">16</span>; x++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">ivec2</span> pixelCoord = tileID * <span class="number">16</span> + <span class="type">ivec2</span>(x, y);</span><br><span class="line">            <span class="type">float</span> pixelDepth = SampleDepthBuffer(pixelCoord);</span><br><span class="line">            </span><br><span class="line">            minDepth = <span class="built_in">min</span>(minDepth, pixelDepth);  <span class="comment">// 最近的物体</span></span><br><span class="line">            maxDepth = <span class="built_in">max</span>(maxDepth, pixelDepth);  <span class="comment">// 最远的物体</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> TileDepthRange(minDepth, maxDepth);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 优化版本：使用HZB加速</span></span><br><span class="line"><span class="type">float</span> CalculateTileDepthRangeOptimized(<span class="type">ivec2</span> tileID)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 直接从HZB的对应mip级别读取</span></span><br><span class="line">    <span class="comment">// 16x16块对应HZB的某个mip级别</span></span><br><span class="line">    <span class="type">int</span> mipLevel = CalculateMipForTileSize(<span class="number">16</span>);</span><br><span class="line">    <span class="type">vec2</span> hzbUV = (tileID + <span class="number">0.5</span>) / numTiles;</span><br><span class="line">    </span><br><span class="line">    <span class="type">float</span> blockDepth = <span class="built_in">textureLod</span>(HZBTexture, hzbUV, mipLevel).r;</span><br><span class="line">    <span class="keyword">return</span> blockDepth;  <span class="comment">// HZB已经包含了该区域的深度信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">多Pass渲染</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2025-05-30 11:23:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2025/05/30/note/Programming/CG/RenderPass/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/C/"><i class="fa-solid fa-hashtag"></i>&nbsp;C++</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Compute-Graphic/"><i class="fa-solid fa-hashtag"></i>&nbsp;Compute Graphic</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2025/05/30/note/Programming/CG/Architecture/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">游戏引擎架构设计学习</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2025/03/03/note/Algorithm/AI/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">AI设想</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DepthTest"><span class="nav-number">1.</span> <span class="nav-text">DepthTest</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%86%B2%E5%8C%BA-Depth-Buffer-Z-Buffer"><span class="nav-number">1.1.1.</span> <span class="nav-text">深度缓冲区 (Depth Buffer&#x2F;Z-Buffer)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5-Depth-Write"><span class="nav-number">1.1.2.</span> <span class="nav-text">深度写入 (Depth Write)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95-Depth-Test"><span class="nav-number">1.1.3.</span> <span class="nav-text">深度测试 (Depth Test)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0-Depth-Compare-Function"><span class="nav-number">1.1.4.</span> <span class="nav-text">深度测试函数 (Depth Compare Function)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">渲染管线中的位置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">完整的渲染管线流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95%E7%9A%84%E6%89%A7%E8%A1%8C%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">深度测试的执行位置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Early-Z-%E6%B5%8B%E8%AF%95-%E6%8F%90%E5%89%8D%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95"><span class="nav-number">1.3.1.</span> <span class="nav-text">Early-Z 测试 (提前深度测试)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Late-Z-%E6%B5%8B%E8%AF%95-%E5%BB%B6%E8%BF%9F%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95"><span class="nav-number">1.3.2.</span> <span class="nav-text">Late-Z 测试 (延迟深度测试)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95%E7%9A%84%E5%85%B7%E4%BD%93%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.4.</span> <span class="nav-text">深度测试的具体执行过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E6%B7%B1%E5%BA%A6%E6%B8%B2%E6%9F%93%E7%9A%84%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">预深度渲染的深度测试流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E9%A2%84%E6%B7%B1%E5%BA%A6%E9%80%9A%E9%81%93"><span class="nav-number">1.5.1.</span> <span class="nav-text">第一步：预深度通道</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%87%A0%E4%BD%95%E4%BD%93%E9%80%9A%E9%81%93"><span class="nav-number">1.5.2.</span> <span class="nav-text">第二步：几何体通道</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%A2%84%E6%B7%B1%E5%BA%A6%E6%B8%B2%E6%9F%93%E8%83%BD%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">为什么预深度渲染能提高性能？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E6%B8%B2%E6%9F%93%EF%BC%9A"><span class="nav-number">1.6.1.</span> <span class="nav-text">传统渲染：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E6%B7%B1%E5%BA%A6%E6%B8%B2%E6%9F%93%EF%BC%9A"><span class="nav-number">1.6.2.</span> <span class="nav-text">预深度渲染：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ShadowMap"><span class="nav-number">2.</span> <span class="nav-text">ShadowMap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E7%BA%A7%E9%98%B4%E5%BD%B1%E8%B4%B4%E5%9B%BE"><span class="nav-number">2.1.</span> <span class="nav-text">层级阴影贴图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PreDepth"><span class="nav-number">3.</span> <span class="nav-text">PreDepth</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">精度问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#invariant-vs-precise-invariant-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">invariant vs precise invariant 的区别：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reversed-Z"><span class="nav-number">4.</span> <span class="nav-text">Reversed-Z</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91Z%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E6%8E%A8%E5%AF%BC"><span class="nav-number">4.1.</span> <span class="nav-text">反向Z投影矩阵推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.2.</span> <span class="nav-text">实现实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HZB%EF%BC%88Hierarchical-Z-Buffer%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">HZB（Hierarchical Z Buffer）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PreIntergration"><span class="nav-number">6.</span> <span class="nav-text">PreIntergration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSR-Screen-Square-Reflection"><span class="nav-number">7.</span> <span class="nav-text">SSR(Screen Square Reflection)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Light-Culling"><span class="nav-number">8.</span> <span class="nav-text">Light Culling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E7%85%A7%E5%89%94%E9%99%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">8.1.</span> <span class="nav-text">光照剔除的基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E8%8C%83%E5%9B%B4%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="nav-number">8.2.</span> <span class="nav-text">深度范围的计算方法</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

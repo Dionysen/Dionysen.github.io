@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                管 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">管</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2020-04-25 23:38</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E4%B8%8D%E8%A8%80%E4%B8%8D%E8%BD%BD%E5%94%AF%E6%AD%A4%E7%8E%A9%E5%BF%83-%C2%B7-%E6%96%87%E5%AD%A6/">不言不载唯此玩心 · 文学</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E4%B8%8D%E8%A8%80%E4%B8%8D%E8%BD%BD%E5%94%AF%E6%AD%A4%E7%8E%A9%E5%BF%83-%C2%B7-%E6%96%87%E5%AD%A6/%E5%B0%8F%E8%AF%B4/">小说</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%B0%8F%E8%AF%B4/"><i class="fas fa-hashtag"></i>&nbsp;小说</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>2.3k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>下午五点二十分，秋雨总这个时候来。</p>
+<p>天灰蒙蒙的，抬头看不见雨滴，只觉往下砸。</p>
+<p>我也总这个时候来。</p>
+<p>从单位出来，买饭，步行到这，刚好二十分钟。</p>
+<p>我从来没有看天气预报或未雨绸缪的习惯。每天雨与我一同到来，我也从未撑过伞。在路上淋了些，推开病房的门，一股冷湿气冲到屋里。</p>
+<span id="more"></span>
+
+<p>若是从前，母亲见我这般模样，绝对免不了一阵责怪与怨忧。但是现在，躺在床上，全身插着各种管子的母亲，说话都是奢望。</p>
+<p>已经管不了那么多了。</p>
+<p>像民不聊生的乱世，大事临头。</p>
+<p>因而来时放着雨伞不拿——已经管不了那么多了。</p>
+<p>总觉得刚才还好好的，那么能干的母亲，怎么就突然倒下了呢?刚才是什么时候?记不清，但一定不远。</p>
+<p>突然就这样了。</p>
+<p>早些年看电视，有人家里老人生病了，不能自理。兄弟几个赖着不管，你推我推。等到老人终于离世了，都松了口气，任务完成了似的。转眼，又要忙活——老人留了些东西，老房子，老三轮车。这回没人躲了，反而饿狼般的，争抢。</p>
+<p>我叹息，怎么会有这等人。</p>
+<p>妻子则不屑，“事情没到你头上，你当然站着说话不腰疼。就怕到时候，你比他们都抢得厉害！”</p>
+<p>事情果真到了我的头上……母亲被查出了胃癌。晚期。</p>
+<p>自入院一来，往日里能独自撑起一个家的健壮的母亲，一下倾塌了。躺在床上，像个婴儿一样蜷缩着，无法进食，无法控制排便，生活的一切都需要人照顾。</p>
+<p>妻子的话只是玩笑。父亲死的早，我家也就我一个独生子。赡养母亲只能靠我自己。跟领导请假，领导只愿意批我三天。妻子有空闲时间，所以白天有劳妻子照顾，晚上换我来。</p>
+<p>刺鼻的药味，暖气味，尿腥味在病房里绞成一团。我在令人作呕的气味中迅速吃了晚饭，便让妻子回家休息。</p>
+<p>病房的门忽然被推开，一个戴眼镜的医生拿着一摞纸，叫了我的名字。</p>
+<p>我意外，应了一声。</p>
+<p>医生把我叫了出去。</p>
+<p>“患者的情况还不太明朗，但下个星期我给她安排了一个手术，如果手术成功，好转的可能性还是很大的。”</p>
+<p>“手术费多少钱?”我几乎是脱口而出。</p>
+<p>“四五万吧。”医生连看都没看我一眼，低头整理案上的文件。</p>
+<p>我又问：“手术成功的话，我母亲还能活多久?”</p>
+<p>——母亲住院的这几个星期，亲眼目睹，母亲的变化，邻床的哭嚎，我已深知癌症的可怕。</p>
+<p>他终于把目光移到了我的脸上。</p>
+<p>我立刻谴责自己说错了话。</p>
+<p>做这样的医生，想必早已见遍了各式各样患者，家属。他眼中，淡然，鄙视，怜悯。他一定是以为我是那种人——时刻算着老太太什么时候死掉，好省钱，省掉辛苦肮脏的操劳。他一定以为我这么着急地询问，是在盘算性价比。</p>
+<p>这个性，是性命。</p>
+<p>怎么会?</p>
+<p>我想解释，但不知如何开口。</p>
+<p>大概这样窘迫的样子，更让他确定了自己的判断?</p>
+<p>我坚定了语气，抢过他的回答道：“带我去办手续吧！”</p>
+<p>回到病房，妻子还没走。</p>
+<p>我简述了情况。</p>
+<p>妻子脸色凝重，“咱们还有存款吗?”</p>
+<p>我摇摇头。</p>
+<p>“那还能找谁借呢?”</p>
+<p>我摇摇头。</p>
+<p>“那就把那破房子卖了吧！”</p>
+<p>我终于意识到妻子的语气不太对。我以为妻子愿意与我同舟共济，即使卖掉房子，露宿街头也不在乎。可她的语气，明明是反话。</p>
+<p>但我又怎么能怪别人呢?</p>
+<p>这一切不都是因为自己的无能?</p>
+<p>结婚时我岂没有发誓，要给她一个温暖的家，要做一个好丈夫?</p>
+<p>年轻时游手好闲，一事无成，现在能在县里林业局当个小科员，已经算谢天谢地了。工作是轻松，但一个月两千多的固定工资连她自己都不够花，何况是我们?是的，她只知道花钱，从没想过自己能不能出去挣点儿。</p>
+<p>母亲生病的第一周，我们拿出了全部的积蓄，却只够一半的手术费。瞒着母亲东借西借，才勉强凑够。之后每天都要出钱，却没有收入。我们哪来钱给母亲治病呢?</p>
+<p>她倒提醒我了，老房子可以卖了，先租房子住，说不定能租个离单位很近的，更方便些。</p>
+<p>这当然是下策。</p>
+<p>但束手无策的时候，下策也即上策。</p>
+<p>我不想说话，去楼道抽烟。她却不依不饶，跟了过来。</p>
+<p>“你说啊?去哪儿弄钱?”</p>
+<p>我沉默。抽烟。她竟哭起来了。</p>
+<p>“当初嫁过来的时候，我家里人都不同意，嫌你混，嫌你家落魄。但我就是被你的花言巧语给骗了，说什么有上升空间，过几年就能发达，一定让我过上好日子……”</p>
+<p>她竟诉起苦来！</p>
+<p>当时?当时是什么时候?</p>
+<p>我也想过上好日子，但哪是说过就过的?钱哪是说挣就挣的?这几年我虽没有飞黄腾达，但也是兢兢业业，埋头苦干了几年。钱在她手里根本存不住，我还能做什么?</p>
+<p>母亲第一次做手术用的钱，其实是我们说好去度假旅游用的。毕竟也该有个孩子了。</p>
+<p>但如今快要食不果腹，还是省省的好。</p>
+<p>“嫁到你家这几年，你有什么长进！不仅没让我们过得好，还天天让我在这给老太婆端屎端尿……”</p>
+<p>她说得愈加起劲。</p>
+<p>我听得越加愠怒，尤其是她说我没长进。男人最怕的就是内人折自己的面子。</p>
+<p>“你不想过就不过，我又没逼着你！”</p>
+<p>不欢而散是必然，但我们年岁都不小，不像年轻人意气用事。钱不是说挣就挣，分也不是说分就分。名声上，谁也受不住。何况在这个节骨眼儿上。</p>
+<p>没有钱。仅有这点可怜的尊严。</p>
+<p>只是至此，我们一旦开口交流，几乎立刻就吵起来。在家吵，在路上吵，甚至在病房里也忍不住要拌起嘴来。</p>
+<p>无非是钱嘛。</p>
+<p>就是钱呀！</p>
+<p>还有两天就要手术，医生已经给我宽限，否则我缴上钱也无用。但我缴不上钱，手术一定做不了。难道真到了要倾家荡产的地步?</p>
+<p>我从不曾像现在一样急得焦头烂额，白天上班，晚上照顾母亲，又要四处赖着脸借钱，时而还要跟妻子拌嘴。</p>
+<p>我已然精疲力尽。</p>
+<p>窗外是迷离的小城夜景，秋月银色的光华涌着灰尘落进来，细看，与小时候一模一样。那时我尤喜欢在夏夜躺在院子里的凉席上，母亲摇着蒲扇赶蚊子，我缠着母亲讲故事。那是古老的，深沉的，又是骗小孩儿的野故事，没有出处，不知如何流传，甚至故事中的意象也懵懂，支离破碎，但那曾是我童年最着迷的梦。</p>
+<p>以至后来的我迷迷糊糊过了二十多年，记忆变得朦胧而遥远，我也始终没忘记这夏夜的故事。</p>
+<p>现在呢，真去想，倒想不起来了。</p>
+<p>似乎忘了……</p>
+<p>果真忘了。</p>
+<p>忘。</p>
+<p>我迷糊着睡去了。</p>
+<p>翌日醒来时，天还未亮。是值班护士把我叫起来的。从病房涌进来几个护士和那个医生。医生让我出去。</p>
+<p>没有等多久医生就出来了。</p>
+<p>“你母亲昨夜凌晨一点左右去世了，请节哀……”</p>
+<p>是因为冷漠，还是因为见惯了死亡，他脸上一点悲伤或惋惜都没有，像个面无表情的石像。</p>
+<p>我也一样，只是不知所措，还没从睡梦中醒来似的，癔症着回味?</p>
+<p>我拉住医生，声音很轻，“为什么?不是很有希望好转吗?”</p>
+<p>医生看了我一眼，怕刺激到我，轻轻地拿开了我的手，“请节哀。”然后逃一般溜走。我这才看见，他终于动容。</p>
+<p>第二天，戴眼镜的医生才告诉我他的猜测是对的，已用监控确认了的。</p>
+<p>……</p>
+<p>是夜，我因为难过，一个人出去散步。公园湖边，寂寥无人，渐黄的树叶在风中无知地摇摆。</p>
+<p>我明白那个医生为何那样看我，却不明白在凌晨一点的夜，母亲是如何用业已枯萎的手拔下自己身上的管子，而不发出声音的。</p>
+<p>或许是我睡得太沉了?</p>
+<p>我终于失声恸哭起来。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">管</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2020-04-25 23:38:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2020/04/25/note/Literature/小说/管/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E5%B0%8F%E8%AF%B4/"><i class="fa-solid fa-hashtag"></i>&nbsp;小说</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2020/04/29/note/Literature/%E6%8B%BE%E7%BE%BD/%E6%8B%BE%E7%BE%BD2020/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">拾羽二〇二〇</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2020/04/25/note/Literature/%E6%95%A3%E6%96%87/%E5%9B%9E%E4%B9%A1/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">回乡</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

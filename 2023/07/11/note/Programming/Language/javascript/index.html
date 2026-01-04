@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                JavaScript |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">JavaScript</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-07-11 10:06</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Programming/"><i class="fas fa-hashtag"></i>&nbsp;Programming</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Web/"><i class="fas fa-hashtag"></i>&nbsp;Web</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>2.6k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <blockquote>
+<p>📒  JavaScript学习笔记</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><h4 id="与HTML的交互"><a href="#与HTML的交互" class="headerlink" title="与HTML的交互"></a>与HTML的交互</h4><ul>
+<li><p>可以在 HTML 文档中放入不限数量的脚本。</p>
+</li>
+<li><p>脚本可位于 HTML 的<code>&lt;body&gt;</code>或 <code>&lt;head&gt; </code>部分中，或者同时存在于两个部分中。</p>
+</li>
+<li><p>通常的做法是把函数放入<code>&lt;head&gt;</code>部分中，或者放在页面底部。这样就可以把它们安置到同一处位置，不会干扰页面的内容。</p>
+</li>
+</ul>
+<h4 id="第一个程序"><a href="#第一个程序" class="headerlink" title="第一个程序"></a>第一个程序</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我的第一段 JavaScript<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span>&gt;</span></span><br><span class="line">        JavaScript 能改变 HTML 元素的内容。</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;h1&gt;TITLE&lt;/h1&gt;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">function</span> <span class="title function_">myFunction</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            x = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>);  <span class="comment">// 找到元素</span></span></span><br><span class="line"><span class="language-javascript">            x.<span class="property">innerHTML</span> = <span class="string">&quot;Hello JavaScript!&quot;</span>;    <span class="comment">// 改变内容</span></span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;myFunction()&quot;</span>&gt;</span>点击这里<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>HTML 输出流中使用 <code>document.write</code>，相当于添加在原有html代码中添加一串html代码。而如果在文档加载后使用（如使用函数），会覆盖整个文档。</li>
+</ul>
+<p>使用函数来执行document.write代码如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">myfunction</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;使用函数来执行document.write，即在文档加载后再执行这个操作，会实现文档覆盖&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;h1&gt;这是一个标题&lt;/h1&gt;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;p&gt;这是一个段落。&lt;/p&gt;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    您只能在 HTML 输出流中使用 <span class="tag">&lt;<span class="name">strong</span>&gt;</span>document.write<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>。</span><br><span class="line">    如果您在文档已加载后使用它（比如在函数中），会覆盖整个文档。</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;myfunction()&quot;</span>&gt;</span>点击这里<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="引入外部js文件"><a href="#引入外部js文件" class="headerlink" title="引入外部js文件"></a>引入外部js文件</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;myScript.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>外部 javascript 文件不使用<code> &lt;script&gt;</code> 标签，直接写 javascript 代码。</p>
+</blockquote>
+<h3 id="简单学习"><a href="#简单学习" class="headerlink" title="简单学习"></a>简单学习</h3><h4 id="数字、字符、操作符"><a href="#数字、字符、操作符" class="headerlink" title="数字、字符、操作符"></a>数字、字符、操作符</h4><ul>
+<li><p>分号可以省略，但特殊情况会引起错误</p>
+</li>
+<li><p>Javascript 只有一种数字类型(即 64位 IEEE 754 双精度浮点 double)，有52位表示尾数，可以精确到9x10^15的整数</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 有三种非数字的数字类型</span></span><br><span class="line"><span class="title class_">Infinity</span>; <span class="comment">// 1/0 的结果</span></span><br><span class="line">-<span class="title class_">Infinity</span>; <span class="comment">// -1/0 的结果</span></span><br><span class="line"><span class="title class_">NaN</span>; <span class="comment">// 0/0 的结果</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>单引号或双引号构建字符串，字符串用+拼接，字符串也可以用&lt;&gt;号来比较</p>
+</li>
+<li><p>使用<code>==</code>比较时会进行类型转换，<code>&#39;5&#39;==5</code>返回<code>true</code>，<code>null==undefined</code>返回<code>true</code>；但如果用<code>===</code>则不会转换类型，上述两种会返回<code>false</code>。</p>
+</li>
+<li><p>不同类型的变量相加会导致奇怪的行为：</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">13</span> + !<span class="number">0</span>; <span class="comment">//14</span></span><br><span class="line"><span class="string">&quot;13&quot;</span> + !<span class="number">0</span>; <span class="comment">// &#x27;13true&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>charAt(int num)</code>可以得到字符串中位于<code>num</code>的字符</p>
+</li>
+<li><p><code>substring(int startPos, int length)</code>可以得到从<code>startPos</code>开始的<code>length</code>长度的子串，</p>
+</li>
+<li><p><code>length</code>是一个属性，不要用<code>()</code>，<code>&quot;hello&quot;.lenght</code></p>
+</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 还有两个特殊的值：`null`和`undefined`</span></span><br><span class="line"><span class="literal">null</span>;      <span class="comment">// 用来表示刻意设置的空值</span></span><br><span class="line"><span class="literal">undefined</span>; <span class="comment">// 用来表示还没有设置的值(尽管`undefined`自身实际是一个值</span></span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// false, null, undefined, NaN, 0 和 &quot;&quot; 都是假的；其他的都视作逻辑真</span></span><br><span class="line"><span class="comment">// 注意 0 是逻辑假而  &quot;0&quot;是逻辑真，尽管 0 == &quot;0&quot;。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="变量、数组、对象"><a href="#变量、数组、对象" class="headerlink" title="变量、数组、对象"></a>变量、数组、对象</h4><ul>
+<li><p>变量声明用<code>var</code>，无需指定类型，不加<code>var</code>表示全局变量，未初始化且未被赋值的变量为<code>undefined</code></p>
+</li>
+<li><p>变量的计算没有别的特点（简写，自增自减）</p>
+</li>
+<li><p>数组可以是任意类型的<strong>有序列表</strong>，<code>var myArray = [&quot;Hello&quot;, 45, true];</code></p>
+</li>
+<li><p>数组可以下标访问；数组长度可变，<code>push(&lt;\element&gt;)</code></p>
+</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// javascript中的对象相当于其他语言中的“字典”或“映射”：是键-值对的无序集合。</span></span><br><span class="line"><span class="keyword">var</span> myObj = &#123;<span class="attr">key1</span>: <span class="string">&quot;Hello&quot;</span>, <span class="attr">key2</span>: <span class="string">&quot;World&quot;</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>键值对，键是字符串，如何键本身是合法的js标识符，则可以不加引号；<strong>值可以是任意类型</strong></li>
+<li>对象属性的访问可以通过下标，<code>myObj[&quot;my other key&quot;]; // = 4</code>，也可以用<code>myObj.myKey;</code></li>
+<li>对象是可变的，更改值，增加键，访问未定义的值，返回<code>undefined</code></li>
+</ul>
+<h4 id="逻辑与控制结构"><a href="#逻辑与控制结构" class="headerlink" title="逻辑与控制结构"></a>逻辑与控制结构</h4><ul>
+<li>if、while、for与c无差别</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &amp;&amp; 和 || 是“短路”语句，它在设定初始化值时特别有用 </span></span><br><span class="line"><span class="keyword">var</span> name = otherName || <span class="string">&quot;default&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `switch`语句使用`===`检查相等性。</span></span><br><span class="line"><span class="comment">// 在每一个case结束时使用 &#x27;break&#x27;</span></span><br><span class="line"><span class="comment">// 否则其后的case语句也将被执行。 </span></span><br><span class="line">grade = <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line"><span class="keyword">switch</span> (grade) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;A&#x27;</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Great job&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;B&#x27;</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;OK job&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;C&#x27;</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;You can do better&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Oy vey&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="函数、作用域、闭包"><a href="#函数、作用域、闭包" class="headerlink" title="函数、作用域、闭包"></a>函数、作用域、闭包</h4> <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JavaScript 函数由`function`关键字定义</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myFunction</span>(<span class="params">thing</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> thing.<span class="title function_">toUpperCase</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">myFunction</span>(<span class="string">&quot;foo&quot;</span>); <span class="comment">// = &quot;FOO&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>被返回的值必须开始用<code>return</code>关键字的那一行，否则由于分号的自动补齐，会返回<code>undefined</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在使用Allman风格的时候要注意.</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myFunction</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="comment">// &lt;- 分号自动插在这里</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">thisIsAn</span>: <span class="string">&#x27;object literal&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">myFunction</span>(); <span class="comment">// = undefined</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数是一等对象，也可以赋值给一个变量，并且可以作为参数传递</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 函数对象甚至不需要声明名称 —— 你可以直接把一个函数定义写到另一个函数的参数中</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 这段代码将在5秒钟后被调用</span></span><br><span class="line">&#125;, <span class="number">5000</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>函数有自己的作用域，而其他代码没有</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line">i; <span class="comment">// = 5 - 并非我们在其他语言中所期望得到的undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这就导致了人们经常使用的“立即执行匿名函数”的模式，</span></span><br><span class="line"><span class="comment">// 这样可以避免一些临时变量扩散到全局作用域去。</span></span><br><span class="line">(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> temporary = <span class="number">5</span>;</span><br><span class="line">    <span class="comment">// 我们可以访问修改全局对象（&quot;global object&quot;）来访问全局作用域，</span></span><br><span class="line">    <span class="comment">// 在web浏览器中是`window`这个对象。 </span></span><br><span class="line">    <span class="comment">// 在其他环境如Node.js中这个对象的名字可能会不同。</span></span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">permanent</span> = <span class="number">10</span>;</span><br><span class="line">&#125;)();</span><br><span class="line">temporary; <span class="comment">// 抛出引用异常ReferenceError</span></span><br><span class="line">permanent; <span class="comment">// = 10</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>闭包</strong>： 如果一个函数在另一个函数中定义，那么这个内部函数就拥有外部函数的所有变量的访问权，即使在外部函数结束之后。</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sayHelloInFiveSeconds</span>(<span class="params">name</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> prompt = <span class="string">&quot;Hello, &quot;</span> + name + <span class="string">&quot;!&quot;</span>;</span><br><span class="line">    <span class="comment">// 内部函数默认是放在局部作用域的，</span></span><br><span class="line">    <span class="comment">// 就像是用`var`声明的。</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">inner</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title function_">alert</span>(prompt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">setTimeout</span>(inner, <span class="number">5000</span>);</span><br><span class="line">    <span class="comment">// setTimeout是异步的，所以 sayHelloInFiveSeconds 函数会立即退出，</span></span><br><span class="line">    <span class="comment">// 而 setTimeout 会在后面调用inner</span></span><br><span class="line">    <span class="comment">// 然而，由于inner是由sayHelloInFiveSeconds“闭合包含”的，</span></span><br><span class="line">    <span class="comment">// 所以inner在其最终被调用时仍然能够访问`prompt`变量。</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">sayHelloInFiveSeconds</span>(<span class="string">&quot;Adam&quot;</span>); <span class="comment">// 会在5秒后弹出 &quot;Hello, Adam!&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="对象、构造函数和原型"><a href="#对象、构造函数和原型" class="headerlink" title="对象、构造函数和原型"></a>对象、构造函数和原型</h4><ul>
+<li>对象中可以有成员函数，用<code>.</code>调用，<code>this</code>指针仍然有效</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 但这个函数访问的其实是其运行时环境，而非定义时环境，即取决于函数是如何调用的。</span></span><br><span class="line"><span class="comment">// 所以如果函数被调用时不在这个对象的上下文中，就不会运行成功了。</span></span><br><span class="line"><span class="keyword">var</span> myFunc = myObj.<span class="property">myFunc</span>;</span><br><span class="line"><span class="title function_">myFunc</span>(); <span class="comment">// = undefined</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>可以在对象的定义之外定义一个函数，然后将函数指定为一个对象的函数：</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myOtherFunc = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">myString</span>.<span class="title function_">toUpperCase</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// myObj.myString == &quot;hello world!&quot;;</span></span><br><span class="line">myObj.<span class="property">myOtherFunc</span> = myOtherFunc;</span><br><span class="line">myObj.<span class="title function_">myOtherFunc</span>(); <span class="comment">// = &quot;HELLO WORLD!&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 当我们通过`call`或者`apply`调用函数的时候，也可以为其指定一个执行上下文。</span></span><br><span class="line"><span class="keyword">var</span> anotherFunc = <span class="keyword">function</span>(<span class="params">s</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">myString</span> + s;</span><br><span class="line">&#125;</span><br><span class="line">anotherFunc.<span class="title function_">call</span>(myObj, <span class="string">&quot; And Hello Moon!&quot;</span>); <span class="comment">// = &quot;Hello World! And Hello Moon!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// `apply`函数几乎完全一样，只是要求一个array来传递参数列表。</span></span><br><span class="line">anotherFunc.<span class="title function_">apply</span>(myObj, [<span class="string">&quot; And Hello Sun!&quot;</span>]); <span class="comment">// = &quot;Hello World! And Hello Sun!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当一个函数接受一系列参数，而你想传入一个array时特别有用。</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">min</span>(<span class="number">42</span>, <span class="number">6</span>, <span class="number">27</span>); <span class="comment">// = 6</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">min</span>([<span class="number">42</span>, <span class="number">6</span>, <span class="number">27</span>]); <span class="comment">// = NaN (uh-oh!)</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="property">min</span>.<span class="title function_">apply</span>(<span class="title class_">Math</span>, [<span class="number">42</span>, <span class="number">6</span>, <span class="number">27</span>]); <span class="comment">// = 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是`call`和`apply`只是临时的。如果我们希望函数附着在对象上，可以使用`bind`。</span></span><br><span class="line"><span class="keyword">var</span> boundFunc = anotherFunc.<span class="title function_">bind</span>(myObj);</span><br><span class="line"><span class="title function_">boundFunc</span>(<span class="string">&quot; And Hello Saturn!&quot;</span>); <span class="comment">// = &quot;Hello World! And Hello Saturn!&quot;</span></span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `bind` 也可以用来部分应用一个函数（柯里化）。</span></span><br><span class="line"><span class="keyword">var</span> product = <span class="keyword">function</span>(<span class="params">a, b</span>)&#123; <span class="keyword">return</span> a * b; &#125;</span><br><span class="line"><span class="keyword">var</span> doubler = product.<span class="title function_">bind</span>(<span class="variable language_">this</span>, <span class="number">2</span>);</span><br><span class="line"><span class="title function_">doubler</span>(<span class="number">8</span>); <span class="comment">// = 16</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>构造函数：</strong>调用一个函数时前加上<code>new</code>关键字，会创建一个对象，这个函数一般是设计专门用来构造此对象的函数；此函数可以用this来访问对象</p>
+</li>
+<li><p>原型：其实就是类的继承</p>
+<ul>
+<li>指定原型创建对象有两个方法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第一种方式是 Object.create，这个方法是在最近才被添加到Js中的，</span></span><br><span class="line"><span class="comment">// 因此并不是所有的JS实现都有这个方法</span></span><br><span class="line"><span class="keyword">var</span> myObj = <span class="title class_">Object</span>.<span class="title function_">create</span>(myPrototype);</span><br><span class="line">myObj.<span class="property">meaningOfLife</span>; <span class="comment">// = 43</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种方式可以在任意版本中使用，不过必须通过构造函数。</span></span><br><span class="line"><span class="comment">// 构造函数有一个属性prototype。但是它 *不是* 构造函数本身的原型；相反，</span></span><br><span class="line"><span class="comment">// 是通过构造函数和new关键字创建的新对象的原型。</span></span><br><span class="line"><span class="title class_">MyConstructor</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">    <span class="attr">myNumber</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">getMyNumber</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">myNumber</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> myNewObj2 = <span class="keyword">new</span> <span class="title class_">MyConstructor</span>();</span><br><span class="line">myNewObj2.<span class="title function_">getMyNumber</span>(); <span class="comment">// = 5</span></span><br><span class="line">myNewObj2.<span class="property">myNumber</span> = <span class="number">6</span></span><br><span class="line">myNewObj2.<span class="title function_">getMyNumber</span>(); <span class="comment">// = 6</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 字符串和数字等内置类型也有通过构造函数来创建的包装类型</span></span><br><span class="line"><span class="keyword">var</span> myNumber = <span class="number">12</span>;</span><br><span class="line"><span class="keyword">var</span> myNumberObj = <span class="keyword">new</span> <span class="title class_">Number</span>(<span class="number">12</span>);</span><br><span class="line">myNumber == myNumberObj; <span class="comment">// = true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是它们并非严格等价</span></span><br><span class="line"><span class="keyword">typeof</span> myNumber; <span class="comment">// = &#x27;number&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> myNumberObj; <span class="comment">// = &#x27;object&#x27;</span></span><br><span class="line">myNumber === myNumberObj; <span class="comment">// = false</span></span><br><span class="line"><span class="keyword">if</span> (<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="comment">// 这段代码不会执行，因为0代表假</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不过，包装类型和内置类型共享一个原型，</span></span><br><span class="line"><span class="comment">// 所以你实际可以给内置类型也增加一些功能，例如对string：</span></span><br><span class="line"><span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">firstCharacter</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">charAt</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">&quot;abc&quot;</span>.<span class="title function_">firstCharacter</span>(); <span class="comment">// = &quot;a&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个技巧经常用在“代码填充”中，来为老版本的javascript子集增加新版本js的特性，</span></span><br><span class="line"><span class="comment">// 这样就可以在老的浏览器中使用新功能了。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 比如，我们知道Object.create并没有在所有的版本中都实现，</span></span><br><span class="line"><span class="comment">// 但是我们仍然可以通过“代码填充”来实现兼容：</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title class_">Object</span>.<span class="property">create</span> === <span class="literal">undefined</span>)&#123; <span class="comment">// 如果存在则不覆盖</span></span><br><span class="line">    <span class="title class_">Object</span>.<span class="property">create</span> = <span class="keyword">function</span>(<span class="params">proto</span>)&#123;</span><br><span class="line">        <span class="comment">// 用正确的原型来创建一个临时构造函数</span></span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">Constructor</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;;</span><br><span class="line">        <span class="title class_">Constructor</span>.<span class="property"><span class="keyword">prototype</span></span> = proto;</span><br><span class="line">        <span class="comment">// 之后用它来创建一个新的对象</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Constructor</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="更多概念"><a href="#更多概念" class="headerlink" title="更多概念"></a>更多概念</h3><h4 id="ansyc与await"><a href="#ansyc与await" class="headerlink" title="ansyc与await"></a>ansyc与await</h4><p>async 函数中可能会有 await 表达式，async 函数执行时，如果遇到 await 就会先暂停执行 ，等到触发的异步操作完成后，恢复 async 函数的执行并返回解析值。</p>
+<p>await 关键字仅在 async function 中有效。如果在 async function 函数体外使用 await ，你只会得到一个语法错误。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">JavaScript</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-07-11 10:06:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/07/11/note/Programming/Language/javascript/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Programming/"><i class="fa-solid fa-hashtag"></i>&nbsp;Programming</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Web/"><i class="fa-solid fa-hashtag"></i>&nbsp;Web</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/07/14/note/Framework/OpenGL/Ogre%20Compile/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">在ArchLinux上编译Ogre</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/07/05/note/Hexo/picgo/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">使用typora+picgo（图床上传工具）作为博客的编辑工具</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8EHTML%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="nav-number">1.1.</span> <span class="nav-text">与HTML的交互</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">第一个程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E5%A4%96%E9%83%A8js%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">引入外部js文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">简单学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E3%80%81%E5%AD%97%E7%AC%A6%E3%80%81%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.1.</span> <span class="nav-text">数字、字符、操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.</span> <span class="nav-text">变量、数组、对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">逻辑与控制结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85"><span class="nav-number">2.4.</span> <span class="nav-text">函数、作用域、闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B"><span class="nav-number">2.5.</span> <span class="nav-text">对象、构造函数和原型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">更多概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ansyc%E4%B8%8Eawait"><span class="nav-number">3.1.</span> <span class="nav-text">ansyc与await</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Linux Note |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Linux Note</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-05-25 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%8A%80%E5%B7%A7%E4%B8%8E%E8%B8%A9%E5%9D%91-%C2%B7-%E6%9D%82%E9%A1%B9/">经验与技巧与踩坑 · 杂项</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%8A%80%E5%B7%A7%E4%B8%8E%E8%B8%A9%E5%9D%91-%C2%B7-%E6%9D%82%E9%A1%B9/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/"><i class="fas fa-hashtag"></i>&nbsp;Linux</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Termux/"><i class="fas fa-hashtag"></i>&nbsp;Termux</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/System/"><i class="fas fa-hashtag"></i>&nbsp;System</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>1.2k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <blockquote>
+<p>📚  使用Linux时遇到的一些问题和解决方法</p>
+</blockquote>
+<span id="more"></span>
+
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/R-C2.png"
+                      alt="R-C2"
+                ></p>
+<h2 id="Linux-General-Issues"><a href="#Linux-General-Issues" class="headerlink" title="Linux General Issues"></a>Linux General Issues</h2><h3 id="Linux-添加环境变量"><a href="#Linux-添加环境变量" class="headerlink" title="Linux 添加环境变量"></a>Linux 添加环境变量</h3><p>添加路径到 <code>.bashrc</code> , <code>/etc/bashrc</code>, <code>.bash_profile</code>, <code>/etc/profile</code>, <code>/etc/environment</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/path/to/PATH</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tmoe-脚本"><a href="#Tmoe-脚本" class="headerlink" title="Tmoe 脚本"></a>Tmoe 脚本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -LO https://l.tmoe.me/2.awk</span><br><span class="line">awk -f 2.awk</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux-更改家目录文件名的语言"><a href="#Linux-更改家目录文件名的语言" class="headerlink" title="Linux 更改家目录文件名的语言"></a>Linux 更改家目录文件名的语言</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> LANG=en_US</span><br><span class="line">xdg-user-dirs-gtk-update</span><br><span class="line"><span class="comment"># 在弹出的对话框中选择更新文件名</span></span><br><span class="line"><span class="comment"># 然后再改回</span></span><br><span class="line"><span class="built_in">export</span> LANG=zh_CN</span><br></pre></td></tr></table></figure>
+
+<h3 id="Qt-最新版完整安装"><a href="#Qt-最新版完整安装" class="headerlink" title="Qt 最新版完整安装"></a>Qt 最新版完整安装</h3><p>使用在线安装器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/qt/archive/online_installers/4.5/qt-unified-linux-x64-4.5.0-online.run</span><br><span class="line"><span class="built_in">chmod</span> +x qt-unified-linux-x64-4.5.0-online.run</span><br><span class="line">./qt-unified-linux-x64-4.5.0-online.run <span class="comment"># 需要图形界面</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux-文件权限"><a href="#Linux-文件权限" class="headerlink" title="Linux 文件权限"></a>Linux 文件权限</h3><p>常见的有 <code>644</code>、<code>755</code>、<code>777</code></p>
+<table>
+<thead>
+<tr>
+<th>444</th>
+<th>r–r–r–</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>600</td>
+<td>rw——-</td>
+</tr>
+<tr>
+<td>644</td>
+<td>rw-r–r–</td>
+</tr>
+<tr>
+<td>666</td>
+<td>rw-rw-rw-</td>
+</tr>
+<tr>
+<td>700</td>
+<td>rwx——</td>
+</tr>
+<tr>
+<td>744</td>
+<td>rwxr–r–</td>
+</tr>
+<tr>
+<td>755</td>
+<td>rwxr-xr-x</td>
+</tr>
+<tr>
+<td>777</td>
+<td>rwxrwxrwx</td>
+</tr>
+</tbody></table>
+<p>解释：</p>
+<table>
+<thead>
+<tr>
+<th align="center">数字</th>
+<th align="center">权限</th>
+<th align="center">字母</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">4</td>
+<td align="center">读</td>
+<td align="center">r</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">写</td>
+<td align="center">w</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">执行</td>
+<td align="center">x</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">无</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">以 <code>755</code> 为例</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">权限代码</td>
+<td align="center">7</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">权限对应用户</td>
+<td align="center">文件所有者</td>
+<td align="center">组用户</td>
+</tr>
+<tr>
+<td align="center">计算</td>
+<td align="center">4+2+1</td>
+<td align="center">4+1</td>
+</tr>
+<tr>
+<td align="center">权限</td>
+<td align="center">可读可写可执行</td>
+<td align="center">可读可执行</td>
+</tr>
+<tr>
+<td align="center">若用 <code>chmod 4755 filename</code> 可使此程序具有 root 的权限</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="Run-Multiple-Processes-on-Linux-Terminal"><a href="#Run-Multiple-Processes-on-Linux-Terminal" class="headerlink" title="Run Multiple Processes on Linux Terminal"></a>Run Multiple Processes on Linux Terminal</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g -w &amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<p>Different from <code>hexo g -w ; hexo s</code>, <code>&amp;</code> implicate that the former and the latter will run at the same time. The command  in the front of <code>;</code> priors to the command  in the back of <code>;</code>.</p>
+<h3 id="给-shell-脚本文件添加可执行权限"><a href="#给-shell-脚本文件添加可执行权限" class="headerlink" title="给 shell 脚本文件添加可执行权限"></a>给 shell 脚本文件添加可执行权限</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x shell.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux-查看磁盘空间"><a href="#Linux-查看磁盘空间" class="headerlink" title="Linux 查看磁盘空间"></a>Linux 查看磁盘空间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -hl</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux修改中文"><a href="#Linux修改中文" class="headerlink" title="Linux修改中文"></a>Linux修改中文</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br><span class="line"><span class="comment"># Uncommit zh_CN and en_US</span></span><br><span class="line">locale-gen</span><br><span class="line"></span><br><span class="line">vim /etc/locale.conf</span><br><span class="line"><span class="comment"># LANG=&quot;zh_CN-UTF-8&quot;</span></span><br><span class="line"></span><br><span class="line">vim .bashrc</span><br><span class="line"><span class="comment"># Add:</span></span><br><span class="line"><span class="comment"># export LANG=zh_CN.UTF-8</span></span><br><span class="line"><span class="comment"># export LANGUAGE=zh_CN:en_US</span></span><br><span class="line"></span><br><span class="line">sudo pacman -S noto-fonts-cjk</span><br><span class="line"><span class="comment"># Install font</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看显卡及驱动情况"><a href="#查看显卡及驱动情况" class="headerlink" title="查看显卡及驱动情况"></a>查看显卡及驱动情况</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lspci -k | grep -A 2 -E <span class="string">&quot;(VGA|3D)&quot;</span></span><br><span class="line"><span class="comment"># 显示为</span></span><br><span class="line">00:02.0 VGA compatible controller: Intel Corporation WhiskeyLake-U GT2 [UHD Graphics 620]</span><br><span class="line">	Subsystem: Lenovo WhiskeyLake-U GT2 [UHD Graphics 620]</span><br><span class="line">	Kernel driver <span class="keyword">in</span> use: i915</span><br><span class="line">--</span><br><span class="line">03:00.0 3D controller: NVIDIA Corporation GP108BM [GeForce MX250] (rev a1)</span><br><span class="line">	Subsystem: Lenovo GP108BM [GeForce MX250]</span><br><span class="line">	Kernel driver <span class="keyword">in</span> use: nouveau</span><br></pre></td></tr></table></figure>
+
+<h3 id="默认编辑器"><a href="#默认编辑器" class="headerlink" title="默认编辑器"></a>默认编辑器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .bashrc</span><br><span class="line"><span class="comment"># add</span></span><br><span class="line"><span class="built_in">export</span> EDITOR=<span class="string">&quot;vim&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Archlinux"><a href="#Archlinux" class="headerlink" title="Archlinux"></a>Archlinux</h2><h3 id="Backup-and-Restore-using-pigz"><a href="#Backup-and-Restore-using-pigz" class="headerlink" title="Backup and Restore (using pigz)"></a>Backup and Restore (using pigz)</h3><h4 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -Syyu <span class="comment"># Update system  </span></span><br><span class="line">sudo pacman -S pigz <span class="comment">#Install pigz  </span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line">sudo tar --use-compress-program=pigz -cvpf /run/media/icarus/MHD/Systembackup/archlinux-backup@`<span class="built_in">date</span> +%Y-%m+%d`.tgz --exclude=/proc --exclude=/lost+found --exclude=/mnt --exclude=/sys --exclude=/tmp --exclude=/run/media --exclude=/home / <span class="comment">#Backup  </span></span><br><span class="line"></span><br><span class="line">sudo tar -cvpzf /run/media/icarus/MHD/Systembackup/archlinux-backup-pureKDE.tgz --exclude=/proc --exclude=/lost+found --exclude=/mnt --exclude=/sys --exclude=/run/media --[[<span class="comment">#Clean up Trash in Archlinux]]exclude=/tmp /  #Don&#x27;t use pigz, and network is not necessary</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Restore"><a href="#Restore" class="headerlink" title="Restore"></a>Restore</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Boot by Live CD </span></span><br><span class="line">iwctl                             </span><br><span class="line">device list                     <span class="comment"># Find wlan0  </span></span><br><span class="line">station wlan0 scan              <span class="comment"># Scan WIFI  </span></span><br><span class="line">station wlan0 get-networks      <span class="comment"># List network </span></span><br><span class="line">station wlan0 connect WIFI1  <span class="comment"># Connect a network  </span></span><br><span class="line"><span class="built_in">exit</span>                            <span class="comment"># Exit after successing  </span></span><br><span class="line">ping www.bing.com     <span class="comment"># Test network  </span></span><br><span class="line"></span><br><span class="line">sudo vim /etc/pacman.d/mirrorlist <span class="comment"># Add &quot;Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch&quot;  </span></span><br><span class="line">sudo pacman -S pigz    <span class="comment"># Install pigz  </span></span><br><span class="line">lsblk        <span class="comment"># View disk </span></span><br><span class="line"><span class="built_in">mkdir</span> /RE       <span class="comment"># Create a partition of backup files</span></span><br><span class="line">mount /dev/sda1 /RE    <span class="comment"># Mount the disk where backup files are stored</span></span><br><span class="line">mount /dev/sdb3 /mnt    <span class="comment"># Mount system root directory of Archlinux to /mnt  </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /mnt/*      <span class="comment"># Clean old system  </span></span><br><span class="line">tar --use-compress-program=pigz -xvpf /RE/Systembackup/archlinux-backup-pureKDE.tgz  -C /mnt          <span class="comment"># Restore system </span></span><br><span class="line"><span class="built_in">ls</span> /mnt       <span class="comment"># View the restore </span></span><br><span class="line">umount -R /mnt      <span class="comment"># Unmount /mnt  </span></span><br><span class="line">reboot        <span class="comment"># Reboot</span></span><br></pre></td></tr></table></figure>
+
+<p>It is worth noting that <strong><code>fstab</code></strong> and <strong>GRUB boot sequence</strong> needs to be regenerated!</p>
+<h3 id="Add-Windows-Boot-Manager-to-GRUB"><a href="#Add-Windows-Boot-Manager-to-GRUB" class="headerlink" title="Add Windows Boot Manager to GRUB"></a>Add Windows Boot Manager to GRUB</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S grub-customizer</span><br></pre></td></tr></table></figure>
+
+<p>Add a boot menu in grub-customizer, then modify the configuration:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">menuentry <span class="string">&#x27;Windows 10&#x27;</span> &#123;  </span><br><span class="line"> <span class="built_in">set</span> root=<span class="string">&#x27;(hd1,3)&#x27;</span>  </span><br><span class="line"> search --no-floppy --fs-uuid --<span class="built_in">set</span> 0527-0342  </span><br><span class="line"> chainloader (<span class="variable">$&#123;root&#125;</span>)/EFI/Microsoft/Boot/bootmgfw.efi  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Use <code>blkid</code> view the <code>uuid</code> of EFI partition:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo blkid</span><br></pre></td></tr></table></figure>
+
+<h3 id="Install-deb-Package-in-Archlinux"><a href="#Install-deb-Package-in-Archlinux" class="headerlink" title="Install . deb Package in Archlinux"></a>Install . deb Package in Archlinux</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S debtap  </span><br><span class="line">sudo debtap -u  </span><br><span class="line">debtap &lt;/application&gt;.deb  </span><br><span class="line">sudo pacman -U &lt;/package-name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Can’t-Connect-Bluetooth-Keyboard-in-Archlinux-GUI"><a href="#Can’t-Connect-Bluetooth-Keyboard-in-Archlinux-GUI" class="headerlink" title="Can’t Connect Bluetooth Keyboard in Archlinux (GUI)"></a>Can’t Connect Bluetooth Keyboard in Archlinux (GUI)</h3><p>Using <code>Cli</code> :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S bluez bluez-utils</span><br><span class="line"><span class="comment"># Install bluez</span></span><br><span class="line">sudo bluetoothctl</span><br><span class="line">power on</span><br><span class="line">agent on</span><br><span class="line">default-agent</span><br><span class="line">scan on</span><br><span class="line">pair &lt;MAC address of keyboard&gt;</span><br><span class="line">trust &lt;MAC address of keyboard&gt;</span><br><span class="line">connect &lt;MAC address&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装WPS"><a href="#安装WPS" class="headerlink" title="安装WPS"></a>安装WPS</h3><p>使用yay安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S wps-office-mui-zh-cn wps-office ttf-wps-fonts</span><br></pre></td></tr></table></figure>
+
+<p>然后复制windows中的字体<code>simsun.ttc</code>，<code>simhei.ttc</code>（或更多，如果你想要）到<code>/usr/share/fonts/wps_symbol_fonts</code>，文件夹不存在则创建。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/fonts/</span><br><span class="line"><span class="built_in">chmod</span> 755 wps_symbol_fonts/</span><br><span class="line"><span class="built_in">cd</span> /usr/share/fonts/wps_symbol_fonts/</span><br><span class="line"><span class="built_in">chmod</span> 644 *</span><br><span class="line">mkfontscale</span><br><span class="line">mkfontdir</span><br><span class="line">fc-cache          <span class="comment"># 更新字体缓存</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>[换源](<a href="https://dionysen.github.io/2023/05/25/note/Linux/Source">https://dionysen.github.io/2023/05/25/note/Linux/Source</a> List&#x2F;)</p>
+<h3 id="ubuntu-最小安装-gnome"><a href="#ubuntu-最小安装-gnome" class="headerlink" title="ubuntu 最小安装 gnome"></a>ubuntu 最小安装 gnome</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get --no-install-recommends install ubuntu-gnome-desktop fonts-ubuntu yaru-theme-gtk gnome-tweaks fonts-noto fonts-noto-mono fonts-noto-cjk fonts-noto-color-emoji</span><br></pre></td></tr></table></figure>
+
+<h2 id="Linux-Terminal-Proxy-Setting"><a href="#Linux-Terminal-Proxy-Setting" class="headerlink" title="Linux Terminal Proxy Setting"></a>Linux Terminal Proxy Setting</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S proxychains-gn  <span class="comment"># Install proxychains  </span></span><br><span class="line">vim /etc/proxychains.conf       <span class="comment"># Edit proxychains.conf</span></span><br></pre></td></tr></table></figure>
+
+<p>Add <strong>socks proxy</strong> at <code>proxylist</code> in <code>Proxychains</code> :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">socks4 127.0.0.1 1080 </span><br></pre></td></tr></table></figure>
+
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">socks5 127.0.0.1 1080</span><br></pre></td></tr></table></figure>
+
+<p>Add <code>proxychains</code> before the command that needs proxy.</p>
+<h3 id="Clean-up-Trash-in-Archlinux"><a href="#Clean-up-Trash-in-Archlinux" class="headerlink" title="Clean up Trash in Archlinux"></a>Clean up Trash in Archlinux</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -R <span class="variable">$&#123;pacman -Qdtq&#125;</span>  <span class="comment"># Clean up useless dependence</span></span><br><span class="line">sudo pacman -Scc    <span class="comment"># Clean up caches</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Install-XMind-Cracked-for-Linux"><a href="#Install-XMind-Cracked-for-Linux" class="headerlink" title="Install XMind Cracked for Linux"></a>Install XMind Cracked for Linux</h3><p>Install <code>xmind-vana-10.3.1-1-x86_64.pkg.tar.zst</code>， and edit <code>/etc/profile</code>，add</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> VANA_LICENSE_MODE=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> VANA_LICENSE_TO=<span class="string">&quot;sui bian xie&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Save and login out your system, then enjoy.</p>
+<h2 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h2><h3 id="判断文件是否存在"><a href="#判断文件是否存在" class="headerlink" title="判断文件是否存在"></a>判断文件是否存在</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-e filename <span class="comment"># 如果 filename存在，则为真 </span></span><br><span class="line">-d filename <span class="comment"># 如果 filename为目录，则为真 </span></span><br><span class="line">-f filename <span class="comment"># 如果 filename为常规文件，则为真 </span></span><br><span class="line">-L filename <span class="comment"># 如果 filename为符号链接，则为真 </span></span><br><span class="line">-r filename <span class="comment"># 如果 filename可读，则为真 </span></span><br><span class="line">-w filename <span class="comment"># 如果 filename可写，则为真 </span></span><br><span class="line">-x filename <span class="comment"># 如果 filename可执行，则为真 </span></span><br><span class="line">-s filename <span class="comment"># 如果文件长度不为0，则为真 </span></span><br><span class="line">-h filename <span class="comment"># 如果文件是软链接，则为真</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#shell判断文件夹是否存在</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如果文件夹不存在，创建文件夹</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">&quot;/myfolder&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">mkdir</span> /myfolder</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Linux Note</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-05-25 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/05/25/note/Linux/LinuxNote/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Linux/"><i class="fa-solid fa-hashtag"></i>&nbsp;Linux</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Termux/"><i class="fa-solid fa-hashtag"></i>&nbsp;Termux</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/System/"><i class="fa-solid fa-hashtag"></i>&nbsp;System</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/05/25/note/Hexo/Hexo/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo 个人博客搭建</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/05/25/note/Linux/NFS/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">NFS</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-General-Issues"><span class="nav-number">1.</span> <span class="nav-text">Linux General Issues</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">Linux 添加环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tmoe-%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">Tmoe 脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-%E6%9B%B4%E6%94%B9%E5%AE%B6%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E8%AF%AD%E8%A8%80"><span class="nav-number">1.3.</span> <span class="nav-text">Linux 更改家目录文件名的语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-%E6%9C%80%E6%96%B0%E7%89%88%E5%AE%8C%E6%95%B4%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.</span> <span class="nav-text">Qt 最新版完整安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="nav-number">1.5.</span> <span class="nav-text">Linux 文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-Multiple-Processes-on-Linux-Terminal"><span class="nav-number">1.6.</span> <span class="nav-text">Run Multiple Processes on Linux Terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99-shell-%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="nav-number">1.7.</span> <span class="nav-text">给 shell 脚本文件添加可执行权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4"><span class="nav-number">1.8.</span> <span class="nav-text">Linux 查看磁盘空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E4%BF%AE%E6%94%B9%E4%B8%AD%E6%96%87"><span class="nav-number">1.9.</span> <span class="nav-text">Linux修改中文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%98%BE%E5%8D%A1%E5%8F%8A%E9%A9%B1%E5%8A%A8%E6%83%85%E5%86%B5"><span class="nav-number">1.10.</span> <span class="nav-text">查看显卡及驱动情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">1.11.</span> <span class="nav-text">默认编辑器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Archlinux"><span class="nav-number">2.</span> <span class="nav-text">Archlinux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Backup-and-Restore-using-pigz"><span class="nav-number">2.1.</span> <span class="nav-text">Backup and Restore (using pigz)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Backup"><span class="nav-number">2.1.1.</span> <span class="nav-text">Backup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Restore"><span class="nav-number">2.1.2.</span> <span class="nav-text">Restore</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-Windows-Boot-Manager-to-GRUB"><span class="nav-number">2.2.</span> <span class="nav-text">Add Windows Boot Manager to GRUB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-deb-Package-in-Archlinux"><span class="nav-number">2.3.</span> <span class="nav-text">Install . deb Package in Archlinux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Can%E2%80%99t-Connect-Bluetooth-Keyboard-in-Archlinux-GUI"><span class="nav-number">2.4.</span> <span class="nav-text">Can’t Connect Bluetooth Keyboard in Archlinux (GUI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WPS"><span class="nav-number">2.5.</span> <span class="nav-text">安装WPS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu"><span class="nav-number">3.</span> <span class="nav-text">Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-%E6%9C%80%E5%B0%8F%E5%AE%89%E8%A3%85-gnome"><span class="nav-number">3.1.</span> <span class="nav-text">ubuntu 最小安装 gnome</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Terminal-Proxy-Setting"><span class="nav-number">4.</span> <span class="nav-text">Linux Terminal Proxy Setting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clean-up-Trash-in-Archlinux"><span class="nav-number">4.1.</span> <span class="nav-text">Clean up Trash in Archlinux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-XMind-Cracked-for-Linux"><span class="nav-number">4.2.</span> <span class="nav-text">Install XMind Cracked for Linux</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell%E8%84%9A%E6%9C%AC"><span class="nav-number">5.</span> <span class="nav-text">shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">5.1.</span> <span class="nav-text">判断文件是否存在</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
