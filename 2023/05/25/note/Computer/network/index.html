@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Network |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Network</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-05-25 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%8A%80%E5%B7%A7%E4%B8%8E%E8%B8%A9%E5%9D%91-%C2%B7-%E6%9D%82%E9%A1%B9/">经验与技巧与踩坑 · 杂项</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%8A%80%E5%B7%A7%E4%B8%8E%E8%B8%A9%E5%9D%91-%C2%B7-%E6%9D%82%E9%A1%B9/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/">计算机技术</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Network/"><i class="fas fa-hashtag"></i>&nbsp;Network</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Protocol/"><i class="fas fa-hashtag"></i>&nbsp;Protocol</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>2.3k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <blockquote>
+<p>💻计算机网络基础知识。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="总体脉络"><a href="#总体脉络" class="headerlink" title="总体脉络"></a>总体脉络</h2><h3 id="一、物理层"><a href="#一、物理层" class="headerlink" title="一、物理层"></a>一、物理层</h3><p>许多电脑想相互通讯，需要建立连接</p>
+<ul>
+<li>当只有两台电脑时，只需要一根<strong>网线</strong>，即可以通信（<em>IO、中断、缓冲区、操作系统</em>）</li>
+<li>两个、三个、四个……随着电脑数量增多，难以使任意两个都连接起来，否则网线密密麻麻混乱不堪</li>
+<li>使用一个中间设备，将所有电脑都与此设备相连，中间的转发全由这个设备完成，与之前本质上一样，只是网口与网线的数量减少了，不再那么混乱；设备名为<strong>集线器</strong>，仅仅将电信号<strong>转发到所有出口（广播）</strong>，没有做任何处理，因此它属于<strong>物理层</strong></li>
+<li>转发到了所有出口，每一个连接到集线器的设备都有一个<strong>全局唯一</strong>的名字作为标识，即 <strong>MAC 地址</strong>，此时发送数据只需要在数据包的头部拼接上 MAC 地址即可让接受者判断是否为发给自己的数据包</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">MAC 地址</th>
+<th align="center">端口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">aa-aa-aa-aa-aa-aa</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">bb-bb-bb-bb-bb-bb</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">cc-cc-cc-cc-cc-cc</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">dd-dd-dd-dd-dd-dd</td>
+<td align="center">4</td>
+</tr>
+</tbody></table>
+<p>虽然这样布局干净很多，但是本来只需要发送给一个电脑的数据，现在要发给连接到集线器的所有电脑，这样既不安全又不节省网络资源</p>
+<h3 id="二、数据链路层"><a href="#二、数据链路层" class="headerlink" title="二、数据链路层"></a>二、数据链路层</h3><p>如果把集线器变得更加智能，只发送给目标 MAC 地址指向的那台电脑就好了</p>
+<ul>
+<li>使用交换机维护一张 <strong>MAC 地址表</strong>，记录着每个 MAC 地址的设备所在的<strong>端口</strong>，数据到达交换机会通过自动发送给其 MAC 地址所<strong>映射</strong>的端口上，这样的传输方式称为<strong>以太网</strong></li>
+<li>通过发送和接受数据，交换机读取所有设备的 MAC 地址与端口并建立 MAC 地址表</li>
+</ul>
+<p>交换机 A：</p>
+<table>
+<thead>
+<tr>
+<th align="center">MAC 地址</th>
+<th align="center">端口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">aa-aa-aa-aa-aa-aa</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">bb-bb-bb-bb-bb-bb</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">cc-cc-cc-cc-cc-cc</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">dd-dd-dd-dd-dd-dd</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">ee-ee-ee-ee-ee-ee</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">ff-ff-ff-ff-ff-ff</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">gg-gg-gg-gg-gg-gg</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">hh-hh-hh-hh-hh-hh</td>
+<td align="center">5</td>
+</tr>
+</tbody></table>
+<p> 交换机 B：</p>
+<table>
+<thead>
+<tr>
+<th align="center">MAC 地址</th>
+<th align="center">端口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">aa-aa-aa-aa-aa-aa</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">bb-bb-bb-bb-bb-bb</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">cc-cc-cc-cc-cc-cc</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">dd-dd-dd-dd-dd-dd</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">ee-ee-ee-ee-ee-ee</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">ff-ff-ff-ff-ff-ff</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">gg-gg-gg-gg-gg-gg</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">hh-hh-hh-hh-hh-hh</td>
+<td align="center">5</td>
+</tr>
+</tbody></table>
+<ul>
+<li>机器数量越来越多，只需要将更多的交换机相连，每个交换机会有个别端口映射为别的交换机</li>
+</ul>
+<p>此时只有几百台电脑的时候，都还好，所以这种交换机的设计方式，已经足足支撑一阵子了</p>
+<p>但很遗憾，人是贪婪的动物，很快，电脑的数量就发展到几千、几万、几十万</p>
+<h3 id="三、网络层"><a href="#三、网络层" class="headerlink" title="三、网络层"></a>三、网络层</h3><p>交换机已经无法记录如此庞大的映射关系了</p>
+<p>问题在于交换机中映射到其他交换机的端口会有与这些端口数相同的 MAC 地址数，<em>这会使 MAC 地址表无比庞大</em></p>
+<ul>
+<li>将很每一个交换机都接入一个<strong>新的设备</strong>，这个设备跟电脑一样拥有自己独立的 MAC 地址，同时还能把数据包做一次<strong>转发</strong>，我们称之为<strong>路由器</strong></li>
+</ul>
+<blockquote>
+<p>路由器：一台独立的拥有 MAC 地址的设备，并且可以把数据包做一次转发</p>
+</blockquote>
+<ul>
+<li>路由器的每一个端口都有独立的 MAC 地址</li>
+<li>此时如果有两个电脑需要数据传输，如果同处于一个交换机下，则不需要通过路由器，如何判断是否需要通过路由器</li>
+<li>MAC 地址是<strong>出厂分配</strong>的，全球唯一，因此引入一个新的地址，每台机器分配一个 32 位（二进制）的编号，即 <strong>IP 地址</strong>；此时每台电脑既有自己的 MAC 地址又有自己的 IP 地址；IP 地址在<strong>软件层面</strong>上，可以随时修改，MAC 地址在硬件层面，不能修改</li>
+<li>此时在两台设备之间传输的信息就包含了两个头部，数据链路层头部和网络层头部</li>
+<li>两个 IP 处于同一个<strong>子网</strong>就直接通过交换机发送出去，不在同一个子网就交给路由器处理，<code>192.168.0. xxx</code> 开头一样的属于同一个子网；计算如何判断？答案是通过<strong>子网掩码</strong>：计算机通过将 IP 地址和子网掩码进行<em><strong>与运算</strong></em></li>
+</ul>
+<blockquote>
+<p>如某机器的子网掩码为 255.255.255.0，四台电脑的 IP 地址：<br>A 电脑：192.168.0.1 &amp; 225.225.225.0 &#x3D; 192.168.0.0<br>B 电脑：192.168.0.2 &amp; 225.225.225.0 &#x3D; 192.168.0.0<br>C 电脑：192.168.1.1 &amp; 225.225.225.0 &#x3D; 192.168.1.0<br>D 电脑：192.168.1.2 &amp; 225.225.225.0 &#x3D; 192.168.1.0<br>计算的结果相等，就属于同一个子网<br><strong>子网掩码</strong>其实是表示 IP 地址前多少位表示子网的网段</p>
+</blockquote>
+<ul>
+<li>当 A 想与 C 通信时，将 A 和 C 的 IP 地址分别与 A 的子网掩码进行 <code>&amp;</code> 运算，发现不相等，则 A 认为 C 和自己不在同一个子网，于是把包发送给路由器</li>
+</ul>
+<p>但是 A 如何知道哪一个是路由器呢？</p>
+<ul>
+<li>对于 A 来说，它只能把包发送到同处于子网下的某一个 IP 上，所以只需要在 A 电脑内配置一个<strong>默认网关</strong>，也即路由器的 IP 地址<br>路由器如何知道 C 在哪里？</li>
+<li>路由器收到包含 IP 地址的数据包，需要判断从哪个端口发送出去，由于子网掩码其实是表示 IP 地址前多少位表示子网的网段，因此可以把 IP 地址与子网掩码合并表示，如 <code>192.168.0.0（255.255.255.0）</code> 可以表示为 <code>192.168.0.0/24</code>（24 表示子网掩码占 24 个字节），路由器通过<strong>路由表</strong>判断将一个子网下的都转发到对应的端口<br>发送数据包的数据链路层需要知道 MAC 地址，但是只知道 IP 地址怎么办？</li>
+<li>答案是 arp 协议；每个电脑都有一张 arp 缓存表，记录着 IP 地址与 MAC 地址的对应关系</li>
+<li>一开始 arp 缓存表是<strong>空的</strong>，每台电脑都会<strong>广播</strong> arp 请求，收到的电脑会<strong>响应</strong>也即返回自己的 MAC 地址，此时电脑收到返回会<strong>更新</strong>自己的 arp 表</li>
+</ul>
+<p>综上，每台电脑都会有如下配置：</p>
+<table>
+<thead>
+<tr>
+<th align="right">IP 地址：</th>
+<th align="left">192.168.0.1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">MAC 地址：</td>
+<td align="left">AA-AA-AA-AA-AA-AA</td>
+</tr>
+<tr>
+<td align="right">子网掩码：</td>
+<td align="left">255.255.255.0</td>
+</tr>
+<tr>
+<td align="right">默认网关：</td>
+<td align="left">192.168.0.254</td>
+</tr>
+</tbody></table>
+<p>一共涉及三张表：</p>
+<ol>
+<li>交换机中有 <strong>MAC 地址</strong>表用于映射 MAC 地址和它的端口</li>
+<li>路由器中有<strong>路由表</strong>用于映射 IP 地址与它的端口</li>
+<li>电脑和路由器中都有 <strong>arp 缓存表</strong>用于缓存 IP 和 MAC 地址的映射关系</li>
+</ol>
+<p>三张表的建立：</p>
+<ol>
+<li>MAC 地址是通过以太网内各节点之间不断通过交换机通讯而完善的</li>
+<li>路由表是各种路由算法+人工配制完善的</li>
+<li>arp 缓存是不断通过 arp 协议的请求逐步完善的</li>
+</ol>
+<h3 id="分视角分析"><a href="#分视角分析" class="headerlink" title="分视角分析"></a>分视角分析</h3><h3 id="电脑视角"><a href="#电脑视角" class="headerlink" title="电脑视角"></a>电脑视角</h3><ul>
+<li>首先要知道自己的 IP 和对方的 IP</li>
+<li>通过子网掩码判断两者是否在同一个子网</li>
+<li>同一个子网就直接通过 arp 协议获取对方的 MAC 地址发送过去</li>
+<li>不在同一个子网则通过 arp 协议获取默认网关的 MAC 地址发送过去</li>
+</ul>
+<h3 id="交换机视角"><a href="#交换机视角" class="headerlink" title="交换机视角"></a>交换机视角</h3><ul>
+<li>收到的数据包必须有目标的 MAC 地址</li>
+<li>通过 MAC 地址查询映射关系</li>
+<li>查到就按照映射关系从指定端口发送出去</li>
+<li>查不到就所有端口都发送</li>
+</ul>
+<p>路由器视角</p>
+<ul>
+<li>收到的数据包必须包含目标的 IP 地址</li>
+<li>通过路由表查询映射关系</li>
+<li>查到了就按照映射关系从制定端口发送出去</li>
+<li>查不到则返回一个路由不可达的数据包</li>
+</ul>
+<blockquote>
+<p>网络层（IP 协议）本身没有传输包的功能，包的实际传输是委托给数据链路层（以太网中的交换机）来实现的</p>
+</blockquote>
+<h3 id="四、传输层"><a href="#四、传输层" class="headerlink" title="四、传输层"></a>四、传输层</h3><p>只需要获取对方的 IP 地址，数据包就可以在任意两台的电脑之间进行传输了，但是当一台电脑接收到一个数据包时，具体应该交给哪一个<strong>程序（进程）</strong> 呢？</p>
+<p>为了把通信的进程区分开来，就给每一个进程分配一个数字编号，也即端口号；然后在传输的数据包上要加上传输层的头部，即<strong>源端口号</strong>与<strong>目标端口号</strong></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Network</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-05-25 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/05/25/note/Computer/network/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Network/"><i class="fa-solid fa-hashtag"></i>&nbsp;Network</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Protocol/"><i class="fa-solid fa-hashtag"></i>&nbsp;Protocol</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/05/25/note/Algorithm/LinkedList/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Singly Linked list</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/05/25/note/Computer/thread/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">多线程基础</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E8%84%89%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">总体脉络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-number">1.1.</span> <span class="nav-text">一、物理层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.2.</span> <span class="nav-text">二、数据链路层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">1.3.</span> <span class="nav-text">三、网络层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E8%A7%86%E8%A7%92%E5%88%86%E6%9E%90"><span class="nav-number">1.4.</span> <span class="nav-text">分视角分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E8%84%91%E8%A7%86%E8%A7%92"><span class="nav-number">1.5.</span> <span class="nav-text">电脑视角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A7%86%E8%A7%92"><span class="nav-number">1.6.</span> <span class="nav-text">交换机视角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">1.7.</span> <span class="nav-text">四、传输层</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
