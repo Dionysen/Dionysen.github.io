@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Algorithm |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Algorithm</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-05-25 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Programming/"><i class="fas fa-hashtag"></i>&nbsp;Programming</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>2k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <blockquote>
+<p>同一个问题，不同的算法，结果一样而所消耗资源不一样</p>
+</blockquote>
+<p>大O表示法：算法的时间复杂度通常用大O符号表述，定义为 <strong>T[n] &#x3D; O(f(n))</strong> 。称函数T(n)以f(n)为界或者称T(n)受限于f(n)。<br>如果一个问题的规模是n，解这一问题的某一算法所需要的时间为T(n)。T(n)称为这一算法的“时间复杂度”。</p>
+<span id="more"></span>
+
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
+<li><p>常数阶 O(1)<br>代码中没有影响到其所用时间的变量<br>如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swapTwoInts</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>线性阶 O(n)<br>代码中有变量可以影响到执行所用的时间，它们的关系是线性的<br>如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span> <span class="params">( <span class="type">int</span> n )</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="type">int</span> i = <span class="number">0</span> ; i &lt;= n ; i ++)&#123;</span><br><span class="line">        ret += i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>平方阶 O(n${^2}$)</p>
+</li>
+</ul>
+<p>代码中的变量与执行代码所用时间的关系是平方<br>如遍历for循环嵌套for循环</p>
+<ul>
+<li>对数阶 O(logn)<br>在二分查找中，通过while循环，成2倍数的缩减搜索范围，也就是说需要经过log2^n次可以跳出循环。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">binarySearch</span><span class="params">( <span class="type">int</span> arr[], <span class="type">int</span> n , <span class="type">int</span> target)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> ( l &lt;= r) &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] &gt; target ) r = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下代码也是O(logn)的时间复杂度</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 整形转成字符串</span></span><br><span class="line"><span class="function">string <span class="title">intToString</span> <span class="params">( <span class="type">int</span> num )</span></span>&#123;</span><br><span class="line">    string s = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="comment">// n 经过几次“除以10”的操作后，等于0</span></span><br><span class="line">    <span class="keyword">while</span> (num )&#123;</span><br><span class="line">        s += <span class="string">&#x27;0&#x27;</span> + num%<span class="number">10</span>;</span><br><span class="line">        num /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">reverse</span>(s)</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>线性对数阶 O(nlogn)<br>将时间复杂度为O(logn)的代码循环N遍的话，那么它的时间复杂度就是 n * O(logn)，也就是了O(nlogn)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">hello</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>( m = <span class="number">1</span> ; m &lt; n ; m++)&#123;</span><br><span class="line">        i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>( i &lt; n )&#123;</span><br><span class="line">            i = i * <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>空间复杂度</p>
+<h2 id="递归与迭代"><a href="#递归与迭代" class="headerlink" title="递归与迭代"></a>递归与迭代</h2><p>递归：函数中调用函数本身</p>
+<p>迭代：每次迭代的结果作为下一次迭代的初始值</p>
+<blockquote>
+<p><code>Program</code> &#x3D; <code>Data Structure</code> + <code>Algorithm</code></p>
+</blockquote>
+<h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>How to judge a algorithm?<br>How to contrast diferent algorithms?<br><strong>Big O Notation:</strong> The limiting case of the time or space required by the algorithm as the computational magnitude increases.</p>
+<blockquote>
+<p>T(n) &#x3D; O(f(n))</p>
+</blockquote>
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><ul>
+<li>Example 1:</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    x++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The time complexity of the <code>for</code> loop is <em>O(n)</em>.</p>
+<ul>
+<li>Example 2:</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    x++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">        x++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>There are a single <code>for</code> loop and a double <code>for</code> loop, and the complexity of the former is <em>O(n)</em> and the latter is <em>O(n$^{2}$)</em> . So when <code>n</code> tends to be infinite, the complexity of whole algorithm is <em>O(n$^{2}$)</em>.</p>
+<h3 id="Analysis-of-Commonly-used-time-complexity-order"><a href="#Analysis-of-Commonly-used-time-complexity-order" class="headerlink" title="Analysis of Commonly used time complexity order"></a>Analysis of Commonly used time complexity order</h3><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/Dionysen/BlogCDN@master/img/big-o-running-time-complexity.webp"
+                      style="zoom: 80%;" 
+                >
+
+<h4 id="Constant-order-O-1"><a href="#Constant-order-O-1" class="headerlink" title="Constant order O(1)"></a>Constant order <em>O(1)</em></h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> y = <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> temp = x;</span><br><span class="line">x = y;</span><br><span class="line">y = temp;</span><br></pre></td></tr></table></figure>
+
+<p>As long as there is no complex logic such as loops or recursion, the code is <em>O(1)</em> complex no matter how many lines of code are executed.</p>
+<h4 id="Linear-order-O-n"><a href="#Linear-order-O-n" class="headerlink" title="Linear order O(n)"></a>Linear order <em>O(n)</em></h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    x++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this code, the for loop is executed n times, so the computation time varies with n, so this kind of code can be expressed by <em>O(n)</em>.</p>
+<h4 id="The-logarithmic-order-O-log-n"><a href="#The-logarithmic-order-O-log-n" class="headerlink" title="The logarithmic order O(log n)"></a>The logarithmic order <em>O(log n)</em></h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(i &lt; n) &#123;</span><br><span class="line">    i = i * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In the above loop, each time <code>i</code> is multiplied by <code>2</code>, which means each time <code>i</code> is a step closer to <code>n</code>. So how many cycles does it take for <code>i</code> to be equal to or greater than <code>n</code>, which is solving for 2${^x}$ is equal to <code>n</code>. The answer is <strong>x &#x3D; log 2${^n}$</strong>. So after log 2${^n}$ cycles, <code>i</code> is going to be greater than or equal to <code>n</code>, and that’s the end of the code. So the complexity of this code is <em>O(log n)</em>.</p>
+<h4 id="Linear-log-order-O-nlog-n"><a href="#Linear-log-order-O-nlog-n" class="headerlink" title="Linear log order O(nlog n)"></a>Linear log order <em>O(nlog n)</em></h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n: i++) &#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(x &lt; n) &#123;</span><br><span class="line">        x = x * <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Linear log order <em>O(nlog n)</em> is easy to understand, which means you loop through <em>O(log n)</em> code <code>n</code> times. Each loop is order <em>O(log n)</em>,  <code>n * log n = n(log n)</code>.</p>
+<h4 id="Squared-square-order-O-n-2"><a href="#Squared-square-order-O-n-2" class="headerlink" title="Squared square order O(n${^2}$)"></a>Squared square order <em>O(n${^2}$)</em></h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">        x++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>O(n${^2}$)</em> is essentially <code>n*n</code>, if we change the number of cycles in the inner layer to <code>m</code>:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">        x++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The complexity becomes <code>n * m</code> &#x3D; <em>O(nm)</em>.</p>
+<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p>Since “time complexity” is not the amount of time a program consumes, “space complexity” is not used to calculate the amount of space a program consumes. As the magnitude of the problem increases, the amount of memory a program needs to allocate may also increase, and “space complexity” reflects the tendency of memory space to increase.</p>
+<h4 id="O-1-Space-complexity"><a href="#O-1-Space-complexity" class="headerlink" title="O(1) Space complexity"></a><em>O(1)</em> Space complexity</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> y = <span class="number">0</span>;</span><br><span class="line">x++;</span><br><span class="line">y++;</span><br></pre></td></tr></table></figure>
+
+<p>The space allocated by <code>x</code> and <code>y</code> does not change with the amount of data processed, so the space complexity is <em>O(1)</em>.</p>
+<h4 id="O-n-Space-complexity"><a href="#O-n-Space-complexity" class="headerlink" title="O(n) Space complexity"></a><em>O(n)</em> Space complexity</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] newArray = <span class="keyword">new</span> <span class="type">int</span>[n];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    newArray[i] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this code, we create an array of length <code>n</code>and then assign values to the elements in the loop. Therefore, the “space complexity” of this code depends on the length of <code>newArray</code>, which is <code>n</code>, so <em>S(n) &#x3D; O(n)</em>.</p>
+<h2 id="Sorting-Algorithms"><a href="#Sorting-Algorithms" class="headerlink" title="Sorting Algorithms"></a>Sorting Algorithms</h2><p>Searching is a very important step in computers, but it is often difficult to find a specific number from unordered data. Binary searching, as we mentioned earlier, only works in sorted arrays. So the sorting algorithm is a very important job, and if we can sort the numbers, then we can save a lot of effort when we’re looking for a particular number.</p>
+<p>There are many sorting algorithms, and each has its own advantages and disadvantages:</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Time Complexity(Best)</th>
+<th>Time Complexity(Average)</th>
+<th>Time Complexity(Worst)</th>
+<th>Space Complexity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quiksort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>Ω(n${^2}$)</em></td>
+<td><em>O(log(n))</em></td>
+</tr>
+<tr>
+<td>Mergesort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n log(n))</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>Timesort</td>
+<td><em>Ω(n)</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n log(n))</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>Heapsort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n log(n))</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Bubble Sort</td>
+<td><em>Ω(n)</em></td>
+<td><em>Θ(n${^2}$)</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Insertion Sort</td>
+<td><em>Ω(n)</em></td>
+<td><em>Θ(n${^2}$)</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Selection Sort</td>
+<td><em>Ω(n${^2}$)</em></td>
+<td><em>Θ(n${^2}$)</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Tree Sort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>Shell Sort</td>
+<td><em>Ω(n log(n))</em></td>
+<td><em>Θ(n (log(n))${^2}$)</em></td>
+<td><em>O(n (log(n))${^2}$)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td>Bucket Sort</td>
+<td><em>Ω(n+k)</em></td>
+<td><em>Θ(n+k)</em></td>
+<td><em>O(n${^2}$)</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>Radix Sort</td>
+<td><em>Ω(nk)</em></td>
+<td><em>Θ(nk)</em></td>
+<td><em>O(nk)</em></td>
+<td><em>O(n+k)</em></td>
+</tr>
+<tr>
+<td>Counting Sort</td>
+<td><em>Ω(n+k)</em></td>
+<td><em>Θ(n+k)</em></td>
+<td><em>O(n+k)</em></td>
+<td><em>O(k)</em></td>
+</tr>
+<tr>
+<td>Cubesort</td>
+<td><em>Ω(n)</em></td>
+<td><em>Θ(n log(n))</em></td>
+<td><em>O(n log(n))</em></td>
+<td><em>O(n)</em></td>
+</tr>
+</tbody></table>
+<h3 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion Sort"></a>Insertion Sort</h3><p>Insertion sort is a simple and intuitive sorting algorithm. In insertion sort, we process the unsorted elements from front to back. For each element, we compare it to the previously sorted elements, find the corresponding position, and insert.</p>
+<p>Essentially, for each element to be processed, we only care about its relationship to the previous element, and we only deal with the elements after the current element in the next round.</p>
+<p><strong>Specific steps:</strong></p>
+<ol>
+<li>Starting with the second element (the first new element to be sorted), the sequence of previous elements is scanned backwards</li>
+<li>If the current scanned element is larger than the current element, the scanned element is moved to the next bit</li>
+<li>Repeat Step 2 until you find a position less than or equal to the new element</li>
+<li>Insert the new element at that location</li>
+<li>Repeat Steps 1 through 4 for subsequent elements</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">inseritonSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> arrayLength)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; arrayLength; i++) &#123;</span><br><span class="line">        <span class="type">int</span> cur = arr[i];</span><br><span class="line">        <span class="type">int</span> inseritonIndex = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (inseritonIndex &gt;= <span class="number">0</span> &amp;&amp; arr[inseritonIndex] &gt; cur) &#123;</span><br><span class="line">            arr[inseritonIndex + <span class="number">1</span>] = arr[inseritonIndex];</span><br><span class="line">            inseritonIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[inseritonIndex + <span class="number">1</span>] = cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em>T(n) &#x3D; O(n${^2}$)</em></p>
+<p><em>S(n) &#x3D; O(1)</em></p>
+</blockquote>
+<h3 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h3><p>Quicksort is a <strong>Divide and Conquer</strong> algorithm in which we turn big problems into small ones, and solve the small ones one by one, so that when the small ones are solved, the big ones will be solved.</p>
+<p>The basic idea of quicksort is to pick a target element and then put the target element in the correct position in the array. The array is then split into two subarrays based on the sorted elements, using the same method and the same operation for the unsorted range.</p>
+<p><strong>Specific steps:</strong></p>
+<ol>
+<li>For the current array, we’re going to use the last element as our <strong>pivot</strong></li>
+<li>All elements smaller than the base number are ranked before the base number, and those larger than the base number are ranked after the base number</li>
+<li>Once the base number is in place, the element is split into two front and back subarrays based on the cardinality position</li>
+<li>Use steps 1 through 4 recursively for subarrays until the subarray is 1 or less in length</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = arr[a];</span><br><span class="line">    arr[a] = arr[b];</span><br><span class="line">    arr[b] = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">partition</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> pivot = arr[right];</span><br><span class="line">    <span class="type">int</span> leftIndex = left;</span><br><span class="line">    <span class="type">int</span> rightIndex = right - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (leftIndex &lt; right &amp;&amp; arr[leftIndex] &lt;= pivot) &#123;</span><br><span class="line">            leftIndex++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (rightIndex &gt;= left &amp;&amp; arr[rightIndex] &gt; pivot) &#123;</span><br><span class="line">            rightIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftIndex &gt; rightIndex) <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">swap</span>(arr, leftIndex, rightIndex);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">swap</span>(arr, leftIndex, right);</span><br><span class="line">    <span class="keyword">return</span> leftIndex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quickSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &gt;= right) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> partitionIndex = <span class="built_in">partition</span>(arr, left, right);</span><br><span class="line">    <span class="built_in">quickSort</span>(arr, left, partitionIndex - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">quickSort</span>(arr, partitionIndex + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printArray</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> arrayLength)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; arrayLength; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em>T(n) &#x3D; O(n${^2}$)</em>.  Average time complexity is <em>O(n(log n))</em>.<br><em>S(n) &#x3D; O(n)</em>. Average time complexity is <em>O(log n).</em></p>
+</blockquote>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Algorithm</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-05-25 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/05/25/note/Algorithm/Algorithm/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Programming/"><i class="fa-solid fa-hashtag"></i>&nbsp;Programming</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/01/note/Hexo/Hexo%20Keep%20Theme/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo 使用 keep 主题及美化</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/05/25/note/Algorithm/DataStrucuture/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Data Structure</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="nav-number">2.</span> <span class="nav-text">递归与迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity"><span class="nav-number">3.</span> <span class="nav-text">Complexity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Complexity"><span class="nav-number">3.1.</span> <span class="nav-text">Time Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analysis-of-Commonly-used-time-complexity-order"><span class="nav-number">3.2.</span> <span class="nav-text">Analysis of Commonly used time complexity order</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Constant-order-O-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Constant order O(1)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-order-O-n"><span class="nav-number">3.2.2.</span> <span class="nav-text">Linear order O(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-logarithmic-order-O-log-n"><span class="nav-number">3.2.3.</span> <span class="nav-text">The logarithmic order O(log n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-log-order-O-nlog-n"><span class="nav-number">3.2.4.</span> <span class="nav-text">Linear log order O(nlog n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Squared-square-order-O-n-2"><span class="nav-number">3.2.5.</span> <span class="nav-text">Squared square order O(n${^2}$)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Space-Complexity"><span class="nav-number">3.3.</span> <span class="nav-text">Space Complexity</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#O-1-Space-complexity"><span class="nav-number">3.3.1.</span> <span class="nav-text">O(1) Space complexity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#O-n-Space-complexity"><span class="nav-number">3.3.2.</span> <span class="nav-text">O(n) Space complexity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorting-Algorithms"><span class="nav-number">4.</span> <span class="nav-text">Sorting Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Insertion-Sort"><span class="nav-number">4.1.</span> <span class="nav-text">Insertion Sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-Sort"><span class="nav-number">4.2.</span> <span class="nav-text">Quick Sort</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

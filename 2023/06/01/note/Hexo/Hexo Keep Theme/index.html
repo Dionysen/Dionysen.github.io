@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Hexo 使用 keep 主题及美化 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Hexo 使用 keep 主题及美化</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-01 20:09</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%8A%80%E5%B7%A7%E4%B8%8E%E8%B8%A9%E5%9D%91-%C2%B7-%E6%9D%82%E9%A1%B9/">经验与技巧与踩坑 · 杂项</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%8A%80%E5%B7%A7%E4%B8%8E%E8%B8%A9%E5%9D%91-%C2%B7-%E6%9D%82%E9%A1%B9/Hexo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo 博客搭建</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/"><i class="fas fa-hashtag"></i>&nbsp;Linux</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Hexo/"><i class="fas fa-hashtag"></i>&nbsp;Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Termux/"><i class="fas fa-hashtag"></i>&nbsp;Termux</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Hexo-keep-theme/"><i class="fas fa-hashtag"></i>&nbsp;Hexo-keep-theme</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>1.8k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>最初是寻找一个干净清爽的hexo主题，逛了许久终于发现这款，虽然第一眼并没有很喜欢，但干净的界面，齐全的功能，我决定自己把它修改成想要的样式。</p>
+<span id="more"></span>
+
+<p>hexo的安装和配置请移步：<a href="https://dionysen.github.io/2023/05/25/note/Wiki/Hexo/">Hexo 个人博客搭建 | DIONYSEN BLOG</a></p>
+<p>基础配置官方文档讲得很清楚：<a class="link"   target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/tutorial/get-start/install-theme.html" >安装主题 | Keep 主题使用指南 (xpoet.cn)<i class="fas fa-external-link-alt"></i></a></p>
+<p>安装hexo，创建自己的项目，并设置主题为<code>keep</code>。</p>
+<h2 id="界面美化"><a href="#界面美化" class="headerlink" title="界面美化"></a>界面美化</h2><h4 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h4><blockquote>
+<p>Keep 主题追求的是简约轻快，在最大程度上降低用户对界面美感的选择困难，使其专注写作的内容，作者认为这两种代码高亮主题能满足绝大部分的使用场景。后续版本迭代基本上不会有新的代码高亮主题出现，望周知。</p>
+</blockquote>
+<p>尽管只有两种代码高亮主题，还是可能会出现一些非预期的错误，比如代码块无法高亮显示代码，可以尝试用以下方式解决：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-prism-plugin <span class="comment"># 卸载prism-plugin</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑博客根目录下的<code>_config.yml</code>文件：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span></span><br><span class="line">  <span class="attr">exclude_languages:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">example</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">preprocess:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>即可使用keep主题的代码高亮方案。</p>
+<h4 id="块阴影"><a href="#块阴影" class="headerlink" title="块阴影"></a>块阴影</h4><p>个人审美觉得主题阴影太深，修改阴影大小和边框颜色，编辑<code>Blog/theme/keep/source/css/common/keep-theme.styl</code>：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="variable">$keep</span>-container-<span class="attribute">border-radius</span> = <span class="number">0.1rem</span></span><br><span class="line"><span class="function"><span class="title">hover-style</span><span class="params">(isTransform, scaleX, scaleY)</span></span> &#123;</span><br><span class="line">  <span class="comment">// box-shadow 2px 2px 5px var(--shadow-color)</span></span><br><span class="line">  <span class="comment">// box-shadow 0px 0.5px 2px var(--shadow-color) 原阴影样式</span></span><br><span class="line">  <span class="attribute">border</span> <span class="number">1px</span> solid <span class="built_in">var</span>(--item-border-color) // 边框样式</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (isTransform) &#123;</span><br><span class="line">    <span class="attribute">transition</span><span class="built_in">-t</span>(<span class="string">&quot;transform&quot;</span>, <span class="string">&quot;0&quot;</span>, <span class="string">&quot;0.2&quot;</span>, <span class="string">&quot;linear&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-pseudo">&amp;:hover</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">hexo-config</span>(<span class="string">&#x27;style.hover.scale&#x27;</span>) &amp;&amp; isTransform) &#123;</span><br><span class="line">      <span class="attribute">transform</span> <span class="built_in">scaleX</span>(scaleX) <span class="built_in">scaleY</span>(scaleX)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">hexo-config</span>(<span class="string">&#x27;style.hover.shadow&#x27;</span>)) &#123; <span class="comment">// 鼠标悬浮样式</span></span><br><span class="line">      <span class="comment">// box-shadow 1px 2px 4px var(--shadow-hover-color)</span></span><br><span class="line">      <span class="attribute">box-shadow</span> <span class="number">0px</span> <span class="number">0.5px</span> <span class="number">2px</span> <span class="built_in">var</span>(--shadow-color)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果想要更加沉浸式的阴影，可以去掉边框，加上四周阴影：</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 注释掉边框</span></span><br><span class="line"><span class="comment">// border 1px solid var(--item-border-color) // 边框样式</span></span><br><span class="line"><span class="comment">// 2. 添加四周阴影：</span></span><br><span class="line"><span class="attribute">box-shadow</span> black <span class="number">0.1px</span> <span class="number">0.1px</span> <span class="number">4px</span>;<span class="comment">//将h-shadow,v-shadow设为0px,实现四周阴影</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如图：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230613195510855.png"
+                      alt="image-20230613195510855"
+                ></p>
+<h4 id="主页描述"><a href="#主页描述" class="headerlink" title="主页描述"></a>主页描述</h4><p>原主题主页最多有两句话，且样式相同，没有层次感，可以修改<code>Blog/themes/keep/layout/_partial/first-screen.ejs</code>文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;description hitokoto&quot;&gt;</span><br><span class="line">    Sincere and Fearless    &lt;!-- 此处插入第一行字 --&gt;            </span><br><span class="line">    &lt;% for (const idx in final_description) &#123; %&gt;</span><br><span class="line">    	&lt;div class=&quot;desc-item&quot;&gt;&lt;%= final_description[idx] %&gt;&lt;/div&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>主题目录下的<code>_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">description:</span> <span class="string">It</span> <span class="string">is</span> <span class="string">this</span> <span class="string">intellectual</span> <span class="string">activity</span> <span class="string">……</span> </span><br><span class="line"><span class="comment"># 此为第二行字</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如图：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230601104727154.png"
+                      alt="image-20230601104727154"
+                ></p>
+<h4 id="字体修改"><a href="#字体修改" class="headerlink" title="字体修改"></a>字体修改</h4><p>个性化的字体需要自定义字体样式，加载云端字体或本地字体，汉字不像英文，一般体积都很大，十几二十兆都很有可能，如果直接加载，会大大拖慢网页加载速度，可以通过压缩的方式减小字体大小。压缩中文字体的原理是删除一些不常用的字，如生僻字、繁体字、特殊符号等。（生僻字未必用不着，因此要删除什么是一个关键问题）</p>
+<p>先下载想用的字体文件，假如只有3字重，那么得到三个文件<code>xxx-regular.ttf</code>、<code>xxx-light.ttf</code>、<code>xxx-bold.ttf</code>，或者<code>otf</code>格式也一样。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> font-compress</span><br><span class="line"><span class="comment"># 将字体文件复制到font-compress文件夹中</span></span><br><span class="line">vim compress.sh</span><br><span class="line"><span class="comment"># 创建一个shell脚本，内容如下：</span></span><br><span class="line"><span class="comment"># ---------- 脚本边界 ----------</span></span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># MIT License</span></span><br><span class="line"><span class="comment"># Copyright (c) 2022-present MoyuScript</span></span><br><span class="line"><span class="comment"># See: https://mit-license.org/</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Input path: <span class="variable">$1</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;With subset: <span class="variable">$2</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Custom text file: <span class="variable">$3</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get current file directory</span></span><br><span class="line">current_dir=$(<span class="built_in">dirname</span> <span class="string">&quot;<span class="variable">$0</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">text_file=<span class="string">&quot;<span class="variable">$current_dir</span>/common-text.txt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -f <span class="string">&quot;<span class="variable">$3</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    text_file=<span class="string">&quot;<span class="variable">$3</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Compress font</span></span><br><span class="line"><span class="function"><span class="title">compress</span></span>() &#123;</span><br><span class="line">    <span class="comment"># Get file basename</span></span><br><span class="line">    file_basename=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span>)</span><br><span class="line">    <span class="comment"># Get file extension</span></span><br><span class="line">    file_extension=<span class="string">&quot;<span class="variable">$&#123;file_basename##*.&#125;</span>&quot;</span></span><br><span class="line">    <span class="comment"># Get file name without extension</span></span><br><span class="line">    file_name=<span class="string">&quot;<span class="variable">$&#123;file_basename%.*&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$2</span>&quot;</span> = <span class="string">&quot;true&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Make subset for <span class="variable">$1</span> with <span class="variable">$text_file</span>&quot;</span></span><br><span class="line">        fonttools subset <span class="string">&quot;<span class="variable">$1</span>&quot;</span> --text-file=<span class="string">&quot;<span class="variable">$text_file</span>&quot;</span> --output-file=<span class="string">&quot;<span class="variable">$file_name</span>.subset.<span class="variable">$file_extension</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Compressing <span class="variable">$1</span>.subset&quot;</span></span><br><span class="line">        fonttools ttLib.woff2 compress <span class="string">&quot;<span class="variable">$file_name</span>.subset.<span class="variable">$file_extension</span>&quot;</span> -o <span class="string">&quot;<span class="variable">$file_name</span>.subset.woff2&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Compressing <span class="variable">$1</span>&quot;</span></span><br><span class="line">        fonttools ttLib.woff2 compress <span class="string">&quot;<span class="variable">$1</span>&quot;</span> -o <span class="string">&quot;<span class="variable">$file_name</span>.woff2&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Is directory?</span></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">&quot;<span class="variable">$1</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Directory&quot;</span></span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span>/*.&#123;ttf,otf&#125;; <span class="keyword">do</span></span><br><span class="line">        compress <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;File&quot;</span></span><br><span class="line">    compress <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># ---------- 脚本边界 ----------</span></span><br></pre></td></tr></table></figure>
+
+<p>在此文件夹中放入存有要保留字的<code>txt</code>文件，如<code>common_text.txt</code>，内容为要保留的所有字符，可以自己整理，也可以使用开源项目中的文件，如<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/feng_xingkai/chinese" >冯兴凯&#x2F;常用汉字集 - 码云 - 开源中国 (gitee.com)<i class="fas fa-external-link-alt"></i></a>，本次使用冯兴凯的汉字集示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 环境配置</span></span><br><span class="line"><span class="comment"># 安装python、python-pip</span></span><br><span class="line">pip install fonttools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作文件夹（font-compress）目录为：</span></span><br><span class="line">.</span><br><span class="line">├── chinese</span><br><span class="line">│   ├── 3500常用字.txt</span><br><span class="line">│   ├── 7000常用字.txt</span><br><span class="line">│   ├── Chinese16159.txt</span><br><span class="line">│   ├── Chinese7000.txt</span><br><span class="line">│   ├── LICENSE</span><br><span class="line">│   └── README.md</span><br><span class="line">├── Chinese7000.txt</span><br><span class="line">├── compress.sh</span><br><span class="line">├── LXGWBright-Italic.ttf</span><br><span class="line">├── LXGWBright-MediumItalic.ttf</span><br><span class="line">├── LXGWBright-Medium.ttf</span><br><span class="line">└── LXGWBright-Regular.ttf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开始压缩</span></span><br><span class="line">./compress.sh /home/dionysen/font-compress chinese7000.txt</span><br></pre></td></tr></table></figure>
+
+<p>压缩完成之后，会在此文件夹下生成<code>.woff2</code>文件，复制这些文件到<code>Blog/theme/keep/source/css/common/fonts</code>文件夹（不存在则创建），在<code>fonts</code>文件夹下创建<code>stylesheet.css</code>，内容为：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;LXGW Bright&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;./common/fonts/LXGWBright-Italic.woff2&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;woff2&#x27;</span>);</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">    <span class="attribute">font-style</span>: italic;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;LXGW Bright&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;./common/fonts/LXGWBright-MediumItalic.woff2&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;woff2&#x27;</span>);</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">500</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: italic;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;LXGW Bright&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;./common/fonts/LXGWBright-Medium.woff2&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;woff2&#x27;</span>);</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">500</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;LXGW Bright&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;./common/fonts/LXGWBright-Regular.woff2&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;woff2&#x27;</span>);</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/home/dionysen/Blog/themes/keep/source/css/style.styl</code>中导入：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;common/fonts/stylesheet.css&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<p><code>/home/dionysen/Blog/themes/keep/source/css/common/basic.styl</code>中导入:</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;fonts/stylesheet.css&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时就可以设置<code>font-family</code>了：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 修改/home/dionysen/Blog/themes/keep/_config.yml文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font family, customize font family. (you don&#x27;t usually have to fill)</span></span><br><span class="line"><span class="comment"># e.g. font_family: STKaiti, STSong, STHeiti</span></span><br><span class="line"><span class="attr">font_family:</span> <span class="string">LXGW</span> <span class="string">Bright,</span> <span class="string">LXGW</span> <span class="string">Bright</span> <span class="string">SemiLight,</span> <span class="string">Simsun,</span> <span class="string">STSong</span></span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230601112348027.png"
+                      alt="image-20230601112348027"  
+                >
+
+
+
+<h2 id="使用-Github-Page-自动部署"><a href="#使用-Github-Page-自动部署" class="headerlink" title="使用 Github Page 自动部署"></a>使用 Github Page 自动部署</h2><p>创建一个私有仓库用来存放源文件。</p>
+<p>创建一个有 <strong>repo</strong> 和 <strong>workflow</strong> 权限的 <a class="link"   href="https://link.juejin.cn/?target=https://github.com/settings/tokens/new" >GitHub Token<i class="fas fa-external-link-alt"></i></a> 。</p>
+<p>将上面生成的 Token 添加到私有仓库的 <code>Secrets</code> 里，并将这个新增的 <code>secret</code> 命名为 <code>HEXO_DEPLOY</code> 。</p>
+<p>私有仓库 -&gt; <code>settings</code> -&gt; <code>Secrets</code> -&gt; <code>New repository secret</code>。</p>
+<p>在Hexo项目根目录下创建配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"><span class="built_in">mkdir</span> .github</span><br><span class="line"><span class="built_in">cd</span> .github</span><br><span class="line"><span class="built_in">mkdir</span> workflows</span><br><span class="line">vim deploy.yml</span><br></pre></td></tr></table></figure>
+
+<p>编辑<code>deploy.yml</code>，添加如下配置</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">deploying</span> <span class="string">Hexo</span> <span class="string">project</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">pages</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> <span class="comment"># main 分支有 push 行为时就触发这个 action</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build-and-deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@master</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">and</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">theme-keep/hexo-deploy-github-pages-action@master</span> <span class="comment"># 使用专门部署 Hexo 到 GitHub pages 的 action</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">PERSONAL_TOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY</span> <span class="string">&#125;&#125;</span> <span class="comment"># secret 名</span></span><br><span class="line">          <span class="attr">PUBLISH_REPOSITORY:</span> <span class="string">Dionysen/Dionysen.github.io</span> <span class="comment"># 公共仓库，格式：GitHub 用户名/仓库名</span></span><br><span class="line">          <span class="attr">BRANCH:</span> <span class="string">main</span> <span class="comment"># 分支，填 gh-pages 就行</span></span><br><span class="line">          <span class="attr">PUBLISH_DIR:</span> <span class="string">./public</span> <span class="comment"># 部署 public 目录下的文件</span></span><br></pre></td></tr></table></figure>
+
+<p>部署使用的是 <a class="link"   href="https://link.juejin.cn/?target=https://github.com/theme-keep" >theme-keep<i class="fas fa-external-link-alt"></i></a> 组织封装的 <strong><a class="link"   href="https://link.juejin.cn/?target=https://github.com/theme-keep/hexo-deploy-github-pages-action" >hexo-deploy-github-pages-action<i class="fas fa-external-link-alt"></i></a></strong> </p>
+<p>然后编辑博客文章，push到源文件仓库，即可自动触发部署。</p>
+<p>私有仓库的action：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230601200708599.png"
+                      alt="image-20230601200708599"
+                ></p>
+<p>公共仓库的action：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230601200735911.png"
+                      alt="image-20230601200735911"
+                ></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Hexo 使用 keep 主题及美化</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-06-01 20:09:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/06/01/note/Hexo/Hexo Keep Theme/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Linux/"><i class="fa-solid fa-hashtag"></i>&nbsp;Linux</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Hexo/"><i class="fa-solid fa-hashtag"></i>&nbsp;Hexo</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Termux/"><i class="fa-solid fa-hashtag"></i>&nbsp;Termux</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Hexo-keep-theme/"><i class="fa-solid fa-hashtag"></i>&nbsp;Hexo-keep-theme</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/04/note/Hexo/Hexo%20Hitokoto/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo 使用 API 添加 hitokoto (一言)</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/05/25/note/Algorithm/Algorithm/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Algorithm</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">界面美化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">1.0.1.</span> <span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%97%E9%98%B4%E5%BD%B1"><span class="nav-number">1.0.2.</span> <span class="nav-text">块阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%A1%B5%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.0.3.</span> <span class="nav-text">主页描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E4%BF%AE%E6%94%B9"><span class="nav-number">1.0.4.</span> <span class="nav-text">字体修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Github-Page-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="nav-number">2.</span> <span class="nav-text">使用 Github Page 自动部署</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

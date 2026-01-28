@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                在ArchLinux上编译Ogre |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">在ArchLinux上编译Ogre</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-07-14 17:32</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E6%A1%86%E6%9E%B6/">框架</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CPP/"><i class="fas fa-hashtag"></i>&nbsp;CPP</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/OpenGL/"><i class="fas fa-hashtag"></i>&nbsp;OpenGL</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Graphic/"><i class="fas fa-hashtag"></i>&nbsp;Graphic</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Computer/"><i class="fas fa-hashtag"></i>&nbsp;Computer</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>1.1k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>Ogre（Object-oriented Graphics Rendering Engine）是一个开源的实时图形渲染引擎，用于创建和渲染三维图形应用程序。它是基于C++编写的，并提供了丰富的功能和工具，使开发者能够构建高性能的图形应用程序。</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/imgogre_header.png"
+                      alt="ogre_header"
+                ></p>
+<span id="more"></span>
+
+<ul>
+<li><strong>特点和功能：</strong></li>
+</ul>
+<ol>
+<li>跨平台支持：Ogre是一个跨平台的引擎，支持在多个操作系统（如Windows、Linux、macOS等）上进行开发和部署。</li>
+<li>高性能渲染：Ogre通过使用现代图形硬件和优化算法，提供了高效的图形渲染。它支持多种渲染路径（如Direct3D和OpenGL），并针对不同平台和硬件提供了灵活的渲染配置。</li>
+<li>强大的渲染功能：Ogre提供了广泛的渲染功能，包括高级材质系统、灯光和阴影、粒子系统、骨骼动画、精确的几何剪裁等。这些功能使开发者能够创建出逼真和令人惊叹的图形效果。</li>
+<li>可扩展性和模块化：Ogre的设计注重可扩展性和模块化。它提供了丰富的插件系统，可以方便地添加和定制功能。开发者可以选择性地集成和使用不同的模块，以满足其特定的需求。</li>
+<li>资源管理和场景图：Ogre提供了资源管理器，用于加载和管理图形资源（如模型、纹理、材质等）。它还包括一个场景图系统，用于组织和渲染场景中的对象。</li>
+<li>多种编程语言支持：尽管Ogre是使用C++编写的，但它提供了多种语言的绑定和接口，包括Python、C#、Java等。这样可以方便开发者使用自己熟悉的编程语言来开发和扩展Ogre应用程序。</li>
+</ol>
+<p>Ogre作为一个成熟且广泛应用的图形渲染引擎，被用于游戏开发、虚拟现实、模拟器、科学可视化等领域。它拥有一个活跃的社区，并提供了丰富的文档、示例和教程，以帮助开发者入门和使用Ogre引擎。</p>
+<h3 id="在ArchLinux上编译Ogre"><a href="#在ArchLinux上编译Ogre" class="headerlink" title="在ArchLinux上编译Ogre"></a>在ArchLinux上编译Ogre</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><p>By default ogre will build the recommended dependencies automatically when you run cmake configure the first time. <a class="link"   target="_blank" rel="noopener" href="https://ogrecave.github.io/ogre/api/latest/namespace_ogre.html" >Ogre<i class="fas fa-external-link-alt"></i></a> will install the dependencies into the subfolder <code>Dependencies</code> in the build dir by default. You can configure it by setting <code>OGRE_DEPENDENCIES_DIR</code> in cmake.</p>
+<blockquote>
+<p>文档的意思是Ogre会在配置cmake的时候自动安装依赖</p>
+</blockquote>
+<h4 id="拉取源码"><a href="#拉取源码" class="headerlink" title="拉取源码"></a>拉取源码</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/OGRECave/ogre.git</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置cmake"><a href="#配置cmake" class="headerlink" title="配置cmake"></a>配置cmake</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ogre</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
+
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake --build . --config Release</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装到系统中"><a href="#安装到系统中" class="headerlink" title="安装到系统中"></a>安装到系统中</h4><p>想要使用它，最好将头文件和库文件放置到干净的地方。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake --build . --config Release --target install</span><br></pre></td></tr></table></figure>
+
+<p>你可能需要root权限才能完成这个操作。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用官方示例：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// This file is part of the OGRE project.</span></span><br><span class="line"><span class="comment">// It is subject to the license terms in the LICENSE file found in the top-level</span></span><br><span class="line"><span class="comment">// directory of this distribution and at https://www.ogre3d.org/licensing.</span></span><br><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Ogre.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;OgreApplicationContext.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//! [key_handler]</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">KeyHandler</span> : <span class="keyword">public</span> OgreBites::InputListener &#123;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">keyPressed</span><span class="params">(<span class="type">const</span> OgreBites::KeyboardEvent &amp;evt)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (evt.keysym.sym == OgreBites::SDLK_ESCAPE) &#123;</span><br><span class="line">            Ogre::Root::<span class="built_in">getSingleton</span>().<span class="built_in">queueEndRendering</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//! [key_handler]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">//! [constructor]</span></span><br><span class="line">    <span class="function">OgreBites::ApplicationContext <span class="title">ctx</span><span class="params">(<span class="string">&quot;OgreTutorialApp&quot;</span>)</span></span>;</span><br><span class="line">    ctx.<span class="built_in">initApp</span>();</span><br><span class="line">    <span class="comment">//! [constructor]</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//! [setup]</span></span><br><span class="line">    <span class="comment">// get a pointer to the already created root</span></span><br><span class="line">    Ogre::Root *root = ctx.<span class="built_in">getRoot</span>();</span><br><span class="line">    <span class="comment">// root-&gt;createRenderWindow(&quot;w&quot;,800,600,false,0);</span></span><br><span class="line">    Ogre::SceneManager *scnMgr = root-&gt;<span class="built_in">createSceneManager</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// register our scene with the RTSS</span></span><br><span class="line">    Ogre::RTShader::ShaderGenerator *shadergen =</span><br><span class="line">        Ogre::RTShader::ShaderGenerator::<span class="built_in">getSingletonPtr</span>();</span><br><span class="line">    shadergen-&gt;<span class="built_in">addSceneManager</span>(scnMgr);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// without light we would just get a black screen</span></span><br><span class="line">    Ogre::Light *light = scnMgr-&gt;<span class="built_in">createLight</span>(<span class="string">&quot;MainLight&quot;</span>);</span><br><span class="line">    Ogre::SceneNode *lightNode =</span><br><span class="line">        scnMgr-&gt;<span class="built_in">getRootSceneNode</span>()-&gt;<span class="built_in">createChildSceneNode</span>();</span><br><span class="line">    lightNode-&gt;<span class="built_in">setPosition</span>(<span class="number">0</span>, <span class="number">15</span>, <span class="number">25</span>);</span><br><span class="line">    lightNode-&gt;<span class="built_in">attachObject</span>(light);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// also need to tell where we are</span></span><br><span class="line">    Ogre::SceneNode *camNode =</span><br><span class="line">        scnMgr-&gt;<span class="built_in">getRootSceneNode</span>()-&gt;<span class="built_in">createChildSceneNode</span>();</span><br><span class="line">    camNode-&gt;<span class="built_in">setPosition</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line">    camNode-&gt;<span class="built_in">lookAt</span>(Ogre::<span class="built_in">Vector3</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>), Ogre::Node::TS_PARENT);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// create the camera</span></span><br><span class="line">    Ogre::Camera *cam = scnMgr-&gt;<span class="built_in">createCamera</span>(<span class="string">&quot;myCam&quot;</span>);</span><br><span class="line">    cam-&gt;<span class="built_in">setNearClipDistance</span>(<span class="number">5</span>); <span class="comment">// secific to this sample</span></span><br><span class="line">    cam-&gt;<span class="built_in">setAutoAspectRatio</span>(<span class="literal">true</span>);</span><br><span class="line">    camNode-&gt;<span class="built_in">attachObject</span>(cam);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// and tell it to render into the main window</span></span><br><span class="line">    ctx.<span class="built_in">getRenderWindow</span>()-&gt;<span class="built_in">addViewport</span>(cam);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// finally something to render</span></span><br><span class="line">    Ogre::Entity *ent = scnMgr-&gt;<span class="built_in">createEntity</span>(<span class="string">&quot;ogrehead.mesh&quot;</span>);</span><br><span class="line">    Ogre::SceneNode *node = scnMgr-&gt;<span class="built_in">getRootSceneNode</span>()-&gt;<span class="built_in">createChildSceneNode</span>();</span><br><span class="line">    node-&gt;<span class="built_in">attachObject</span>(ent);</span><br><span class="line">    <span class="comment">//! [setup]</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//! [main]</span></span><br><span class="line">    <span class="comment">// register for input events</span></span><br><span class="line">    KeyHandler keyHandler;</span><br><span class="line">    ctx.<span class="built_in">addInputListener</span>(&amp;keyHandler);</span><br><span class="line"></span><br><span class="line">    ctx.<span class="built_in">getRoot</span>()-&gt;<span class="built_in">startRendering</span>();</span><br><span class="line">    ctx.<span class="built_in">closeApp</span>();</span><br><span class="line">    <span class="comment">//! [main]</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>CMakeLists.txt</code>文件如下：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span> (VERSION <span class="number">3.10</span>)</span><br><span class="line"><span class="keyword">project</span>(OgreTutorialsSample)</span><br><span class="line"></span><br><span class="line"><span class="comment"># required for Ogre 1.11+</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">11</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">## [discover_ogre]</span></span><br><span class="line"><span class="comment"># The COMPONENTS part checks that OGRE was built the way we need it</span></span><br><span class="line"><span class="comment"># The CONFIG flag makes sure we get OGRE instead of OGRE-next</span></span><br><span class="line"><span class="keyword">find_package</span>(OGRE REQUIRED COMPONENTS Bites CONFIG)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_EXPORT_COMPILE_COMMANDS <span class="keyword">ON</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_BUILD_TYPE debug)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add the source files as usual</span></span><br><span class="line"><span class="keyword">add_executable</span>(<span class="number">0</span>_Bootstrap Bootstrap.cpp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># this also sets the includes and pulls third party dependencies</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(<span class="number">0</span>_Bootstrap OgreBites)</span><br></pre></td></tr></table></figure>
+
+<p>文件结构：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── Bootstrap.cpp</span><br><span class="line">├── build</span><br><span class="line">└── CMakeLists.txt</span><br></pre></td></tr></table></figure>
+
+<p>运行命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..; make; ./0_Bootstrap</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230714174946441.png"
+                      alt="image-20230714174946441"
+                ></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">在ArchLinux上编译Ogre</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-07-14 17:32:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/07/14/note/Framework/OpenGL/Ogre Compile/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CPP/"><i class="fa-solid fa-hashtag"></i>&nbsp;CPP</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/OpenGL/"><i class="fa-solid fa-hashtag"></i>&nbsp;OpenGL</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Graphic/"><i class="fa-solid fa-hashtag"></i>&nbsp;Graphic</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Computer/"><i class="fa-solid fa-hashtag"></i>&nbsp;Computer</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/07/15/note/Programming/tools/mysql_install/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Archlinux上使用MySQL（MariaDB）</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/07/11/note/Programming/Language/javascript/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">JavaScript</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8ArchLinux%E4%B8%8A%E7%BC%96%E8%AF%91Ogre"><span class="nav-number">1.</span> <span class="nav-text">在ArchLinux上编译Ogre</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">1.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E6%BA%90%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">拉取源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEcmake"><span class="nav-number">1.3.</span> <span class="nav-text">配置cmake</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91"><span class="nav-number">1.4.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%88%B0%E7%B3%BB%E7%BB%9F%E4%B8%AD"><span class="nav-number">1.5.</span> <span class="nav-text">安装到系统中</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

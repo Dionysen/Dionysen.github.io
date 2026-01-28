@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                基于Win32的OpenGL1.0 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">基于Win32的OpenGL1.0</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-29 09:51</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E6%A1%86%E6%9E%B6/">框架</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CPP/"><i class="fas fa-hashtag"></i>&nbsp;CPP</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/OpenGL/"><i class="fas fa-hashtag"></i>&nbsp;OpenGL</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Win32/"><i class="fas fa-hashtag"></i>&nbsp;Win32</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Graphic/"><i class="fas fa-hashtag"></i>&nbsp;Graphic</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Computer/"><i class="fas fa-hashtag"></i>&nbsp;Computer</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>1.9k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>使用win32原生API实现OpenGL，可以取代glut等第三方库。</p>
+<p>引自<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/hhhhhhhhhhkkkkkkkkkk/article/details/103600876" >此博客<i class="fas fa-external-link-alt"></i></a>。</p>
+<span id="more"></span>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用win32原生API实现OpenGL</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;gl/GL.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib, <span class="string">&quot;opengl32.lib&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">win32_regist_class</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* class_name)</span> <span class="comment">// 注册win32窗口类</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	WNDCLASSEXA cs =</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sizeof</span>(WNDCLASSEXA),</span><br><span class="line">		CS_HREDRAW | CS_VREDRAW,</span><br><span class="line">	[](HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)-&gt;LRESULT</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">switch</span> (msg) &#123;</span><br><span class="line">			<span class="keyword">case</span> WM_NCCREATE:</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">SetWindowLongPtrA</span>(hwnd, GWLP_USERDATA, (LONG_PTR)((LPCREATESTRUCTA)lparam)-&gt;lpCreateParams);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;;</span><br><span class="line">			<span class="keyword">case</span> WM_PAINT:</span><br><span class="line">			&#123;</span><br><span class="line">				PAINTSTRUCT ps;</span><br><span class="line">				<span class="built_in">BeginPaint</span>(hwnd, &amp;ps);</span><br><span class="line">				<span class="built_in">EndPaint</span>(hwnd, &amp;ps);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">case</span> WM_ERASEBKGND:</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> TRUE;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">case</span> WM_DESTROY:</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">PostQuitMessage</span>(<span class="number">0</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">DefWindowProcA</span>(hwnd, msg, wparam, lparam);</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="number">0</span>,</span><br><span class="line">		<span class="number">0</span>,</span><br><span class="line">		(HINSTANCE)<span class="built_in">GetModuleHandleA</span>(<span class="literal">nullptr</span>),</span><br><span class="line">		<span class="literal">nullptr</span>,</span><br><span class="line">		<span class="built_in">LoadCursorA</span>(<span class="literal">nullptr</span>,IDC_ARROW),</span><br><span class="line">		(HBRUSH)COLOR_WINDOW,</span><br><span class="line">		<span class="literal">nullptr</span>,</span><br><span class="line">		class_name,</span><br><span class="line">		<span class="literal">nullptr</span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">RegisterClassExA</span>(&amp;cs);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建win32窗口</span></span><br><span class="line"><span class="function">HWND <span class="title">win32_create</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* class_name, <span class="type">const</span> <span class="type">char</span>* window_name, <span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> width, <span class="type">int</span> height)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">CreateWindowExA</span>(<span class="number">0</span>, class_name, window_name, WS_OVERLAPPEDWINDOW | WS_VISIBLE, x, y, width, height, <span class="literal">nullptr</span>, <span class="literal">nullptr</span>, <span class="built_in">GetModuleHandle</span>(<span class="literal">nullptr</span>), <span class="literal">nullptr</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取可用于OpenGL绘制的DC</span></span><br><span class="line"><span class="function">HDC <span class="title">win32_get_gl_dc</span><span class="params">(HWND hwnd)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	PIXELFORMATDESCRIPTOR pfd = &#123;&#125;;</span><br><span class="line">	pfd.nSize = <span class="built_in">sizeof</span>(PIXELFORMATDESCRIPTOR);</span><br><span class="line">	pfd.nVersion = <span class="number">1</span>;</span><br><span class="line">	pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;</span><br><span class="line">	<span class="keyword">auto</span> hdc = <span class="built_in">GetDC</span>(hwnd);</span><br><span class="line">	<span class="keyword">auto</span> pixelFormat = <span class="built_in">ChoosePixelFormat</span>(hdc, &amp;pfd);</span><br><span class="line">	<span class="keyword">if</span> (!pixelFormat)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">ReleaseDC</span>(hwnd, hdc);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">SetPixelFormat</span>(hdc, pixelFormat, &amp;pfd))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">ReleaseDC</span>(hwnd, hdc);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> hdc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理win32的消息</span></span><br><span class="line"><span class="function">BOOL <span class="title">win32_peek_message</span><span class="params">(HWND hwnd)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MSG msg;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">PeekMessage</span>(&amp;msg, hwnd, <span class="number">0</span>, <span class="number">0</span>, PM_REMOVE))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (msg.message == WM_QUIT)</span><br><span class="line">			<span class="keyword">return</span> FALSE;</span><br><span class="line">		<span class="built_in">TranslateMessage</span>(&amp;msg);</span><br><span class="line">		<span class="built_in">DispatchMessageA</span>(&amp;msg);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建OpenGL的API</span></span><br><span class="line"><span class="function">HGLRC <span class="title">gl_create</span><span class="params">(HDC hdc)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">auto</span> hglrc = <span class="built_in">wglCreateContext</span>(hdc);</span><br><span class="line">	<span class="keyword">if</span> (!hglrc)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">wglMakeCurrent</span>(hdc, hglrc))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 这里只获取了glCreateShader作为例子</span></span><br><span class="line">	<span class="keyword">auto</span> glCreateShader = (<span class="built_in">GLuint</span>(__stdcall*)(GLenum type))<span class="built_in">wglGetProcAddress</span>(<span class="string">&quot;glCreateShader&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> hglrc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">render</span><span class="params">(HWND hwnd, HDC hdc, HGLRC hglrc)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	RECT rc;</span><br><span class="line">	<span class="built_in">GetClientRect</span>(hwnd, &amp;rc);</span><br><span class="line">	<span class="built_in">wglMakeCurrent</span>(hdc, hglrc);</span><br><span class="line">	<span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, rc.right, rc.bottom);</span><br><span class="line">	<span class="built_in">glClearColor</span>(<span class="number">0.4f</span>, <span class="number">0.5f</span>, <span class="number">0.4f</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">glBegin</span>(GL_TRIANGLE_STRIP);</span><br><span class="line">	<span class="built_in">glColor3f</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>); <span class="built_in">glVertex2f</span>(<span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">	<span class="built_in">glColor3f</span>(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>); <span class="built_in">glVertex2f</span>(<span class="number">0.5f</span>, <span class="number">0.5f</span>);</span><br><span class="line">	<span class="built_in">glColor3f</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="built_in">glVertex2f</span>(<span class="number">0.0f</span>, <span class="number">0.5f</span>);</span><br><span class="line">	<span class="built_in">glEnd</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">win32_regist_class</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">	<span class="keyword">auto</span> hwnd = <span class="built_in">win32_create</span>(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;test&quot;</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">500</span>, <span class="number">400</span>);</span><br><span class="line">	<span class="keyword">auto</span> hdc = <span class="built_in">win32_get_gl_dc</span>(hwnd);</span><br><span class="line">	<span class="keyword">auto</span> hglrc = <span class="built_in">gl_create</span>(hdc);</span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">win32_peek_message</span>(<span class="literal">nullptr</span>) == FALSE)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="built_in">render</span>(hwnd, hdc, hglrc);</span><br><span class="line">		<span class="built_in">SwapBuffers</span>(<span class="built_in">wglGetCurrentDC</span>());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="基于Win32的OpenGL开发"><a href="#基于Win32的OpenGL开发" class="headerlink" title="基于Win32的OpenGL开发"></a>基于Win32的OpenGL开发</h3><p>win32程序的框架是<code>winMain</code>+<code>WndProc</code>，前者创建窗口同时实现窗口循环，后者实现消息处理。</p>
+<p>如何在win32下使用OpenGL，窗口创建的过程中，哪一步加入OpenGL的扩展呢？</p>
+<p>窗口创建时，由<code>WM_CREATE</code>、<code>WM_SIZE</code>、<code>WM_PAINT</code>三个消息依次产生，在<code>WM_CREATE</code>中增加窗口对OpenGL支持的代码，同时对OpenGL渲染环境做初始化，然后在<code>WM_SIZE</code>中实现OpenGL视图的变换，这样OpenGL绘图的前置工作就已经做完了，在<code>WM_PAINT</code>中就可以进行渲染了。</p>
+<blockquote>
+<p>❗按照<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/t_w_s/article/details/11021357" >此博客的方法和代码<i class="fas fa-external-link-alt"></i></a>跑不通</p>
+</blockquote>
+<p><strong>另一个思路</strong>是，在窗口创建完成时创建OpenGL的渲染环境，在消息循环中渲染（此时的消息循环等同于OpenGL的窗口循环），然后在消息处理函数中处理<code>WM_SIZE</code>来适应窗口大小：（引自<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/378869334#%E6%A6%82%E8%A7%88" >基于Win32的OpenGL开发初探<i class="fas fa-external-link-alt"></i></a>）</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">drawScene</span><span class="params">(HDC* hdc)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">EnableOpenGL</span><span class="params">(HWND hWnd, HDC* hdc, HGLRC* hrc)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DisableOpenGL</span><span class="params">(HWND hWnd, HDC hdc, HGLRC hrc)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WndProc</span><span class="params">(HWND, UINT, WPARAM, LPARAM)</span></span>; <span class="comment">//窗口函数声明</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> CALLBACK <span class="title">WinMain</span><span class="params">(HINSTANCE hInstance, <span class="comment">//WinMain函数说明</span></span></span></span><br><span class="line"><span class="params"><span class="function">	HINSTANCE hPrevInstance, LPSTR lpCmdLine, <span class="type">int</span> nCmdShow)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="type">char</span> lpszClassName[] = <span class="string">&quot;Windows&quot;</span>; <span class="comment">//窗口类名</span></span><br><span class="line">	<span class="type">char</span> lpszTitle[] = <span class="string">&quot;Win32 Window&quot;</span>; <span class="comment">//窗口标题名</span></span><br><span class="line">	WNDCLASS wndclass;</span><br><span class="line">	wndclass.style = CS_HREDRAW | CS_VREDRAW; <span class="comment">//窗口类型为缺省类型</span></span><br><span class="line">	wndclass.lpfnWndProc = WndProc; <span class="comment">//窗口处理函数为WndProc</span></span><br><span class="line">	wndclass.cbClsExtra = <span class="number">0</span>; <span class="comment">//窗口类无扩展</span></span><br><span class="line">	wndclass.cbWndExtra = <span class="number">0</span>; <span class="comment">//窗口实例无扩展</span></span><br><span class="line">	wndclass.hInstance = hInstance; <span class="comment">//当前实例句柄</span></span><br><span class="line">	wndclass.hIcon = <span class="built_in">LoadIcon</span>(<span class="literal">NULL</span>, IDI_APPLICATION); <span class="comment">//使用缺省图标</span></span><br><span class="line">	wndclass.hCursor = <span class="built_in">LoadCursor</span>(<span class="literal">NULL</span>, IDC_ARROW); <span class="comment">//窗口采用箭头光标</span></span><br><span class="line">	wndclass.hbrBackground = <span class="literal">NULL</span>; <span class="comment">//窗口背景为白色</span></span><br><span class="line">	wndclass.lpszMenuName = <span class="literal">NULL</span>; <span class="comment">//窗口中无菜单</span></span><br><span class="line">	wndclass.lpszClassName = lpszClassName; <span class="comment">//窗口类名为&#x27;窗口实例&#x27;</span></span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">RegisterClass</span>(&amp;wndclass)) <span class="comment">//注册窗口，若失败，则发出声音</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">MessageBeep</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//创建窗口操作</span></span><br><span class="line">	HWND hwnd = <span class="built_in">CreateWindow</span>(</span><br><span class="line">		lpszClassName, </span><br><span class="line">		lpszTitle, <span class="comment">//窗口实例的标题名</span></span><br><span class="line">		WS_OVERLAPPEDWINDOW, <span class="comment">//窗口的风格</span></span><br><span class="line">		CW_USEDEFAULT,</span><br><span class="line">		CW_USEDEFAULT, <span class="comment">//窗口左上角坐标为缺省值</span></span><br><span class="line">		CW_USEDEFAULT,</span><br><span class="line">		CW_USEDEFAULT, <span class="comment">//窗口的高度和宽度为缺省值</span></span><br><span class="line">		<span class="literal">NULL</span>, <span class="comment">//此窗口无父窗口</span></span><br><span class="line">		<span class="literal">NULL</span>, <span class="comment">//此窗口无主菜单</span></span><br><span class="line">		hInstance, <span class="comment">//应用程序当前句柄</span></span><br><span class="line">		<span class="literal">NULL</span>); <span class="comment">//不使用该值</span></span><br><span class="line">	<span class="built_in">ShowWindow</span>(hwnd, SW_SHOW); <span class="comment">//显示窗口</span></span><br><span class="line">	<span class="built_in">UpdateWindow</span>(hwnd); <span class="comment">//绘制用户区</span></span><br><span class="line">    </span><br><span class="line">	HGLRC hRC; <span class="comment">//绘制环境</span></span><br><span class="line">	HDC hDC; <span class="comment">//设备环境</span></span><br><span class="line">	<span class="built_in">EnableOpenGL</span>(hwnd, &amp;hDC, &amp;hRC);</span><br><span class="line">    </span><br><span class="line">	MSG msg = &#123; <span class="number">0</span> &#125;; <span class="comment">//消息结构</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">GetMessage</span>(&amp;msg, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>)) <span class="comment">//消息循环</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">TranslateMessage</span>(&amp;msg);</span><br><span class="line">		<span class="built_in">DispatchMessage</span>(&amp;msg);</span><br><span class="line">		<span class="built_in">drawScene</span>(&amp;hDC);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">DisableOpenGL</span>(hwnd, hDC, hRC);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//程序终止时，将信息返回操作系统</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WndProc</span><span class="params">(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)</span> </span>&#123;</span><br><span class="line">	RECT rcClient;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">switch</span> (message) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> WM_CREATE: </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> WM_DESTROY:</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">PostQuitMessage</span>(<span class="number">0</span>); <span class="comment">//调用该函数发出WM_QUIT消息</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> WM_SIZE:</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">GetClientRect</span>(hwnd, &amp;rcClient);</span><br><span class="line">			<span class="type">int</span> w = rcClient.right - rcClient.left;  <span class="comment">// 获得客户区宽度</span></span><br><span class="line">			<span class="type">int</span> h = rcClient.bottom - rcClient.top;  <span class="comment">// 获得客户区高度</span></span><br><span class="line">			<span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, w, h);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> WM_TIMER:</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">InvalidateRect</span>(hwnd, <span class="literal">NULL</span>, FALSE);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>: <span class="comment">//缺省消息处理函数</span></span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">DefWindowProc</span>(hwnd, message, wParam, lParam);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">DefWindowProc</span>(hwnd, message, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">drawScene</span><span class="params">(HDC* hdc)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">glClearColor</span>(<span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">0.0f</span>);</span><br><span class="line">	<span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">glColor4f</span>(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">glBegin</span>(GL_QUADS);</span><br><span class="line">	<span class="built_in">glVertex3f</span>(<span class="number">-0.6f</span>, <span class="number">-0.6f</span>, <span class="number">0.0f</span>);</span><br><span class="line">	<span class="built_in">glVertex3f</span>(<span class="number">0.6f</span>, <span class="number">-0.6f</span>, <span class="number">0.0f</span>);</span><br><span class="line">	<span class="built_in">glVertex3f</span>(<span class="number">0.6f</span>, <span class="number">0.6f</span>, <span class="number">0.0f</span>);</span><br><span class="line">	<span class="built_in">glVertex3f</span>(<span class="number">-0.6f</span>, <span class="number">0.6f</span>, <span class="number">0.0f</span>);</span><br><span class="line">	<span class="built_in">glEnd</span>();</span><br><span class="line"></span><br><span class="line">	<span class="built_in">SwapBuffers</span>(*hdc);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">Sleep</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">EnableOpenGL</span><span class="params">(HWND hwnd, HDC* hdc, HGLRC* hrc)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	*hdc = <span class="built_in">GetDC</span>(hwnd);</span><br><span class="line">	PIXELFORMATDESCRIPTOR pfd = &#123;</span><br><span class="line">		<span class="built_in">sizeof</span>(PIXELFORMATDESCRIPTOR),    <span class="comment">// size of this pfd  </span></span><br><span class="line">		<span class="number">1</span>,                                <span class="comment">// version number  </span></span><br><span class="line">		PFD_DRAW_TO_WINDOW |              <span class="comment">// support window  </span></span><br><span class="line">		PFD_SUPPORT_OPENGL |              <span class="comment">// support OpenGL  </span></span><br><span class="line">		PFD_DOUBLEBUFFER,                 <span class="comment">// double buffered  </span></span><br><span class="line">		PFD_TYPE_RGBA,                    <span class="comment">// RGBA type  </span></span><br><span class="line">		<span class="number">24</span>,                               <span class="comment">// 24-bit color depth  </span></span><br><span class="line">		<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,                 <span class="comment">// color bits ignored  </span></span><br><span class="line">		<span class="number">0</span>,                                <span class="comment">// no alpha buffer  </span></span><br><span class="line">		<span class="number">0</span>,                                <span class="comment">// shift bit ignored  </span></span><br><span class="line">		<span class="number">0</span>,                                <span class="comment">// no accumulation buffer</span></span><br><span class="line">		<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,                       <span class="comment">// accum bits ignored  </span></span><br><span class="line">		<span class="number">32</span>,                               <span class="comment">// 32-bit z-buffer      </span></span><br><span class="line">		<span class="number">0</span>,                                <span class="comment">// no stencil buffer  </span></span><br><span class="line">		<span class="number">0</span>,                                <span class="comment">// no auxiliary buffer  </span></span><br><span class="line">		PFD_MAIN_PLANE,                   <span class="comment">// main layer  </span></span><br><span class="line">		<span class="number">0</span>,                                <span class="comment">// reserved  </span></span><br><span class="line">		<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>                           <span class="comment">// layer masks ignored  </span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="type">int</span> iPixelFormat = <span class="built_in">ChoosePixelFormat</span>(*hdc, &amp;pfd);</span><br><span class="line">	<span class="built_in">SetPixelFormat</span>(*hdc, iPixelFormat, &amp;pfd);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// create and enable the render context (RC)</span></span><br><span class="line">	*hrc = <span class="built_in">wglCreateContext</span>(*hdc);</span><br><span class="line">	<span class="built_in">wglMakeCurrent</span>(*hdc, *hrc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DisableOpenGL</span><span class="params">(HWND hwnd, HDC hdc, HGLRC hrc)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">wglMakeCurrent</span>(<span class="literal">nullptr</span>, <span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">wglDeleteContext</span>(hrc);</span><br><span class="line">	<span class="built_in">ReleaseDC</span>(hwnd, hdc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN/img/image-20230622212149438.png"
+                      alt="image-20230622212149438" style="zoom:80%;" 
+                >
+
+
+
+<h3 id="使用Win32调用GL"><a href="#使用Win32调用GL" class="headerlink" title="使用Win32调用GL"></a>使用Win32调用GL</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;gl/GL.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> windowsWidth = <span class="number">800</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> windowsHeight = <span class="number">600</span>;</span><br><span class="line"><span class="type">bool</span> fullScreen = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WndProc</span><span class="params">(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> APIENTRY <span class="title">wWinMain</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">		_In_     HINSTANCE hInstance,</span></span></span><br><span class="line"><span class="params"><span class="function">		_In_opt_ HINSTANCE hPrevInstance,</span></span></span><br><span class="line"><span class="params"><span class="function">		_In_     LPWSTR    lpCmdLine,</span></span></span><br><span class="line"><span class="params"><span class="function">		_In_     <span class="type">int</span>       nCmdShow)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="type">char</span> info_log[<span class="number">512</span>]&#123;&#125;;</span><br><span class="line">	<span class="type">char</span> lpszClassName[] = <span class="string">&quot;Windows&quot;</span>; </span><br><span class="line">	<span class="type">char</span> lpszTitle[] = <span class="string">&quot;Win32 Window&quot;</span>; </span><br><span class="line">	WNDCLASS wndclass&#123;&#125;;</span><br><span class="line">	wndclass.style = CS_HREDRAW | CS_VREDRAW; </span><br><span class="line">	wndclass.lpfnWndProc = WndProc; </span><br><span class="line">	wndclass.cbClsExtra = <span class="number">0</span>;</span><br><span class="line">	wndclass.cbWndExtra = <span class="number">0</span>; </span><br><span class="line">	wndclass.hInstance = hInstance; </span><br><span class="line">	wndclass.hIcon = <span class="built_in">LoadIcon</span>(<span class="literal">NULL</span>, IDI_APPLICATION); </span><br><span class="line">	wndclass.hCursor = <span class="built_in">LoadCursor</span>(<span class="literal">NULL</span>, IDC_ARROW); </span><br><span class="line">	wndclass.hbrBackground = <span class="literal">NULL</span>; </span><br><span class="line">	wndclass.lpszMenuName = <span class="literal">NULL</span>;</span><br><span class="line">	wndclass.lpszClassName = lpszClassName; </span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">RegisterClass</span>(&amp;wndclass)) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">MessageBeep</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	HWND hwnd = <span class="built_in">CreateWindow</span>(</span><br><span class="line">		lpszClassName,</span><br><span class="line">		lpszTitle, </span><br><span class="line">		WS_OVERLAPPEDWINDOW, </span><br><span class="line">		CW_USEDEFAULT,</span><br><span class="line">		CW_USEDEFAULT, </span><br><span class="line">		windowsWidth,</span><br><span class="line">		windowsHeight, </span><br><span class="line">		<span class="literal">NULL</span>, </span><br><span class="line">		<span class="literal">NULL</span>, </span><br><span class="line">		hInstance, </span><br><span class="line">		<span class="literal">NULL</span>); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// create context</span></span><br><span class="line">	HDC hDC = <span class="built_in">GetDC</span>(hwnd);</span><br><span class="line">	HGLRC hRC&#123;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (hDC)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> pixelFormat;</span><br><span class="line">		PIXELFORMATDESCRIPTOR pixelFormatDesc;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* initialize bits to 0 */</span></span><br><span class="line">		<span class="built_in">memset</span>(&amp;pixelFormatDesc, <span class="number">0</span>, <span class="built_in">sizeof</span>(PIXELFORMATDESCRIPTOR));</span><br><span class="line">		pixelFormatDesc.nSize = <span class="built_in">sizeof</span>(PIXELFORMATDESCRIPTOR);</span><br><span class="line">		pixelFormatDesc.nVersion = <span class="number">1</span>;</span><br><span class="line">		pixelFormatDesc.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL;</span><br><span class="line">		pixelFormatDesc.iPixelType = PFD_TYPE_RGBA;</span><br><span class="line">		pixelFormatDesc.cColorBits = <span class="number">32</span>;</span><br><span class="line">		pixelFormatDesc.cAlphaBits = <span class="number">8</span>;</span><br><span class="line">		pixelFormatDesc.cDepthBits = <span class="number">24</span>;</span><br><span class="line"></span><br><span class="line">		pixelFormat = <span class="built_in">ChoosePixelFormat</span>(hDC, &amp;pixelFormatDesc);</span><br><span class="line">		<span class="keyword">if</span> (pixelFormat)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">SetPixelFormat</span>(hDC, pixelFormat, &amp;pixelFormatDesc))</span><br><span class="line">				hRC = <span class="built_in">wglCreateContext</span>(hDC);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;ERROR::HDC::CREATE_FAILED\n&quot;</span> &lt;&lt; info_log &lt;&lt; std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (hRC) &#123;  <span class="comment">// 待看</span></span><br><span class="line">		<span class="built_in">wglMakeCurrent</span>(hDC, hRC);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;ERROR::HRC::CREATE_FAILED\n&quot;</span> &lt;&lt; info_log &lt;&lt; std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">ShowWindow</span>(hwnd, SW_SHOW);</span><br><span class="line">	<span class="built_in">UpdateWindow</span>(hwnd);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//if (!gladLoadGL())</span></span><br><span class="line">	<span class="comment">//&#123;</span></span><br><span class="line">	<span class="comment">//	std::cout &lt;&lt; &quot;Could not initialize GLAD \n&quot;;</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	<span class="comment">//else &#123;</span></span><br><span class="line">	<span class="comment">//	std::cout &lt;&lt; &quot;OpenGL Version &quot; &lt;&lt; GLVersion.major &lt;&lt; std::endl;</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	MSG msg = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">GetMessage</span>(&amp;msg, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>)) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">TranslateMessage</span>(&amp;msg);</span><br><span class="line">		<span class="built_in">DispatchMessage</span>(&amp;msg);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">wglMakeCurrent</span>(hDC, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">wglDeleteContext</span>(hRC);</span><br><span class="line">	<span class="keyword">if</span>(hDC!=<span class="literal">NULL</span>)</span><br><span class="line">		<span class="built_in">ReleaseDC</span>(hwnd, hDC);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> LRESULT CALLBACK <span class="title">WndProc</span><span class="params">(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)</span> </span>&#123;</span><br><span class="line">	LRESULT result = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">switch</span> (msg)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> WM_PAINT:</span><br><span class="line">		PAINTSTRUCT ps;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//render();</span></span><br><span class="line">		<span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line">		<span class="built_in">glBegin</span>(GL_TRIANGLES);</span><br><span class="line">		<span class="built_in">glColor3f</span>(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">		<span class="built_in">glVertex2i</span>(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">glColor3f</span>(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">		<span class="built_in">glVertex2i</span>(<span class="number">-1</span>, <span class="number">-1</span>);</span><br><span class="line">		<span class="built_in">glColor3f</span>(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line">		<span class="built_in">glVertex2i</span>(<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">		<span class="built_in">glEnd</span>();</span><br><span class="line">		<span class="built_in">glFlush</span>();</span><br><span class="line"></span><br><span class="line">		<span class="built_in">BeginPaint</span>(hwnd, &amp;ps);</span><br><span class="line">		<span class="built_in">EndPaint</span>(hwnd, &amp;ps);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> WM_SIZE:</span><br><span class="line">		<span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="built_in">LOWORD</span>(lParam), <span class="built_in">HIWORD</span>(lParam));</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> WM_KEYDOWN:</span><br><span class="line">		<span class="comment">/* ESC: Escape */</span></span><br><span class="line">		<span class="keyword">if</span> (wParam == <span class="number">27</span>)</span><br><span class="line">			<span class="built_in">PostMessage</span>(hwnd, WM_CLOSE, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">		<span class="comment">/* F11: Fullscreen */</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (wParam == <span class="number">122</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			DWORD style = <span class="built_in">GetWindowLong</span>(hwnd, GWL_STYLE);</span><br><span class="line">			<span class="type">static</span> <span class="type">int</span> windowX, windowY, windowWidth, windowHeight = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">			<span class="keyword">if</span> (fullScreen) &#123;</span><br><span class="line">				RECT rect;</span><br><span class="line">				MONITORINFO mi = &#123; <span class="built_in">sizeof</span>(mi) &#125;;</span><br><span class="line">				<span class="built_in">GetWindowRect</span>(hwnd, &amp;rect);</span><br><span class="line">				windowX = rect.left;</span><br><span class="line">				windowY = rect.top;</span><br><span class="line">				windowWidth = rect.right - rect.left;</span><br><span class="line">				windowHeight = rect.bottom - rect.top;</span><br><span class="line">				<span class="built_in">GetMonitorInfo</span>(<span class="built_in">MonitorFromWindow</span>(hwnd, MONITOR_DEFAULTTOPRIMARY), &amp;mi);</span><br><span class="line">				<span class="built_in">SetWindowLong</span>(hwnd, GWL_STYLE, style &amp; ~WS_OVERLAPPEDWINDOW);</span><br><span class="line">				<span class="built_in">SetWindowPos</span>(hwnd, HWND_TOP, mi.rcMonitor.left, mi.rcMonitor.top,</span><br><span class="line">					mi.rcMonitor.right - mi.rcMonitor.left,</span><br><span class="line">					mi.rcMonitor.bottom - mi.rcMonitor.top,</span><br><span class="line">					SWP_NOOWNERZORDER | SWP_FRAMECHANGED | SWP_SHOWWINDOW);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> </span><br><span class="line">			&#123;</span><br><span class="line">				MONITORINFO mi = &#123; <span class="built_in">sizeof</span>(mi) &#125;;</span><br><span class="line">				UINT flags = SWP_NOZORDER | SWP_FRAMECHANGED | SWP_SHOWWINDOW;</span><br><span class="line">				<span class="built_in">GetMonitorInfo</span>(<span class="built_in">MonitorFromWindow</span>(hwnd, MONITOR_DEFAULTTOPRIMARY), &amp;mi);</span><br><span class="line">				<span class="built_in">SetWindowLong</span>(hwnd, GWL_STYLE, style | WS_OVERLAPPEDWINDOW);</span><br><span class="line">				<span class="built_in">SetWindowPos</span>(hwnd, HWND_NOTOPMOST, windowX, windowY, windowWidth, windowHeight, flags);</span><br><span class="line">			&#125;</span><br><span class="line">			fullScreen = !fullScreen;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> WM_CLOSE:</span><br><span class="line">		<span class="built_in">DestroyWindow</span>(hwnd);</span><br><span class="line">		<span class="built_in">PostQuitMessage</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		result = <span class="built_in">DefWindowProc</span>(hwnd, msg, wParam, lParam);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">基于Win32的OpenGL1.0</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-06-29 09:51:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/06/29/note/Framework/OpenGL/Win32andOpenGL/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CPP/"><i class="fa-solid fa-hashtag"></i>&nbsp;CPP</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/OpenGL/"><i class="fa-solid fa-hashtag"></i>&nbsp;OpenGL</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Win32/"><i class="fa-solid fa-hashtag"></i>&nbsp;Win32</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Graphic/"><i class="fa-solid fa-hashtag"></i>&nbsp;Graphic</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Computer/"><i class="fa-solid fa-hashtag"></i>&nbsp;Computer</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/29/note/Framework/OpenGL/Win32OpenGL/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">基于Win32的OpenGL3.3</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/23/note/Programming/tools/xmake/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">使用xmake构建c++项目</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EWin32%E7%9A%84OpenGL%E5%BC%80%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">基于Win32的OpenGL开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Win32%E8%B0%83%E7%94%A8GL"><span class="nav-number">2.</span> <span class="nav-text">使用Win32调用GL</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

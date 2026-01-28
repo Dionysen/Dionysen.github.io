@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                OpenGL-1 初识 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">OpenGL-1 初识</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-12 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E6%A1%86%E6%9E%B6/">框架</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CPP/"><i class="fas fa-hashtag"></i>&nbsp;CPP</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Graphic/"><i class="fas fa-hashtag"></i>&nbsp;Graphic</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Computer/"><i class="fas fa-hashtag"></i>&nbsp;Computer</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>4.9k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>OpenGL本身是一种规范，只是规定了一些应有的函数和参数，没有任何实现(实现由第三方库完成，如glfw、glew）.</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/imgOIP-C.jpg"
+                      alt="OIP-C" style="zoom:50%;" 
+                >
+
+<blockquote>
+<p>本文之所以放在[编程]-&gt;[框架]的分类，是因为本文主要内容是用OpenGL规范实现的库的使用，而非OpenGL规范本身</p>
+</blockquote>
+<p><strong>图形渲染管线</strong>是实时渲染的核心组件。渲染管线的功能是通过给定虚拟相机、3D场景物体以及光源等场景要素来产生或者渲染一副2D的图像。渲染管线是实时渲染的重要工具，主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。</p>
+<p>渲染管线的一般流程分别是：<em><strong>顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试</strong></em>。</p>
+<span id="more"></span>
+
+<p>OpenGL中，所有事物都是在3D空间中的，而屏幕是2D，因此必须把三维的坐标转换成二维坐标。</p>
+<h3 id="图形渲染管线"><a href="#图形渲染管线" class="headerlink" title="图形渲染管线"></a>图形渲染管线</h3><p><strong>图形渲染管线(Graphics Pipeline)：</strong> 一个原始数据，经过一定变化和处理，最终显示在屏幕上。</p>
+<p>主要有两个步骤：</p>
+<ol>
+<li>把3D坐标转换为2D坐标</li>
+<li>把2D坐标转变为实际的有颜色的<strong>像素</strong></li>
+</ol>
+<blockquote>
+<p>2D坐标和像素也是不同的，2D坐标精确表示一个点在2D空间中的位置，而2D像素是这个点的近似值，2D像素受到你的屏幕&#x2F;窗口分辨率的限制。</p>
+</blockquote>
+<p>可被划分为几个阶段，连接而成，都具有特定的函数，很容易执行（正因为容易执行，才可以在GPU上运行成千上万个各自阶段的小程序，这些小程序为<strong>着色器</strong>）.</p>
+<p>着色器运行在GPU上，节省了CPU的（宝贵的）时间.</p>
+<blockquote>
+<p>OpenGL着色器是用OpenGL着色器语言(OpenGL Shading Language, GLSL)写成的</p>
+</blockquote>
+<p>具体阶段：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/pipeline.png"
+                      alt="pipeline"
+                ></p>
+<ol>
+<li>输入数组，也即**顶点数据（Vertex Data)<strong>，它是用</strong>顶点属性(Vertex Attribute)**表示的，如坐标、颜色等</li>
+<li>使用图元(Primitive)可以告诉OpenGL把顶点渲染成什么样，如一系列点、一系列三角形或线，可用的**提示(Hint)**如<code>GL_POINTS</code>、<code>GL_TRIANGLES</code>、<code>GL_LINE_STRIP</code></li>
+<li>图形渲染管线的第一个部分是<em><em>顶点着色器(Vertex Shader)<strong>，目的是把3D坐标数据转换成</strong></em>另一种3D坐标</em>**，同时允许我们对顶点属性进行一些基本处理</li>
+<li>图元装配是将顶点着色器输出的所有顶点作为输入，并所有的点装配成指定图元的形状（如果是GL_POINTS，那么就是一个顶点），如三角形</li>
+<li>图元装配阶段的输出会传递给**几何着色器(Geometry Shader)**。几何着色器把图元形式的一系列顶点的集合作为输入，它可以通过产生新顶点构造出新的（或是其它的）图元来生成其他形状；例子中，它生成了另一个三角形</li>
+<li>几何着色器的输出会被传入**光栅化阶段(Rasterization Stage)<strong>，这里它会把图元映射为最终屏幕上相应的像素，生成供</strong>片段着色器(Fragment Shader)<strong>使用的</strong>片段(Fragment)<strong>。在片段着色器运行之前会执行</strong>裁切(Clipping)**。裁切会丢弃超出你的视图以外的所有像素，用来提升执行效率</li>
+</ol>
+<blockquote>
+<p>OpenGL中的一个片段是OpenGL渲染一个像素所需的所有数据</p>
+<p>片段着色器的主要目的是计算一个像素的最终颜色，这也是所有OpenGL高级效果产生的地方。通常，片段着色器包含3D场景的数据（比如光照、阴影、光的颜色等等），这些数据可以被用来计算最终像素的颜色</p>
+</blockquote>
+<ol start="7">
+<li>在所有对应颜色值确定以后，最终的对象将会被传到最后一个阶段，我们叫做Alpha测试和混合(Blending)阶段。这个阶段检测片段的对应的<strong>深度（和模板(Stencil)）值</strong>（后面会讲），用它们来判断这个像素是其它物体的前面还是后面，决定是否应该丢弃。这个阶段也会检查<strong>alpha值</strong>（alpha值定义了一个物体的透明度）并对物体进行**混合(Blend)**；所以，即使在片段着色器中计算出来了一个像素输出的颜色，在渲染多个三角形的时候最后的像素颜色也可能完全不同</li>
+</ol>
+<h3 id="第一个三角形"><a href="#第一个三角形" class="headerlink" title="第一个三角形"></a>第一个三角形</h3><p>此处给出源码和详细注释，结构清晰：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;glad/glad.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span></span>; <span class="comment">//回调函数的声明</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">processInput</span><span class="params">(GLFWwindow* window)</span></span>; <span class="comment">// 处理对窗口的输入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// --------------- 以字符串的形式定义着色器程序的源码，第4步需要用到 ---------------</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span></span><br><span class="line">    * vertexShaderSource = <span class="comment">// 创建顶点着色器程序的源码，使用c风格的常量字符串存储</span></span><br><span class="line">    <span class="string">&quot;#version 330 core\n&quot;</span></span><br><span class="line">    <span class="string">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></span><br><span class="line">    <span class="string">&quot;void main()\n&quot;</span></span><br><span class="line">    <span class="string">&quot;&#123;\n&quot;</span></span><br><span class="line">    <span class="string">&quot;   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n&quot;</span></span><br><span class="line">    <span class="string">&quot;&#125;\0&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建片段着色器程序的源码，使用c风格的常量字符串存储</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* fragmentShaderSource =</span><br><span class="line">    <span class="string">&quot;#version 330 core\n&quot;</span></span><br><span class="line">    <span class="string">&quot;out vec4 FragColor;\n&quot;</span></span><br><span class="line">    <span class="string">&quot;void main() &#123;\n&quot;</span></span><br><span class="line">    <span class="string">&quot;FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n&quot;</span> <span class="comment">// 此处设置片段颜色为黄色</span></span><br><span class="line">    <span class="string">&quot;&#125;\0&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -------------- 1. glfw的初始化 ----------------</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">glfwInit</span>()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// --------------- 2. 使用glfw创建窗口 ---------------</span></span><br><span class="line">    GLFWwindow* window = <span class="built_in">glfwCreateWindow</span>(<span class="number">800</span>, <span class="number">600</span>, <span class="string">&quot;LearnOpenGL&quot;</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (window == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Failed to create GLFW window&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="built_in">glfwTerminate</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">glfwMakeContextCurrent</span>(window); <span class="comment">// 此函数使指定窗口的 OpenGL 或 OpenGL ES 上下文成为调用线程的当前上下文</span></span><br><span class="line">    <span class="built_in">glfwSetFramebufferSizeCallback</span>(</span><br><span class="line">        window,</span><br><span class="line">        framebuffer_size_callback); <span class="comment">// 回调函数，保证每次窗口大小调整时，重新绘制</span></span><br><span class="line">    <span class="comment">// --------------- 3. glad：加载OpenGL所有的函数指针 ---------------</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">gladLoadGLLoader</span>((GLADloadproc)glfwGetProcAddress)) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Failed to initialize GLAD&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// --------------- 4. 创建和编译着色器 ---------------</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> vertexShader; <span class="comment">// 创建顶点着色器索引</span></span><br><span class="line">    vertexShader = <span class="built_in">glCreateShader</span>(GL_VERTEX_SHADER); <span class="comment">// 创建顶点着色器</span></span><br><span class="line">    <span class="built_in">glShaderSource</span>(</span><br><span class="line">        vertexShader, <span class="number">1</span>, &amp;vertexShaderSource,</span><br><span class="line">        <span class="literal">NULL</span>); <span class="comment">// 为顶点着色器添加源码，第二个参数是添加的源码中字符串的数量，第三个先设置为NULL</span></span><br><span class="line">    <span class="built_in">glCompileShader</span>(vertexShader); <span class="comment">// 编译顶点着色器</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> success;        <span class="comment">// 创建编译状态指示变量</span></span><br><span class="line">    <span class="type">char</span> info_log[<span class="number">512</span>]; <span class="comment">// 创建用以存储log的数组</span></span><br><span class="line">    <span class="built_in">glGetShaderiv</span>(vertexShader, GL_COMPILE_STATUS,</span><br><span class="line">                  &amp;success); <span class="comment">// 获取状态和log，输出到变量和数组中</span></span><br><span class="line">    <span class="keyword">if</span> (!success) &#123;          <span class="comment">// 如果编译失败，打印错误信息和log</span></span><br><span class="line">        <span class="built_in">glGetShaderInfoLog</span>(vertexShader, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n&quot;</span></span><br><span class="line">            &lt;&lt; info_log &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> fragmentShader;</span><br><span class="line">    fragmentShader = <span class="built_in">glCreateShader</span>(GL_FRAGMENT_SHADER);</span><br><span class="line">    <span class="built_in">glShaderSource</span>(fragmentShader, <span class="number">1</span>, &amp;fragmentShaderSource, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">glCompileShader</span>(fragmentShader);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">glGetShaderiv</span>(fragmentShader, GL_COMPILE_STATUS,</span><br><span class="line">                  &amp;success); <span class="comment">// 获取状态和log，输出到变量和数组中</span></span><br><span class="line">    <span class="keyword">if</span> (!success) &#123;          <span class="comment">// 如果编译失败，打印错误信息和log</span></span><br><span class="line">        <span class="built_in">glGetShaderInfoLog</span>(fragmentShader, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n&quot;</span></span><br><span class="line">            &lt;&lt; info_log &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// --------------- 5. 链接着色器 ---------------</span></span><br><span class="line"></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> shaderProgram;</span><br><span class="line">    shaderProgram = <span class="built_in">glCreateProgram</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 把着色器添加到着色器程序中</span></span><br><span class="line">    <span class="built_in">glAttachShader</span>(shaderProgram, vertexShader);</span><br><span class="line">    <span class="built_in">glAttachShader</span>(shaderProgram, fragmentShader);</span><br><span class="line">    <span class="built_in">glLinkProgram</span>(shaderProgram); <span class="comment">// 链接着色器程序</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">glGetProgramiv</span>(shaderProgram, GL_LINK_STATUS, &amp;success); <span class="comment">// 异常检测</span></span><br><span class="line">    <span class="keyword">if</span> (!success) &#123;</span><br><span class="line">        <span class="built_in">glGetProgramInfoLog</span>(shaderProgram, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;ERROR::SHADER::PROGRAM::LINK_FAILED\n&quot;</span></span><br><span class="line">            &lt;&lt; info_log &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">glUseProgram</span>(</span><br><span class="line">        shaderProgram); <span class="comment">// 调用此函数后，渲染和着色器调用都会使用此前所写的着色器了</span></span><br><span class="line">    <span class="built_in">glDeleteShader</span>(vertexShader);</span><br><span class="line">    <span class="built_in">glDeleteShader</span>(fragmentShader); <span class="comment">// 链接完成之后就可以删除着色器了</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// --------------- 6. 创建顶点数据缓冲区 ---------------</span></span><br><span class="line">    <span class="type">float</span> vertices[] =</span><br><span class="line">    &#123;    <span class="comment">// 第一个三角形</span></span><br><span class="line">        <span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="comment">// 右上角</span></span><br><span class="line">        <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 右下角</span></span><br><span class="line">        <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>, <span class="comment">// 左下角</span></span><br><span class="line">        <span class="number">-0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span> &#125;; <span class="comment">// 左上角</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> indices[] = &#123;</span><br><span class="line">        <span class="comment">// 注意索引从0开始! </span></span><br><span class="line">        <span class="comment">// 此例的索引(0,1,2,3)就是顶点数组vertices的下标，</span></span><br><span class="line">        <span class="comment">// 这样可以由下标代表顶点组合成矩形</span></span><br><span class="line"></span><br><span class="line">        <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="comment">// 第一个三角形</span></span><br><span class="line">        <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>  <span class="comment">// 第二个三角形</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//&#123; -0.5f, -0.5f, 0.0f,  // left</span></span><br><span class="line">    <span class="comment">//    0.5f, -0.5f, 0.0f,  // right</span></span><br><span class="line">    <span class="comment">//    0.0f, 0.5f, 0.0f &#125;; // top</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> EBO;</span><br><span class="line">    <span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;EBO);</span><br><span class="line"></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span></span><br><span class="line">        VBO; <span class="comment">// 缓冲区类似socket编程中的文件描述符，buffer作为唯一的标识来表示生成的一个缓冲区，GPU可以通过这个标识来读取缓冲区的数据，进而绘制出图形；它是一个整数</span></span><br><span class="line">    <span class="comment">// VBO是顶点缓冲对象</span></span><br><span class="line">    <span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;VBO);              <span class="comment">// 创建缓冲区</span></span><br><span class="line">    <span class="built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, VBO); <span class="comment">// 绑定缓冲区</span></span><br><span class="line">    <span class="built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="built_in">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line">    <span class="comment">// -------- 创建顶点数组对象 ----------</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> VAO;</span><br><span class="line">    <span class="built_in">glGenVertexArrays</span>(<span class="number">1</span>, &amp;VAO);</span><br><span class="line">    <span class="built_in">glBindVertexArray</span>(VAO);</span><br><span class="line">    <span class="built_in">glBindBuffer</span>(GL_ELEMENT_ARRAY_BUFFER, EBO);</span><br><span class="line">    <span class="comment">// 此时可以直接给缓冲区一个数据，或者不给数据，后面再给数据然后更新缓冲区</span></span><br><span class="line">    <span class="built_in">glBufferData</span>(GL_ELEMENT_ARRAY_BUFFER, <span class="built_in">sizeof</span>(indices), indices, GL_STATIC_DRAW);</span><br><span class="line">    <span class="comment">// -------- 告诉GPU如何读取顶点数据 ----------</span></span><br><span class="line">    <span class="built_in">glVertexAttribPointer</span>(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="built_in">sizeof</span>(<span class="type">float</span>),</span><br><span class="line">                          (<span class="type">void</span>*)<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">glEnableVertexAttribArray</span>(<span class="number">0</span>); <span class="comment">// 启用顶点属性</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">glBindVertexArray</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// --------------- 7. 窗口绘制循环 ---------------</span></span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">glfwWindowShouldClose</span>(window)) &#123;</span><br><span class="line">        <span class="comment">// input</span></span><br><span class="line">        <span class="comment">// -----</span></span><br><span class="line">        <span class="built_in">processInput</span>(window);</span><br><span class="line">        <span class="comment">// render</span></span><br><span class="line">        <span class="comment">// -----</span></span><br><span class="line">        <span class="built_in">glClearColor</span>(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line">        <span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line">        <span class="built_in">glUseProgram</span>(shaderProgram);</span><br><span class="line">        <span class="comment">//glBindVertexArray(VAO); // seeing as we only have a single VAO there&#x27;s</span></span><br><span class="line">        <span class="comment">//// no need to bind it every time, but we&#x27;ll do</span></span><br><span class="line">        <span class="comment">//// so to keep things a bit more organized</span></span><br><span class="line">        <span class="comment">//glDrawArrays(GL_TRIANGLES, 0, 3);</span></span><br><span class="line">        <span class="built_in">glBindVertexArray</span>(VAO);</span><br><span class="line">        <span class="built_in">glDrawElements</span>(GL_TRIANGLES, <span class="number">6</span>, GL_UNSIGNED_INT, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">glBindVertexArray</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="built_in">glPolygonMode</span>(GL_FRONT_AND_BACK, GL_LINE);</span><br><span class="line">        <span class="built_in">glfwSwapBuffers</span>(window);</span><br><span class="line">        <span class="built_in">glfwPollEvents</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// glfw: terminate, clearing all previously allocated GLFW resources.</span></span><br><span class="line">    <span class="comment">// ------------------------------------------------------------------</span></span><br><span class="line">    <span class="built_in">glfwTerminate</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// process all input: query GLFW whether relevant keys are pressed/released this</span></span><br><span class="line"><span class="comment">// frame and react accordingly</span></span><br><span class="line"><span class="comment">// ---------------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">processInput</span><span class="params">(GLFWwindow* window)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)</span><br><span class="line">        <span class="built_in">glfwSetWindowShouldClose</span>(window, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// glfw: whenever the window size changed (by OS or user resize) this callback</span></span><br><span class="line"><span class="comment">// function executes</span></span><br><span class="line"><span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// make sure the viewport matches the new window dimensions; note that width</span></span><br><span class="line">    <span class="comment">// and height will be significantly larger than specified on retina</span></span><br><span class="line">    <span class="comment">// displays.</span></span><br><span class="line">    <span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="概念与作用"><a href="#概念与作用" class="headerlink" title="概念与作用"></a>概念与作用</h3><p>第一个三角形涉及到一些概念和特性，最引人注目的是三个对象，即：</p>
+<ul>
+<li>顶点数组对象：Vertex Array Object，VAO</li>
+<li>顶点缓冲对象：Vertex Buffer Object，VBO</li>
+<li>元素缓冲对象：Element Buffer Object，EBO 或 索引缓冲对象 Index Buffer Object，IBO</li>
+</ul>
+<h4 id="标准化设备坐标"><a href="#标准化设备坐标" class="headerlink" title="标准化设备坐标"></a>标准化设备坐标</h4><p><strong>标准化设备坐标(Normalized Device Coordinates)：</strong>OpenGL会将坐标转化为单位坐标，即所有轴上的大小范围为(-1, 1)</p>
+<h4 id="顶点缓冲对象"><a href="#顶点缓冲对象" class="headerlink" title="顶点缓冲对象"></a>顶点缓冲对象</h4><p><strong>顶点缓冲对象(Vertex Buffer Objects, VBO)：</strong>管理顶点的内存，在显存中储存大量顶点</p>
+<blockquote>
+<p>这样可以一次性发送大量数据到显卡，而不用每次绘制都到cpu的内存中读取数据</p>
+</blockquote>
+<ol>
+<li>创建</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> VBO; <span class="comment">//创建ID，类似套接字，可以通过此ID访问此对象（唯一绑定）</span></span><br><span class="line"><span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;VBO);<span class="comment">//生成</span></span><br><span class="line"><span class="built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, VBO);<span class="comment">//绑定，将生成的VBO与GL_ARRAY_BUFFER绑定，从此任何对GL_ARRAY_BUFFER的调用都会操作当前绑定的VBO</span></span><br><span class="line"><span class="comment">// 如下面的操作：</span></span><br><span class="line"><span class="built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="built_in">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line"><span class="comment">//此函数将vertices的数据拷贝到缓冲GL_ARRAY_BUFFER中，因为之前绑定了VBO，所以实际上拷贝到了VBO上</span></span><br></pre></td></tr></table></figure>
+
+<p><code>glBufferData</code>函数的最后一个参数是指定显卡管理数据的方式：</p>
+<ul>
+<li>GL_STATIC_DRAW ：数据不会或几乎不会改变，修改一次，使用多次</li>
+<li>GL_DYNAMIC_DRAW：数据会被改变很多，修改多次，使用多次</li>
+<li>GL_STREAM_DRAW ：数据每次绘制时都会改变，每次都会修改和使用</li>
+</ul>
+<ol start="2">
+<li>使用</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">glVertexAttribPointer</span>(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="built_in">sizeof</span>(<span class="type">float</span>),</span><br><span class="line">(<span class="type">void</span> *)<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 链接顶点属性，即告诉OpenGL如何解释顶点对象中的数据</span></span><br><span class="line"><span class="built_in">glEnableVertexAttribArray</span>(<span class="number">0</span>); <span class="comment">// 启用顶点属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 然后即可在窗口事件循环中绘制：</span></span><br><span class="line"><span class="built_in">glClearColor</span>(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line"><span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line"><span class="built_in">glUseProgram</span>(shaderProgram);</span><br><span class="line"><span class="built_in">glBindVertexArray</span>(VBO);</span><br><span class="line"><span class="built_in">glDrawArrays</span>(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>glVertexAttribPointer</code>函数参数：</p>
+<ul>
+<li>第一个参数指定我们要配置的顶点属性。还记得我们在顶点着色器中使用<code>layout(location = 0)</code>定义了position顶点属性的位置值(Location)吗？它可以把顶点属性的位置值设置为<code>0</code>。因为我们希望把数据传递到这一个顶点属性中，所以这里我们传入<code>0</code>。</li>
+<li>第二个参数指定顶点属性的大小。顶点属性是一个<code>vec3</code>，它由3个值组成，所以大小是3。</li>
+<li>第三个参数指定数据的类型，这里是GL_FLOAT(GLSL中<code>vec*</code>都是由浮点数值组成的)。</li>
+<li>下个参数定义我们是否希望数据被标准化(Normalize)。如果我们设置为GL_TRUE，所有数据都会被映射到0（对于有符号型signed数据是-1）到1之间。我们把它设置为GL_FALSE。</li>
+<li>第五个参数叫做步长(Stride)，它告诉我们在连续的顶点属性组之间的间隔。由于下个组位置数据在3个<code>float</code>之后，我们把步长设置为<code>3 * sizeof(float)</code>。要注意的是由于我们知道这个数组是紧密排列的（在两个顶点属性之间没有空隙）我们也可以设置为0来让OpenGL决定具体步长是多少（只有当数值是紧密排列时才可用）。一旦我们有更多的顶点属性，我们就必须更小心地定义每个顶点属性之间的间隔，我们在后面会看到更多的例子（译注: 这个参数的意思简单说就是从这个属性第二次出现的地方到整个数组0位置之间有多少字节）。</li>
+<li>最后一个参数的类型是<code>void*</code>，所以需要我们进行这个奇怪的强制类型转换。它表示位置数据在缓冲中起始位置的偏移量(Offset)。由于位置数据在数组的开头，所以这里是0。我们会在后面详细解释这个参数。</li>
+</ul>
+<h4 id="元素缓冲对象"><a href="#元素缓冲对象" class="headerlink" title="元素缓冲对象"></a>元素缓冲对象</h4><p><strong>元素缓冲对象(Element Buffer Object，EBO)：</strong>当有重复的顶点需要绘制时，不需要定义出相同的顶点，而是使用索引来引用重复的顶点</p>
+<p>这样只需要定义出不重复的所有顶点，需要哪个顶点时使用索引找到并使用它即可，这是EBO的工作方式</p>
+<ol>
+<li>创建顶点数组和索引</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 绘制两个三角形组合成矩形，本来需要六个顶点，但是有两组重复的顶点</span></span><br><span class="line"><span class="type">float</span> vertices[] = &#123;</span><br><span class="line">    <span class="comment">// 第一个三角形</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="comment">// 右上角</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 右下角</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 左上角</span></span><br><span class="line">    <span class="comment">// 第二个三角形</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 右下角</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>, <span class="comment">// 左下角</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>   <span class="comment">// 左上角</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面只定义四个顶点，使用索引就可以构造出两个三角形</span></span><br><span class="line"><span class="type">float</span> vertices[] = &#123;</span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="comment">// 右上角</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 右下角</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>, <span class="comment">// 左下角</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>   <span class="comment">// 左上角</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> indices[] = &#123;</span><br><span class="line">    <span class="comment">// 注意索引从0开始! </span></span><br><span class="line">    <span class="comment">// 此例的索引(0,1,2,3)就是顶点数组vertices的下标，</span></span><br><span class="line">    <span class="comment">// 这样可以由下标代表顶点组合成矩形</span></span><br><span class="line">    <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="comment">// 第一个三角形</span></span><br><span class="line">    <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>  <span class="comment">// 第二个三角形</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建EBO（与VBO类似）</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> VBO; </span><br><span class="line"><span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;VBO);</span><br><span class="line"><span class="built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, VBO);</span><br><span class="line"><span class="built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="built_in">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line"></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> EBO;</span><br><span class="line"><span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;EBO);</span><br><span class="line"><span class="built_in">glBindBuffer</span>(GL_ELEMENT_ARRAY_BUFFER, EBO); <span class="comment">// 注意绑定的缓冲类型为GL_ELEMENT_ARRAY_BUFFER</span></span><br><span class="line"><span class="built_in">glBufferData</span>(GL_ELEMENT_ARRAY_BUFFER, <span class="built_in">sizeof</span>(indices), indices, GL_STATIC_DRAW);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">glVertexAttribPointer</span>(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="built_in">sizeof</span>(<span class="type">float</span>),</span><br><span class="line">(<span class="type">void</span> *)<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 链接顶点属性，即告诉OpenGL如何解释顶点对象中的数据</span></span><br><span class="line"><span class="built_in">glEnableVertexAttribArray</span>(<span class="number">0</span>); <span class="comment">// 启用顶点属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//绘制时使用glDrawElements替换glDrawArrays</span></span><br><span class="line"><span class="built_in">glBindVertexArray</span>(VBO);</span><br><span class="line"><span class="built_in">glDrawElements</span>(GL_TRIANGLES, <span class="number">6</span>, GL_UNSIGNED_INT, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>必须结合VBO才能使用EBO，因为EBO只储存了索引，而没有顶点数据</p>
+</blockquote>
+<h4 id="顶点数组对象"><a href="#顶点数组对象" class="headerlink" title="顶点数组对象"></a>顶点数组对象</h4><p><strong>顶点数组对象(Vertex Array Object, VAO)：</strong>主要用于管理 VBO 或 EBO ，减少<code>glBindBuffer</code>、<code>glEnableVertexAttribArray</code>、 <code>glVertexAttribPointer</code> 这些调用操作，高效地实现在顶点数组配置之间切换。</p>
+<p>VAO的简单使用：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建VAO</span></span><br><span class="line"><span class="type">unsigned</span> VAO;</span><br><span class="line"><span class="built_in">glGenVertexArrays</span>(<span class="number">1</span>, &amp;VAO);</span><br><span class="line"><span class="built_in">glBindVertexArray</span>(VAO);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建VBO</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> VBO;</span><br><span class="line"><span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;VBO);</span><br><span class="line"><span class="built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, VBO);</span><br><span class="line"><span class="built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="built_in">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建EBO</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> EBO;</span><br><span class="line"><span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;EBO);</span><br><span class="line"><span class="built_in">glBindBuffer</span>(GL_ELEMENT_ARRAY_BUFFER, EBO);</span><br><span class="line"><span class="built_in">glBufferData</span>(GL_ELEMENT_ARRAY_BUFFER, <span class="built_in">sizeof</span>(indices), indices,</span><br><span class="line">             GL_STATIC_DRAW);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置顶点属性指针</span></span><br><span class="line"><span class="built_in">glVertexAttribPointer</span>(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="built_in">sizeof</span>(<span class="type">float</span>),</span><br><span class="line">                      (<span class="type">void</span> *)<span class="number">0</span>);</span><br><span class="line"><span class="built_in">glEnableVertexAttribArray</span>(<span class="number">0</span>); <span class="comment">// 启用顶点属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//解绑</span></span><br><span class="line"><span class="built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, <span class="number">0</span>); <span class="comment">// 解绑buffer</span></span><br><span class="line"><span class="built_in">glBindVertexArray</span>(<span class="number">0</span>);             <span class="comment">// 解绑VAO</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>实践表明，无法使用同一个VAO绑定不同的VBO，画出两个不同的图形，一般是多个VAO分别对应多个VBO。一个EBO可以画出多个图形，但只是从预先设置好的数组中读取顶点数据，只不过可以重复使用顶点。</p>
+<h3 id="词汇表"><a href="#词汇表" class="headerlink" title="词汇表"></a>词汇表</h3><ul>
+<li><strong>OpenGL</strong>： 一个定义了函数布局和输出的图形API的正式规范。</li>
+<li><strong>GLAD</strong>： 一个扩展加载库，用来为我们加载并设定所有OpenGL函数指针，从而让我们能够使用所有（现代）OpenGL函数。</li>
+<li>**视口(Viewport)**： 我们需要渲染的窗口。</li>
+<li>**图形管线(Graphics Pipeline)**： 一个顶点在呈现为像素之前经过的全部过程。</li>
+<li>**着色器(Shader)**： 一个运行在显卡上的小型程序。很多阶段的图形管道都可以使用自定义的着色器来代替原有的功能。</li>
+<li>**标准化设备坐标(Normalized Device Coordinates, NDC)**： 顶点在通过在剪裁坐标系中剪裁与透视除法后最终呈现在的坐标系。所有位置在NDC下-1.0到1.0的顶点将不会被丢弃并且可见。</li>
+<li>**顶点缓冲对象(Vertex Buffer Object)**： 一个调用显存并存储所有顶点数据供显卡使用的缓冲对象。</li>
+<li>**顶点数组对象(Vertex Array Object)**： 存储缓冲区和顶点属性状态。</li>
+<li>**元素缓冲对象(Element Buffer Object，EBO)，也叫索引缓冲对象(Index Buffer Object，IBO)**： 一个存储元素索引供索引化绘制使用的缓冲对象。</li>
+<li><strong>Uniform</strong>： 一个特殊类型的GLSL变量。它是全局的（在一个着色器程序中每一个着色器都能够访问uniform变量），并且只需要被设定一次。</li>
+<li>**纹理(Texture)**： 一种包裹着物体的特殊类型图像，给物体精细的视觉效果。</li>
+<li>**纹理环绕(Texture Wrapping)**： 定义了一种当纹理顶点超出范围(0, 1)时指定OpenGL如何采样纹理的模式。</li>
+<li>**纹理过滤(Texture Filtering)**： 定义了一种当有多种纹素选择时指定OpenGL如何采样纹理的模式。这通常在纹理被放大情况下发生。</li>
+<li>**多级渐远纹理(Mipmaps)**： 被存储的材质的一些缩小版本，根据距观察者的距离会使用材质的合适大小。</li>
+<li><strong>stb_image.h</strong>： 图像加载库。</li>
+<li>**纹理单元(Texture Units)**： 通过绑定纹理到不同纹理单元从而允许多个纹理在同一对象上渲染。</li>
+<li>**向量(Vector)**： 一个定义了在空间中方向和&#x2F;或位置的数学实体。</li>
+<li>**矩阵(Matrix)**： 一个矩形阵列的数学表达式。</li>
+<li><strong>GLM</strong>： 一个为OpenGL打造的数学库。</li>
+<li>**局部空间(Local Space)**： 一个物体的初始空间。所有的坐标都是相对于物体的原点的。</li>
+<li>**世界空间(World Space)**： 所有的坐标都相对于全局原点。</li>
+<li>**观察空间(View Space)**： 所有的坐标都是从摄像机的视角观察的。</li>
+<li>**裁剪空间(Clip Space)**： 所有的坐标都是从摄像机视角观察的，但是该空间应用了投影。这个空间应该是一个顶点坐标最终的空间，作为顶点着色器的输出。OpenGL负责处理剩下的事情（裁剪&#x2F;透视除法）。</li>
+<li>**屏幕空间(Screen Space)**： 所有的坐标都由屏幕视角来观察。坐标的范围是从0到屏幕的宽&#x2F;高。</li>
+<li><strong>LookAt矩阵</strong>： 一种特殊类型的观察矩阵，它创建了一个坐标系，其中所有坐标都根据从一个位置正在观察目标的用户旋转或者平移。</li>
+<li>**欧拉角(Euler Angles)**： 被定义为偏航角(Yaw)，俯仰角(Pitch)，和滚转角(Roll)从而允许我们通过这三个值构造任何3D方向。</li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">OpenGL-1 初识</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-06-12 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/06/12/note/Framework/OpenGL/Opengl Intro/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CPP/"><i class="fa-solid fa-hashtag"></i>&nbsp;CPP</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Graphic/"><i class="fa-solid fa-hashtag"></i>&nbsp;Graphic</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Computer/"><i class="fa-solid fa-hashtag"></i>&nbsp;Computer</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/13/note/Programming/evn/vscode-lldb-extension/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">VS code 安装插件 lldb 调试 CPP 程序</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/12/note/Programming/evn/coc-nvim-inlay-hint/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Vim 使用 coc-nvim 的 coc-clangd 关闭参数提示</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF"><span class="nav-number">1.</span> <span class="nav-text">图形渲染管线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="nav-number">2.</span> <span class="nav-text">第一个三角形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%B8%8E%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">概念与作用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%E8%AE%BE%E5%A4%87%E5%9D%90%E6%A0%87"><span class="nav-number">3.1.</span> <span class="nav-text">标准化设备坐标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B6%E7%82%B9%E7%BC%93%E5%86%B2%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.2.</span> <span class="nav-text">顶点缓冲对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E7%BC%93%E5%86%B2%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.3.</span> <span class="nav-text">元素缓冲对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B6%E7%82%B9%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.4.</span> <span class="nav-text">顶点数组对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.5.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%8D%E6%B1%87%E8%A1%A8"><span class="nav-number">4.</span> <span class="nav-text">词汇表</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

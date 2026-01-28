@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                使用xmake构建c++项目 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">使用xmake构建c++项目</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-23 17:38</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">环境搭建与工具使用</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CPP/"><i class="fas fa-hashtag"></i>&nbsp;CPP</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Linux/"><i class="fas fa-hashtag"></i>&nbsp;Linux</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/xmake/"><i class="fas fa-hashtag"></i>&nbsp;xmake</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>1.7k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/imglogo.svg"
+                      alt="logo"
+                ></p>
+<p>接受新的事物是不容易的，这意味要面临诸多陌生和不习惯，但xmake太简单易用了，从此cmake是路人。</p>
+<span id="more"></span>
+
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>On linux：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://xmake.io/shget.text | bash</span><br><span class="line"><span class="comment"># Or</span></span><br><span class="line">wget https://xmake.io/shget.text -O - | bash</span><br></pre></td></tr></table></figure>
+
+<p>On Windows：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Invoke-Expression</span> (<span class="built_in">Invoke-Webrequest</span> <span class="string">&#x27;https://xmake.io/psget.text&#x27;</span> <span class="literal">-UseBasicParsing</span>).Content</span><br></pre></td></tr></table></figure>
+
+<p>或者直接使用包管理器安装。</p>
+<p>如Archlinux：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -Sy xmake</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cpp xmake create -P ./hello</span><br><span class="line"><span class="comment"># -------- 以下为输出内容 --------</span></span><br><span class="line">create hello ...</span><br><span class="line">  [+]: src/main.cpp</span><br><span class="line">  [+]: xmake.lua</span><br><span class="line">  [+]: .gitignore</span><br><span class="line">create ok!</span><br></pre></td></tr></table></figure>
+
+<p>此时目录为</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hello</span><br><span class="line">|-- src</span><br><span class="line">|   `-- main.cpp</span><br><span class="line">`-- xmake.lua</span><br></pre></td></tr></table></figure>
+
+<p><code>xmake.lua</code>的内容为：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_rules(<span class="string">&quot;mode.debug&quot;</span>, <span class="string">&quot;mode.release&quot;</span>)  <span class="comment">-- 添加debug和release模式</span></span><br><span class="line"></span><br><span class="line">target(<span class="string">&quot;hello&quot;</span>)	<span class="comment">-- 项目名字</span></span><br><span class="line">    set_kind(<span class="string">&quot;binary&quot;</span>) <span class="comment">-- 设置生成二进制文件</span></span><br><span class="line">    add_files(<span class="string">&quot;src/*.cpp&quot;</span>) <span class="comment">-- 添加源文件</span></span><br></pre></td></tr></table></figure>
+
+<p>在此基础上可以添加更多如头文件和链接库。</p>
+<h4 id="OpenGL-demo"><a href="#OpenGL-demo" class="headerlink" title="OpenGL-demo"></a>OpenGL-demo</h4><p>环境为WSL-Archlinux。</p>
+<p>安装glfw：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S glfw-x11</span><br></pre></td></tr></table></figure>
+
+<p>下载glad放到项目路径中：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">|-- glad</span><br><span class="line">|   |-- include</span><br><span class="line">|   |   |-- KHR</span><br><span class="line">|   |   |   `-- khrplatform.h</span><br><span class="line">|   |   `-- glad</span><br><span class="line">|   |       `-- glad.h</span><br><span class="line">|   `-- src</span><br><span class="line">|       `-- glad.c</span><br><span class="line">|-- src</span><br><span class="line">|   `-- main.cpp</span><br><span class="line">`-- xmake.lua</span><br></pre></td></tr></table></figure>
+
+<p><code>main.cpp</code>代码在<a href="https://dionysen.github.io/2023/06/12/note/Framework/OpenGL/opengl-intro/#%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2">这里</a>。</p>
+<p><code>xmake.lua</code>的内容为：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_rules(<span class="string">&quot;mode.debug&quot;</span>, <span class="string">&quot;mode.release&quot;</span>)</span><br><span class="line"></span><br><span class="line">target(<span class="string">&quot;test-xmake&quot;</span>)</span><br><span class="line">    set_kind(<span class="string">&quot;binary&quot;</span>)</span><br><span class="line">    add_files(<span class="string">&quot;src/*.cpp&quot;</span>, <span class="string">&quot;glad/src/glad.c&quot;</span>) <span class="comment">-- 添加glad的源文件，&quot;glad/src/glad.c&quot;当然也可以写成&quot;glad/src/*.c&quot;</span></span><br><span class="line">    add_includedirs(<span class="string">&quot;glad/include&quot;</span>) <span class="comment">-- 添加glad的头文件</span></span><br><span class="line">    add_links(<span class="string">&quot;glfw&quot;</span>) <span class="comment">-- 添加glfw库</span></span><br></pre></td></tr></table></figure>
+
+<p>编译：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xmake</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">xmake build</span><br><span class="line"><span class="comment"># -------- 以下为输出内容 --------</span></span><br><span class="line">[ 20%]: cache compiling.release src/main.cpp</span><br><span class="line">[ 60%]: linking.release test-xmake</span><br><span class="line">[100%]: build ok, spent 1.136s</span><br></pre></td></tr></table></figure>
+
+<p>运行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./build/linux/x86_64/release/test-xmake</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">xmake run</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN/img/image-20230623175501844.png"
+                      alt="image-20230623175501844"
+                ></p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><h4 id="生成compile-commands-json"><a href="#生成compile-commands-json" class="headerlink" title="生成compile_commands.json"></a>生成compile_commands.json</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xmake project -k compile_commands</span><br></pre></td></tr></table></figure>
+
+<p>如果有多个编译器，最好先设置好语法检查的编译器再生成：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xmake f --toolchain=clang</span><br><span class="line">xmake project -k compile_commands</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用mingw编译器"><a href="#使用mingw编译器" class="headerlink" title="使用mingw编译器"></a>使用mingw编译器</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">xmake f <span class="literal">-p</span> mingw <span class="literal">--sdk</span>=/path/to/mingw/</span><br></pre></td></tr></table></figure>
+
+<p>发现mingw编译速度很慢，换成msvc：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">xmake f <span class="literal">--toolchain</span>=msvc</span><br></pre></td></tr></table></figure>
+
+<h4 id="切换编译模式到debug-release"><a href="#切换编译模式到debug-release" class="headerlink" title="切换编译模式到debug&#x2F;release"></a>切换编译模式到debug&#x2F;release</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">xmake f <span class="literal">-m</span> debug</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>f意为config，m意为mode</p>
+</blockquote>
+<h4 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h4><p>如glm，先编辑<code>xmake.lua</code>：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_rules(<span class="string">&quot;mode.debug&quot;</span>, <span class="string">&quot;mode.release&quot;</span>)</span><br><span class="line">add_requires(<span class="string">&quot;glm&quot;</span>) <span class="comment">-- 必须添加依赖</span></span><br><span class="line"></span><br><span class="line">target(<span class="string">&quot;opengl&quot;</span>)</span><br><span class="line">    add_rules(<span class="string">&quot;win.sdk.application&quot;</span>)</span><br><span class="line">    set_kind(<span class="string">&quot;binary&quot;</span>)</span><br><span class="line">    add_files(<span class="string">&quot;src/*.cpp&quot;</span>,<span class="string">&quot;src/*.c&quot;</span>)</span><br><span class="line">    add_includedirs(<span class="string">&quot;/include&quot;</span>,<span class="string">&quot;/Dependencies/include/glad&quot;</span>)</span><br><span class="line">    add_links(<span class="string">&quot;opengl32&quot;</span>)</span><br><span class="line">    add_packages(<span class="string">&quot;glm&quot;</span>) <span class="comment">-- 然后添加包，之后xmake会自动添加include和link及其路径</span></span><br></pre></td></tr></table></figure>
+
+<p>然后生成compile_commands以让编译器智能补全：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">xmake  <span class="comment">#构建时会自动从远程仓库拉取</span></span><br><span class="line">xmake project <span class="literal">-k</span> compile_commands</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，添加依赖库的方式很多，常用是：</p>
+<p>①使用xmake的包管理器，可以使用vcpkg或conon的包，也可以使用xmake自己的包，添加的方式是：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_requires(<span class="string">&quot;glfw&quot;</span>) // 添加依赖</span><br><span class="line">add_packages(<span class="string">&quot;glfw&quot;</span>) // 添加包</span><br></pre></td></tr></table></figure>
+
+<p>②从源码编译成依赖库：</p>
+<p>如源码路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">└─spdlog</span><br><span class="line">    ├─include</span><br><span class="line">    │  └─spdlog</span><br><span class="line">    │      ├─cfg</span><br><span class="line">    │      ├─details</span><br><span class="line">    │      ├─<span class="built_in">fmt</span></span><br><span class="line">    │      │  └─bundled</span><br><span class="line">    │      └─sinks</span><br><span class="line">    └─src</span><br></pre></td></tr></table></figure>
+
+<p>在spdlog文件下创建<code>xmake.lua</code>作为项目的子模块：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">target(<span class="string">&quot;spdlog&quot;</span>)</span><br><span class="line">    set_kind(<span class="string">&quot;static&quot;</span>) <span class="comment">-- 设置为静态库类型</span></span><br><span class="line">	<span class="comment">-- 或动态库 set_kind(&quot;shared&quot;) </span></span><br><span class="line">    add_includedirs(<span class="string">&quot;./include&quot;</span>, &#123;public = <span class="literal">true</span>&#125;) <span class="comment">-- 让依赖此库的项目继承头文件</span></span><br><span class="line">    add_files(<span class="string">&quot;./src/*.cpp&quot;</span>)</span><br><span class="line"></span><br><span class="line">    add_defines(<span class="string">&quot;SPDLOG_COMPILED_LIB&quot;</span>) <span class="comment">-- 编译成lib所需要宏</span></span><br></pre></td></tr></table></figure>
+
+<p>然后再自己项目中的<code>xmake.lua</code>中包含并添加依赖：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">target(<span class="string">&quot;myPrj&quot;</span>)</span><br><span class="line">	setkind(<span class="string">&quot;binary&quot;</span>)</span><br><span class="line">	</span><br><span class="line">	includes(<span class="string">&quot;./vendor/spdlog/xmake.lua&quot;</span>) 	<span class="comment">-- 包含spdlog项目</span></span><br><span class="line">	add_deps(<span class="string">&quot;spdlog&quot;</span>)						<span class="comment">-- 添加依赖</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">-- ...其他配置</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Qt项目"><a href="#Qt项目" class="headerlink" title="Qt项目"></a>Qt项目</h4><p>创建：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xmake create -t qt.console <span class="built_in">test</span></span><br><span class="line">xmake create -t qt.static <span class="built_in">test</span></span><br><span class="line">xmake create -t qt.shared <span class="built_in">test</span></span><br><span class="line">xmake create -t qt.quickapp <span class="built_in">test</span></span><br><span class="line">xmake create -t qt.widgetapp <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+<p>配置qt版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xmake f --qt=~/Qt/Qt5.9.1</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用xmake生成Visual-Studio项目"><a href="#使用xmake生成Visual-Studio项目" class="headerlink" title="使用xmake生成Visual Studio项目"></a>使用xmake生成Visual Studio项目</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xmake project -k vsxmake</span><br></pre></td></tr></table></figure>
+
+<p>要注意，<code>add_includedirs</code>中的头文件并不会在VS中显示，需要额外使用<code>add_headerfiles</code>将头文件安装到工程中。</p>
+<h4 id="下载xmake包使用内置镜像加速（github）"><a href="#下载xmake包使用内置镜像加速（github）" class="headerlink" title="下载xmake包使用内置镜像加速（github）"></a>下载xmake包使用内置镜像加速（github）</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xmake g --proxy_pac=github_mirror.lua</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不用自己编写 pac.lua，就可以直接使用它来加速 github 源的下载。</p>
+<p>更多内置镜像可以通过 <code>xmake g --help</code> 查看 <code>--proxy_pac=</code> 下列表。</p>
+</blockquote>
+<h4 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h4><p>xmake的全局配置在家目录下的<code>.xmake</code>文件夹中，打开其中的<code>xmake.conf</code>可以看到：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    proxy_pac = <span class="string">&quot;github_mirror.lua&quot;</span><span class="punctuation">,</span></span><br><span class="line">    theme = <span class="string">&quot;default&quot;</span><span class="punctuation">,</span></span><br><span class="line">    __version = <span class="string">&quot;2.8.6&quot;</span><span class="punctuation">,</span></span><br><span class="line">    network = <span class="string">&quot;public&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中的<code>proxy_pac</code>即是设置的代理，这里使用的是内置github加速，主题是默认。</p>
+<p>可选的主题有ninja、emoji、dark、light、powershell和plain.</p>
+<p>可以直接修改conf文件或使用全局配置修改主题：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">xmake g --theme=plain</span><br></pre></td></tr></table></figure>
+
+<h4 id="xmake-conf和运行前先构建"><a href="#xmake-conf和运行前先构建" class="headerlink" title="xmake.conf和运行前先构建"></a>xmake.conf和运行前先构建</h4><p>xmake可以设置策略，使得每次使用<code>xmake r</code>运行前先构建，再运行。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xmake f --policies=run.autobuild</span><br></pre></td></tr></table></figure>
+
+<p>有时候会出现bug，设置完自动构建，xmake会把构建模式设置成release，可以同时设置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xmake f -m debug --policies=run.autobuild</span><br></pre></td></tr></table></figure>
+
+<p>或者打开<code>./xmake/windows/x64/xmake.conf</code>手动修改（不推荐）：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    __toolchains_windows_x64 = <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="string">&quot;msvc&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;yasm&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;nasm&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;cuda&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;rust&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;swift&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;go&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;gfortran&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;fpc&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;nim&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    arch = <span class="string">&quot;x64&quot;</span><span class="punctuation">,</span></span><br><span class="line">    buildir = <span class="string">&quot;build&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ccache = <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    host = <span class="string">&quot;windows&quot;</span><span class="punctuation">,</span></span><br><span class="line">    kind = <span class="string">&quot;static&quot;</span><span class="punctuation">,</span></span><br><span class="line">    mode = <span class="string">&quot;debug&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ndk_stdcxx = <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    network = <span class="string">&quot;public&quot;</span><span class="punctuation">,</span></span><br><span class="line">    pkg_searchdirs = <span class="punctuation">[</span><span class="punctuation">[</span>D<span class="punctuation">:</span>\xmakerepo<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    plat = <span class="string">&quot;windows&quot;</span><span class="punctuation">,</span></span><br><span class="line">    policies = <span class="string">&quot;run.autobuild&quot;</span><span class="punctuation">,</span></span><br><span class="line">    proxy = <span class="string">&quot;socks5://127.0.0.1:7890&quot;</span><span class="punctuation">,</span></span><br><span class="line">    proxy_hosts = <span class="string">&quot;github.com,gitlab.*,*.xmake.io&quot;</span><span class="punctuation">,</span></span><br><span class="line">    proxy_pac = <span class="string">&quot;github_mirror.lua&quot;</span><span class="punctuation">,</span></span><br><span class="line">    theme = <span class="string">&quot;default&quot;</span><span class="punctuation">,</span></span><br><span class="line">    vs = <span class="string">&quot;2022&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="导入CMake本地包"><a href="#导入CMake本地包" class="headerlink" title="导入CMake本地包"></a>导入CMake本地包</h4><p>使用msdf-atlas-gen包时，发现xmake官方repo中没有，因此从github上下载并以cmake的构建方式导入xmake中。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/Chlumsky/msdf-atlas-gen.git</span><br></pre></td></tr></table></figure>
+
+<p>然后将其放到项目文件夹中，在xmake.lua中添加：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="built_in">package</span>(<span class="string">&quot;msdf-atlas-gen&quot;</span>)</span><br><span class="line">    add_deps(<span class="string">&quot;cmake&quot;</span>)</span><br><span class="line">    set_sourcedir(<span class="built_in">path</span>.join(<span class="built_in">os</span>.scriptdir(), <span class="string">&quot;./vendor/msdf-atlas-gen&quot;</span>))  <span class="comment">-- 这里给出包的源代码路径</span></span><br><span class="line">    on_install(<span class="function"><span class="keyword">function</span> <span class="params">(package)</span></span></span><br><span class="line">        <span class="keyword">local</span> configs = &#123;&#125;</span><br><span class="line">        <span class="built_in">table</span>.<span class="built_in">insert</span>(configs, <span class="string">&quot;-DCMAKE_BUILD_TYPE=&quot;</span> .. (<span class="built_in">package</span>:<span class="built_in">debug</span>() <span class="keyword">and</span> <span class="string">&quot;Debug&quot;</span> <span class="keyword">or</span> <span class="string">&quot;Release&quot;</span>))</span><br><span class="line">        <span class="built_in">table</span>.<span class="built_in">insert</span>(configs, <span class="string">&quot;-DBUILD_SHARED_LIBS=&quot;</span> .. (<span class="built_in">package</span>:<span class="built_in">config</span>(<span class="string">&quot;shared&quot;</span>) <span class="keyword">and</span> <span class="string">&quot;ON&quot;</span> <span class="keyword">or</span> <span class="string">&quot;OFF&quot;</span>))</span><br><span class="line">        import(<span class="string">&quot;package.tools.cmake&quot;</span>).install(<span class="built_in">package</span>, configs)</span><br><span class="line">    <span class="keyword">end</span>)</span><br><span class="line">package_end()</span><br><span class="line">add_requires(<span class="string">&quot;msdf-atlas-gen&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以在项目中添加此包：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_packages(<span class="string">&quot;msdf-atlas-gen&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行xmake，会提示安装msdf-atlas-gen，安装即可使用。安装时的依赖会根据包的作者配置的cmake进行查找和安装，此包使用vcpkg安装依赖，在linux或windows环境下要先安装vcpkg。</p>
+<p>但目前发现有一些bug，比如当一个包中依赖多个子项目时，xmake可能会找不到头文件，需要手动将包的头文件添加到xmake.lua中：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_includedirs(<span class="string">&quot;./vendor/msdf-atlas-gen/msdf-atlas-gen&quot;</span>,</span><br><span class="line">                <span class="string">&quot;./vendor/msdf-atlas-gen/msdfgen&quot;</span>,</span><br><span class="line">                <span class="string">&quot;./vendor/msdf-atlas-gen/artery-font-format&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h4 id="在window上链接预编译动态库"><a href="#在window上链接预编译动态库" class="headerlink" title="在window上链接预编译动态库"></a>在window上链接预编译动态库</h4><figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_linkdirs(<span class="string">&quot;path/to/lib&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这样即已经设置了寻找库文件的路径，只需添加<code>.lib</code>文件即可：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_links(<span class="string">&quot;your_lib&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这样运行时会自动搜索将库文件的路径里的dll文件。</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<h4 id="设置c-标准"><a href="#设置c-标准" class="headerlink" title="设置c++标准"></a>设置c++标准</h4><figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">set_languages(<span class="string">&quot;c99&quot;</span>, <span class="string">&quot;cxx11&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可同时设置c和c++的标准。</p>
+<h4 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xmake g --proxy=<span class="string">&quot;socks5://127.0.0.1:7890&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">使用xmake构建c++项目</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-06-23 17:38:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/06/23/note/Programming/tools/xmake/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CPP/"><i class="fa-solid fa-hashtag"></i>&nbsp;CPP</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Linux/"><i class="fa-solid fa-hashtag"></i>&nbsp;Linux</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/xmake/"><i class="fa-solid fa-hashtag"></i>&nbsp;xmake</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/29/note/Framework/OpenGL/Win32andOpenGL/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">基于Win32的OpenGL1.0</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/20/note/Programming/tools/cmake-win/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Windows命令行使用CMake</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenGL-demo"><span class="nav-number">2.2.</span> <span class="nav-text">OpenGL-demo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90compile-commands-json"><span class="nav-number">3.1.</span> <span class="nav-text">生成compile_commands.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mingw%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">使用mingw编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E7%BC%96%E8%AF%91%E6%A8%A1%E5%BC%8F%E5%88%B0debug-release"><span class="nav-number">3.3.</span> <span class="nav-text">切换编译模式到debug&#x2F;release</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E5%BA%93"><span class="nav-number">3.4.</span> <span class="nav-text">添加远程库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Qt%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.5.</span> <span class="nav-text">Qt项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8xmake%E7%94%9F%E6%88%90Visual-Studio%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.6.</span> <span class="nav-text">使用xmake生成Visual Studio项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDxmake%E5%8C%85%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%AE%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%EF%BC%88github%EF%BC%89"><span class="nav-number">3.7.</span> <span class="nav-text">下载xmake包使用内置镜像加速（github）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="nav-number">3.8.</span> <span class="nav-text">设置主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xmake-conf%E5%92%8C%E8%BF%90%E8%A1%8C%E5%89%8D%E5%85%88%E6%9E%84%E5%BB%BA"><span class="nav-number">3.9.</span> <span class="nav-text">xmake.conf和运行前先构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5CMake%E6%9C%AC%E5%9C%B0%E5%8C%85"><span class="nav-number">3.10.</span> <span class="nav-text">导入CMake本地包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8window%E4%B8%8A%E9%93%BE%E6%8E%A5%E9%A2%84%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93"><span class="nav-number">3.11.</span> <span class="nav-text">在window上链接预编译动态库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEc-%E6%A0%87%E5%87%86"><span class="nav-number">3.12.</span> <span class="nav-text">设置c++标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number">3.13.</span> <span class="nav-text">设置代理</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

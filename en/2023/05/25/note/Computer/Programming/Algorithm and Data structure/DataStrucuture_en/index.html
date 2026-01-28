@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Data Structure |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/en/css/style.css">
+
+            <link rel="shortcut icon" href="/en/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/en/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.9rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/en/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/en/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io"
+                            >
+                                中文
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/en/about">ABOUT</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io">中文</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Data Structure</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/en/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-05-25 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/en/categories/Programming/">Programming</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/en/categories/Programming/Data-Structure/">Data Structure</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/en/tags/Data/"><i class="fas fa-hashtag"></i>&nbsp;Data</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>870 Words</span>
+        </span>
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>Data Strutcure</p>
+<span id="more"></span>
+
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>Array has fixed size and contiguous memory. New elements cannot be appended. You can use memory address to access elements of Array. </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> a[<span class="number">5</span>] = &#123;<span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>,&#125;; </span><br></pre></td></tr></table></figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/Dionysen/BlogCDN@master/img/2022-10-0191157.png"
+                      style="zoom: 33%;" 
+                >
+C++ counts food tags from `0`, so `a[0] = 'h'` and `a[1] = 'e'`.
+Random access using `a[i]` has `O(1)` time complexity.
+Units of array can be modified. 
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a[<span class="number">0</span>] = <span class="string">&#x27;b&#x27;</span>;</span><br></pre></td></tr></table></figure>
+result:
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bello</span><br></pre></td></tr></table></figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/Dionysen/BlogCDN@master/img/屏幕截图 2022-10-02 191857.png"
+                      style="zoom:33%;" 
+                >
+### Dynamic Allocation of Arrays
+
+<p>A size-<code>n</code> array can be created in this way:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> a[n];</span><br></pre></td></tr></table></figure>
+
+<p>But when writing the code, <code>n</code> must be known.</p>
+<p>If <code>n</code> is unknown, how dose the program run?</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span>* a = <span class="literal">NULL</span>;</span><br><span class="line"><span class="type">int</span> n; <span class="comment">// array size </span></span><br><span class="line">cin &gt;&gt; n; <span class="comment">// read in the size. e.g., get n = 5</span></span><br><span class="line">a = <span class="keyword">new</span> <span class="type">char</span>[n];</span><br></pre></td></tr></table></figure>
+
+<p>Now <code>a</code> is an <strong>empty</strong> array whose size is <code>5</code>.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store somrthing in the array</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="string">&#x27;h&#x27;</span>;</span><br><span class="line">a[<span class="number">1</span>] = <span class="string">&#x27;e&#x27;</span>;</span><br><span class="line">a[<span class="number">2</span>] = <span class="string">&#x27;l&#x27;</span>;</span><br><span class="line">a[<span class="number">3</span>] = <span class="string">&#x27;l&#x27;</span>;</span><br><span class="line">a[<span class="number">4</span>] = <span class="string">&#x27;o&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>When done, <strong>free memory</strong>. Otherwise, memory leak can happen.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> [] a;</span><br><span class="line">a = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Removing an element in the middle has <code>O(n)</code> time complexity. Require moving the remaining items leftward.</p>
+<h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><p>Vector is almost the same as array.</p>
+<p>The main difference is that vector’s capacity can automatically grow.</p>
+<p>New elements can be appended using <code>push_back()</code> in <code>O(1)</code> time(on average). </p>
+<p>The last element can be removed using <code>pop_back()</code> in <code>O(1)</code> time.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">char</span>&gt; v = &#123;<span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>&#125;; </span><br><span class="line">v.<span class="built_in">push_back</span>();</span><br><span class="line">v.<span class="built_in">pop_back</span>();</span><br><span class="line">v.<span class="built_in">erase</span>(v.<span class="built_in">begin</span>() + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Vector can delete an element in the middle using <code>erase()</code> in <code>O(n)</code> time. So it is not better to do this.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="type">char</span>&gt; <span class="title">v</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line">cout &lt;&lt; v.<span class="built_in">size</span>();		<span class="comment">// print &quot;100&quot;</span></span><br><span class="line">cout &lt;&lt; v.<span class="built_in">capacity</span>();	<span class="comment">// print &quot;100&quot;</span></span><br><span class="line"><span class="comment">// then</span></span><br><span class="line">v.<span class="built_in">push_back</span>(<span class="string">&#x27;x&#x27;</span>);</span><br><span class="line">cout &lt;&lt; v.<span class="built_in">size</span>();		<span class="comment">// print &quot;101&quot;</span></span><br><span class="line">cout &lt;&lt; v.<span class="built_in">capacity</span>();	<span class="comment">// print &quot;200&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>When size is going to exceed capacity, program will create a new array of capacity 200, copy the 100 elements from the old array to the new, put  the new element in the 101st position and free the old array from memory.</strong></p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="A-Node"><a href="#A-Node" class="headerlink" title="A Node"></a>A Node</h3><p>A node contains a data and two pointers that one points to the previous node and another points to the next node.</p>
+<h3 id="Doubly-Linked-List"><a href="#Doubly-Linked-List" class="headerlink" title="Doubly Linked List"></a>Doubly Linked List</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::list&lt;<span class="type">char</span>&gt; l = &#123;<span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>&#125;; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cout &lt;&lt; l[<span class="number">2</span>];		<span class="comment">// does not work</span></span><br><span class="line">l[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span>;			<span class="comment">// does not work</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">list&lt;<span class="type">char</span>&gt;::iterator iter = l.<span class="built_in">begin</span>();</span><br><span class="line">cout &lt;&lt; *iter;		<span class="comment">// print &#x27;h&#x27;</span></span><br><span class="line">iter++;</span><br><span class="line">cout &lt;&lt; *iter;		<span class="comment">// print &#x27;e&#x27;</span></span><br><span class="line">*iter = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">push_back</span>();</span><br><span class="line">push.<span class="built_in">front</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Diference"><a href="#Diference" class="headerlink" title="Diference"></a>Diference</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>Array</th>
+<th>Vector</th>
+<th>List</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Size</td>
+<td>fixed</td>
+<td>can increase and decrease</td>
+<td>can increase and decrease</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>contiguous</td>
+<td>contiguous</td>
+<td>not contiguous</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Array</th>
+<th>Vector</th>
+<th>List</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Rand Access</td>
+<td><code>O(1)</code></td>
+<td><code>O(1)</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>push_back()</code></td>
+<td>—</td>
+<td><code>O(1)</code>(average)</td>
+<td><code>O(1)</code></td>
+</tr>
+<tr>
+<td><code>pop_back()</code></td>
+<td>—</td>
+<td><code>O(1)</code></td>
+<td><code>O(1)</code></td>
+</tr>
+<tr>
+<td><code>insert()</code></td>
+<td>—</td>
+<td><code>O(n)</code>(average)</td>
+<td><code>O(1)</code></td>
+</tr>
+<tr>
+<td><code>erase()</code></td>
+<td>—</td>
+<td><code>O(n)</code>(average)</td>
+<td><code>O(1)</code></td>
+</tr>
+</tbody></table>
+<p>Which shall we use?</p>
+<p><strong>Array:</strong> Fixed size throughout.</p>
+<p><strong>Vector:</strong> </p>
+<ul>
+<li>Random access(i.e., read or write the <code>i</code>-th element) is fast.</li>
+<li>Insertion and deletion at the end are fas.</li>
+<li>insertion and deletion in the front and midddle are slow.</li>
+</ul>
+<p><strong>List:</strong></p>
+<ul>
+<li>Sequentially visiting elements is fast; random access is not <em><strong>allowed</strong></em>.</li>
+<li>Frequent insertion and deletion at any position are OK.</li>
+</ul>
+<h1 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">26</span>, <span class="number">32</span>, <span class="number">51</span>, <span class="number">53</span>, <span class="number">64</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Inputs:</strong> (i) an array whose elements are in the accending order and (ii) a key.</p>
+<p><strong>Goal:</strong> Search for the key in the array. If found, return its index; if not found, return -<code>1</code>.</p>
+<p>Examle 1:</p>
+<ul>
+<li>Search for the elemnt <code>53</code>.</li>
+<li>Return <code>8</code>.</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Search for the element 9.</li>
+<li>Return <code>-1</code>.</li>
+</ul>
+<p>Example: <code>key = 26</code>.  Use two variables <code>left</code> and <code>right</code> pointing to the front of the array and the back respectively. </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> left, <span class="type">int</span> right, <span class="type">int</span> key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">        <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (key == arr[mid])</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span> (key &gt; arr[mid])</span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>How to suport both <strong>search</strong> and <strong>insertion</strong>?</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">26</span>, <span class="number">32</span>, <span class="number">51</span>, <span class="number">53</span>, <span class="number">64</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>The ascending order must be kept; otherwisem search would take <em>O(n)</em> time.<br>Inserting an item into the middle has <em>O(n)</em> time complexity(on average).<br>Can we perform binary search in the list?<br>No, Given <code>left</code> and <code>right</code>, we cannot get <code>mid</code> efficiently.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Search</th>
+<th>Insertion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Vector</td>
+<td><em>O(log n)</em></td>
+<td><em>O(n)</em></td>
+</tr>
+<tr>
+<td>List</td>
+<td><em>O(n)</em></td>
+<td><em>O(1)</em></td>
+</tr>
+<tr>
+<td><strong>Skip List</strong></td>
+<td><em>O(log n)</em></td>
+<td><em>O(log n)</em></td>
+</tr>
+</tbody></table>
+<h1 id="Skip-List"><a href="#Skip-List" class="headerlink" title="Skip List"></a>Skip List</h1><p>Linked list does not support binary search.</p>
+<blockquote>
+<p>Skip list allows fast search and fast inertion.</p>
+</blockquote>
+<p><strong>Search:</strong> <em>O(log n)</em> time complexcity on average.</p>
+<p><strong>Insertion:</strong> <em>O(log n)</em> time complexcity on average.</p>
+<h2 id="Build-a-skip-list（待补充）"><a href="#Build-a-skip-list（待补充）" class="headerlink" title="Build a skip list（待补充）"></a>Build a skip list（待补充）</h2><p>Initially, a linked list contains <em>n</em> numbers in ascending order.</p>
+<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><h2 id="Insertion"><a href="#Insertion" class="headerlink" title="Insertion"></a>Insertion</h2>
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">Data Structure</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2023-05-25 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2023/05/25/note/Computer/Programming/Algorithm and Data structure/DataStrucuture_en/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/en/tags/Data/"><i class="fa-solid fa-hashtag"></i>&nbsp;Data</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/en/2023/05/25/note/Wiki/v2raya/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">V2rayA</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/en/2023/05/25/note/Computer/Programming/Algorithm%20and%20Data%20structure/Linked_list_en/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Singly Linked list</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div id="load-comments">Show Comments</div>
+            <script async >
+                document.addEventListener('DOMContentLoaded', () => {
+                    var toggleButton = document.getElementById("load-comments");
+                    var commentsContainer = document.getElementsByClassName("comments-container");
+                    toggleButton.addEventListener("click", async () => {
+                        if (commentsContainer[0].style.display === "none") {
+                            commentsContainer[0].style.display = "block";
+                            toggleButton.innerHTML = "Hide Comments";
+                        } else {
+                            commentsContainer[0].style.display = "none";
+                            toggleButton.innerHTML = "Show Comments";
+                        }
+                    });
+                });
+            </script>
+
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-text">Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vector"><span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Node"><span class="nav-text">A Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Doubly-Linked-List"><span class="nav-text">Doubly Linked List</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diference"><span class="nav-text">Diference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binary-Search"><span class="nav-text">Binary Search</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Skip-List"><span class="nav-text">Skip List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-a-skip-list%EF%BC%88%E5%BE%85%E8%A1%A5%E5%85%85%EF%BC%89"><span class="nav-text">Build a skip list（待补充）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Search"><span class="nav-text">Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insertion"><span class="nav-text">Insertion</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async 
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })
+        </script>
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+
+</body>
+</html>

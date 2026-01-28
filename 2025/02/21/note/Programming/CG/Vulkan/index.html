@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Vulkan基本概念 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Vulkan基本概念</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2025-02-21 20:54</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/Game-Engine/">Game Engine</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/"><i class="fas fa-hashtag"></i>&nbsp;C++</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Compute-Graphic/"><i class="fas fa-hashtag"></i>&nbsp;Compute Graphic</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>4.6k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>Vulkan的一些基本概念。</p>
+<span id="more"></span>
+
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="Instance"><a href="#Instance" class="headerlink" title="Instance"></a>Instance</h3><p>App与vulkan之间的桥梁，创建一个Instance即创建一个vulkan对象，之后才可以进行更多操作。</p>
+<h3 id="Physical-Device"><a href="#Physical-Device" class="headerlink" title="Physical Device"></a>Physical Device</h3><p>物理设备，通常来说是一个显卡（GPU），也可以是其他设备，如NPU、DSP等。</p>
+<h3 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h3><p>相当于一个在App中的physical device实例，App可以创建多个Device与物理设备交互和管理资源；类比OpenGL，相等于Context。</p>
+<h3 id="QueueFamily"><a href="#QueueFamily" class="headerlink" title="QueueFamily"></a>QueueFamily</h3><p>每一个物理设备的功能不同，如显卡有计算和图形渲染功能，而NPU只能计算，DSP可以解码，这些功能都由物理设备的QueueFamily体现，每一种功能对应一种QueueFamily。</p>
+<p>App与vulkan交互的逻辑就是，通过QueueFamily创建处对应的Queue，然后将Command推入Queue中，vulkan会把这些command交给设备进行处理。</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>Queue是vulkan很重要的概念，可以理解为App与设备之间通信的队列。</p>
+<p>每种Queue可以接受不同的Command，取决于它属于哪一个QueueFamily。</p>
+<p>在创建Queue时，指定对应的family的index，便可以创建属于该family的Queue。</p>
+<h3 id="Image、Buffer"><a href="#Image、Buffer" class="headerlink" title="Image、Buffer"></a>Image、Buffer</h3><p>都属于内存空间对象。不同的是Image表示特定用途的对象，如颜色缓冲，纹理，深度等。Buffer仅仅代表原始数据缓存。</p>
+<h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><p>一块内存。可以是CPU内存，也可以是GPU内存（显存）。创建一个Buffer或Image这样的内存对象，必须给他们分配内存，即Memory。</p>
+<h3 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h3><p>Image具有明确的用途，需要让vulkan知道如何使用Image。</p>
+<p>因此要告诉vulkan这个Image的类型格式等属性，ImageView用以描述这些属性，vulkan不会直接操作Image，而是通过ImageView对象来操作Iamge。</p>
+<h3 id="CommandBuffer"><a href="#CommandBuffer" class="headerlink" title="CommandBuffer"></a>CommandBuffer</h3><p>命令缓冲，</p>
+<h3 id="CommandPool"><a href="#CommandPool" class="headerlink" title="CommandPool"></a>CommandPool</h3><p>用来分配CommandBuffer。由于每一个Queue支持的Command不同（用途不同），在创建对应Queue的CommandPool时，也应该指定与创建Queue时一样的QueueFamily的Index。</p>
+<h3 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h3><p>图形渲染管线，与OpenGL中的概念相似。顶点着色器-&gt;细分着色器-&gt;几何着色器-&gt;光栅化着色器-&gt;片段着色器。OpenGL中固有这些，而vulkan需要手动创建。（也因此可以看出vulkan的可编程的程度极深）</p>
+<h3 id="Framebuffer"><a href="#Framebuffer" class="headerlink" title="Framebuffer"></a>Framebuffer</h3><p>帧缓冲，即渲染目标对象。Framebuffer需要关联不同的Image，这些Image起到不同的作用，颜色缓冲、深度缓冲、模板缓冲等。</p>
+<h3 id="RenderPass"><a href="#RenderPass" class="headerlink" title="RenderPass"></a>RenderPass</h3><p>可以理解为Pipeline的输入参数，最终要的输入参数是Framebuffer。</p>
+<h3 id="Discriptor"><a href="#Discriptor" class="headerlink" title="Discriptor"></a>Discriptor</h3><p>Discriptor是单个资源的抽象句柄（如纹理、缓冲）。</p>
+<p>DiscriptorSet是一组描述符集合，对应着色器中的set绑定组。</p>
+<p><strong>DescriptorPool（描述符池）</strong> 是用于高效分配和管理 <strong>描述符集（DescriptorSet）</strong> 的核心对象。它类似于内存池的概念，主要作用是通过预分配资源减少动态内存分配的开销，从而提升渲染性能。</p>
+<p>Descriptor预先分配一定数量和类型的描述符（如UniformBuffer、StorageBuffer、纹理、采样器等），后续从池中分配描述符集，避免频繁的全局内存操作和同步开销。</p>
+<p>1）通过描述符集布局定义资源绑定规则；2）从描述符池分配描述符集；3）更新描述符集指向的资源；4）绑定描述符集到管线供着色器使用。</p>
+<h3 id="Submit"><a href="#Submit" class="headerlink" title="Submit"></a>Submit</h3><p>CommandBuffer不能直接推入Queue中，因为多个CommandBuffer可能需要进行同步、排他等设置，因此需要将CommandBuffer和同步、排他对象一起放到同一个Submit对象中，然后将Submit推入Queue中。这样vulkan可以根据Submit中的对象来安排CommandBuffer的执行顺序。</p>
+<p>常用的控制CommandBuffer之间、CPU-GPU、GPU-GPU之间的同步或排他对象由VkEvent、VkSemaphore和VkFence。</p>
+<h3 id="UniformBuffer-StorageBuffer"><a href="#UniformBuffer-StorageBuffer" class="headerlink" title="UniformBuffer&#x2F;StorageBuffer"></a>UniformBuffer&#x2F;StorageBuffer</h3><p>这两种buffer都是用于着色器与CPU之间传递的结构化数据。</p>
+<p>UniformBuffer是一种<strong>只读缓冲</strong>，用于传递全局、低频更新的数据（如MVP矩阵、灯光参数等）。绘制期间，在着色器中无法修改。需要显式对齐，std140.</p>
+<p>StorageBuffer是一种<strong>可读写缓冲</strong>，用于传递大量结构化数据（如顶点数据、粒子状态、计算着色器结果）。支持动态修改和原子操作。对齐灵活，std340.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>特性</strong></th>
+<th align="center">Uniform Buffer</th>
+<th align="center">Storage Buffer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>访问权限</strong></td>
+<td align="center">只读</td>
+<td align="center">可读写（支持原子操作）</td>
+</tr>
+<tr>
+<td align="center"><strong>数据规模</strong></td>
+<td align="center">适合小数据（KB 级）</td>
+<td align="center">适合大数据（MB&#x2F;GB 级）</td>
+</tr>
+<tr>
+<td align="center"><strong>内存布局</strong></td>
+<td align="center"><code>std140</code>（严格对齐）</td>
+<td align="center"><code>std430</code>（更灵活对齐）</td>
+</tr>
+<tr>
+<td align="center"><strong>性能优化</strong></td>
+<td align="center">低延迟，专用缓存</td>
+<td align="center">高带宽，适合批量操作</td>
+</tr>
+<tr>
+<td align="center"><strong>典型用途</strong></td>
+<td align="center">矩阵、全局参数</td>
+<td align="center">粒子系统、计算着色器、通用数据结构</td>
+</tr>
+<tr>
+<td align="center"><strong>Vulkan 标志</strong></td>
+<td align="center"><code>VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT</code></td>
+<td align="center"><code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code></td>
+</tr>
+</tbody></table>
+<h4 id="内存布局规则"><a href="#内存布局规则" class="headerlink" title="内存布局规则"></a><strong>内存布局规则</strong></h4><h5 id="Uniform-Buffer（std140）"><a href="#Uniform-Buffer（std140）" class="headerlink" title="Uniform Buffer（std140）"></a><strong>Uniform Buffer（std140）</strong></h5><ul>
+<li><p><strong>基础类型对齐</strong>：标量（如 <code>float</code>）按 4 字节对齐，向量按 4N 字节对齐（如 <code>vec3</code> 对齐到 16 字节</p>
+</li>
+<li><p>）。</p>
+</li>
+<li><p><strong>结构体内存</strong>：成员按声明顺序对齐，整体大小填充为 16 的倍数。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++ 结构体（需手动填充）</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">UniformBufferObject</span> &#123;</span><br><span class="line">    <span class="built_in">alignas</span>(<span class="number">16</span>) glm::mat4 model;  <span class="comment">// 16 字节对齐</span></span><br><span class="line">    <span class="built_in">alignas</span>(<span class="number">16</span>) glm::mat4 view;</span><br><span class="line">    <span class="built_in">alignas</span>(<span class="number">16</span>) glm::mat4 proj;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="Storage-Buffer（std430）"><a href="#Storage-Buffer（std430）" class="headerlink" title="Storage Buffer（std430）"></a><strong>Storage Buffer（std430）</strong></h5><ul>
+<li><p><strong>更宽松对齐</strong>：标量和向量按自然大小对齐（如 <code>vec3</code> 对齐到 12 字节）。</p>
+</li>
+<li><p><strong>数组支持</strong>：动态数组无需预定义大小（在着色器中声明为<code>positions[]</code></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++ 结构体（无需严格填充）</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Particle</span> &#123;</span><br><span class="line">    glm::vec4 position;  <span class="comment">// 16 字节对齐</span></span><br><span class="line">    glm::vec4 velocity;  <span class="comment">// 自然对齐</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="ComputeShader"><a href="#ComputeShader" class="headerlink" title="ComputeShader"></a>ComputeShader</h3><p>属于计算管线的核心部分，它不处理顶点、片段或几何数据，而是通过工作组并行执行用户定义的计算任务。无固定输入输出，完全由开发者定义，通过工作组和线程手动划分并行任务，无需绑定RenderPass或FrameBuffer（独立于渲染管线）。</p>
+<p>一般用于预处理或后处理，可以与图形管线无缝协作。可以用于图片模糊、锐化、粒子系统、光线追踪、几何处理、科学计算等。</p>
+<h2 id="渲染器"><a href="#渲染器" class="headerlink" title="渲染器"></a>渲染器</h2><h3 id="双缓冲命令队列"><a href="#双缓冲命令队列" class="headerlink" title="双缓冲命令队列"></a>双缓冲命令队列</h3><p>维护两个命令队列，一个队列用于接收新的渲染命令，另一个队列用于执行渲染命令，通过<code>SwapQueues</code>在两个队列之间切换。这种设计可以实现渲染命令的并行处理：当GPU执行一个队列命令时，CPU可以同时向另一个队列中提交新的命令。</p>
+<h3 id="Placement-new"><a href="#Placement-new" class="headerlink" title="Placement new"></a>Placement new</h3><p>Placement new是C++中的一种特殊的new操作符，它允许我们在已分配的内存空间中构造对象。与普通的new操作符不同，placement new不分配内存，只在指定的内存位置上调用构造函数。</p>
+<p>可以在实时系统中避免动态内存分配。</p>
+<p>不需要使用delete，因为内存不是new分配的。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span>* memory = <span class="comment">// 某个内存位置</span></span><br><span class="line"><span class="built_in">new</span> (memory) <span class="built_in">Type</span>(constructor_args...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="vkDeviceWaitIdle"><a href="#vkDeviceWaitIdle" class="headerlink" title="vkDeviceWaitIdle"></a>vkDeviceWaitIdle</h3><p>该函数会阻塞 CPU 线程，直到设备关联的所有队列（图形、计算、传输等）全部完成当前提交的任务并进入空闲状态。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">作用范围</th>
+<th align="center">使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>vkQueueWaitIdle</code></td>
+<td align="center">单个指定队列</td>
+<td align="center">等待特定队列任务完成（如图形队列）</td>
+</tr>
+<tr>
+<td align="center"><code>vkDeviceWaitIdle</code></td>
+<td align="center">设备所有队列</td>
+<td align="center">全局同步或设备级资源管理</td>
+</tr>
+<tr>
+<td align="center"><code>vkFence</code></td>
+<td align="center">异步信号通知</td>
+<td align="center">非阻塞式等待特定任务完成</td>
+</tr>
+</tbody></table>
+<h2 id="渲染流程"><a href="#渲染流程" class="headerlink" title="渲染流程"></a>渲染流程</h2><ol>
+<li>创建Instance对象</li>
+<li>通过Intance列举所有Physical Device</li>
+<li>从Physical Device中挑选一个使用，并创建其Device对象</li>
+<li>通过Device对象创建支持图形指令的Queue</li>
+<li>通过Device创建Pipeline<ol>
+<li>创建Shader</li>
+<li>创建RenderPass</li>
+<li>创建Framebuffer<ol>
+<li>创建对应的Image，分配内存</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>通过Device创建CommandPool</li>
+<li>通过CommandPool分配CommandBuffer</li>
+<li>主循环<ol>
+<li>使用渲染命令填充CommandBuffer</li>
+<li>将填充后的CommandBuffer和排他、同步对象封装到Submit中</li>
+<li>将Submit推入Queue</li>
+</ol>
+</li>
+<li>回收资源</li>
+</ol>
+<h3 id="渲染命令的提交"><a href="#渲染命令的提交" class="headerlink" title="渲染命令的提交"></a>渲染命令的提交</h3><p>这是一种封装，将所有与渲染相关的任务封装成一个函数（命令），提交到队列中，队列维护一个头指针和动指针，和一个buffer，此buffer中存储提交的函数指针。</p>
+<p>后面在渲染进程中执行的就是此buffer（队列）中的命令（指针所指的函数）。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 提交渲染命令，FuncT为函数类型，使用std::forward&lt;FuncT&gt;(func)，可以完美转发FuncT类型的函数</span></span><br><span class="line"><span class="comment">// 所谓渲染命令，就是将FuncT类型的函数包装成一个命令，然后提交到队列中，渲染线程会执行这个命令</span></span><br><span class="line"><span class="comment">// 提交可以分别提交，执行则是一次性执行所有命令</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> FuncT&gt; <span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">Submit</span><span class="params">(FuncT&amp;&amp; func)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 编译时检查FuncT是否可调用</span></span><br><span class="line">    <span class="built_in">static_assert</span>(std::is_invocable&lt;FuncT&gt;::value, <span class="string">&quot;Function must be invocable&quot;</span>);</span><br><span class="line">    <span class="comment">// 定义渲染命令执行函数，传入void*，执行FuncT类型的函数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这里只是包装FuncT类型的函数，并调用析构函数</span></span><br><span class="line">    <span class="keyword">auto</span> renderCmd = [](<span class="type">void</span>* ptr) &#123;</span><br><span class="line">        <span class="keyword">auto</span> pFunc = (FuncT*)ptr;  <span class="comment">// 将通用指针类型(void*)转换为具体类型(FuncT*)</span></span><br><span class="line">        (*pFunc)();                <span class="comment">// 调用FuncT类型的函数</span></span><br><span class="line">        pFunc-&gt;~<span class="built_in">FuncT</span>();           <span class="comment">// 调用析构函数</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在命令队列中分配空间</span></span><br><span class="line">    <span class="keyword">auto</span> storageBuffer = <span class="built_in">GetRenderCommandQueue</span>().<span class="built_in">Allocate</span>(renderCmd, <span class="built_in">sizeof</span>(func));</span><br><span class="line">    <span class="comment">// 在分配的空间中初始化FuncT类型的函数，这里使用了placement</span></span><br><span class="line">    <span class="comment">// new，不需要调用delete，因为空间并不是new出来的，而是命令队列在创建队列时new的，然后分配给renderCmd</span></span><br><span class="line">    <span class="keyword">new</span> (storageBuffer) <span class="built_in">FuncT</span>(std::forward&lt;FuncT&gt;(func));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="双缓冲渲染命令队列"><a href="#双缓冲渲染命令队列" class="headerlink" title="双缓冲渲染命令队列"></a>双缓冲渲染命令队列</h3><p>最开始是一个空渲染帧，最开始当然什么命令也没有，执行0个命令，然后开始主循环。</p>
+<p>循环最开始是先执行渲染队列0中已提交的命令，第一个主循环当然依然没有命令，此时主线程同时向渲染队列1中提交命令，渲染线程渲染完毕后等待，主线程提交命令后进入下一循环。</p>
+<p>之后的循环：主线程在渲染线程渲染完毕后开始进入下一帧，切换命令队列，唤醒渲染线程渲染上一个队列的命令，同时提交当前队列的命令；依然是渲染线程渲染完毕后阻塞等待，主线程提交完毕后进入下一循环。</p>
+<p><strong>单线程模式下：</strong> 主线程提交命令与渲染线程执行命令不会同时进行，而是先将上一帧的渲染完成，然后再提交命令，如此往复。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] SwapQueues: <span class="number">0</span></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">trace</span>] [<span class="type">MainThread</span>] Kicking render thread (<span class="built_in">start</span> rendering) ...</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">trace</span>] [<span class="type">MainThread</span>] Waiting <span class="keyword">for</span> render thread to complete rendering...</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">0</span> commands, <span class="number">0</span> bytes  <span class="comment"># 第一个渲染帧</span></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Waiting <span class="keyword">for</span> kick</span><br><span class="line"></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">warning</span>] ======== <span class="keyword">Begin</span> Loop ========</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">trace</span>] [<span class="type">MainThread</span>] Waiting <span class="keyword">for</span> render thread to complete rendering...</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] SwapQueues: <span class="number">1</span></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">trace</span>] [<span class="type">MainThread</span>] Kicking render thread (<span class="built_in">start</span> rendering) ...</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] RenderCommandQueue::Allocate <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes	  <span class="comment"># 第而二个渲染帧</span></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">0</span> commands, <span class="number">0</span> bytes</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Waiting <span class="keyword">for</span> kick</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">warning</span>] ======== <span class="keyword">End</span> Loop ========</span><br><span class="line"></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">warning</span>] ======== <span class="keyword">Begin</span> Loop ========</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">trace</span>] [<span class="type">MainThread</span>] Waiting <span class="keyword">for</span> render thread to complete rendering...</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] SwapQueues: <span class="number">0</span></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">trace</span>] [<span class="type">MainThread</span>] Kicking render thread (<span class="built_in">start</span> rendering) ...</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] RenderCommandQueue::Allocate <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">warning</span>] ======== <span class="keyword">End</span> Loop ========</span><br><span class="line"></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">warning</span>] ======== <span class="keyword">Begin</span> Loop ========</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">trace</span>] [<span class="type">MainThread</span>] Waiting <span class="keyword">for</span> render thread to complete rendering...</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Waiting <span class="keyword">for</span> kick</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] SwapQueues: <span class="number">1</span></span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">trace</span>] [<span class="type">MainThread</span>] Kicking render thread (<span class="built_in">start</span> rendering) ...</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] RenderCommandQueue::Allocate <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">49268</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes</span><br><span class="line">[<span class="number">11</span>:<span class="number">14</span>:<span class="number">20</span>] [<span class="number">53480</span>] [<span class="type">warning</span>] ======== <span class="keyword">End</span> Loop ========</span><br></pre></td></tr></table></figure>
+
+<h4 id="渲染线程的终止"><a href="#渲染线程的终止" class="headerlink" title="渲染线程的终止"></a>渲染线程的终止</h4><p>当程序终止，要妥善处理线程的终止，避免死锁导致渲染进程Join后无法退出的问题。</p>
+<p>对比以下个log：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">warning</span>] ======== <span class="keyword">Begin</span> Loop ========</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] Waiting <span class="keyword">for</span> render thread to complete rendering...</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">2164</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete, renderthread state: true</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">2164</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] &lt;RenderFunc&gt; Waiting <span class="keyword">for</span> kick</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] SwapQueues: <span class="number">1</span></span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] Kicking render thread (<span class="built_in">start</span> rendering) ...</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] RenderCommandQueue::Allocate <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">warning</span>] ======== <span class="keyword">End</span> Loop ========</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] Terminating render thread...</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] Renderfunc stoped before.</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] Renderfunc stoped.</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] SwapQueues: <span class="number">0</span></span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] Kicking render thread (<span class="built_in">start</span> rendering) ...</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] Waiting <span class="keyword">for</span> render thread to complete rendering...</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">2164</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">2164</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">0</span> commands, <span class="number">0</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">2164</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete, renderthread state: false</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">2164</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] &lt;RenderFunc&gt; <span class="keyword">exit</span> loop.</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] Terminated.</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">0</span> commands, <span class="number">0</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">0</span> commands, <span class="number">0</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">16</span>:<span class="number">22</span>] [<span class="number">15200</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">0</span> commands, <span class="number">0</span> bytes</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">warning</span>] ======== <span class="keyword">Begin</span> Loop ========</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] Waiting <span class="keyword">for</span> render thread to complete rendering...</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">0</span> commands, <span class="number">0</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete, renderthread state: true</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete, renderthread state: true</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] &lt;RenderFunc&gt; Waiting <span class="keyword">for</span> kick</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] SwapQueues: <span class="number">1</span></span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] Kicking render thread (<span class="built_in">start</span> rendering) ...</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] RenderCommandQueue::Allocate <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">warning</span>] ======== <span class="keyword">End</span> Loop ========</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">1</span> commands, <span class="number">20</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] RenderCommandQueue::Execute <span class="literal">--</span> <span class="number">0</span> commands, <span class="number">0</span> bytes</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] Terminating render thread...</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] Renderfunc stoped before.</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] Renderfunc stoped.</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete, renderthread state: true</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] SwapQueues: <span class="number">0</span></span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] Kicking render thread (<span class="built_in">start</span> rendering) ...</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">47488</span>] [<span class="type">info</span>] [<span class="type">MainThread</span>] Waiting <span class="keyword">for</span> render thread to complete rendering...</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">trace</span>] [<span class="type">RenderThread</span>] Render complete, renderthread state: false</span><br><span class="line">[<span class="number">14</span>:<span class="number">17</span>:<span class="number">54</span>] [<span class="number">44996</span>] [<span class="type">error</span>] [<span class="type">RenderThread</span>] &lt;RenderFunc&gt; <span class="keyword">exit</span> loop.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里有一个潜在的问题，如果在m_IsRunning被设置为false之后，渲染线程先退出循环，这里再进行Pump，就会导致主线程无限等待渲染结束，而渲染线程则永远也无法结束（因为根本无法开始————循环已经结束了）</p>
+<p>解决方法是先等待渲染线程空闲，开启下一帧，Kick渲染使其开始渲染，此时立刻关闭循环，并入主线程，等待渲染线程的结束，主线程就可以顺利结束了</p>
+<h3 id="三缓冲渲染-多帧并行"><a href="#三缓冲渲染-多帧并行" class="headerlink" title="三缓冲渲染(多帧并行)"></a>三缓冲渲染(多帧并行)</h3><h5 id="vkFence"><a href="#vkFence" class="headerlink" title="vkFence"></a>vkFence</h5><p>栅栏是一种同步原语，可用于将依赖项从队列插入到主机。栅栏有两种状态 - 已发出信号和未发出信号。栅栏可在执行队列提交命令时发出信号。可以使用 vkResetFences 在主机上取消栅栏信号。主机可以使用 vkWaitForFences 命令等待栅栏，并且可以使用 vkGetFenceStatus 查询当前状态。</p>
+<h5 id="vkWaitForFences"><a href="#vkWaitForFences" class="headerlink" title="vkWaitForFences"></a>vkWaitForFences</h5><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">VkResult <span class="title">vkWaitForFences</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    VkDevice                                    device,   	<span class="comment">// 拥有此栏栅的设备</span></span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">uint32_t</span>                                    fenceCount, <span class="comment">// 需要等待的栏栅数量</span></span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">const</span> VkFence*                              pFences,  	<span class="comment">// 指向栏栅句柄的指针</span></span></span></span><br><span class="line"><span class="params"><span class="function">    VkBool32                                    waitAll,	<span class="comment">// 是否等待所有栏栅</span></span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">uint64_t</span>                                    timeout)</span></span>; 	<span class="comment">// 超时时间</span></span><br></pre></td></tr></table></figure>
+
+<p>调用后CPU阻塞，直到GPU完成上一帧的工作并发出Fence信号或者达到超时时间。</p>
+<p>如果GPU处理速度跟不上CPU提交速度，会导致CPU等待，这可能会影响整体性能，通常通过使用多个”frame in flight”(多帧并行)来减少等待，使用多个交替的Fence来实现CPU与GPU的并行工作。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 等待上一帧完成</span></span><br><span class="line"><span class="built_in">vkWaitForFences</span>(device, <span class="number">1</span>, &amp;m_WaitFences[m_CurrentFrameIndex], VK_TRUE, UINT64_MAX);</span><br><span class="line"><span class="comment">// 获取新的图像</span></span><br><span class="line"><span class="built_in">fpAcquireNextImageKHR</span>(..., m_ImageAvailableSemaphores[m_CurrentFrameIndex], ...);</span><br><span class="line"><span class="comment">// 提交渲染命令</span></span><br><span class="line"><span class="built_in">vkQueueSubmit</span>(..., m_RenderFinishedSemaphores[m_CurrentFrameIndex], ...);</span><br></pre></td></tr></table></figure>
+
+<h5 id="多帧并行"><a href="#多帧并行" class="headerlink" title="多帧并行"></a>多帧并行</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 每个frame都有独立的同步对象</span></span><br><span class="line">m_ImageAvailableSemaphores.<span class="built_in">resize</span>(framesInFlight);</span><br><span class="line">m_RenderFinishedSemaphores.<span class="built_in">resize</span>(framesInFlight);</span><br><span class="line">m_WaitFences.<span class="built_in">resize</span>(framesInFlight);</span><br></pre></td></tr></table></figure>
+
+<p>与双缓冲命令队列不同，命令队列只关注渲染命令的记录（CPU中）和执行（GPU中），而FramesInFlight要管理所有帧相关的资源。</p>
+<h3 id="KHR后缀"><a href="#KHR后缀" class="headerlink" title="KHR后缀"></a>KHR后缀</h3><p>在Vulkan中，带有KHR后缀和不带KHR后缀的函数主要区别在于：</p>
+<ol>
+<li><p>扩展与核心功能：</p>
+<ul>
+<li><code>vkWaitSemaphoresKHR</code>: 是KHR扩展的一部分，最初作为扩展功能引入</li>
+<li><code>vkWaitSemaphores</code>: 是Vulkan核心功能的一部分，在后续版本中被纳入标准</li>
+</ul>
+</li>
+<li><p>可用性：</p>
+<ul>
+<li>KHR版本需要检查设备是否支持该扩展</li>
+<li>非KHR版本在支持该版本的Vulkan实现中直接可用</li>
+</ul>
+</li>
+<li><p>使用方式：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// KHR扩展版本需要先启用扩展</span></span><br><span class="line">VkDeviceCreateInfo createInfo = &#123;&#125;;</span><br><span class="line">createInfo.ppEnabledExtensionNames = &#123; <span class="string">&quot;VK_KHR_timeline_semaphore&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 核心版本直接使用</span></span><br><span class="line"><span class="built_in">vkWaitSemaphores</span>(device, ...);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>版本要求：</p>
+<ul>
+<li>KHR版本通常在较早的Vulkan版本中就可用</li>
+<li>非KHR版本需要更新的Vulkan版本</li>
+</ul>
+</li>
+</ol>
+<p>一般建议：</p>
+<ol>
+<li>如果需要支持较老的Vulkan版本，使用KHR版本</li>
+<li>如果使用较新的Vulkan版本，优先使用非KHR版本</li>
+<li>有时可能需要根据运行时检测来决定使用哪个版本</li>
+</ol>
+<p>注意：这个规则适用于Vulkan中所有带KHR后缀和不带KHR后缀的函数对。KHR表示这个功能最初是由Khronos Group（Vulkan的开发组织）作为扩展引入的。</p>
+<h3 id="描述符集"><a href="#描述符集" class="headerlink" title="描述符集"></a>描述符集</h3><p>描述符池，Vulkan中的描述符集不能直接创建，只能从特定的缓冲池中分配，这个缓冲池就是描述符池，在创建描述符池的时候需要分配描述符池的大小，里面各描述符集的数量。</p>
+<p>描述符集就是描述符的集合，Set 就是 DataSet 就是数据集。</p>
+<p>描述符用以关联用户的数据资源和着色器，如Uniform、Sampler、Texture等，为了让VulkanAPI识别资源，引入描述符和描述符集布局。描述符布局绑定就是定义绑定关系，如绑定到着色器layout(binding &#x3D; 0)上。描述符是一种通信协议，用于CPU与着色器通信。在系统内部，描述符提供了一种静默的机制，通过位置绑定的方式来关联资源内存与着色器。</p>
+<h4 id="Vulkan渲染管线"><a href="#Vulkan渲染管线" class="headerlink" title="Vulkan渲染管线"></a>Vulkan渲染管线</h4><p>共三种，ComputePipeline和GraphicsPipeline和Ray tracing pipeline。Pipeline中包含了PipelineLayout，PipelineLayout制定了管线使用的那些DescriptoSetLayout和PushConstant。</p>
+<p>计算管线(Compute Pipeline)是比较简单的一种，因为它所支持的都是只计算的程序(称为Computer Shader)。</p>
+<p>GraphicsPipeline要复杂得多如下图所示，因为它包含了所有的参数，如顶点、片段、几何、计算和曲面细分着色器(如果启用了该功能的话)，再加上像顶点属性、输入装配、图元结构、光栅化参数、深度&#x2F;模板测试参数、面剔除和Blend Const、视口(ViewPort)参数还有RenderPass等，Vulkan会将这些状态固定成一个大的、不可更改的对象。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Vulkan基本概念</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2025-02-21 20:54:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2025/02/21/note/Programming/CG/Vulkan/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/C/"><i class="fa-solid fa-hashtag"></i>&nbsp;C++</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Compute-Graphic/"><i class="fa-solid fa-hashtag"></i>&nbsp;Compute Graphic</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2025/03/03/note/Algorithm/AI/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">AI设想</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2025/02/21/note/Programming/CG/VulkanShader/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Vulkan Shader</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Instance"><span class="nav-number">1.1.</span> <span class="nav-text">Instance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Physical-Device"><span class="nav-number">1.2.</span> <span class="nav-text">Physical Device</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Device"><span class="nav-number">1.3.</span> <span class="nav-text">Device</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QueueFamily"><span class="nav-number">1.4.</span> <span class="nav-text">QueueFamily</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue"><span class="nav-number">1.5.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image%E3%80%81Buffer"><span class="nav-number">1.6.</span> <span class="nav-text">Image、Buffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory"><span class="nav-number">1.7.</span> <span class="nav-text">Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageView"><span class="nav-number">1.8.</span> <span class="nav-text">ImageView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommandBuffer"><span class="nav-number">1.9.</span> <span class="nav-text">CommandBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommandPool"><span class="nav-number">1.10.</span> <span class="nav-text">CommandPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pipeline"><span class="nav-number">1.11.</span> <span class="nav-text">Pipeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Framebuffer"><span class="nav-number">1.12.</span> <span class="nav-text">Framebuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RenderPass"><span class="nav-number">1.13.</span> <span class="nav-text">RenderPass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discriptor"><span class="nav-number">1.14.</span> <span class="nav-text">Discriptor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Submit"><span class="nav-number">1.15.</span> <span class="nav-text">Submit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UniformBuffer-StorageBuffer"><span class="nav-number">1.16.</span> <span class="nav-text">UniformBuffer&#x2F;StorageBuffer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E8%A7%84%E5%88%99"><span class="nav-number">1.16.1.</span> <span class="nav-text">内存布局规则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Uniform-Buffer%EF%BC%88std140%EF%BC%89"><span class="nav-number">1.16.1.1.</span> <span class="nav-text">Uniform Buffer（std140）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Storage-Buffer%EF%BC%88std430%EF%BC%89"><span class="nav-number">1.16.1.2.</span> <span class="nav-text">Storage Buffer（std430）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ComputeShader"><span class="nav-number">1.17.</span> <span class="nav-text">ComputeShader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">渲染器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E7%BC%93%E5%86%B2%E5%91%BD%E4%BB%A4%E9%98%9F%E5%88%97"><span class="nav-number">2.1.</span> <span class="nav-text">双缓冲命令队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Placement-new"><span class="nav-number">2.2.</span> <span class="nav-text">Placement new</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vkDeviceWaitIdle"><span class="nav-number">2.3.</span> <span class="nav-text">vkDeviceWaitIdle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">渲染流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%91%BD%E4%BB%A4%E7%9A%84%E6%8F%90%E4%BA%A4"><span class="nav-number">3.1.</span> <span class="nav-text">渲染命令的提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E7%BC%93%E5%86%B2%E6%B8%B2%E6%9F%93%E5%91%BD%E4%BB%A4%E9%98%9F%E5%88%97"><span class="nav-number">3.2.</span> <span class="nav-text">双缓冲渲染命令队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%BB%88%E6%AD%A2"><span class="nav-number">3.2.1.</span> <span class="nav-text">渲染线程的终止</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%BC%93%E5%86%B2%E6%B8%B2%E6%9F%93-%E5%A4%9A%E5%B8%A7%E5%B9%B6%E8%A1%8C"><span class="nav-number">3.3.</span> <span class="nav-text">三缓冲渲染(多帧并行)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#vkFence"><span class="nav-number">3.3.0.1.</span> <span class="nav-text">vkFence</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vkWaitForFences"><span class="nav-number">3.3.0.2.</span> <span class="nav-text">vkWaitForFences</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E5%B8%A7%E5%B9%B6%E8%A1%8C"><span class="nav-number">3.3.0.3.</span> <span class="nav-text">多帧并行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KHR%E5%90%8E%E7%BC%80"><span class="nav-number">3.4.</span> <span class="nav-text">KHR后缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E7%AC%A6%E9%9B%86"><span class="nav-number">3.5.</span> <span class="nav-text">描述符集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vulkan%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF"><span class="nav-number">3.5.1.</span> <span class="nav-text">Vulkan渲染管线</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

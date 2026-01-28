@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                OpenGL开发环境搭建 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">OpenGL开发环境搭建</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-09 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">环境搭建与工具使用</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/"><i class="fas fa-hashtag"></i>&nbsp;Linux</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/OpenGL/"><i class="fas fa-hashtag"></i>&nbsp;OpenGL</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Windows/"><i class="fas fa-hashtag"></i>&nbsp;Windows</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>823 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <blockquote>
+<p>🔨学习OpenGL，在不同平台使用不同工具构建项目的方法。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Archlinux"><a href="#Archlinux" class="headerlink" title="Archlinux"></a>Archlinux</h2><h3 id="Archlinux-配置-OpenGL-开发环境-glfw-glad"><a href="#Archlinux-配置-OpenGL-开发环境-glfw-glad" class="headerlink" title="Archlinux 配置 OpenGL 开发环境 (glfw + glad)"></a>Archlinux 配置 OpenGL 开发环境 (glfw + glad)</h3><ul>
+<li>GLFW</li>
+</ul>
+<p>安装<code>glfw</code>库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S glfw-x11</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>GLAD</li>
+</ul>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://raw.githubusercontent.com/Dionysen/BlogCDN/main/img/gladv.png"
+                      style="zoom:80%;" 
+                >
+
+<p>在此网站选择需要的版本<a class="link"   target="_blank" rel="noopener" href="https://glad.dav1d.de/" >https://glad.dav1d.de<i class="fas fa-external-link-alt"></i></a>，点击<code>GRNERATE</code>，下载生成的zip文件，解压后将其放到项目文件夹中。</p>
+<p>文件目录为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">├── CMakeLists.txt</span><br><span class="line">├── glad</span><br><span class="line">│   ├── include</span><br><span class="line">│   │   ├── glad</span><br><span class="line">│   │   │   └── glad.h</span><br><span class="line">│   │   └── KHR</span><br><span class="line">│   │       └── khrplatform.h</span><br><span class="line">│   └── src</span><br><span class="line">│       └── glad.c</span><br><span class="line">└── main.cpp</span><br></pre></td></tr></table></figure>
+
+<p><code>CMakeLists.txt</code>可以写成如下：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.14</span>)</span><br><span class="line"><span class="keyword">project</span>(OpenglTest)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_EXPORT_COMPILE_COMMANDS <span class="keyword">ON</span>) <span class="comment"># Make sure clang can find .h file</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">11</span>)</span><br><span class="line"><span class="keyword">set</span>(SOURCE_FILES main.cpp glad/src/glad.c) <span class="comment"># src files</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(glad/<span class="keyword">include</span>) <span class="comment"># include files</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(OpenglTest <span class="variable">$&#123;SOURCE_FILES&#125;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(OpenglTest glfw) <span class="comment"># link the glfw library</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Archlinux-安装glew并配置CMake"><a href="#Archlinux-安装glew并配置CMake" class="headerlink" title="Archlinux 安装glew并配置CMake"></a>Archlinux 安装glew并配置CMake</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S glewlwyd glew1.10 glew</span><br></pre></td></tr></table></figure>
+
+<p>在项目中的<code>CMakeLists.txt</code>中配置：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.14</span>)</span><br><span class="line"><span class="keyword">project</span>(OpenglTest)</span><br><span class="line"></span><br><span class="line"><span class="keyword">find_package</span>(OpenGL REQUIRED)</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">NOT</span> OPENGL_FOUND)</span><br><span class="line">     <span class="keyword">message</span>(<span class="string">&quot;ERROR: OpenGL not found&quot;</span>)</span><br><span class="line"><span class="keyword">endif</span>(<span class="keyword">NOT</span> OPENGL_FOUND)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_EXPORT_COMPILE_COMMANDS <span class="keyword">ON</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">11</span>)</span><br><span class="line"><span class="keyword">set</span>(SOURCE_FILES main.cpp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># include_directories(glad/include)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(OpenglTest <span class="variable">$&#123;SOURCE_FILES&#125;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">find_package</span>(GLEW REQUIRED)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(OpenglTest glfw GLEW::GLEW libGL.so)</span><br></pre></td></tr></table></figure>
+
+<p>编写代码<code>main.cpp</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GL/glew.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// glfw: initialize and configure</span></span><br><span class="line">    <span class="comment">// ------------------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">glfwInit</span>()) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// glfw window creation</span></span><br><span class="line">    <span class="comment">// --------------------</span></span><br><span class="line">    GLFWwindow *window = <span class="built_in">glfwCreateWindow</span>(<span class="number">800</span>, <span class="number">600</span>, <span class="string">&quot;LearnOpenGL&quot;</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (window == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Failed to create GLFW window&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="built_in">glfwTerminate</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">glfwMakeContextCurrent</span>(window);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (GLEW_OK != <span class="built_in">glewInit</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Error!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">glfwWindowShouldClose</span>(window)) </span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line">        <span class="built_in">glBegin</span>(GL_TRIANGLES);</span><br><span class="line">        <span class="built_in">glVertex2f</span>(<span class="number">-0.5f</span>, <span class="number">-0.5f</span>);</span><br><span class="line">        <span class="built_in">glVertex2f</span>(<span class="number">0.0f</span>, <span class="number">0.5f</span>);</span><br><span class="line">        <span class="built_in">glVertex2f</span>(<span class="number">0.5f</span>, <span class="number">-0.5f</span>);</span><br><span class="line">        <span class="built_in">glEnd</span>();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">glfwSwapBuffers</span>(window);</span><br><span class="line">        <span class="built_in">glfwPollEvents</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// glfw: terminate, clearing all previously allocated GLFW resources.</span></span><br><span class="line">    <span class="comment">// ------------------------------------------------------------------</span></span><br><span class="line">    <span class="built_in">glfwTerminate</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译运行：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230602024932702.png"
+                      alt="image-20230602024932702"
+                ></p>
+<h2 id="Windows-10-11"><a href="#Windows-10-11" class="headerlink" title="Windows 10&#x2F;11"></a>Windows 10&#x2F;11</h2><h3 id="Visual-Studio-on-Windows-配置-OpenGL-开发环境（使用解决方案链接库）"><a href="#Visual-Studio-on-Windows-配置-OpenGL-开发环境（使用解决方案链接库）" class="headerlink" title="Visual Studio on Windows 配置 OpenGL 开发环境（使用解决方案链接库）"></a>Visual Studio on Windows 配置 OpenGL 开发环境（使用解决方案链接库）</h3><ul>
+<li>GLFW（手动编译，没有必要）</li>
+</ul>
+<p>下载CMake（x64）：<a class="link"   target="_blank" rel="noopener" href="https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-windows-x86_64.msi" >https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-windows-x86_64.msi<i class="fas fa-external-link-alt"></i></a></p>
+<p>下载GLFW源码：<a class="link"   target="_blank" rel="noopener" href="https://github.com/glfw/glfw/releases/download/3.3.8/glfw-3.3.8.zip%EF%BC%8C%E5%B9%B6%E8%A7%A3%E5%8E%8B" >https://github.com/glfw/glfw/releases/download/3.3.8/glfw-3.3.8.zip，并解压<i class="fas fa-external-link-alt"></i></a></p>
+<p>打开CMake-GUI，设置如下：</p>
+ <img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230525010644603.png"
+                      style="zoom:80%;" 
+                >
+
+<p>点击Configure，选择自己需要的VS版本和架构：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230525010811588.png"
+                      style="zoom:80%;" 
+                >
+
+<p>点击Generate，会源文件中生成一个<code>build</code>文件夹，用 VS 打开其中的<code>GLFW.sln</code>，生成，然后将生成的<code>dll</code>文件放置好</p>
+<ul>
+<li>GLFW</li>
+</ul>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.glfw.org/download.html" >直接下载Windows版本的预编译文件<i class="fas fa-external-link-alt"></i></a>，其中有<code>includes</code>和<code>dll</code>文件，链接到项目即可使用</p>
+<ul>
+<li>GLAD</li>
+</ul>
+<p>与Linux版本相同，均为将源代码文件包含到项目中</p>
+<h3 id="Visual-Studio-使用-CMake-配置-glfw-glad"><a href="#Visual-Studio-使用-CMake-配置-glfw-glad" class="headerlink" title="Visual Studio 使用 CMake 配置 glfw + glad"></a>Visual Studio 使用 CMake 配置 glfw + glad</h3><p>其他与上文大致相同，下载编译glfw，生成下载对应的glad，然后将编译好的glfw库文件和glad的源文件放到项目文件夹中，文件结构如下图：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230609172829961.png"
+                      alt="image-20230609172829961"
+                ></p>
+<p>然后在<code>CMakeLists.txt</code>中配置：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="comment"># CMakeList.txt: opengl_test 的 CMake 项目，在此处包括源代码并定义</span></span><br><span class="line"><span class="comment"># 项目特定的逻辑。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span> (VERSION <span class="number">3.8</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable Hot Reload for MSVC compilers if supported.</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">POLICY</span> CMP0141)</span><br><span class="line">  <span class="keyword">cmake_policy</span>(<span class="keyword">SET</span> CMP0141 NEW)</span><br><span class="line">  <span class="keyword">set</span>(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT <span class="string">&quot;$&lt;IF:$&lt;AND:$&lt;C_COMPILER_ID:MSVC&gt;,$&lt;CXX_COMPILER_ID:MSVC&gt;&gt;,$&lt;$&lt;CONFIG:Debug,RelWithDebInfo&gt;:EditAndContinue&gt;,$&lt;$&lt;CONFIG:Debug,RelWithDebInfo&gt;:ProgramDatabase&gt;&gt;&quot;</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span> (<span class="string">&quot;opengl_test&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(<span class="variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/<span class="keyword">include</span>) <span class="comment">#添加包含的头文件</span></span><br><span class="line"><span class="keyword">link_directories</span>(lib) <span class="comment">#添加要链接的lib文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将源代码添加到此项目的可执行文件。</span></span><br><span class="line"><span class="keyword">file</span>(COPY <span class="string">&quot;lib&quot;</span> DESTINATION <span class="variable">$&#123;CMAKE_BINARY_DIR&#125;</span>)</span><br><span class="line"><span class="keyword">file</span>(GLOB_RECURSE  src_dir <span class="string">&quot;./src/*.c&quot;</span> <span class="string">&quot;./src/*.h&quot;</span> <span class="string">&quot;./src/*.cpp&quot;</span> )</span><br><span class="line"><span class="keyword">add_executable</span> (opengl_test <span class="string">&quot;main.cpp&quot;</span> <span class="variable">$&#123;src_dir&#125;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (CMAKE_VERSION <span class="keyword">VERSION_GREATER</span> <span class="number">3.12</span>)</span><br><span class="line">  <span class="keyword">set_property</span>(<span class="keyword">TARGET</span> opengl_test PROPERTY CXX_STANDARD <span class="number">20</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"><span class="comment"># <span class="doctag">TODO:</span> 如有需要，请添加测试并安装目标。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(opengl_test glfw3 opengl32)</span><br></pre></td></tr></table></figure>
+
+<p>将<a href="https://dionysen.github.io/2023/06/02/note/Framework/OpenGL/">OpenGL基础 | DIONYSEN BLOG</a>的源码添加到<code>main.cpp</code>，编译运行：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN@main/img/image-20230609173542955.png"
+                      alt="image-20230609173542955"
+                ></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">OpenGL开发环境搭建</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-06-09 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/06/09/note/Programming/evn/OpenGL-env/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Linux/"><i class="fa-solid fa-hashtag"></i>&nbsp;Linux</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/OpenGL/"><i class="fa-solid fa-hashtag"></i>&nbsp;OpenGL</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Windows/"><i class="fa-solid fa-hashtag"></i>&nbsp;Windows</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/09/note/Programming/evn/vs-beautify/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Visual Studio 美化设置</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/09/note/Linux/Tools/vim/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vim 配置</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Archlinux"><span class="nav-number">1.</span> <span class="nav-text">Archlinux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Archlinux-%E9%85%8D%E7%BD%AE-OpenGL-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-glfw-glad"><span class="nav-number">1.1.</span> <span class="nav-text">Archlinux 配置 OpenGL 开发环境 (glfw + glad)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Archlinux-%E5%AE%89%E8%A3%85glew%E5%B9%B6%E9%85%8D%E7%BD%AECMake"><span class="nav-number">1.2.</span> <span class="nav-text">Archlinux 安装glew并配置CMake</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-10-11"><span class="nav-number">2.</span> <span class="nav-text">Windows 10&#x2F;11</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-on-Windows-%E9%85%8D%E7%BD%AE-OpenGL-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%88%E4%BD%BF%E7%94%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">Visual Studio on Windows 配置 OpenGL 开发环境（使用解决方案链接库）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-%E4%BD%BF%E7%94%A8-CMake-%E9%85%8D%E7%BD%AE-glfw-glad"><span class="nav-number">2.2.</span> <span class="nav-text">Visual Studio 使用 CMake 配置 glfw + glad</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
