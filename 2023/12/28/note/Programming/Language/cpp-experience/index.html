@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                C++零碎笔记 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">C++零碎笔记</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-12-28 11:40</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Programming/"><i class="fas fa-hashtag"></i>&nbsp;Programming</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/cpp/"><i class="fas fa-hashtag"></i>&nbsp;cpp</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>2.3k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <blockquote>
+<p>遇到的细碎的问题及其解决方法。</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="函数参数传递"><a href="#函数参数传递" class="headerlink" title="函数参数传递"></a>函数参数传递</h3><p><strong>pass by value:</strong> 在栈区开辟了形参的内存空间，并<strong>调用拷贝构造函数</strong>把实参复制给形参，如果资源较大，拷贝消耗较大。</p>
+<p><strong>pass by reference:</strong> 本质上是传递指针，通过指针间接寻址。</p>
+<blockquote>
+<p>注意：当传递内置类型时，如int、char，指针占用的内存空间高于变量所占用的内存空间。而寻址会降低程序的效率，应当使用值传递并使用<code>std::move</code>。传递STL容器时也可以使用值传递加移动语句。</p>
+</blockquote>
+<h3 id="函数返回值"><a href="#函数返回值" class="headerlink" title="函数返回值"></a>函数返回值</h3><p>在现代 C++ 中，返回临时对象实际上是可以的，因为编译器会进行返回值优化 (RVO - Return Value Optimization) 和移动语义优化。</p>
+<ol>
+<li><strong>安全的返回方式</strong>:</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 完全可以这样写</span></span><br><span class="line"><span class="function">std::string <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::string name = <span class="string">&quot;test&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> name;  <span class="comment">// 编译器会优化，不会有额外复制</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// vector 也可以直接返回</span></span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">getNumbers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; nums = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">    <span class="keyword">return</span> nums;  <span class="comment">// 同样会被优化</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>不安全的返回方式</strong>:</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 危险！返回局部变量的指针或引用</span></span><br><span class="line"><span class="function"><span class="type">int</span>* <span class="title">getValuePtr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> value = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">return</span> &amp;value;  <span class="comment">// 错误：返回栈上变量的地址</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 危险！返回局部变量的引用</span></span><br><span class="line"><span class="function"><span class="type">int</span>&amp; <span class="title">getValueRef</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> value = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">return</span> value;  <span class="comment">// 错误：返回栈上变量的引用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>关于对象返回的一般规则</strong>:</li>
+</ol>
+<ul>
+<li>返回值类型的对象是安全的（依赖 RVO 和移动语义）</li>
+<li><strong>不要返回局部变量的指针或引用</strong></li>
+<li>如果对象很大，考虑使用引用参数或智能指针</li>
+<li><strong>如果是自定义类，确保实现了移动构造函数和移动赋值运算符</strong></li>
+</ul>
+<ol start="4">
+<li><strong>性能考虑</strong>:</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 现代C++中这样写很好</span></span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">createVector</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> std::vector&lt;<span class="type">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;  <span class="comment">// 编译器会优化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果对象很大或构造成本高，可以用引用参数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">createLargeObject</span><span class="params">(LargeObject&amp; out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 直接修改 out</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结：</strong></p>
+<ol>
+<li><strong>返回临时对象在现代 C++ 中是安全的</strong></li>
+<li><strong>但要避免返回指向局部变量的指针或引用</strong></li>
+<li><strong>对于大对象或特殊情况，可以考虑使用引用参数</strong></li>
+<li><strong>确保你的类支持移动语义（如果需要的话）</strong></li>
+</ol>
+<blockquote>
+<p>如果没有移动构造函数，返回一个临时对象会再调用时创建一个新的对象（调用拷贝构造函数），如果没有手动实现的拷贝构造函数，浅拷贝可能出现内存泄漏。</p>
+<p>不考虑代码设计问题，最安全的方式是传入需要修改的对象引用，直接对对象进行修改。</p>
+</blockquote>
+<h3 id="OpenGL手动控制帧率"><a href="#OpenGL手动控制帧率" class="headerlink" title="OpenGL手动控制帧率"></a>OpenGL手动控制帧率</h3><p>通过计算渲染当前帧所消耗的时间，对比目标帧率时一帧应该消耗的时间，如果渲染当前帧所需时间更短，则让当前线程休眠目标帧率应消耗时间与当前帧渲染时间之差。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> framerate = <span class="number">120</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main loop 中</span></span><br><span class="line"><span class="keyword">auto</span>     time     = Time::<span class="built_in">GetTime</span>();</span><br><span class="line">Timestep timestep = time - m_LastFrameTime;</span><br><span class="line">m_LastFrameTime   = time;</span><br><span class="line">          </span><br><span class="line"><span class="keyword">auto</span> sleepDuration = std::chrono::<span class="built_in">duration_cast</span>&lt;std::chrono::milliseconds&gt;(</span><br><span class="line">std::chrono::<span class="built_in">duration</span>&lt;<span class="type">float</span>&gt;(<span class="number">1.0</span> / framerate - timestep.<span class="built_in">GetSeconds</span>()));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1.0</span> / framerate &gt; timestep.<span class="built_in">GetSeconds</span>())</span><br><span class="line">    std::this_thread::<span class="built_in">sleep_for</span>(sleepDuration);</span><br></pre></td></tr></table></figure>
+
+<p>但事实上这样会导致帧率的不稳定，目前还没找到更好的办法。</p>
+<p>降低帧率最好的方法仍然是开启VSync。</p>
+<h3 id="warning-C4819-该文件包含不能在当前代码页-936-中表示的字符。请将该文件保存为-Unicode-格式以防止数据丢失"><a href="#warning-C4819-该文件包含不能在当前代码页-936-中表示的字符。请将该文件保存为-Unicode-格式以防止数据丢失" class="headerlink" title="warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失"></a>warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失</h3><p>一般是使用中文字符集编写的源代码，使用utf-8编码打开，会出现乱码，编译选项中添加<code>/utf-8</code>即可。</p>
+<p>如<code>xmake.lua</code>：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">add_cxxflags(<span class="string">&quot;/utf-8&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数包（parameter-pack）"><a href="#参数包（parameter-pack）" class="headerlink" title="参数包（parameter pack）"></a>参数包（parameter pack）</h3><p>参数包是 C++11 中引入的一个特性，允许模板接受任意数量的参数。</p>
+<p>参数包在模板中表示为 <code>...</code>，可以出现在模板参数列表、函数参数列表、函数参数类型列表、模板参数列表中，用来表示可变数量的参数。</p>
+<h4 id="使用方法（摘自cppreference）"><a href="#使用方法（摘自cppreference）" class="headerlink" title="使用方法（摘自cppreference）"></a>使用方法（摘自<a class="link"   target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/parameter_pack" >cppreference<i class="fas fa-external-link-alt"></i></a>）</h4><h5 id="1-在变参类模板中使用"><a href="#1-在变参类模板中使用" class="headerlink" title="1. 在变参类模板中使用"></a>1. 在变参类模板中使用</h5><p>可以用任意数量的模板实参实例化：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span>... Types&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Tuple</span> &#123;&#125;;</span><br><span class="line"> </span><br><span class="line">Tuple&lt;&gt; t0;           <span class="comment">// Types 不包含实参</span></span><br><span class="line">Tuple&lt;<span class="type">int</span>&gt; t1;        <span class="comment">// Types 包含一个实参：int</span></span><br><span class="line">Tuple&lt;<span class="type">int</span>, <span class="type">float</span>&gt; t2; <span class="comment">// Types 包含两个实参：int 与 float</span></span><br><span class="line">Tuple&lt;<span class="number">0</span>&gt; error;       <span class="comment">// 错误：0 不是类型</span></span><br></pre></td></tr></table></figure>
+
+<p>变参函数模板可以用任意数量的函数实参调用（模板实参通过<a class="link"   target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/template_argument_deduction" >模板实参推导<i class="fas fa-external-link-alt"></i></a>推导）：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span>... Types&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(Types... args)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">f</span>();       <span class="comment">// OK：args 不包含实参</span></span><br><span class="line"><span class="built_in">f</span>(<span class="number">1</span>);      <span class="comment">// OK：args 包含一个实参：int</span></span><br><span class="line"><span class="built_in">f</span>(<span class="number">2</span>, <span class="number">1.0</span>); <span class="comment">// OK：args 包含两个实参：int 与 double</span></span><br></pre></td></tr></table></figure>
+
+<p>类模板中，形参包必须是类模板形参列表中的最后一个。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> U, <span class="keyword">typename</span>... Ts&gt;    <span class="comment">// OK：能推导出 U</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">valid</span>;</span><br><span class="line"><span class="comment">// template&lt;typename... Ts, typename U&gt; // 错误：Ts... 不在结尾</span></span><br><span class="line"><span class="comment">// struct Invalid;</span></span><br></pre></td></tr></table></figure>
+
+<p>函数模板则可以出现在前面，<strong>只要其后所有的形参都可以从函数实参推导或默认拥有实参即可</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Ts, <span class="keyword">typename</span> U, <span class="keyword">typename</span></span>=<span class="type">void</span>&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">valid</span><span class="params">(U, Ts...)</span></span>;    <span class="comment">// OK：能推导出 U</span></span><br><span class="line"><span class="comment">// void valid(Ts..., U); // 不能使用：Ts... 在此位置是不推导语境</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">valid</span>(<span class="number">1.0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);     <span class="comment">// OK：推导出 U 是 double，Ts 是 &#123;int, int, int&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-变参函数模板的函数形参列表中使用"><a href="#2-变参函数模板的函数形参列表中使用" class="headerlink" title="2.变参函数模板的函数形参列表中使用"></a>2.变参函数模板的函数形参列表中使用</h5><p>可以在变参函数模板的函数形参列表中使用，表示多个类型的形参。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printAll</span><span class="params">(Args... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ((std::cout &lt;&lt; args &lt;&lt; std::endl), ...); <span class="comment">// c++17</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printAll</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&quot;hello&quot;</span>, <span class="number">3.14</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>printAll</code> 函数接受任意数量的参数，使用折叠表达式展开参数包，并打印所有参数。</p>
+<p>可以使用类型约束加包名的形式定义：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;std::intergal... Args&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printAll</span><span class="params">(Args... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ((std::cout &lt;&lt; args &lt;&lt; std::endl), ...); <span class="comment">// c++17</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printAll</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);			<span class="comment">//可行，都是整型</span></span><br><span class="line">    <span class="built_in">printAll</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&quot;hello&quot;</span>, <span class="number">3.14</span>); 	<span class="comment">//不可行，因为形参包的参数类型被约束为整型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="OpenGL世界坐标与窗口坐标"><a href="#OpenGL世界坐标与窗口坐标" class="headerlink" title="OpenGL世界坐标与窗口坐标"></a>OpenGL世界坐标与窗口坐标</h3><p>世界坐标就是物体在所创建的投影中的实际坐标，这些物体被投影矩阵转化成屏幕空间标准化坐标（NDC坐标），这些两个坐标（即世界坐标与NDC坐标）是通过mvp矩阵进行转化的。</p>
+<p>而窗口坐标是显示在窗口中的像素的坐标，它与NDC可以通过归一化来转换。</p>
+<p>因此，在OpenGL中，当鼠标点击窗口中的每一个坐标时，可以通过一系列转换，将此坐标转换为世界坐标，以此来映射一些动作。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span>&amp; app = Application::<span class="built_in">Get</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">float</span> x = (<span class="number">2.0f</span> * Input::<span class="built_in">GetMouseX</span>()) / app.<span class="built_in">GetWindow</span>().<span class="built_in">GetWidth</span>() - <span class="number">1.0f</span>;</span><br><span class="line"><span class="type">float</span> y = <span class="number">1.0f</span> - (<span class="number">2.0f</span> * Input::<span class="built_in">GetMouseY</span>()) / app.<span class="built_in">GetWindow</span>().<span class="built_in">GetHeight</span>();</span><br><span class="line"><span class="comment">// Mouse always in z plane, so z === 1.0</span></span><br><span class="line"><span class="type">float</span> z = <span class="number">1.0f</span>;</span><br><span class="line"></span><br><span class="line">glm::vec4 screenPos = glm::<span class="built_in">vec4</span>(x, y, z, <span class="number">1.0f</span>);</span><br><span class="line">glm::vec4 worldPos  = glm::<span class="built_in">inverse</span>(m_Camera-&gt;<span class="built_in">GetViewProjectionMatrix</span>()) * screenPos;</span><br><span class="line"></span><br><span class="line"><span class="comment">// normalize, devide w</span></span><br><span class="line">worldPos /= worldPos.w;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DION_WARN(&quot;x = &#123;0&#125;, y = &#123;1&#125;&quot;, Input::GetMouseX(), Input::GetMouseY());</span></span><br><span class="line"><span class="comment">// DION_WARN(&quot;Postion = &#123;0&#125; &#123;1&#125;&quot;, worldPos.x, worldPos.y);</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> chessX = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(std::<span class="built_in">round</span>(worldPos.x));</span><br><span class="line"><span class="type">int</span> chessY = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(std::<span class="built_in">round</span>(worldPos.y));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (chessX &gt;= <span class="number">-7</span> &amp;&amp; chessX &lt;= <span class="number">7</span> &amp;&amp; chessY &gt;= <span class="number">-7</span> &amp;&amp; chessY &lt;= <span class="number">7</span>)</span><br><span class="line">&#123;</span><br><span class="line">    m_ChessBoard.<span class="built_in">Drop</span>(chessX, chessY, ChessBoard::ChessColor::White);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>总体步骤为：</p>
+<ol>
+<li>获取窗口坐标x，y</li>
+<li>将窗口坐标转换为NDC坐标，此时坐标每个轴的值应在（-1，1）之间，z轴始终1.0f</li>
+<li>获取投影矩阵和视角矩阵，如果有模型矩阵也要加上（即MVP矩阵）</li>
+<li>获取转换矩阵的逆矩阵，与NDC坐标相乘，所得的坐标除以w轴以标准化</li>
+</ol>
+<h3 id="C-获取一个float值最近的整数"><a href="#C-获取一个float值最近的整数" class="headerlink" title="C++获取一个float值最近的整数"></a>C++获取一个float值最近的整数</h3><p><strong>四舍五入：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> num = <span class="number">3.6f</span>;</span><br><span class="line"><span class="type">int</span> rounded = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(std::<span class="built_in">round</span>(num));</span><br></pre></td></tr></table></figure>
+
+<p><strong>向下舍入：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> num = <span class="number">3.6f</span>;</span><br><span class="line"><span class="type">int</span> floored = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(std::<span class="built_in">floor</span>(num));</span><br></pre></td></tr></table></figure>
+
+<p><strong>向上舍入：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> num = <span class="number">3.6f</span>;</span><br><span class="line"><span class="type">int</span> ceiled = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(std::<span class="built_in">ceil</span>(num));</span><br></pre></td></tr></table></figure>
+
+<p><strong>截取整数部分：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> num = <span class="number">3.6f</span>;</span><br><span class="line"><span class="type">int</span> truncated = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(num);</span><br><span class="line"><span class="comment">// 直接使用类型转换</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="GLFW窗口图标设置"><a href="#GLFW窗口图标设置" class="headerlink" title="GLFW窗口图标设置"></a>GLFW窗口图标设置</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>            width, height, channels;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span>* image = <span class="built_in">stbi_load</span>(<span class="string">&quot;./Gobang/assets/gobang.png&quot;</span>, &amp;width, &amp;height, &amp;channels, <span class="number">4</span>);</span><br><span class="line"><span class="keyword">if</span> (image)</span><br><span class="line">&#123;</span><br><span class="line">    GLFWimage images[<span class="number">1</span>];</span><br><span class="line">    images[<span class="number">0</span>].width  = width;</span><br><span class="line">    images[<span class="number">0</span>].height = height;</span><br><span class="line">    images[<span class="number">0</span>].pixels = image;</span><br><span class="line">    <span class="built_in">glfwSetWindowIcon</span>((GLFWwindow*)window, <span class="number">1</span>, images);</span><br><span class="line">    <span class="built_in">stbi_image_free</span>(image);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    std::cerr &lt;&lt; <span class="string">&quot;Failed to load icon image&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="多线程通信"><a href="#多线程通信" class="headerlink" title="多线程通信"></a>多线程通信</h3><p>使用条件变量可以实现进程间的通信，以打断耗时循环。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::mutex              mtx;</span><br><span class="line">std::condition_variable cv;</span><br><span class="line"><span class="type">bool</span>                    g_stop = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">childThreadHandle</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">std::unique_lock&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(mtx)</span></span>;</span><br><span class="line">    g_stop = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">while</span>(!g_stop)&#123;</span><br><span class="line">            <span class="keyword">auto</span> timeout = std::chrono::<span class="built_in">seconds</span>(<span class="number">10</span>);</span><br><span class="line">			cv.<span class="built_in">wait_for</span>(lock, timeout, [] &#123; <span class="keyword">return</span> g_stop; &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// In main or other thread</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">stop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(mtx)</span></span>;</span><br><span class="line">    g_stop = <span class="literal">true</span>;</span><br><span class="line">    cv.<span class="built_in">notify_all</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Double-And-Float"><a href="#Double-And-Float" class="headerlink" title="Double And Float"></a>Double And Float</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> a = <span class="number">0.8f</span>;</span><br><span class="line">a = <span class="number">0.9</span>; <span class="comment">// warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据</span></span><br></pre></td></tr></table></figure>
+
+<p>浮点数默认是双精度浮点数，后面添加<code>f</code>来告诉编译器这是<code>float</code>。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">C++零碎笔记</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-12-28 11:40:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/12/28/note/Programming/Language/cpp-experience/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Programming/"><i class="fa-solid fa-hashtag"></i>&nbsp;Programming</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/cpp/"><i class="fa-solid fa-hashtag"></i>&nbsp;cpp</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2024/03/30/note/Experience/shadowsocks/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">搭建Shadowsocks服务器代理</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/12/05/note/Programming/evn/Clion-xmake/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Clion配置xmake</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">1.</span> <span class="nav-text">函数参数传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">函数返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL%E6%89%8B%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%B8%A7%E7%8E%87"><span class="nav-number">3.</span> <span class="nav-text">OpenGL手动控制帧率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#warning-C4819-%E8%AF%A5%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E4%B8%8D%E8%83%BD%E5%9C%A8%E5%BD%93%E5%89%8D%E4%BB%A3%E7%A0%81%E9%A1%B5-936-%E4%B8%AD%E8%A1%A8%E7%A4%BA%E7%9A%84%E5%AD%97%E7%AC%A6%E3%80%82%E8%AF%B7%E5%B0%86%E8%AF%A5%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E4%B8%BA-Unicode-%E6%A0%BC%E5%BC%8F%E4%BB%A5%E9%98%B2%E6%AD%A2%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1"><span class="nav-number">4.</span> <span class="nav-text">warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%8C%85%EF%BC%88parameter-pack%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">参数包（parameter pack）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%88%E6%91%98%E8%87%AAcppreference%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">使用方法（摘自cppreference）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%9C%A8%E5%8F%98%E5%8F%82%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="nav-number">5.1.1.</span> <span class="nav-text">1. 在变参类模板中使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%8F%98%E5%8F%82%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%87%BD%E6%95%B0%E5%BD%A2%E5%8F%82%E5%88%97%E8%A1%A8%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="nav-number">5.1.2.</span> <span class="nav-text">2.变参函数模板的函数形参列表中使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87%E4%B8%8E%E7%AA%97%E5%8F%A3%E5%9D%90%E6%A0%87"><span class="nav-number">6.</span> <span class="nav-text">OpenGL世界坐标与窗口坐标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E8%8E%B7%E5%8F%96%E4%B8%80%E4%B8%AAfloat%E5%80%BC%E6%9C%80%E8%BF%91%E7%9A%84%E6%95%B4%E6%95%B0"><span class="nav-number">7.</span> <span class="nav-text">C++获取一个float值最近的整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GLFW%E7%AA%97%E5%8F%A3%E5%9B%BE%E6%A0%87%E8%AE%BE%E7%BD%AE"><span class="nav-number">8.</span> <span class="nav-text">GLFW窗口图标设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="nav-number">9.</span> <span class="nav-text">多线程通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Double-And-Float"><span class="nav-number">10.</span> <span class="nav-text">Double And Float</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                C Plus Plus - Skill |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">C Plus Plus - Skill</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-05-25 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Programming/"><i class="fas fa-hashtag"></i>&nbsp;Programming</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/cpp/"><i class="fas fa-hashtag"></i>&nbsp;cpp</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>4.7k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>C++ 技巧1</p>
+<span id="more"></span>
+
+<h2 id="virtual函数"><a href="#virtual函数" class="headerlink" title="virtual函数"></a>virtual函数</h2><p>虚函数的调用取决于指向或者引用的对象的类型，而不是指针或者引用自身的类型。</p>
+<p>静态函数不可以声明为虚函数，同时也不能被<code>const</code> 和 <code>volatile</code>关键字修饰。</p>
+<p>构造函数不可以声明为虚函数。同时除了<code>inline|explicit</code>之外，构造函数不允许使用其它任何关键字。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>本质上是，利用继承和虚函数实现多种不同的类调用同一个函数，此函数在不同的子类中有不同的实现，但函数名一样。</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="模板函数"><a href="#模板函数" class="headerlink" title="模板函数"></a>模板函数</h3><p>提供一种操作，但支持多种数据类型，可有效减少代码量，适用于多种数据进行同类型操作</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(T &amp;a, T &amp;b)</span></span>&#123;</span><br><span class="line">    T temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> b = <span class="number">20</span>;</span><br><span class="line"><span class="built_in">swap</span>(a, b); <span class="comment">//自动推导数据类型</span></span><br><span class="line"><span class="built_in">swap</span>&lt;<span class="type">int</span>&gt;(a, b);  <span class="comment">//指定数据类型</span></span><br></pre></td></tr></table></figure>
+
+<p>声明中typename与class没有差别<br>自动推导数据类型时，必须推导出一致的数据类型才能使用<br>在没有确定类型参数的情况下，模板无法自动推导，此时模板没有确定的数据类型，那么模板无法使用，必须手动指定数据类型<br>普通函数调用时可以发生自动类型转换（隐式类型转换），但模板函数自动推导类型时无法隐式类型转换，只有指定类型后才可以<br>从某种程度上说，函数模板在指定类型后，与普通函数相差不大</p>
+<h3 id="对用规则"><a href="#对用规则" class="headerlink" title="对用规则"></a>对用规则</h3><p>函数模板与普通函数都可以实现的情况下，优先使用普通函数<br>可以通过空模板参数来强制调用函数模板<br>函数模板可以重载</p>
+<h3 id="具体化函数模板"><a href="#具体化函数模板" class="headerlink" title="具体化函数模板"></a>具体化函数模板</h3><p>函数模板不能直接传入自定义类型或数组，可以通过具体化函数模板来解决</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">person</span>&#123;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">double</span> height;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">compare</span><span class="params">(T &amp;a, T &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a *** b) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="function"><span class="type">bool</span> <span class="title">compare</span><span class="params">(person &amp;a, person &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.age *** b.age &amp;&amp; a.height *** b.height) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">person a;</span><br><span class="line">person b;</span><br><span class="line">a.age = <span class="number">10</span>;</span><br><span class="line">a.height = <span class="number">175</span>;</span><br><span class="line">b.age = <span class="number">24</span>;</span><br><span class="line">b.height = <span class="number">168</span>;</span><br><span class="line"><span class="built_in">compare</span>(a, b);</span><br></pre></td></tr></table></figure>
+
+<p>“学习模板不是为了写模板，而是为了熟练运用STL提供的模板”</p>
+<h3 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h3><p>创建一个数据类模板，此模板可以使用多个未定的数据类型，给其赋值时需要指定数据类型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> <span class="title class_">NameType</span>, <span class="keyword">class</span> <span class="title class_">AgeType</span> = <span class="type">int</span>&gt;</span><br><span class="line"><span class="keyword">class</span> Person</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Person</span>(NameType name, AgeType age)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;mName = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;mAge = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">showPerson</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;name: &quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;mName &lt;&lt; <span class="string">&quot; age: &quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;mAge &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    NameType mName;</span><br><span class="line">    AgeType mAge;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>类模板无法自动推导类型，但可以有默认参数（即默认的数据类型）<br>类模板中的成员函数在调用时才生成<br>当类模板的对象作为函数的参数时，可以指定传入对象的数据类型，也可以将参数模板化，或将整个类模板化</p>
+<h3 id="类模板与继承"><a href="#类模板与继承" class="headerlink" title="类模板与继承"></a>类模板与继承</h3><p>当子类继承的父类是一个类模板时，子类在声明的时候，要指定出父类中T的类型<br>如果不指定，编译器无法给子类分配内存<br>如果想灵活指定出父类中T的类型，子类也需变为类模板</p>
+<h2 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h2><p>正常读取：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span> <span class="comment">//包含头文件</span></span></span><br><span class="line">ifstream ifs;<span class="comment">//创建输入文件流</span></span><br><span class="line">ifs.<span class="built_in">open</span>(&lt;File path&gt;, ios::in);<span class="comment">//指定文件路径和读取方式</span></span><br><span class="line"><span class="keyword">if</span> (!ifs.<span class="built_in">is_open</span>())&#123; <span class="comment">//判断文件是否成功打开</span></span><br><span class="line">    &lt;expression&gt;</span><br><span class="line">    ifs.<span class="built_in">close</span>()<span class="comment">//关闭打开的文件</span></span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">// 以下为读取文件的例子，依次读取即可，只是中间空格不知去哪里了</span></span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">    string name;</span><br><span class="line">    <span class="type">int</span> departmentId;</span><br><span class="line">    <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (ifs &gt;&gt; id &amp;&amp; ifs &gt;&gt; name &amp;&amp; ifs &gt;&gt; departmentId) &#123;</span><br><span class="line">        worker *worker = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span> (departmentId *** <span class="number">1</span>) &#123;</span><br><span class="line">            worker = <span class="keyword">new</span> <span class="built_in">employee</span>(id, name, departmentId);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (departmentId *** <span class="number">2</span>) &#123;</span><br><span class="line">            worker = <span class="keyword">new</span> <span class="built_in">manager</span>(id, name, departmentId);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            worker = <span class="keyword">new</span> <span class="built_in">boss</span>(id, name, departmentId);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>-&gt;pWorkerArray[index] = worker;</span><br><span class="line">        index++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断文件是否为空：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span> <span class="comment">//包含头文件</span></span></span><br><span class="line">ifstream ifs;<span class="comment">//创建输入文件流</span></span><br><span class="line"><span class="type">char</span> ch;</span><br><span class="line">ifs &gt;&gt; ch;</span><br><span class="line"><span class="keyword">if</span> (ifs.<span class="built_in">eof</span>()) &#123; <span class="comment">//判断ifs是否为文件的结尾，如果是，说明文件为空，如果不是说名文件不为空</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;File is empty&quot;</span> &lt;&lt; endl;</span><br><span class="line"> &lt;expression&gt;</span><br><span class="line">    ifs.<span class="built_in">close</span>();</span><br><span class="line"> <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>写入文件：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span> <span class="comment">//包含头文件</span></span></span><br><span class="line">ofstream ofs;</span><br><span class="line">ofs.<span class="built_in">open</span>(FILENAME, ios::out);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>-&gt;workerNum; ++i) &#123;</span><br><span class="line">    ofs &lt;&lt; <span class="keyword">this</span>-&gt;pWorkerArray[i]-&gt;id &lt;&lt; <span class="string">&quot; &quot;</span></span><br><span class="line">        &lt;&lt; <span class="keyword">this</span>-&gt;pWorkerArray[i]-&gt;name &lt;&lt; <span class="string">&quot; &quot;</span></span><br><span class="line">        &lt;&lt; <span class="keyword">this</span>-&gt;pWorkerArray[i]-&gt;departmentId &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">ofs.<span class="built_in">close</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="退出程序接口"><a href="#退出程序接口" class="headerlink" title="退出程序接口"></a>退出程序接口</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exit</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="linux下的“按任意键继续”"><a href="#linux下的“按任意键继续”" class="headerlink" title="linux下的“按任意键继续”"></a>linux下的“按任意键继续”</h2><p>This is a library <code>conio.h</code> for linux. Just copy file and paste file <code>conio.h</code> on <code>/usr/include/</code> but don’t forget before you want copy paste on <code>/usr/include/</code> you must open folder as <code>ADMINISTRATOR</code> first !!</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zoelabbb/conio.h.git</span><br><span class="line"><span class="built_in">cd</span> conio.h</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>重启IDE</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;conio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">toContinue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Press any key to continue ...&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">getch</span>();</span><br><span class="line">&#125; <span class="comment">//如果在while循环中，可能要用两个getch()才能正常工作</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="string一个用法（把字符串当做字符数组）"><a href="#string一个用法（把字符串当做字符数组）" class="headerlink" title="string一个用法（把字符串当做字符数组）"></a>string一个用法（把字符串当做字符数组）</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">speechManager::createPlayer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string nameSeed;</span><br><span class="line">    nameSeed = <span class="string">&quot;ABCDEFGHIJKL&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nameSeed.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        string name = <span class="string">&quot;Player - &quot;</span>;</span><br><span class="line">        name += nameSeed[i];</span><br><span class="line">        player tempPlayer;</span><br><span class="line">        tempPlayer.name = name;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">double</span> &amp;j: tempPlayer.score) j = <span class="number">0</span>; <span class="comment">//看上去高级，可读性降低</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;v1.<span class="built_in">push_back</span>(i + <span class="number">10001</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;players.<span class="built_in">insert</span>(<span class="built_in">make_pair</span>(i + <span class="number">10001</span>, tempPlayer));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历容器-使用auto"><a href="#遍历容器-使用auto" class="headerlink" title="遍历容器(使用auto)"></a>遍历容器(使用auto)</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> it = vector.<span class="built_in">begin</span>(); it != vector.<span class="built_in">end</span>(); it ++)&#123;</span><br><span class="line"> &lt;expression&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><h2 id="using"><a href="#using" class="headerlink" title="using"></a><code>using</code></h2><p>The modern cpp use more <code>using</code> to define aliases of variables.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> byte = <span class="type">unsigned</span> <span class="type">char</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="type">array_t</span> = <span class="type">double</span>[<span class="number">10</span>]; <span class="comment">// &quot;array_t&quot; is an array with &quot;double&quot; type and length is ten</span></span><br><span class="line"><span class="type">array_t</span> a;</span><br><span class="line">a[<span class="number">0</span>] = <span class="number">1</span>;                   <span class="comment">// It can be used as a common array</span></span><br><span class="line"><span class="keyword">using</span> <span class="type">func_t</span> = <span class="built_in">double</span>(<span class="type">double</span>);</span><br><span class="line"><span class="type">func_t</span>* f = sin;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">f</span>(<span class="number">3.1415926</span> / <span class="number">4</span>);  <span class="comment">// Calculate sin(PI/4)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h2><p>When a project was completed by many coders, naming conflicts in so many identifiers may be occurs.<br>Key word <code>namespace</code> can define a namespace with a name or not. <strong>The same indentifiers can exist in different namespaces.</strong><br>Using <code>::</code> access to a namespace.<br>Don’t use <code>;</code> at the end of namespace.</p>
+<h2 id="Increment-and-Decrement"><a href="#Increment-and-Decrement" class="headerlink" title="Increment and Decrement"></a>Increment and Decrement</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">a = i++; <span class="comment">// a = 1, i = 2</span></span><br><span class="line"><span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">a = ++i; <span class="comment">// a = 2, i = 2</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Both <code>i++</code> and <code>++i</code> will make <code>i</code> plus 1, but when using them in a <code>class</code>, <code>++i</code> is more efficienct.</p>
+</blockquote>
+<h2 id="Built-in-operation-function"><a href="#Built-in-operation-function" class="headerlink" title="Built-in operation function"></a>Built-in operation function</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span>, <span class="type">char</span> **)</span> </span>&#123;</span><br><span class="line">  std::cout &lt;&lt; std::<span class="built_in">plus</span>&lt;<span class="type">int</span>&gt;()(<span class="number">5</span>, <span class="number">8</span>) &lt;&lt; std::endl;</span><br><span class="line">  std::cout &lt;&lt; std::<span class="built_in">minus</span>&lt;<span class="type">int</span>&gt;()(<span class="number">8</span>, <span class="number">5</span>) &lt;&lt; std::endl;</span><br><span class="line">  std::cout &lt;&lt; std::<span class="built_in">multiplies</span>&lt;<span class="type">int</span>&gt;()(<span class="number">5</span>, <span class="number">8</span>) &lt;&lt; std::endl;</span><br><span class="line">  std::cout &lt;&lt; std::<span class="built_in">divides</span>&lt;<span class="type">int</span>&gt;()(<span class="number">8</span>, <span class="number">2</span>) &lt;&lt; std::endl;</span><br><span class="line">  std::cout &lt;&lt; std::<span class="built_in">modulus</span>&lt;<span class="type">int</span>&gt;()(<span class="number">8</span>, <span class="number">6</span>) &lt;&lt; std::endl;</span><br><span class="line">  std::cout &lt;&lt; std::<span class="built_in">negate</span>&lt;<span class="type">int</span>&gt;()(<span class="number">5</span>) &lt;&lt; std::endl;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Type-convertion"><a href="#Type-convertion" class="headerlink" title="Type convertion"></a>Type convertion</h2><p>There are <strong>three ways</strong> to convert:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">(DestinationType)sourceData;</span><br><span class="line"><span class="built_in">DestinationType</span>(sourceData);</span><br><span class="line"><span class="built_in">static_cast</span>&lt;DestinationType&gt;(sourceData);</span><br></pre></td></tr></table></figure>
+
+<h2 id="if-switch-with-initialization"><a href="#if-switch-with-initialization" class="headerlink" title="if &#x2F; switch with initialization"></a><code>if</code> &#x2F; <code>switch</code> with initialization</h2><blockquote>
+<p>Limit the scope of variables as much as possible.<br>cpp 17 introduced <code>if</code> &#x2F; <code>switch</code> statements that allow variable initialization.</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">auto</span> x&#123; std::cin.<span class="built_in">get</span>() &#125;; x &gt;= <span class="number">48</span> &amp;&amp; x &lt;= <span class="number">57</span>)&#123;</span><br><span class="line">    std::cout &lt;&lt; x &lt;&lt; <span class="string">&quot; is a digit.&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">    std::cout &lt;&lt; x &lt;&lt; <span class="string">&quot; is not a digit.&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Range-based-for"><a href="#Range-based-for" class="headerlink" title="Range-based for"></a>Range-based <code>for</code></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a[]&#123;</span><br><span class="line">    <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : a)   <span class="comment">// Write by reference</span></span><br><span class="line">    i *= <span class="number">10</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i : a)    <span class="comment">// Read by value</span></span><br><span class="line">    std::cout &lt;&lt; i &lt;&lt; <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; std::endl;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i : &#123;<span class="number">12</span>, <span class="number">25</span>, <span class="number">67</span>, <span class="number">43</span>, <span class="number">89</span>, <span class="number">54</span>&#125;) <span class="comment">// Access the list directly</span></span><br><span class="line">    std::cout &lt;&lt; i &lt;&lt; <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Function-and-Reference"><a href="#Function-and-Reference" class="headerlink" title="Function and Reference"></a>Function and Reference</h2><h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">my_sqrt</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;entering &quot;</span> &lt;&lt; __func__ &lt;&lt; std::endl;</span><br><span class="line">    <span class="type">double</span> xnew, xold&#123;x / <span class="number">2.0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        xnew = (xold + x / xold) / <span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">fabs</span>(xnew - xold) &lt; <span class="number">1e-8</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        xold = xnew;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> xnew;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Result:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">entering main</span><br><span class="line">entering my_sqrt</span><br><span class="line">1.414213</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>To iterate is human, to recurse divine.<br>To recieve multiple data, using <code>initializer_list</code> to send parameters to function.<br>e.g.</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">sum</span><span class="params">(std::initializer_list&lt;<span class="type">double</span>&gt; ld)</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> s&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i : ld)</span><br><span class="line">        s += i;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//in main function</span></span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">sum</span>(&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">sum</span>(&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;) &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+
+<p>The result:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<h2 id="Inline-function"><a href="#Inline-function" class="headerlink" title="Inline function"></a>Inline function</h2><p>Insert the <code>inline</code> keyword in front of the function defination, which is recommanded.<br>When the resouces of codes in a function are less than calling the function, using inline function can increase spending saving.<br>Inlining is at the cost of code bloat(copying), and only saves the overhead of function calls, thereby improving the execution efficiency of functions.<br>Inline should not be used in the following situation:</p>
+<ul>
+<li>If the code in the function body is <strong>relatively long</strong>, making inlining will lead to higher memory consumption costs.</li>
+<li>If there is a <strong>loop</strong> int the function body, the time to execute the code in the function body is greater than the overhead of the function call.</li>
+</ul>
+<h2 id="Default-parameter"><a href="#Default-parameter" class="headerlink" title="Default parameter"></a>Default parameter</h2><p>Provide the default parameters.<br>When calling the function, it can automatically use the default parameters without your actual parameters.</p>
+<h2 id="Function-Template"><a href="#Function-Template" class="headerlink" title="Function Template"></a>Function Template</h2><p>Function templates implement parameterization of data types.<br>It can use <strong>unknown data types</strong> as parameters. As long as the type of data meets the requirements defined by the function template, the function template can be called with these types of data as arguments.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">my_min</span><span class="params">(T a, T b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a : b; &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">my_max</span><span class="params">(T a, T b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? b : a; &#125;</span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">sum</span><span class="params">(std::initializer_list&lt;<span class="type">double</span>&gt; ld)</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> s&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i : ld)</span><br><span class="line">        s += i;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function">std::pair&lt;T, T&gt; <span class="title">my_min_max</span><span class="params">(T a, T b)</span> </span>&#123;</span><br><span class="line">    T t_min = <span class="built_in">my_min</span>(a, b);</span><br><span class="line">    T t_max = <span class="built_in">my_max</span>(a, b);</span><br><span class="line">    <span class="keyword">return</span> std::<span class="built_in">make_pair</span>(t_min, t_max);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(std::pair&lt;T, T&gt; p)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">typeid</span>(T).<span class="built_in">name</span>() &lt;&lt; <span class="string">&quot;: \t&quot;</span>;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;(min: &quot;</span> &lt;&lt; p.first &lt;&lt; <span class="string">&quot;, max: &quot;</span> &lt;&lt; p.second &lt;&lt; <span class="string">&quot;)\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span>, <span class="type">char</span> **)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">my_min_max</span>(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>));</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">my_min_max</span>(<span class="number">20</span>, <span class="number">10</span>));</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">my_min_max</span>(<span class="number">1.5</span>, <span class="number">2.5</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lambda-Function"><a href="#Lambda-Function" class="headerlink" title="Lambda Function"></a>Lambda Function</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123; <span class="keyword">return</span> x + y; &#125;</span><br><span class="line"><span class="comment">//in main function</span></span><br><span class="line">    <span class="type">int</span> a&#123;<span class="number">1</span>&#125;, b&#123;<span class="number">2</span>&#125;;</span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">add</span>(a, b) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">auto</span> f&#123;[](<span class="type">int</span> x, <span class="type">int</span> y) &#123; <span class="keyword">return</span> x + y; &#125;&#125;;</span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">f</span>(a, b) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">auto</span> f2&#123;[=]() &#123; <span class="keyword">return</span> a + b; &#125;&#125;;</span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">f2</span>() &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">auto</span> f3&#123;[&amp;](<span class="type">int</span> x) &#123;</span><br><span class="line">        a *= x;</span><br><span class="line">        b *= x;</span><br><span class="line">    &#125;&#125;;</span><br><span class="line">    <span class="built_in">f3</span>(<span class="number">10</span>);</span><br><span class="line">    std::cout &lt;&lt; a &lt;&lt; std::endl &lt;&lt; b &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+
+<p>Lambda function is a function that can capture the variables in a scope <strong>autometically</strong>.<br><code>[]</code> means the capture list.<br>There are several commonly used forms of capture lists:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Forms</th>
+<th align="center">Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>[x]</code></td>
+<td align="center">Capture the variable <code>x</code> by value passing</td>
+</tr>
+<tr>
+<td align="center"><code>[=]</code></td>
+<td align="center">Capture all variables in the parent scope by value passing</td>
+</tr>
+<tr>
+<td align="center"><code>[&amp;x]</code></td>
+<td align="center">Capture the variable <code>x</code> by reference passsing</td>
+</tr>
+<tr>
+<td align="center"><code>[&amp;]</code></td>
+<td align="center">Capture all variables in the parent scope by reference passing</td>
+</tr>
+<tr>
+<td align="center"><code>[=,&amp;x,&amp;y]</code></td>
+<td align="center">Capture the variables <code>x</code> and <code>y</code> by reference passing and  the rest by value passing</td>
+</tr>
+<tr>
+<td align="center"><code>[&amp;,x]</code></td>
+<td align="center">Capture the variable <code>x</code> by value passing and the rest by reference passing</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Lambda function can have the real parameters.</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><h3 id="Left-valued-reference"><a href="#Left-valued-reference" class="headerlink" title="Left-valued reference"></a>Left-valued reference</h3><blockquote>
+<p>The reference is a key point and difficulty.<br>A reference is an alias of the referenced object. The two are essentially the same object, but they are displayed as different names and types.</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T&amp; r = t;</span><br></pre></td></tr></table></figure>
+
+<p>Where <code>T</code> is a data type, <code>&amp;</code> is an operator, <code>r</code> is reference name and <code>t</code> is a variable of type <code>T</code>.</p>
+<ol>
+<li><code>t</code> cannot be constant or right value expression.</li>
+<li><code>r</code> must be initialized when defined.<br>This is excatly where the reference is diferent from the pointer, that is, <strong>there is no empty reference</strong>.<br>References cannot exist independently, but must be attached to the referenced variable, so it does not take up memory space.<br>If the reference is a named variable, such a reference is called left-valued reference (in cpp98).</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a = 2;</span><br><span class="line">int *p = &amp;a;</span><br><span class="line">int &amp;r = a;</span><br><span class="line">std::cout &lt;&lt; &quot;a:\t&quot; &lt;&lt; a &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;*p:\t&quot; &lt;&lt; *p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;r:\t&quot; &lt;&lt; r &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The value of p:   \t&quot; &lt;&lt; p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The address of p:\t&quot; &lt;&lt; &amp;p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The address of a:\t&quot; &lt;&lt; &amp;a &lt;&lt; std::endl</span><br><span class="line">          &lt;&lt; &quot;The address of r:\t&quot; &lt;&lt; &amp;r &lt;&lt; std::endl;</span><br><span class="line">a = 3;</span><br><span class="line">std::cout &lt;&lt; &quot;a:\t&quot; &lt;&lt; a &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;*p:\t&quot; &lt;&lt; *p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;r:\t&quot; &lt;&lt; r &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The value of p:   \t&quot; &lt;&lt; p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The address of p:\t&quot; &lt;&lt; &amp;p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The address of a:\t&quot; &lt;&lt; &amp;a &lt;&lt; std::endl</span><br><span class="line">          &lt;&lt; &quot;The address of r:\t&quot; &lt;&lt; &amp;r &lt;&lt; std::endl;</span><br><span class="line">r = 4;</span><br><span class="line">std::cout &lt;&lt; &quot;a:\t&quot; &lt;&lt; a &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;*p:\t&quot; &lt;&lt; *p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;r:\t&quot; &lt;&lt; r &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The value of p:   \t&quot; &lt;&lt; p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The address of p:\t&quot; &lt;&lt; &amp;p &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; &quot;The address of a:\t&quot; &lt;&lt; &amp;a &lt;&lt; std::endl</span><br><span class="line">          &lt;&lt; &quot;The address of r:\t&quot; &lt;&lt; &amp;r &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+
+<p>The result:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a:      2</span><br><span class="line">*p:     2</span><br><span class="line">r:      2</span><br><span class="line">The value of p:         0x7fff945b3184</span><br><span class="line">The address of p:       0x7fff945b3178</span><br><span class="line">The address of a:       0x7fff945b3184</span><br><span class="line">The address of r:       0x7fff945b3184</span><br><span class="line">a:      3</span><br><span class="line">*p:     3</span><br><span class="line">r:      3</span><br><span class="line">The value of p:         0x7fff945b3184</span><br><span class="line">The address of p:       0x7fff945b3178</span><br><span class="line">The address of a:       0x7fff945b3184</span><br><span class="line">The address of r:       0x7fff945b3184</span><br><span class="line">a:      4</span><br><span class="line">*p:     4</span><br><span class="line">r:      4</span><br><span class="line">The value of p:         0x7fff945b3184</span><br><span class="line">The address of p:       0x7fff945b3178</span><br><span class="line">The address of a:       0x7fff945b3184</span><br><span class="line">The address of r:       0x7fff945b3184</span><br></pre></td></tr></table></figure>
+
+<p>It can be seen that the left value reference is only an <strong>alias</strong> of the variable, so <strong>all operations on the lvalue reference are equivalent to the operation on the variable itself.</strong><br>Supplementary explanation:</p>
+<ol>
+<li>Any variable can be reference, such as pointer.</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> m = <span class="number">3</span>;</span><br><span class="line"><span class="type">int</span>* p = &amp;m;</span><br><span class="line"><span class="type">int</span>*&amp; rp = p;</span><br></pre></td></tr></table></figure>
+
+<p>Reference is not variable, so you cannot reference a reference! And at the same time, <strong>pointers cannot point to a reference.</strong></p>
+<ol start="2">
+<li>Pointers can be <code>nullptr</code> or <code>void</code> type, but references cannot.</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> m = <span class="number">3</span>;</span><br><span class="line"><span class="type">void</span>* p = &amp;m;</span><br><span class="line">p = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="type">void</span>&amp; r = m;        <span class="comment">// error!</span></span><br><span class="line"><span class="type">int</span>&amp;r = <span class="literal">nullptr</span>;    <span class="comment">// error!</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Cannot build an array of reference.</li>
+<li>Constant lvalue reference can be initialized by <strong>lvalue</strong>, <strong>constant lvalue</strong> and <strong>rvalue</strong>.</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span>&amp; rn = N;        <span class="comment">// error!</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>&amp; rx = x;  <span class="comment">// Reference lvalue</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>&amp; rN = N;  <span class="comment">// Reference constant lvalue</span></span><br><span class="line"><span class="type">const</span> <span class="type">bool</span>&amp; rB = <span class="literal">true</span>; <span class="comment">// Reference constant rvalue</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>The left reference of the constant is usually used as a formal parameter of the function. At this time, the corresponding actual parameter cannot be modified inside the function through this reference to achieve the purpose of protecting the actual parameter.</p>
+</blockquote>
+<h3 id="Rvalue-reference-move-and-Move-semantics"><a href="#Rvalue-reference-move-and-Move-semantics" class="headerlink" title="Rvalue reference, move() and Move semantics"></a>Rvalue reference, <code>move()</code> and Move semantics</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="type">void</span> <span class="title">my_swap</span><span class="params">(T &amp;a, T &amp;b)</span> </span>&#123;</span><br><span class="line">    T t = std::<span class="built_in">move</span>(a);</span><br><span class="line">    a = std::<span class="built_in">move</span>(b);</span><br><span class="line">    b = std::<span class="built_in">move</span>(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Actually it is the <code>swap()</code> in cpp STL.<br>The cpp STL also provides array exchange in the form of overloading.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>, std::<span class="type">size_t</span> N&gt; <span class="function"><span class="type">void</span> <span class="title">my_swap</span><span class="params">(T (&amp;a)[N], T (&amp;b)[N])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (&amp;a != &amp;b) &#123;</span><br><span class="line">        T *first1 = a;</span><br><span class="line">        T *last1 = first1 + N;</span><br><span class="line">        T *first2 = b;</span><br><span class="line">        <span class="keyword">for</span> (; first1 != last1; ++first1, ++first2) &#123;</span><br><span class="line">            <span class="built_in">my_swap</span>(*first1, *first2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="attribute"><a href="#attribute" class="headerlink" title="attribute"></a>attribute</h2><p>在C++中，<code>__attribute__</code>是一种GCC编译器提供的扩展语法，用于在函数、变量、类型等声明中添加附加属性。它的语法形式为<code>__attribute__((属性列表))</code>。</p>
+<p>一些常见的属性和它们的说明：</p>
+<ol>
+<li><code>__attribute__((aligned(n)))</code>：指定变量或结构体的对齐方式为n字节。例如，<code>__attribute__((aligned(4))) int x;</code>将x的对齐方式设置为4字节。</li>
+<li><code>__attribute__((packed))</code>：告诉编译器取消结构体的对齐，即以最小的字节对齐结构体成员。这在需要与外部系统或文件进行二进制数据交换时非常有用。</li>
+<li><code>__attribute__((noreturn))</code>：用于标记函数不会返回。例如，<code>__attribute__((noreturn)) void error();</code>表示函数<code>error</code>不会返回。</li>
+<li><code>__attribute__((unused))</code>：告诉编译器该变量可能未使用，可以抑制未使用变量的警告。例如，<code>int x __attribute__((unused));</code>告诉编译器x可能未使用。</li>
+<li><code>__attribute__((deprecated))</code>：用于标记函数、变量或类型已被弃用。当使用被标记为弃用的元素时，编译器会发出警告。</li>
+<li><code>__attribute__((constructor))</code>和<code>__attribute__((destructor))</code>：用于定义在程序启动前或结束后自动执行的函数。<code>constructor</code>属性用于在<code>main</code>函数执行之前自动调用的函数上，而<code>destructor</code>属性用于在程序结束前自动调用的函数上。</li>
+</ol>
+<blockquote>
+<p><code>__attribute__</code>是GCC的扩展特性，不是C++标准的一部分，因此在使用时应该注意可移植性。</p>
+</blockquote>
+<h2 id="declspec"><a href="#declspec" class="headerlink" title="declspec"></a>declspec</h2><p>Deduce the type of statements when compiling. It can be used to define a variable.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">decltype</span>(a) b = <span class="number">1</span>; <span class="comment">// This means the type of &quot;b&quot; is &quot;int&quot;</span></span><br><span class="line"><span class="keyword">decltype</span>(a + b) c = a + b; <span class="comment">// c: int</span></span><br></pre></td></tr></table></figure>
+
+<p><code>declspec</code>用以推测表达式结果的类型，返回此类型；而<code>__declspec(dllimport)</code>是 Microsoft Visual C++ 编译器的一个扩展，用于在编译动态链接库（DLL）时指示一个函数或变量是从外部DLL中引入的。</p>
+<p>当你在一个程序中需要使用从外部DLL中导出的函数或变量时，你可以使用 <code>declspec(dllimport)</code> 关键字来告诉编译器这个函数或变量是从其他DLL中引入的，而不是在当前代码中定义的。这样，编译器在编译时会生成适当的代码，以便正确地链接到外部DLL中的内容。</p>
+<p>为了提高代码的可读性，请为 <strong><code>__declspec(dllimport)</code></strong> 定义宏，并使用此宏来声明导入的每个符号：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> DllImport   __declspec( dllimport )</span></span><br><span class="line"></span><br><span class="line">DllImport <span class="type">int</span>  j;</span><br><span class="line"><span class="function">DllImport <span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>虽然在函数声明中使用 <strong><code>__declspec(dllimport)</code></strong> 是可选的，但如果你使用此关键字，编译器会生成更高效的代码。 不过，必须对导入的可执行文件使用 **<code>__declspec(dllimport)</code>**，以访问 DLL 的公共数据符号和对象。 请注意，DLL 的用户仍需要与导入库链接。</p>
+<p>可以对 DLL 和客户端应用程序使用相同的头文件。 为此，请使用特殊的预处理器符号来指示是生成 DLL 还是生成客户端应用程序。 例如：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _EXPORTING</span></span><br><span class="line">   <span class="meta">#<span class="keyword">define</span> CLASS_DECLSPEC    __declspec(dllexport)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">   <span class="meta">#<span class="keyword">define</span> CLASS_DECLSPEC    __declspec(dllimport)</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CLASS_DECLSPEC</span> CExampleA : <span class="keyword">public</span> CObject</span><br><span class="line">&#123; ... <span class="keyword">class</span> <span class="title class_">definition</span> ... &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><p><code>explicit</code> 关键字可以帮助你在类的构造函数中明确地指定类型转换的行为，从而提高代码的可读性和安全性。</p>
+<h2 id="optional"><a href="#optional" class="headerlink" title="optional"></a>optional</h2><p>在C++中，<code>std::optional</code>是C++17标准引入的一个类模板，用于表示一个可能存在或可能不存在的值。它提供了一种更安全、更语义清晰的方式来处理可能缺失的值，而不需要使用传统的空指针或特殊值。<code>std::optional</code>可以看作是一种对可能的值进行了封装的容器，它要么包含一个有效的值，要么为空（不包含任何值）。</p>
+<p>使用<code>std::optional</code>的主要好处包括：</p>
+<ol>
+<li><p><strong>避免空指针异常</strong>：传统的空指针可能在访问时引发未定义行为，而<code>std::optional</code>通过类型系统和成员函数来明确指示值的存在或不存在，从而避免了潜在的运行时错误。</p>
+</li>
+<li><p><strong>更好的语义表达</strong>：<code>std::optional</code>能够更清晰地表达一个值是可选的，而不需要通过注释或命名来传达这种信息。</p>
+</li>
+<li><p><strong>避免特殊值</strong>：使用<code>std::optional</code>可以避免使用特殊值（例如-1、0或空字符串）来表示缺失的值，从而增加了代码的可读性和维护性。</p>
+</li>
+<li><p><strong>优雅的值处理</strong>：<code>std::optional</code>提供了一些成员函数，如<code>has_value()</code>、<code>value()</code>和<code>value_or()</code>，使得对可能存在的值进行访问和处理更加优雅和安全。</p>
+</li>
+</ol>
+<p>以下是一个简单的示例，展示了如何在C++中使用<code>std::optional</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;optional&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">std::optional&lt;<span class="type">int</span>&gt; <span class="title">divide</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> a / b;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> std::<span class="literal">nullopt</span>; <span class="comment">// 表示缺失的值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::optional&lt;<span class="type">int</span>&gt; result = <span class="built_in">divide</span>(<span class="number">10</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (result.<span class="built_in">has_value</span>()) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Result: &quot;</span> &lt;&lt; result.<span class="built_in">value</span>() &lt;&lt; std::endl;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Division by zero&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>std::optional</code>被用来包装除法操作的结果，以便在可能出现除零错误时能够明确地表示值的缺失。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">C Plus Plus - Skill</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2022-05-25 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2022/05/25/note/Programming/Language/cpp-4/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Programming/"><i class="fa-solid fa-hashtag"></i>&nbsp;Programming</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/cpp/"><i class="fa-solid fa-hashtag"></i>&nbsp;cpp</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022/05/25/note/Programming/Language/cpp-3/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">C Plus Plus - Enhancement</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/03/30/note/Literature/%E6%95%A3%E6%96%87/%E7%8E%89%E6%B8%8A%E6%BD%AD%E6%B8%B8%E8%AE%B0/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">玉渊潭游记</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#virtual%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">virtual函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-number">3.</span> <span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">模板函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%94%A8%E8%A7%84%E5%88%99"><span class="nav-number">3.2.</span> <span class="nav-text">对用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%8C%96%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF"><span class="nav-number">3.3.</span> <span class="nav-text">具体化函数模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF"><span class="nav-number">3.4.</span> <span class="nav-text">类模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="nav-number">3.5.</span> <span class="nav-text">类模板与继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="nav-number">4.</span> <span class="nav-text">文件读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E7%A8%8B%E5%BA%8F%E6%8E%A5%E5%8F%A3"><span class="nav-number">5.</span> <span class="nav-text">退出程序接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux%E4%B8%8B%E7%9A%84%E2%80%9C%E6%8C%89%E4%BB%BB%E6%84%8F%E9%94%AE%E7%BB%A7%E7%BB%AD%E2%80%9D"><span class="nav-number">6.</span> <span class="nav-text">linux下的“按任意键继续”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string%E4%B8%80%E4%B8%AA%E7%94%A8%E6%B3%95%EF%BC%88%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BD%93%E5%81%9A%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">string一个用法（把字符串当做字符数组）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%AE%B9%E5%99%A8-%E4%BD%BF%E7%94%A8auto"><span class="nav-number">8.</span> <span class="nav-text">遍历容器(使用auto)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number"></span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#using"><span class="nav-number">1.</span> <span class="nav-text">using</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namespace"><span class="nav-number">2.</span> <span class="nav-text">namespace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Increment-and-Decrement"><span class="nav-number">3.</span> <span class="nav-text">Increment and Decrement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Built-in-operation-function"><span class="nav-number">4.</span> <span class="nav-text">Built-in operation function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-convertion"><span class="nav-number">5.</span> <span class="nav-text">Type convertion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-switch-with-initialization"><span class="nav-number">6.</span> <span class="nav-text">if &#x2F; switch with initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Range-based-for"><span class="nav-number">7.</span> <span class="nav-text">Range-based for</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-and-Reference"><span class="nav-number">8.</span> <span class="nav-text">Function and Reference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function"><span class="nav-number">8.1.</span> <span class="nav-text">Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inline-function"><span class="nav-number">9.</span> <span class="nav-text">Inline function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Default-parameter"><span class="nav-number">10.</span> <span class="nav-text">Default parameter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Template"><span class="nav-number">11.</span> <span class="nav-text">Function Template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda-Function"><span class="nav-number">12.</span> <span class="nav-text">Lambda Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">13.</span> <span class="nav-text">Reference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Left-valued-reference"><span class="nav-number">13.1.</span> <span class="nav-text">Left-valued reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rvalue-reference-move-and-Move-semantics"><span class="nav-number">13.2.</span> <span class="nav-text">Rvalue reference, move() and Move semantics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attribute"><span class="nav-number">14.</span> <span class="nav-text">attribute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#declspec"><span class="nav-number">15.</span> <span class="nav-text">declspec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other"><span class="nav-number">16.</span> <span class="nav-text">Other</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optional"><span class="nav-number">17.</span> <span class="nav-text">optional</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
