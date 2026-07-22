@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                OpenGL-3 进阶 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">OpenGL-3 进阶</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-07-24 14:52</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E6%A1%86%E6%9E%B6/">框架</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CPP/"><i class="fas fa-hashtag"></i>&nbsp;CPP</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Graphic/"><i class="fas fa-hashtag"></i>&nbsp;Graphic</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Computer/"><i class="fas fa-hashtag"></i>&nbsp;Computer</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>6.2k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>在OpenGL中，<strong>深度测试</strong>（Depth Testing）是一种用于处理场景中多个物体的绘制顺序的技术。它用于解决物体的可见性问题，确保只有最前面的物体像素被绘制，从而实现真实的3D场景效果。</p>
+<p>深度测试的基本思想是根据物体在场景中的距离，维护一个深度缓冲区（Depth Buffer），它是一个和颜色缓冲区大小相同的缓冲区。在深度缓冲区中，每个像素都存储着一个深度值（通常是浮点数或整数），表示物体到观察点（摄像机）的距离。这个距离通常是从摄像机视点到物体的距离。</p>
+<p>深度测试默认是禁用的，所以如果要启用深度测试的话，我们需要用GL_DEPTH_TEST选项来启用它：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">glEnable</span>(GL_DEPTH_TEST);</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="深度测试"><a href="#深度测试" class="headerlink" title="深度测试"></a>深度测试</h3><p>屏幕空间坐标与通过OpenGL的<code>glViewport</code>所定义的视口密切相关，并且可以直接使用GLSL内建变量<code>gl_FragCoord</code>从片段着色器中直接访问。<code>gl_FragCoord</code>的x和y分量代表了片段的屏幕空间坐标（其中<code>(0, 0)</code>位于左下角）。<code>gl_FragCoord</code>中也包含了一个<code>z</code>分量，它包含了片段真正的深度值。<code>z</code>值就是需要与深度缓冲内容所对比的那个值。</p>
+<h4 id="深度冲突"><a href="#深度冲突" class="headerlink" title="深度冲突"></a>深度冲突</h4><p>深度冲突（Depth Conflict）在OpenGL中指的是由于有多个物体在相同的屏幕位置上，并且它们的深度值相同或非常接近，导致深度测试无法准确地决定哪个物体应该在前面绘制，从而产生了视觉上的错误。</p>
+<p>深度冲突通常在以下情况下出现：</p>
+<ol>
+<li>在一个或多个物体的表面上有很多小的细节或凹凸，导致深度值在这些区域上非常接近，难以区分哪个物体在前面。</li>
+<li>在一个场景中有多个物体重叠在一起，并且它们的表面在同一深度上，导致深度测试无法准确判断哪个物体应该在前面绘制。</li>
+</ol>
+<p>为了解决深度冲突，有以下几种方法：</p>
+<ol>
+<li>使用更高精度的深度缓冲：可以使用更高精度的深度缓冲，比如使用32位浮点数来存储深度值，这样能够减少深度冲突的可能性。</li>
+<li>调整近平面和远平面：如果你的场景非常大或非常小，可能会导致深度缓冲的精度问题。通过调整近平面和远平面的值，可以增加深度缓冲的有效范围，从而减少深度冲突的可能性。</li>
+<li>使用透明度排序：如果你的场景中有透明物体，可以考虑对它们进行按照透明度排序，并按照远到近的顺序绘制它们。这样可以确保透明物体正确地显示在其他物体的后面。</li>
+<li>使用多边形偏移（Polygon Offset）：多边形偏移是一种通过微调深度值的方法来解决深度冲突的技术。它可以在绘制深度冲突的物体时，稍微改变它们的深度值，使它们稍微偏移一些，从而防止深度冲突。</li>
+<li>使用深度测试函数：OpenGL提供了几种深度测试函数，比如<code>GL_LESS</code>、<code>GL_LEQUAL</code>、<code>GL_GREATER</code>等等。你可以根据场景的需求选择合适的深度测试函数，以调整深度测试的行为。</li>
+</ol>
+<p>深度冲突是一个相对常见的问题，特别是在复杂的场景中。解决深度冲突通常需要结合多种方法，具体取决于场景的复杂程度和需求。选择合适的解决方法有助于提高渲染效果和场景的真实感。</p>
+<h3 id="模板测试"><a href="#模板测试" class="headerlink" title="模板测试"></a>模板测试</h3><blockquote>
+<p>本质上就是：1.首先清空模板缓冲；2.写入模板缓冲；3.根据写入的模板缓冲在模板测试时丢弃和显示一些片段。</p>
+</blockquote>
+<p>通过使用模板缓冲，可以根据场景中已绘制的其它物体的片段，来决定是否丢弃特定的片段。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">glStencilFunc</span>(GL_ALWAYS, <span class="number">1</span>, <span class="number">0xFF</span>);  <span class="comment">// 所有的片段都应该更新模板缓冲，并且将每个像素的模板值设置为1</span></span><br><span class="line"><span class="built_in">glStencilMask</span>(<span class="number">0xFF</span>);  <span class="comment">// 启用模板缓冲写入</span></span><br><span class="line"><span class="comment">// ... 绘制箱子</span></span><br><span class="line"><span class="built_in">glStencilFunc</span>(GL_NOTEQUAL, <span class="number">1</span>, <span class="number">0xFF</span>); <span class="comment">// 每个像素的模板值不等于1时通过模板测试</span></span><br><span class="line"><span class="built_in">glStencilMask</span>(<span class="number">0x00</span>);  <span class="comment">// 禁止模板缓冲的写入</span></span><br><span class="line"><span class="built_in">glDisable</span>(GL_DEPTH_TEST);  <span class="comment">// 禁用深度测试，以防止地板覆盖边框（也即放大的箱子）</span></span><br><span class="line"><span class="comment">// ... 绘制更大的箱子</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">glStencilMask</span>(<span class="number">0xFF</span>);</span><br><span class="line"><span class="built_in">glStencilFunc</span>(GL_ALWAYS, <span class="number">0</span>, <span class="number">0xFF</span>);</span><br><span class="line"><span class="built_in">glEnable</span>(GL_DEPTH_TEST); <span class="comment">// 重新启用深度测试，防止影响其他绘制</span></span><br></pre></td></tr></table></figure>
+
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN/img/image-20230802145318785.png"
+                      alt="image-20230802145318785"
+                ></p>
+<h3 id="混合"><a href="#混合" class="headerlink" title="混合"></a>混合</h3><p>OpenGL中，混合(Blending)通常是实现物体透明度(Transparency)的一种技术。透明就是说一个物体（或者其中的一部分）不是纯色(Solid Color)的，它的颜色是物体本身的颜色和它背后其它物体的颜色的不同强度结合。一个有色玻璃窗是一个透明的物体，玻璃有它自己的颜色，但它最终的颜色还包含了玻璃之后所有物体的颜色。这也是混合这一名字的出处，我们混合(Blend)（不同物体的）多种颜色为一种颜色。所以透明度能让我们看穿物体。</p>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><h4 id="stb-image库踩坑"><a href="#stb-image库踩坑" class="headerlink" title="stb_image库踩坑"></a>stb_image库踩坑</h4><p>加载stb_image库时，宏声明应在头文件之前，否则会找不到函数：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> STB_IMAGE_IMPLEMENTATION</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stb_image.h&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="摄像机位置"><a href="#摄像机位置" class="headerlink" title="摄像机位置"></a>摄像机位置</h4><p>添加空格上升镜头位置，ctrl降低镜头位置：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">ProcessKeyboard</span><span class="params">(Camera_Movement direction, <span class="type">float</span> deltaTime)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">float</span> velocity = MovementSpeed * deltaTime;  <span class="comment">// 设定速度</span></span><br><span class="line">    <span class="comment">// 根据方向调整方向向量</span></span><br><span class="line">    <span class="keyword">if</span> (direction == FORWARD)</span><br><span class="line">        Position += Front * velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == BACKWARD)</span><br><span class="line">        Position -= Front * velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == LEFT)</span><br><span class="line">        Position -= Right * velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == RIGHT)</span><br><span class="line">        Position += Right * velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == UP)</span><br><span class="line">        Position.y += velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == DOWN)</span><br><span class="line">        Position.y -=   velocity;</span><br><span class="line">    <span class="comment">// Position.y = 0.0f; // 确保不会偏离xz平面</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="模型加载库"><a href="#模型加载库" class="headerlink" title="模型加载库"></a>模型加载库</h4><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN/img/assimp_structure.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>和材质和网格(Mesh)一样，所有的场景&#x2F;模型数据都包含在Scene对象中。Scene对象也包含了场景根节点的引用。</li>
+<li>场景的Root node（根节点）可能包含子节点（和其它的节点一样），它会有一系列指向场景对象中mMeshes数组中储存的网格数据的索引。Scene下的mMeshes数组储存了真正的Mesh对象，节点中的mMeshes数组保存的只是场景中网格数组的索引。</li>
+<li>一个Mesh对象本身包含了渲染所需要的所有相关数据，像是顶点位置、法向量、纹理坐标、面(Face)和物体的材质。</li>
+<li>一个网格包含了多个面。Face代表的是物体的渲染图元(Primitive)（三角形、方形、点）。一个面包含了组成图元的顶点的索引。由于顶点和索引是分开的，使用一个索引缓冲来渲染是非常简单的（见[你好，三角形](<a class="link"   target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/01" >https://learnopengl-cn.github.io/01<i class="fas fa-external-link-alt"></i></a> Getting started&#x2F;04 Hello Triangle&#x2F;)）。</li>
+<li>最后，一个网格也包含了一个Material对象，它包含了一些函数能让我们获取物体的材质属性，比如说颜色和纹理贴图（比如漫反射和镜面光贴图）。</li>
+</ul>
+<blockquote>
+<p>所谓网格，就是渲染物体的最小单位</p>
+</blockquote>
+<p>通过使用Assimp，我们可以加载不同的模型到程序中，但是载入后它们都被储存为Assimp的数据结构。我们最终仍要将这些数据转换为OpenGL能够理解的格式，这样才能渲染这个物体。</p>
+<h4 id="GLFW处理多个键同时输入"><a href="#GLFW处理多个键同时输入" class="headerlink" title="GLFW处理多个键同时输入"></a>GLFW处理多个键同时输入</h4><p>设置摄像机更快速的移动<code>shift+w/s/a/d</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Faster</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_W) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)</span><br><span class="line">    camera.<span class="built_in">ProcessKeyboard</span>(FASTER_FORWARD, deltaTime);</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_S) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)</span><br><span class="line">    camera.<span class="built_in">ProcessKeyboard</span>(FASTER_BACKWARD, deltaTime);</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_A) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)</span><br><span class="line">    camera.<span class="built_in">ProcessKeyboard</span>(FASTER_LEFT, deltaTime);</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_D) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)</span><br><span class="line">    camera.<span class="built_in">ProcessKeyboard</span>(FASTER_RIGHT, deltaTime);</span><br></pre></td></tr></table></figure>
+
+<h4 id="着色器类中的异常捕捉"><a href="#着色器类中的异常捕捉" class="headerlink" title="着色器类中的异常捕捉"></a>着色器类中的异常捕捉</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ensure ifstream objects can throw exceptions:</span></span><br><span class="line">vShaderFile.<span class="built_in">exceptions</span>(std::ifstream::failbit | std::ifstream::badbit);</span><br><span class="line">fShaderFile.<span class="built_in">exceptions</span>(std::ifstream::failbit | std::ifstream::badbit);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// open files</span></span><br><span class="line">    vShaderFile.<span class="built_in">open</span>(vertexPath);</span><br><span class="line">    fShaderFile.<span class="built_in">open</span>(fragmentPath);</span><br><span class="line">    std::stringstream vShaderStream, fShaderStream;</span><br><span class="line">    <span class="comment">// read file&#x27;s buffer contents into streams</span></span><br><span class="line">    vShaderStream &lt;&lt; vShaderFile.<span class="built_in">rdbuf</span>();</span><br><span class="line">    fShaderStream &lt;&lt; fShaderFile.<span class="built_in">rdbuf</span>();</span><br><span class="line">    <span class="comment">// close file handlers</span></span><br><span class="line">    vShaderFile.<span class="built_in">close</span>();</span><br><span class="line">    fShaderFile.<span class="built_in">close</span>();</span><br><span class="line">    <span class="comment">// convert stream into string</span></span><br><span class="line">    vertexCode = vShaderStream.<span class="built_in">str</span>();</span><br><span class="line">    fragmentCode = fShaderStream.<span class="built_in">str</span>();</span><br><span class="line">&#125; <span class="built_in">catch</span> (std::ifstream::failure &amp;e) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ: &quot;</span></span><br><span class="line">              &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="深入理解顶点着色器和片段着色器"><a href="#深入理解顶点着色器和片段着色器" class="headerlink" title="深入理解顶点着色器和片段着色器"></a>深入理解顶点着色器和片段着色器</h4><p>在OpenGL核心模式的渲染中，这两个着色器是不能跳过的着色器，必须手动编写。</p>
+<h4 id="抗锯齿"><a href="#抗锯齿" class="headerlink" title="抗锯齿"></a>抗锯齿</h4><p><strong>超采样抗锯齿(Super Sample Anti-aliasing, SSAA)：</strong>它会使用比正常分辨率更高的分辨率（即超采样）来渲染场景，当图像输出在帧缓冲中更新时，分辨率会被下采样(Downsample)至正常的分辨率。这些<strong>额外的</strong>分辨率会被用来防止锯齿边缘的产生。虽然它确实能够解决走样的问题，但是由于这样比平时要绘制更多的片段，它也会带来很大的性能开销。所以这项技术只拥有了短暂的辉煌。</p>
+<p><strong>多重采样抗锯齿(Multisample Anti-aliasing, MSAA)：</strong>它借鉴了SSAA背后的理念，但却以更加高效的方式实现了抗锯齿。渲染图元时，不只使用像素中心点作为采样点，而是将一个像素分成多个子采样点（这也是为什么叫做多重采样的原因）。每个像素片段着色器只运行一次，其所使用的顶点数据会插值到每个像素中心，结果储存在每个被覆盖的子采样点中，每个像素内部会将采样点的颜色平均化。</p>
+<p>在OpenGL中使用MSAA，可以通过Hint的方式，在创建窗口前调用：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">glfwWindowHint</span>(GLFW_SAMPLES, <span class="number">4</span>);</span><br><span class="line"><span class="built_in">glEnable</span>(GL_MULTISAMPLE); <span class="comment">// 保险起见，启用一下多重采样（多数情况时默认启用的）</span></span><br></pre></td></tr></table></figure>
+
+<p>现在再调用glfwCreateWindow创建渲染窗口时，每个屏幕坐标就会使用一个包含4个子采样点的颜色缓冲了。GLFW会自动创建一个每像素4个子采样点的深度和样本缓冲。这也意味着所有缓冲的大小都增长了4倍。</p>
+<h4 id="ImGui"><a href="#ImGui" class="headerlink" title="ImGui"></a>ImGui</h4><p>为了方便的查看场景，将鼠标禁用，使用光标回调函数来控制摄像机镜头的方向，所以使用imgui时不能使用鼠标拖动控件，如下：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN/img/image-20230731104907051.png"
+                      alt="image-20230731104907051"
+                ></p>
+<p>因此要设置一个快捷键来唤出光标，捕捉并禁用光标的代码是在创建窗口后：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">glfwSetInputMode</span>(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);</span><br></pre></td></tr></table></figure>
+
+<p>而实现快捷时有一个问题，实现摄像机在场景中移动是在渲染循环中使用<code>processInput(window)</code>函数，获取键盘输入来控制，这样可以实现一次按下连续控制，这也正是问题所在，如果直接在此函数中设置快捷键，按下一次会在每次渲染循环中都调用一次，表现为光标一直闪烁（因为一直在重复 获取光标、隐藏光标、获取光标…）。</p>
+<p>解决方法是定义键盘回调函数，将切换光标的代码放到回调函数中，这样按一次键盘释放之前不会重复调用。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> show_mouse = <span class="literal">false</span>; <span class="comment">// global variable</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Key callback function</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">key_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> key, <span class="type">int</span> scancode, <span class="type">int</span> action, <span class="type">int</span> mods)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_ALT) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_C) == GLFW_PRESS)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (show_mouse)</span><br><span class="line">        &#123;</span><br><span class="line">            show_mouse = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            show_mouse = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 捕捉鼠标，并隐藏光标 </span></span><br><span class="line">        <span class="keyword">if</span> (!show_mouse)</span><br><span class="line">            <span class="built_in">glfwSetInputMode</span>(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">glfwSetInputMode</span>(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Don&#x27;t forget registering it after creating the window</span></span><br><span class="line"><span class="comment">// in main function</span></span><br><span class="line"><span class="built_in">glfwSetKeyCallback</span>(window, key_callback);</span><br></pre></td></tr></table></figure>
+
+<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><p>在渲染循环之外：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Init Dear Imgui</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* glsl_version = <span class="string">&quot;#version 330&quot;</span>;</span><br><span class="line"><span class="built_in">IMGUI_CHECKVERSION</span>();</span><br><span class="line">ImGui::<span class="built_in">CreateContext</span>();</span><br><span class="line">ImGuiIO&amp; io = ImGui::<span class="built_in">GetIO</span>(); (<span class="type">void</span>)io;</span><br><span class="line">ImGui::<span class="built_in">StyleColorsDark</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">ImGui_ImplGlfw_InitForOpenGL</span>(window, <span class="literal">true</span>);</span><br><span class="line"><span class="built_in">ImGui_ImplOpenGL3_Init</span>(glsl_version);</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>在渲染循环内：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ImGui_ImplOpenGL3_NewFrame</span>();</span><br><span class="line"><span class="built_in">ImGui_ImplGlfw_NewFrame</span>();</span><br><span class="line">ImGui::<span class="built_in">NewFrame</span>();</span><br><span class="line">&#123; </span><br><span class="line">    <span class="comment">// setup</span></span><br><span class="line">    ImGui::<span class="built_in">Begin</span>(<span class="string">&quot;Cube and Lighting&quot;</span>);</span><br><span class="line">   	<span class="comment">// ...</span></span><br><span class="line">    ImGui::<span class="built_in">Text</span>(<span class="string">&quot;Application average %.3f ms/frame (%.1f FPS)&quot;</span>, <span class="number">1000.0f</span> / ImGui::<span class="built_in">GetIO</span>().Framerate, ImGui::<span class="built_in">GetIO</span>().Framerate); <span class="comment">// Frame rate</span></span><br><span class="line">    ImGui::<span class="built_in">End</span>();</span><br><span class="line">&#125;</span><br><span class="line">ImGui::<span class="built_in">Render</span>();</span><br><span class="line"><span class="built_in">ImGui_ImplOpenGL3_RenderDrawData</span>(ImGui::<span class="built_in">GetDrawData</span>());</span><br></pre></td></tr></table></figure>
+
+<h5 id="同一行放置多个控件"><a href="#同一行放置多个控件" class="headerlink" title="同一行放置多个控件"></a>同一行放置多个控件</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ImGui::<span class="built_in">SameLine</span>();</span><br></pre></td></tr></table></figure>
+
+<p>可实现此语句前后的两个控件不换行。</p>
+<h5 id="控件例子"><a href="#控件例子" class="headerlink" title="控件例子"></a>控件例子</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ImGui::<span class="built_in">Begin</span>(<span class="string">&quot;Cube and Lighting&quot;</span>);                          <span class="comment">// Create a window called &quot;Cube and Lighting&quot; and append into it.</span></span><br><span class="line"></span><br><span class="line">ImGui::<span class="built_in">Text</span>(<span class="string">&quot;Here can be adjust some params of the sence.&quot;</span>);  <span class="comment">// Display some text (you can use a format strings too)</span></span><br><span class="line">ImGui::<span class="built_in">Checkbox</span>(<span class="string">&quot;Demo Window&quot;</span>, &amp;show_demo_window);      <span class="comment">// Edit bools storing our window open/close state</span></span><br><span class="line"></span><br><span class="line">ImGui::<span class="built_in">SliderFloat</span>(<span class="string">&quot;ambientStrength&quot;</span>, &amp;ambientStrength, <span class="number">0.0f</span>, <span class="number">1.0f</span>);   <span class="comment">// Edit 1 float using a slider from 0.0f to 1.0f</span></span><br><span class="line">ImGui::<span class="built_in">SliderFloat</span>(<span class="string">&quot;specularStrength&quot;</span>, &amp;specularStrength, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">ImGui::<span class="built_in">ColorEdit3</span>(<span class="string">&quot;Cube color&quot;</span>, (<span class="type">float</span>*)&amp;objectColor); <span class="comment">// Edit 3 floats representing a color</span></span><br><span class="line">ImGui::<span class="built_in">Text</span>(<span class="string">&quot;Cube color = %f, %f, %f&quot;</span>, objectColor.x, objectColor.y, objectColor.z); </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (ImGui::<span class="built_in">Button</span>(<span class="string">&quot;Button&quot;</span>)) </span><br><span class="line">    counter++;<span class="comment">// Buttons return true when clicked (most widgets return true when edited/activated)</span></span><br><span class="line"></span><br><span class="line">ImGui::<span class="built_in">Text</span>(<span class="string">&quot;Application average %.3f ms/frame (%.1f FPS)&quot;</span>, <span class="number">1000.0f</span> / ImGui::<span class="built_in">GetIO</span>().Framerate, ImGui::<span class="built_in">GetIO</span>().Framerate);</span><br><span class="line">ImGui::<span class="built_in">End</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="小行星光照方向变化"><a href="#小行星光照方向变化" class="headerlink" title="小行星光照方向变化"></a>小行星光照方向变化</h4><p>实例化渲染时，模型矩阵<code>aInstanceMatrix</code>会从直接传入顶点着色器，而不是uniform赋值，因此直接在GPU中计算法向量<code>Normal = mat3(transpose(inverse(aInstanceMatrix))) * aNormal;</code>，这样光照的计算就不会因为模型变换而改变方向。</p>
+<figure class="highlight glsl"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="keyword">layout</span> (<span class="keyword">location</span> = <span class="number">0</span>) <span class="keyword">in</span> <span class="type">vec3</span> aPos;</span><br><span class="line"><span class="keyword">layout</span> (<span class="keyword">location</span> = <span class="number">1</span>) <span class="keyword">in</span> <span class="type">vec3</span> aNormal;</span><br><span class="line"><span class="keyword">layout</span> (<span class="keyword">location</span> = <span class="number">2</span>) <span class="keyword">in</span> <span class="type">vec2</span> aTexCoords;</span><br><span class="line"><span class="keyword">layout</span> (<span class="keyword">location</span> = <span class="number">3</span>) <span class="keyword">in</span> <span class="type">mat4</span> aInstanceMatrix;</span><br><span class="line"></span><br><span class="line"><span class="keyword">out</span> <span class="type">vec2</span> TexCoords;</span><br><span class="line"><span class="keyword">out</span> <span class="type">vec3</span> FragPos;</span><br><span class="line"><span class="keyword">out</span> <span class="type">vec3</span> Normal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uniform</span> <span class="type">mat4</span> projection;</span><br><span class="line"><span class="keyword">uniform</span> <span class="type">mat4</span> view;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> main()</span><br><span class="line">&#123;</span><br><span class="line">    TexCoords = aTexCoords;</span><br><span class="line">    <span class="built_in">gl_Position</span> = projection * view * aInstanceMatrix * <span class="type">vec4</span>(aPos, <span class="number">1.0</span>f); </span><br><span class="line">    Normal = <span class="type">mat3</span>(<span class="built_in">transpose</span>(<span class="built_in">inverse</span>(aInstanceMatrix))) * aNormal;</span><br><span class="line">    FragPos = <span class="type">vec3</span>(aInstanceMatrix * <span class="type">vec4</span>(aPos, <span class="number">1.0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Cubemap"><a href="#Cubemap" class="headerlink" title="Cubemap"></a>Cubemap</h4><h5 id="加载天空盒"><a href="#加载天空盒" class="headerlink" title="加载天空盒"></a>加载天空盒</h5><p>需要加载六个纹理。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">loadCubemap</span><span class="params">(vector&lt;std::string&gt; faces)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> textureID;</span><br><span class="line">    <span class="built_in">glGenTextures</span>(<span class="number">1</span>, &amp;textureID);</span><br><span class="line">    <span class="built_in">glBindTexture</span>(GL_TEXTURE_CUBE_MAP, textureID);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> width, height, nrChannels;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">unsigned</span> <span class="type">int</span> i = <span class="number">0</span>; i &lt; faces.<span class="built_in">size</span>(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* data = <span class="built_in">stbi_load</span>(faces[i].<span class="built_in">c_str</span>(), &amp;width, &amp;height, &amp;nrChannels, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (data)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">glTexImage2D</span>(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, <span class="number">0</span>, GL_RGB, width, height, <span class="number">0</span>, GL_RGB, GL_UNSIGNED_BYTE, data);</span><br><span class="line">            <span class="built_in">stbi_image_free</span>(data);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;Cubemap texture failed to load at path: &quot;</span> &lt;&lt; faces[i] &lt;&lt; std::endl;</span><br><span class="line">            <span class="built_in">stbi_image_free</span>(data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">glTexParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);</span><br><span class="line">    <span class="built_in">glTexParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br><span class="line">    <span class="built_in">glTexParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);</span><br><span class="line">    <span class="built_in">glTexParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);</span><br><span class="line">    <span class="built_in">glTexParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> textureID;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>即所谓天空盒子，可以在场景四周贴上纹理，看起来就像是在一些场景中。</p>
+<blockquote>
+<p>必须要注意的是，纹理图片必须是jpg格式的，大小必须为1024的倍数，比例必须是正方形。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Sky box vertex data</span></span><br><span class="line"><span class="comment">// ------------</span></span><br><span class="line"><span class="type">float</span> skyboxVertices[] = &#123;</span><br><span class="line">    <span class="comment">// positions          </span></span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line"></span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>,  <span class="number">1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line"></span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,</span><br><span class="line">    <span class="number">-1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span>,</span><br><span class="line">     <span class="number">1.0f</span>, <span class="number">-1.0f</span>,  <span class="number">1.0f</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// skybox VAO</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> skyboxVAO, skyboxVBO;</span><br><span class="line"><span class="built_in">glGenVertexArrays</span>(<span class="number">1</span>, &amp;skyboxVAO);</span><br><span class="line"><span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;skyboxVBO);</span><br><span class="line"><span class="built_in">glBindVertexArray</span>(skyboxVAO);</span><br><span class="line"><span class="built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, skyboxVBO);</span><br><span class="line"><span class="built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="built_in">sizeof</span>(skyboxVertices), &amp;skyboxVertices, GL_STATIC_DRAW);</span><br><span class="line"><span class="built_in">glEnableVertexAttribArray</span>(<span class="number">0</span>);</span><br><span class="line"><span class="built_in">glVertexAttribPointer</span>(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="built_in">sizeof</span>(<span class="type">float</span>), (<span class="type">void</span>*)<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">vector&lt;std::string&gt; faces</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;../assets/space/right.jpg&quot;</span>,</span><br><span class="line">    <span class="string">&quot;../assets/space/left.jpg&quot;</span>,</span><br><span class="line">    <span class="string">&quot;../assets/space/top.jpg&quot;</span>,</span><br><span class="line">    <span class="string">&quot;../assets/space/bottom.jpg&quot;</span>,</span><br><span class="line">    <span class="string">&quot;../assets/space/front.jpg&quot;</span>,</span><br><span class="line">    <span class="string">&quot;../assets/space/back.jpg&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> cubemapTexture = <span class="built_in">loadCubemap</span>(faces);</span><br><span class="line"></span><br><span class="line">skyboxShader.<span class="built_in">use</span>();</span><br><span class="line">skyboxShader.<span class="built_in">setInt</span>(<span class="string">&quot;skybox&quot;</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>顶点着色器：</p>
+<figure class="highlight glsl"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="keyword">layout</span> (<span class="keyword">location</span> = <span class="number">0</span>) <span class="keyword">in</span> <span class="type">vec3</span> aPos;</span><br><span class="line"></span><br><span class="line"><span class="keyword">out</span> <span class="type">vec3</span> TexCoords;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uniform</span> <span class="type">mat4</span> projection;</span><br><span class="line"><span class="keyword">uniform</span> <span class="type">mat4</span> view;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> main()</span><br><span class="line">&#123;</span><br><span class="line">    TexCoords = aPos;</span><br><span class="line">    <span class="type">vec4</span> pos = projection * view * <span class="type">vec4</span>(aPos, <span class="number">1.0</span>);</span><br><span class="line">    <span class="built_in">gl_Position</span> = pos.xyww;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>片段着色器：</p>
+<figure class="highlight glsl"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="keyword">out</span> <span class="type">vec4</span> FragColor;</span><br><span class="line"><span class="keyword">in</span> <span class="type">vec3</span> TexCoords;</span><br><span class="line"><span class="keyword">uniform</span> <span class="type">samplerCube</span> skybox;</span><br><span class="line"><span class="type">void</span> main()</span><br><span class="line">&#123;    </span><br><span class="line">    FragColor = <span class="built_in">texture</span>(skybox, TexCoords);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后渲染：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// draw skybox as last</span></span><br><span class="line"><span class="built_in">glDepthFunc</span>(GL_LEQUAL);  <span class="comment">// change depth function so depth test passes when values are equal to depth buffer&#x27;s content</span></span><br><span class="line">skyboxShader.<span class="built_in">use</span>();</span><br><span class="line">view = glm::<span class="built_in">mat4</span>(glm::<span class="built_in">mat3</span>(camera.<span class="built_in">GetViewMatrix</span>())); <span class="comment">// remove translation from the view matrix</span></span><br><span class="line">skyboxShader.<span class="built_in">setMat4</span>(<span class="string">&quot;view&quot;</span>, view);</span><br><span class="line">skyboxShader.<span class="built_in">setMat4</span>(<span class="string">&quot;projection&quot;</span>, projection);</span><br><span class="line"><span class="comment">// skybox cube</span></span><br><span class="line"><span class="built_in">glBindVertexArray</span>(skyboxVAO);</span><br><span class="line"><span class="built_in">glActiveTexture</span>(GL_TEXTURE0);</span><br><span class="line"><span class="built_in">glBindTexture</span>(GL_TEXTURE_CUBE_MAP, cubemapTexture);</span><br><span class="line"><span class="built_in">glDrawArrays</span>(GL_TRIANGLES, <span class="number">0</span>, <span class="number">36</span>);</span><br><span class="line"><span class="built_in">glBindVertexArray</span>(<span class="number">0</span>);</span><br><span class="line"><span class="built_in">glDepthFunc</span>(GL_LESS); <span class="comment">// set depth function back to default</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="贴图下载网站"><a href="#贴图下载网站" class="headerlink" title="贴图下载网站"></a>贴图下载网站</h5><p>有许多网站提供免费和付费的Cubemap贴图下载。你可以在这些网站上找到各种类型和风格的Cubemap贴图，以满足你的需求。以下是一些常见的资源网站：</p>
+<ol>
+<li>HDRI Haven (<a class="link"   target="_blank" rel="noopener" href="https://hdrihaven.com/" >https://hdrihaven.com/<i class="fas fa-external-link-alt"></i></a>): 这是一个提供高动态范围图像（HDRI）和Cubemap贴图的免费资源网站。你可以在这里找到多种环境和天空盒子贴图。</li>
+<li>Textures.com (<a class="link"   target="_blank" rel="noopener" href="https://www.textures.com/" >https://www.textures.com/<i class="fas fa-external-link-alt"></i></a>): 这个网站提供各种类型的纹理资源，包括Cubemap贴图。它有免费和付费选项。</li>
+<li>Unity Asset Store (<a class="link"   target="_blank" rel="noopener" href="https://assetstore.unity.com/" >https://assetstore.unity.com/<i class="fas fa-external-link-alt"></i></a>): 如果你使用Unity引擎，Unity Asset Store提供了丰富的Cubemap贴图资源，其中一些是免费的，而另一些需要购买。</li>
+<li>Unreal Engine Marketplace (<a class="link"   target="_blank" rel="noopener" href="https://www.unrealengine.com/marketplace/" >https://www.unrealengine.com/marketplace/<i class="fas fa-external-link-alt"></i></a>): 如果你使用Unreal Engine，这个市场提供了许多Cubemap贴图资源，其中一些也是免费的。</li>
+<li>Google搜索：你可以在Google上搜索”Cubemap textures”、”Skybox textures”或者其他相关关键词，找到更多的免费和付费资源。</li>
+</ol>
+<p>请注意，在使用免费或付费资源时，务必遵循相关许可协议和版权规定。有些资源可能需要你在商业项目中使用时付费或注明来源。另外，选择适合你项目需求的高质量贴图是非常重要的，这将有助于提升你项目的视觉效果和真实感。</p>
+<h4 id="stb-image库踩坑-1"><a href="#stb-image库踩坑-1" class="headerlink" title="stb_image库踩坑"></a>stb_image库踩坑</h4><p>加载stb_image库时，宏声明应在头文件之前，否则会找不到函数：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> STB_IMAGE_IMPLEMENTATION</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stb_image.h&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="摄像机位置-1"><a href="#摄像机位置-1" class="headerlink" title="摄像机位置"></a>摄像机位置</h4><p>添加空格上升镜头位置，ctrl降低镜头位置：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">ProcessKeyboard</span><span class="params">(Camera_Movement direction, <span class="type">float</span> deltaTime)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">float</span> velocity = MovementSpeed * deltaTime;  <span class="comment">// 设定速度</span></span><br><span class="line">    <span class="comment">// 根据方向调整方向向量</span></span><br><span class="line">    <span class="keyword">if</span> (direction == FORWARD)</span><br><span class="line">        Position += Front * velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == BACKWARD)</span><br><span class="line">        Position -= Front * velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == LEFT)</span><br><span class="line">        Position -= Right * velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == RIGHT)</span><br><span class="line">        Position += Right * velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == UP)</span><br><span class="line">        Position.y += velocity;</span><br><span class="line">    <span class="keyword">if</span> (direction == DOWN)</span><br><span class="line">        Position.y -=   velocity;</span><br><span class="line">    <span class="comment">// Position.y = 0.0f; // 确保不会偏离xz平面</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="模型加载库-1"><a href="#模型加载库-1" class="headerlink" title="模型加载库"></a>模型加载库</h4><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN/img/assimp_structure.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>和材质和网格(Mesh)一样，所有的场景&#x2F;模型数据都包含在Scene对象中。Scene对象也包含了场景根节点的引用。</li>
+<li>场景的Root node（根节点）可能包含子节点（和其它的节点一样），它会有一系列指向场景对象中mMeshes数组中储存的网格数据的索引。Scene下的mMeshes数组储存了真正的Mesh对象，节点中的mMeshes数组保存的只是场景中网格数组的索引。</li>
+<li>一个Mesh对象本身包含了渲染所需要的所有相关数据，像是顶点位置、法向量、纹理坐标、面(Face)和物体的材质。</li>
+<li>一个网格包含了多个面。Face代表的是物体的渲染图元(Primitive)（三角形、方形、点）。一个面包含了组成图元的顶点的索引。由于顶点和索引是分开的，使用一个索引缓冲来渲染是非常简单的（见[你好，三角形](<a class="link"   target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/01" >https://learnopengl-cn.github.io/01<i class="fas fa-external-link-alt"></i></a> Getting started&#x2F;04 Hello Triangle&#x2F;)）。</li>
+<li>最后，一个网格也包含了一个Material对象，它包含了一些函数能让我们获取物体的材质属性，比如说颜色和纹理贴图（比如漫反射和镜面光贴图）。</li>
+</ul>
+<blockquote>
+<p>所谓网格，就是渲染物体的最小单位</p>
+</blockquote>
+<p>通过使用Assimp，我们可以加载不同的模型到程序中，但是载入后它们都被储存为Assimp的数据结构。我们最终仍要将这些数据转换为OpenGL能够理解的格式，这样才能渲染这个物体。</p>
+<h4 id="GLFW处理多个键同时输入-1"><a href="#GLFW处理多个键同时输入-1" class="headerlink" title="GLFW处理多个键同时输入"></a>GLFW处理多个键同时输入</h4><p>设置摄像机更快速的移动<code>shift+w/s/a/d</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Faster</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_W) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)</span><br><span class="line">    camera.<span class="built_in">ProcessKeyboard</span>(FASTER_FORWARD, deltaTime);</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_S) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)</span><br><span class="line">    camera.<span class="built_in">ProcessKeyboard</span>(FASTER_BACKWARD, deltaTime);</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_A) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)</span><br><span class="line">    camera.<span class="built_in">ProcessKeyboard</span>(FASTER_LEFT, deltaTime);</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_D) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)</span><br><span class="line">    camera.<span class="built_in">ProcessKeyboard</span>(FASTER_RIGHT, deltaTime);</span><br></pre></td></tr></table></figure>
+
+<h4 id="着色器类中的异常捕捉-1"><a href="#着色器类中的异常捕捉-1" class="headerlink" title="着色器类中的异常捕捉"></a>着色器类中的异常捕捉</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ensure ifstream objects can throw exceptions:</span></span><br><span class="line">vShaderFile.<span class="built_in">exceptions</span>(std::ifstream::failbit | std::ifstream::badbit);</span><br><span class="line">fShaderFile.<span class="built_in">exceptions</span>(std::ifstream::failbit | std::ifstream::badbit);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// open files</span></span><br><span class="line">    vShaderFile.<span class="built_in">open</span>(vertexPath);</span><br><span class="line">    fShaderFile.<span class="built_in">open</span>(fragmentPath);</span><br><span class="line">    std::stringstream vShaderStream, fShaderStream;</span><br><span class="line">    <span class="comment">// read file&#x27;s buffer contents into streams</span></span><br><span class="line">    vShaderStream &lt;&lt; vShaderFile.<span class="built_in">rdbuf</span>();</span><br><span class="line">    fShaderStream &lt;&lt; fShaderFile.<span class="built_in">rdbuf</span>();</span><br><span class="line">    <span class="comment">// close file handlers</span></span><br><span class="line">    vShaderFile.<span class="built_in">close</span>();</span><br><span class="line">    fShaderFile.<span class="built_in">close</span>();</span><br><span class="line">    <span class="comment">// convert stream into string</span></span><br><span class="line">    vertexCode = vShaderStream.<span class="built_in">str</span>();</span><br><span class="line">    fragmentCode = fShaderStream.<span class="built_in">str</span>();</span><br><span class="line">&#125; <span class="built_in">catch</span> (std::ifstream::failure &amp;e) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ: &quot;</span></span><br><span class="line">              &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="深入理解顶点着色器和片段着色器-1"><a href="#深入理解顶点着色器和片段着色器-1" class="headerlink" title="深入理解顶点着色器和片段着色器"></a>深入理解顶点着色器和片段着色器</h4><p>在OpenGL核心模式的渲染中，这两个着色器是不能跳过的着色器，必须手动编写。</p>
+<h4 id="抗锯齿-1"><a href="#抗锯齿-1" class="headerlink" title="抗锯齿"></a>抗锯齿</h4><p><strong>超采样抗锯齿(Super Sample Anti-aliasing, SSAA)：</strong>它会使用比正常分辨率更高的分辨率（即超采样）来渲染场景，当图像输出在帧缓冲中更新时，分辨率会被下采样(Downsample)至正常的分辨率。这些<strong>额外的</strong>分辨率会被用来防止锯齿边缘的产生。虽然它确实能够解决走样的问题，但是由于这样比平时要绘制更多的片段，它也会带来很大的性能开销。所以这项技术只拥有了短暂的辉煌。</p>
+<p><strong>多重采样抗锯齿(Multisample Anti-aliasing, MSAA)：</strong>它借鉴了SSAA背后的理念，但却以更加高效的方式实现了抗锯齿。渲染图元时，不只使用像素中心点作为采样点，而是将一个像素分成多个子采样点（这也是为什么叫做多重采样的原因）。每个像素片段着色器只运行一次，其所使用的顶点数据会插值到每个像素中心，结果储存在每个被覆盖的子采样点中，每个像素内部会将采样点的颜色平均化。</p>
+<p>在OpenGL中使用MSAA，可以通过Hint的方式，在创建窗口前调用：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">glfwWindowHint</span>(GLFW_SAMPLES, <span class="number">4</span>);</span><br><span class="line"><span class="built_in">glEnable</span>(GL_MULTISAMPLE); <span class="comment">// 保险起见，启用一下多重采样（多数情况时默认启用的）</span></span><br></pre></td></tr></table></figure>
+
+<p>现在再调用glfwCreateWindow创建渲染窗口时，每个屏幕坐标就会使用一个包含4个子采样点的颜色缓冲了。GLFW会自动创建一个每像素4个子采样点的深度和样本缓冲。这也意味着所有缓冲的大小都增长了4倍。</p>
+<h4 id="ImGui-1"><a href="#ImGui-1" class="headerlink" title="ImGui"></a>ImGui</h4><p>为了方便的查看场景，将鼠标禁用，使用光标回调函数来控制摄像机镜头的方向，所以使用imgui时不能使用鼠标拖动控件，如下：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/Dionysen/BlogCDN/img/image-20230731104907051.png"
+                      alt="image-20230731104907051"
+                ></p>
+<p>因此要设置一个快捷键来唤出光标，捕捉并禁用光标的代码是在创建窗口后：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">glfwSetInputMode</span>(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);</span><br></pre></td></tr></table></figure>
+
+<p>而实现快捷时有一个问题，实现摄像机在场景中移动是在渲染循环中使用<code>processInput(window)</code>函数，获取键盘输入来控制，这样可以实现一次按下连续控制，这也正是问题所在，如果直接在此函数中设置快捷键，按下一次会在每次渲染循环中都调用一次，表现为光标一直闪烁（因为一直在重复 获取光标、隐藏光标、获取光标…）。</p>
+<p>解决方法是定义键盘回调函数，将切换光标的代码放到回调函数中，这样按一次键盘释放之前不会重复调用。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> show_mouse = <span class="literal">false</span>; <span class="comment">// global variable</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Key callback function</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">key_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> key, <span class="type">int</span> scancode, <span class="type">int</span> action, <span class="type">int</span> mods)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_LEFT_ALT) == GLFW_PRESS &amp;&amp; <span class="built_in">glfwGetKey</span>(window, GLFW_KEY_C) == GLFW_PRESS)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (show_mouse)</span><br><span class="line">        &#123;</span><br><span class="line">            show_mouse = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            show_mouse = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 捕捉鼠标，并隐藏光标 </span></span><br><span class="line">        <span class="keyword">if</span> (!show_mouse)</span><br><span class="line">            <span class="built_in">glfwSetInputMode</span>(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">glfwSetInputMode</span>(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Don&#x27;t forget registering it after creating the window</span></span><br><span class="line"><span class="comment">// in main function</span></span><br><span class="line"><span class="built_in">glfwSetKeyCallback</span>(window, key_callback);</span><br></pre></td></tr></table></figure>
+
+<h5 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h5><p>在渲染循环之外：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Init Dear Imgui</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* glsl_version = <span class="string">&quot;#version 330&quot;</span>;</span><br><span class="line"><span class="built_in">IMGUI_CHECKVERSION</span>();</span><br><span class="line">ImGui::<span class="built_in">CreateContext</span>();</span><br><span class="line">ImGuiIO&amp; io = ImGui::<span class="built_in">GetIO</span>(); (<span class="type">void</span>)io;</span><br><span class="line">ImGui::<span class="built_in">StyleColorsDark</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">ImGui_ImplGlfw_InitForOpenGL</span>(window, <span class="literal">true</span>);</span><br><span class="line"><span class="built_in">ImGui_ImplOpenGL3_Init</span>(glsl_version);</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h5><p>在渲染循环内：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ImGui_ImplOpenGL3_NewFrame</span>();</span><br><span class="line"><span class="built_in">ImGui_ImplGlfw_NewFrame</span>();</span><br><span class="line">ImGui::<span class="built_in">NewFrame</span>();</span><br><span class="line">&#123; </span><br><span class="line">    <span class="comment">// setup</span></span><br><span class="line">    ImGui::<span class="built_in">Begin</span>(<span class="string">&quot;Cube and Lighting&quot;</span>);</span><br><span class="line">   	<span class="comment">// ...</span></span><br><span class="line">    ImGui::<span class="built_in">Text</span>(<span class="string">&quot;Application average %.3f ms/frame (%.1f FPS)&quot;</span>, <span class="number">1000.0f</span> / ImGui::<span class="built_in">GetIO</span>().Framerate, ImGui::<span class="built_in">GetIO</span>().Framerate); <span class="comment">// Frame rate</span></span><br><span class="line">    ImGui::<span class="built_in">End</span>();</span><br><span class="line">&#125;</span><br><span class="line">ImGui::<span class="built_in">Render</span>();</span><br><span class="line"><span class="built_in">ImGui_ImplOpenGL3_RenderDrawData</span>(ImGui::<span class="built_in">GetDrawData</span>());</span><br></pre></td></tr></table></figure>
+
+<h5 id="同一行放置多个控件-1"><a href="#同一行放置多个控件-1" class="headerlink" title="同一行放置多个控件"></a>同一行放置多个控件</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ImGui::<span class="built_in">SameLine</span>();</span><br></pre></td></tr></table></figure>
+
+<p>可实现此语句前后的两个控件不换行。</p>
+<h5 id="控件例子-1"><a href="#控件例子-1" class="headerlink" title="控件例子"></a>控件例子</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ImGui::<span class="built_in">Begin</span>(<span class="string">&quot;Cube and Lighting&quot;</span>);                          <span class="comment">// Create a window called &quot;Cube and Lighting&quot; and append into it.</span></span><br><span class="line"></span><br><span class="line">ImGui::<span class="built_in">Text</span>(<span class="string">&quot;Here can be adjust some params of the sence.&quot;</span>);  <span class="comment">// Display some text (you can use a format strings too)</span></span><br><span class="line">ImGui::<span class="built_in">Checkbox</span>(<span class="string">&quot;Demo Window&quot;</span>, &amp;show_demo_window);      <span class="comment">// Edit bools storing our window open/close state</span></span><br><span class="line"></span><br><span class="line">ImGui::<span class="built_in">SliderFloat</span>(<span class="string">&quot;ambientStrength&quot;</span>, &amp;ambientStrength, <span class="number">0.0f</span>, <span class="number">1.0f</span>);   <span class="comment">// Edit 1 float using a slider from 0.0f to 1.0f</span></span><br><span class="line">ImGui::<span class="built_in">SliderFloat</span>(<span class="string">&quot;specularStrength&quot;</span>, &amp;specularStrength, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">ImGui::<span class="built_in">ColorEdit3</span>(<span class="string">&quot;Cube color&quot;</span>, (<span class="type">float</span>*)&amp;objectColor); <span class="comment">// Edit 3 floats representing a color</span></span><br><span class="line">ImGui::<span class="built_in">Text</span>(<span class="string">&quot;Cube color = %f, %f, %f&quot;</span>, objectColor.x, objectColor.y, objectColor.z); </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (ImGui::<span class="built_in">Button</span>(<span class="string">&quot;Button&quot;</span>)) </span><br><span class="line">    counter++;<span class="comment">// Buttons return true when clicked (most widgets return true when edited/activated)</span></span><br><span class="line"></span><br><span class="line">ImGui::<span class="built_in">Text</span>(<span class="string">&quot;Application average %.3f ms/frame (%.1f FPS)&quot;</span>, <span class="number">1000.0f</span> / ImGui::<span class="built_in">GetIO</span>().Framerate, ImGui::<span class="built_in">GetIO</span>().Framerate);</span><br><span class="line">ImGui::<span class="built_in">End</span>();</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">OpenGL-3 进阶</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-07-24 14:52:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/07/24/note/Framework/OpenGL/Opengl Advance/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CPP/"><i class="fa-solid fa-hashtag"></i>&nbsp;CPP</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Graphic/"><i class="fa-solid fa-hashtag"></i>&nbsp;Graphic</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Computer/"><i class="fa-solid fa-hashtag"></i>&nbsp;Computer</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/07/30/note/Experience/rtmp/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Linux下建立RTMP推流服务器</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/07/19/note/Algorithm/BinaryTree/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">二叉树</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">深度测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%86%B2%E7%AA%81"><span class="nav-number">1.1.</span> <span class="nav-text">深度冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">模板测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B7%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">混合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">其他问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stb-image%E5%BA%93%E8%B8%A9%E5%9D%91"><span class="nav-number">4.1.</span> <span class="nav-text">stb_image库踩坑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%91%84%E5%83%8F%E6%9C%BA%E4%BD%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">摄像机位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%8A%A0%E8%BD%BD%E5%BA%93"><span class="nav-number">4.3.</span> <span class="nav-text">模型加载库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GLFW%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E9%94%AE%E5%90%8C%E6%97%B6%E8%BE%93%E5%85%A5"><span class="nav-number">4.4.</span> <span class="nav-text">GLFW处理多个键同时输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9D%80%E8%89%B2%E5%99%A8%E7%B1%BB%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89"><span class="nav-number">4.5.</span> <span class="nav-text">着色器类中的异常捕捉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E5%92%8C%E7%89%87%E6%AE%B5%E7%9D%80%E8%89%B2%E5%99%A8"><span class="nav-number">4.6.</span> <span class="nav-text">深入理解顶点着色器和片段着色器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%97%E9%94%AF%E9%BD%BF"><span class="nav-number">4.7.</span> <span class="nav-text">抗锯齿</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ImGui"><span class="nav-number">4.8.</span> <span class="nav-text">ImGui</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.8.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">4.8.2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8C%E4%B8%80%E8%A1%8C%E6%94%BE%E7%BD%AE%E5%A4%9A%E4%B8%AA%E6%8E%A7%E4%BB%B6"><span class="nav-number">4.8.3.</span> <span class="nav-text">同一行放置多个控件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%A7%E4%BB%B6%E4%BE%8B%E5%AD%90"><span class="nav-number">4.8.4.</span> <span class="nav-text">控件例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%85%89%E7%85%A7%E6%96%B9%E5%90%91%E5%8F%98%E5%8C%96"><span class="nav-number">4.9.</span> <span class="nav-text">小行星光照方向变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cubemap"><span class="nav-number">4.10.</span> <span class="nav-text">Cubemap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%A4%A9%E7%A9%BA%E7%9B%92"><span class="nav-number">4.10.1.</span> <span class="nav-text">加载天空盒</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%B4%E5%9B%BE%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99"><span class="nav-number">4.10.2.</span> <span class="nav-text">贴图下载网站</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stb-image%E5%BA%93%E8%B8%A9%E5%9D%91-1"><span class="nav-number">4.11.</span> <span class="nav-text">stb_image库踩坑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%91%84%E5%83%8F%E6%9C%BA%E4%BD%8D%E7%BD%AE-1"><span class="nav-number">4.12.</span> <span class="nav-text">摄像机位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%8A%A0%E8%BD%BD%E5%BA%93-1"><span class="nav-number">4.13.</span> <span class="nav-text">模型加载库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GLFW%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E9%94%AE%E5%90%8C%E6%97%B6%E8%BE%93%E5%85%A5-1"><span class="nav-number">4.14.</span> <span class="nav-text">GLFW处理多个键同时输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9D%80%E8%89%B2%E5%99%A8%E7%B1%BB%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-1"><span class="nav-number">4.15.</span> <span class="nav-text">着色器类中的异常捕捉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E5%92%8C%E7%89%87%E6%AE%B5%E7%9D%80%E8%89%B2%E5%99%A8-1"><span class="nav-number">4.16.</span> <span class="nav-text">深入理解顶点着色器和片段着色器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%97%E9%94%AF%E9%BD%BF-1"><span class="nav-number">4.17.</span> <span class="nav-text">抗锯齿</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ImGui-1"><span class="nav-number">4.18.</span> <span class="nav-text">ImGui</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="nav-number">4.18.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="nav-number">4.18.2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8C%E4%B8%80%E8%A1%8C%E6%94%BE%E7%BD%AE%E5%A4%9A%E4%B8%AA%E6%8E%A7%E4%BB%B6-1"><span class="nav-number">4.18.3.</span> <span class="nav-text">同一行放置多个控件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%A7%E4%BB%B6%E4%BE%8B%E5%AD%90-1"><span class="nav-number">4.18.4.</span> <span class="nav-text">控件例子</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

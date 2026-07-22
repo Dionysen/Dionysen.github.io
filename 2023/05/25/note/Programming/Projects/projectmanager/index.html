@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Project Manager |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Project Manager</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-05-25 17:34</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E9%A1%B9%E7%9B%AE/">项目</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CPP/"><i class="fas fa-hashtag"></i>&nbsp;CPP</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/CMake/"><i class="fas fa-hashtag"></i>&nbsp;CMake</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>1k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p><strong>需求：</strong></p>
+<ul>
+<li>可以创建以 CMake ＋ make 为构建工具的 C++项目</li>
+<li>可以添加或删除 C++ 类，自动生成 <code>.h</code> 和 <code>.cpp</code> 文件，并补全必要代码</li>
+<li>可以使用命令进行构建和运行项目</li>
+<li>可以读取配置文件信息，如果没有，会初始化创建一个配置文件，配置文件信息包括：项目的路径，该路径中的所有项目，指定当前项目</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="命令行参数及作用"><a href="#命令行参数及作用" class="headerlink" title="命令行参数及作用"></a>命令行参数及作用</h3><table>
+<thead>
+<tr>
+<th>long arg</th>
+<th>arg</th>
+<th>do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--list</code></td>
+<td><code>-l</code></td>
+<td>show the whole inforamtion</td>
+</tr>
+<tr>
+<td><code>--createproject</code></td>
+<td><code>-c</code></td>
+<td>create project</td>
+</tr>
+<tr>
+<td><code>--delproject</code></td>
+<td><code>-d</code></td>
+<td>delete a prject</td>
+</tr>
+<tr>
+<td><code>--addclass</code></td>
+<td><code>-a</code></td>
+<td>add class</td>
+</tr>
+<tr>
+<td><code>--delclass</code></td>
+<td><code>none</code></td>
+<td>delete a class</td>
+</tr>
+<tr>
+<td><code>--build</code></td>
+<td><code>-b</code></td>
+<td>build without run</td>
+</tr>
+<tr>
+<td><code>--run</code></td>
+<td><code>-r</code></td>
+<td>build and run</td>
+</tr>
+<tr>
+<td><code>--setproject</code></td>
+<td><code>-s</code></td>
+<td>set the current project</td>
+</tr>
+<tr>
+<td><code>--setpath</code></td>
+<td><code>none</code></td>
+<td>set the project path</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td><code>-h</code></td>
+<td>show help information</td>
+</tr>
+</tbody></table>
+<h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/sential/projectmanager" >https://gitee.com/sential/projectmanager<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">rm</span> -rf ./projectmanager</span><br><span class="line">git <span class="built_in">clone</span> git@gitee.com:sential/projectmanager.git</span><br><span class="line"><span class="built_in">cd</span> projectmanager/build</span><br><span class="line"><span class="built_in">rm</span> -rf ./*</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">sudo <span class="built_in">cp</span> ./pm /usr/bin/pm</span><br></pre></td></tr></table></figure>
+
+<h3 id="开发过程中学到的东西"><a href="#开发过程中学到的东西" class="headerlink" title="开发过程中学到的东西"></a>开发过程中学到的东西</h3><h4 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h4><p>使用<code>getopt()</code>函数，原型为：<code>int getopt(int argc, char *const *argv, const char *shortopts)</code></p>
+<p>或如果需要长参数，使用getopt_long()函数，原型为： <code>int getopt_long(int argc, char *const *argv, const char *shortopts, const struct option *longopts, int *longind)</code></p>
+<p>使用方法是先创建三个参数，分别为命令行参数<code>opt</code>用以判定参数到底是哪一个，参数索引<code>option_index</code>，和长参数结构体数组本身<code>long_options[]</code></p>
+<p>其中<code>long_options[]</code>的<code>option</code>类型的结构的，原型为：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">option</span> &#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *name;       <span class="comment">// name is the name of the long option.</span></span><br><span class="line">    <span class="type">int</span>         has_arg;    <span class="comment">//has_arg is: no_argument (or 0) if the option does not take an argument;</span></span><br><span class="line">                            <span class="comment">//required_argument (or 1) if the option requires an argument; </span></span><br><span class="line">                            <span class="comment">//or optional_argument (or 2) if the option takes an optional argument.</span></span><br><span class="line">    <span class="type">int</span>        *flag;       <span class="comment">//flag specifies how results are returned for a long option. If flag is NULL, then getopt_long() returns val. (For example, the calling program may set val to the equivalent short option character.) Otherwise, getopt_long() returns 0, and flag points to a variable which is set to val if the option is found, but left unchanged if the option is not found.</span></span><br><span class="line">    <span class="type">int</span>         val;        <span class="comment">//val is the value to return, or to load into the variable pointed to by flag.</span></span><br><span class="line">    <span class="comment">// The last element of the array has to be filled with zeros.</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建参数变量：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> opt, option_index = <span class="number">0</span>;</span><br><span class="line">   option long_options[] = &#123;</span><br><span class="line">       &#123;<span class="string">&quot;create&quot;</span>, <span class="number">1</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;c&#x27;</span>&#125;,  &#123;<span class="string">&quot;addclass&quot;</span>, <span class="number">1</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;a&#x27;</span>&#125;,</span><br><span class="line">       &#123;<span class="string">&quot;setproj&quot;</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">&#x27;s&#x27;</span>&#125;,       &#123;<span class="string">&quot;delproj&quot;</span>, <span class="number">1</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;d&#x27;</span>&#125;,</span><br><span class="line">       &#123;<span class="string">&quot;list&quot;</span>, <span class="number">0</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;l&#x27;</span>&#125;,    &#123;<span class="string">&quot;build&quot;</span>, <span class="number">0</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;b&#x27;</span>&#125;,</span><br><span class="line">       &#123;<span class="string">&quot;run&quot;</span>, <span class="number">0</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;r&#x27;</span>&#125;,     &#123;<span class="string">&quot;help&quot;</span>, <span class="number">0</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;h&#x27;</span>&#125;,</span><br><span class="line">       &#123;<span class="string">&quot;setpath&quot;</span>, <span class="number">1</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;S&#x27;</span>&#125;, &#123;<span class="string">&quot;delclass&quot;</span>, <span class="number">1</span>, <span class="literal">nullptr</span>, <span class="string">&#x27;D&#x27;</span>&#125;,</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后创建一个获取参数的循环，使用函数<code>getopt_long</code>不断的获取参数，用<code>switch</code>判断参数是哪个，然后执行相应的动作</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> ((opt = <span class="built_in">getopt_long</span>(argc, argv, <span class="string">&quot;lbra:c:hd:s:D:S:&quot;</span>, long_options,</span><br><span class="line">                             &amp;option_index)) != <span class="number">-1</span>) &#123;</span><br><span class="line">       <span class="keyword">switch</span> (opt) &#123;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;l&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">list</span>();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;c&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">setCurrentProject</span>(optarg);</span><br><span class="line">           pm.<span class="built_in">createProject</span>();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;a&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">addClass</span>(pm.currentProject, optarg);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;b&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">buildWithoutRun</span>();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;r&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">run</span>();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;d&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">delProject</span>(optarg);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;h&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">showHelp</span>();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;s&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">setCurrentProject</span>(optarg);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;S&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">setDefaultPath</span>(optarg);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">&#x27;D&#x27;</span>:</span><br><span class="line">           pm.<span class="built_in">delClass</span>(optarg);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="打印彩色字符"><a href="#打印彩色字符" class="headerlink" title="打印彩色字符"></a>打印彩色字符</h4><p>在输出流的字符前加上<code>\033[1m</code>，可让字符高亮显示，<code>[</code>后的数字替换成其他可实现更多的效果：</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>1</code></td>
+<td>让输出的字符高亮显式</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td>输出斜体字</td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td>给输出的字符加上下划线</td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td>让输出的字符闪烁显式</td>
+</tr>
+<tr>
+<td><code>7</code></td>
+<td>设置反显效果，即把背景色和字体颜色反过来显示</td>
+</tr>
+<tr>
+<td><code>30</code></td>
+<td>表示黑色</td>
+</tr>
+<tr>
+<td><code>31</code></td>
+<td>表示红色</td>
+</tr>
+<tr>
+<td><code>32</code></td>
+<td>表示绿色</td>
+</tr>
+<tr>
+<td><code>33</code></td>
+<td>表示黄色</td>
+</tr>
+<tr>
+<td><code>34</code></td>
+<td>表示蓝色</td>
+</tr>
+<tr>
+<td><code>35</code></td>
+<td>表示紫色</td>
+</tr>
+<tr>
+<td><code>36</code></td>
+<td>表示浅蓝色</td>
+</tr>
+<tr>
+<td><code>37</code></td>
+<td>表示灰色</td>
+</tr>
+<tr>
+<td><code>40</code></td>
+<td>表示背景为黑色</td>
+</tr>
+<tr>
+<td><code>41</code></td>
+<td>表示背景为红色</td>
+</tr>
+<tr>
+<td><code>42</code></td>
+<td>表示背景为绿色</td>
+</tr>
+<tr>
+<td><code>43</code></td>
+<td>表示背景为黄色</td>
+</tr>
+<tr>
+<td><code>44</code></td>
+<td>表示背景为蓝色</td>
+</tr>
+<tr>
+<td><code>45</code></td>
+<td>表示背景为紫色</td>
+</tr>
+<tr>
+<td><code>46</code></td>
+<td>表示背景为浅蓝色</td>
+</tr>
+<tr>
+<td><code>47</code></td>
+<td>表示背景为灰白色</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>清除所有格式</td>
+</tr>
+</tbody></table>
+<p>输出的格式像是一个状态机，输出流加入<code>\033[31m</code>后的所有字符都会是红色，取消这个效果要加上<code>\033[0m</code>，然后再进行其他的操作。</p>
+<h4 id="Use-bash-by-String"><a href="#Use-bash-by-String" class="headerlink" title="Use bash by String"></a>Use bash by String</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::string cmd =</span><br><span class="line">    <span class="string">&quot;cd &quot;</span> + projectPath + <span class="string">&quot;; mv -f &quot;</span> + projectName + <span class="string">&quot; ./.dion_trash&quot;</span>;</span><br><span class="line"><span class="built_in">system</span>(cmd.<span class="built_in">c_str</span>());</span><br></pre></td></tr></table></figure>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Project Manager</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-05-25 17:34:01</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/05/25/note/Programming/Projects/projectmanager/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CPP/"><i class="fa-solid fa-hashtag"></i>&nbsp;CPP</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CMake/"><i class="fa-solid fa-hashtag"></i>&nbsp;CMake</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/05/25/note/Linux/Tools/v2raya/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">V2rayA</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/05/25/note/Programming/evn/GDB/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">GDB 的使用</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">命令行参数及作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text">项目地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC"><span class="nav-number">3.</span> <span class="nav-text">安装脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%AD%A6%E5%88%B0%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="nav-number">4.</span> <span class="nav-text">开发过程中学到的东西</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">命令行参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E5%BD%A9%E8%89%B2%E5%AD%97%E7%AC%A6"><span class="nav-number">4.2.</span> <span class="nav-text">打印彩色字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-bash-by-String"><span class="nav-number">4.3.</span> <span class="nav-text">Use bash by String</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

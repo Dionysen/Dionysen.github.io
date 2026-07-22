@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="It is this intellectual activity of inquiry, seeking, rather than summative answers, that make one a philosopher, because summative answers can easily be reduced to unthinking dogmas and slogans that require no thought or understanding at all.">
+    <meta name="author" content="Dionysen">
+    
+        <title>
+            
+                Vue3学习笔记 |
+                    
+                        DIONYSEN BLOG
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+            rel="stylesheet">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+            <link rel="shortcut icon" href="/images/logo.svg">
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+                    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+                        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+                            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+                                <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"dionysen.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066cc","right_side_width":"500px","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.png","font_size":"16px","font_family":"Open Sans, Noto Serif SC, serif","code_font_family":"Fira Code, Noto Serif SC, serif, monospace","code_font_size":"0.96rem","static-shadow":true,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg_dark.jpg","description":"或许，正如蒙田所说，所有知识最多只是可能、合理和有效。或许，根本就没有这样的“基础”以及由此建立起来的知识大厦，只有多重交织的网络。人们可能会像蒙田和怀疑论者那样主张，我们的知识永远不会是确定的（除非在极其微不足道的事情上或特殊的环境下）。","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{"enable":false},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"Dionysen","github_admins":null,"repository":"BlogCDN","client_id":"5297a6c30ff4654f692f","client_secret":"ef4506ab93254f2d4e7b41c04958e94bd131a3b6","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"mermaid":{"enable":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               DIONYSEN BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="https://dionysen.github.io/en/"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item flex-center toggle-show-toc">
+                            <i class="fas fa-list"></i>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                       
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="https://dionysen.github.io/en/">ENGLISH</a>
+                </li>
+            
+            <!-- <li class="menu-item tool-dark-light-toggle flex-center">
+                <i class="fas fa-moon"></i>
+            </li> -->
+        </ul>
+    </div>
+    <li class="menu-item tool-dark-light-toggle flex-center">
+        <i class="fas fa-moon"></i>
+    </li>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Vue3学习笔记</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Dionysen</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-07-18 17:32</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <!-- <i class="fas fa-folder"></i>&nbsp; -->
+            <ul>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/">递归这个世界 · 编程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        <i class="fas fa-chevron-circle-right"></i>&nbsp<a href="/categories/%E9%80%92%E5%BD%92%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C-%C2%B7-%E7%BC%96%E7%A8%8B/%E6%A1%86%E6%9E%B6/">框架</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+        <span class="article-tags article-meta-item">
+            <br/>
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Vue/"><i class="fas fa-hashtag"></i>&nbsp;Vue</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Javascript/"><i class="fas fa-hashtag"></i>&nbsp;Javascript</a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags/Typescript/"><i class="fas fa-hashtag"></i>&nbsp;Typescript</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;&nbsp;<span>1k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+                <p>工作需要学习了前端框架<a class="link"   target="_blank" rel="noopener" href="https://cn.vuejs.org/" >Vue<i class="fas fa-external-link-alt"></i></a>，这是过程中遇到的问题和解决方法的汇总。</p>
+<span id="more"></span>
+
+<h4 id="组合式API引用canvas"><a href="#组合式API引用canvas" class="headerlink" title="组合式API引用canvas"></a>组合式API引用canvas</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> canvas = ref&lt;<span class="title class_">HTMLCanvasElement</span> | <span class="literal">null</span>&gt;(<span class="literal">null</span>);</span><br><span class="line"><span class="keyword">const</span> context = ref&lt;<span class="title class_">CanvasRenderingContext2D</span> | <span class="literal">null</span>&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>Composition API 是 Vue 3 中引入的一组函数式 API，用于替代 Vue 2 中的 Options API。它提供了更灵活、可组合和可重用的方式来组织组件的逻辑代码。</p>
+<p>在 Vue 3 的 Composition API 中，我们可以使用 <code>ref</code> 函数来创建一个响应式的引用，它类似于 Vue 2 中的 <code>data</code> 选项。<code>ref</code> 接受一个初始值作为参数，并返回一个包含该值的响应式引用。</p>
+<p>在上述代码中，<code>const canvas = ref&lt;HTMLCanvasElement | null&gt;(null)</code> 表示创建了一个名为 <code>canvas</code> 的响应式引用，它的类型为 <code>HTMLCanvasElement | null</code>。<code>HTMLCanvasElement</code> 表示 Canvas 元素的类型，<code>|</code> 表示联合类型，允许 <code>canvas</code> 的值为 <code>HTMLCanvasElement</code> 或 <code>null</code>。在初始化时，<code>canvas</code> 的值被设置为 <code>null</code>。</p>
+<p>这样的设置可以让我们在 Vue 3 中使用 Composition API 来追踪和操作 Canvas 元素及其上下文。通过 <code>canvas.value</code> 和 <code>context.value</code> 可以访问引用的实际值，因为 <code>ref</code> 创建的引用是一个包装器。</p>
+<p>通过使用响应式引用，我们可以在应用程序中追踪和修改 <code>canvas</code> 和 <code>context</code> 的值，确保任何对它们的更改都能在 Vue 组件中得到反应，并触发相应的更新。</p>
+<h4 id="Canvas接口"><a href="#Canvas接口" class="headerlink" title="Canvas接口"></a>Canvas接口</h4><p><strong>HTMLCanvasElement：</strong>Provides properties and methods for manipulating the layout and presentation of elements. The HTMLCanvasElement interface also inherits the properties and methods of the HTMLElement interface.</p>
+<p><strong>CanvasRenderingContext2D：</strong>The CanvasRenderingContext2D interface, part of the Canvas API, provides the 2D rendering context for the drawing surface of a element. It is used for drawing shapes, text, images, and other objects.</p>
+<h4 id="可选链操作符"><a href="#可选链操作符" class="headerlink" title="可选链操作符"></a>可选链操作符</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">context.<span class="property">value</span>?.<span class="title function_">stroke</span>()</span><br></pre></td></tr></table></figure>
+
+<p><code>?.</code>是可选链操作符，它用于检查<code>context.value</code>是否为非空值。如果<code>context.value</code>不为null或undefined，则调用<code>stroke()</code>方法。</p>
+<h4 id="canvas绘制网格"><a href="#canvas绘制网格" class="headerlink" title="canvas绘制网格"></a>canvas绘制网格</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">drawCanvasGrid</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> gridSize = <span class="number">50</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (context.<span class="property">value</span>) &#123;</span><br><span class="line">    context.<span class="property">value</span>.<span class="property">fillStyle</span> = <span class="string">&quot;rgba(0, 0, 0, .2)&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i * gridSize &lt; canvas.<span class="property">value</span>?.<span class="property">width</span>! - <span class="number">40</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j * gridSize &lt; canvas.<span class="property">value</span>?.<span class="property">height</span>! - <span class="number">40</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          context.<span class="property">value</span>.<span class="title function_">beginPath</span>();</span><br><span class="line">          context.<span class="property">value</span>.<span class="title function_">rect</span>(i * gridSize, j * gridSize, <span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">          context.<span class="property">value</span>.<span class="title function_">fill</span>();</span><br><span class="line">          context.<span class="property">value</span>.<span class="title function_">closePath</span>();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>beginPath()</code>: 这个方法用于创建一个新的路径或者子路径。在绘制之前，调用<code>beginPath()</code>可以清除之前定义的路径，以确保开始一个新的路径。</li>
+<li><code>rect(x, y, width, height)</code>: 这个方法用于在路径中添加一个矩形子路径。它接受四个参数，分别是矩形左上角的x坐标、y坐标，以及矩形的宽度和高度。调用<code>rect()</code>方法并不会直接绘制矩形，而是将矩形添加到当前的路径中。</li>
+<li><code>fill()</code>: 这个方法用于填充当前路径的内容，使其呈现实心的效果。填充的颜色由<code>fillStyle</code>属性指定。</li>
+<li><code>closePath()</code>: 这个方法用于关闭当前的子路径。它会连接当前路径的起点和终点，形成一个封闭的路径。调用<code>closePath()</code>后，绘制的操作会回到起点，可以开始绘制下一个子路径。</li>
+</ol>
+<p>在给定的代码片段中，这几个函数被用于在画布上绘制一个网格。通过循环遍历，每个格子都被绘制成一个大小为2x2的矩形，并使用<code>fill()</code>方法填充矩形的内容。<code>beginPath()</code>和<code>closePath()</code>方法则用于定义每个格子的子路径，以及在绘制完成后关闭路径。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">clearRect</span>(x, y, width, height)</span><br></pre></td></tr></table></figure>
+
+<p>在CanvasRenderingContext2D接口中，<code>clearRect(x, y, width, height)</code>方法用于清除指定矩形区域内的像素。它接受四个参数，分别是矩形左上角的x坐标、y坐标，以及矩形的宽度和高度。调用<code>clearRect()</code>方法会将指定矩形区域内的像素设为透明，从而清除该区域的内容。</p>
+<h4 id="Pinia订阅"><a href="#Pinia订阅" class="headerlink" title="Pinia订阅"></a>Pinia订阅</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">store.$subscribe(<span class="function">(<span class="params">_, state</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (state.<span class="property">shouldClear</span>) &#123;</span><br><span class="line">    <span class="title function_">clearCanvas</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>$subscribe</code>方法，实时监听状态的变化，当状态发生变化时，执行函数中的语句。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Vue3学习笔记</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Dionysen</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-07-18 17:32:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/07/18/note/Framework/vue3/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Vue/"><i class="fa-solid fa-hashtag"></i>&nbsp;Vue</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Javascript/"><i class="fa-solid fa-hashtag"></i>&nbsp;Javascript</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Typescript/"><i class="fa-solid fa-hashtag"></i>&nbsp;Typescript</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/07/19/note/Algorithm/BinaryTree/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">二叉树</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/07/15/note/Programming/tools/mysql_install/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Archlinux上使用MySQL（MariaDB）</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+            <div class="pjax-reload" id="load-comments">显示评论</div>
+            
+                <div class="comment-container">
+                    
+
+<div class="comments-container" id="comments-show" style="display: none;">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '5297a6c30ff4654f692f',
+                clientSecret: 'ef4506ab93254f2d4e7b41c04958e94bd131a3b6',
+                repo: 'BlogCDN',
+                owner: 'Dionysen',
+                admin: 'Dionysen',
+                id: __gitalk__pathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E5%BC%8FAPI%E5%BC%95%E7%94%A8canvas"><span class="nav-number">1.</span> <span class="nav-text">组合式API引用canvas</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Canvas%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text">Canvas接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">可选链操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#canvas%E7%BB%98%E5%88%B6%E7%BD%91%E6%A0%BC"><span class="nav-number">4.</span> <span class="nav-text">canvas绘制网格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pinia%E8%AE%A2%E9%98%85"><span class="nav-number">5.</span> <span class="nav-text">Pinia订阅</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2026
+            
+                <!-- &nbsp;<i class="fas fa-heart icon-animate"></i> -->
+                &nbsp;<a href="/">Dionysen</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div> -->
+        <p id="hitokoto_all"><a target="_blank" rel="noopener" href="https://hitokoto.cn/" id="hitokoto_text">获取诗词中 ... </a></p>
+        <script async data-pjax
+            >
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto_all = document.getElementById('hitokoto_all');
+                hitokoto_all.innerText =  data.hitokoto + "  —— " + data.from_who +"《" + data.from + "》" ; 
+            })
+            .catch(function (err) {
+                console.error(err);
+            })   
+        </script>
+        
+            <script async data-pjax >
+                var toggleButton = document.getElementById("load-comments");
+                var commentsContainer = document.getElementById("comments-show");
+                toggleButton.addEventListener("click", function() {
+                    if (commentsContainer.style.display === "none") {
+                        commentsContainer.style.display = "block";
+                        toggleButton.innerHTML = "隐藏评论";
+                    } else {
+                        commentsContainer.style.display = "none";
+                        toggleButton.innerHTML = "显示评论";
+                    }
+                });
+            </script>
+        
+       
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <!-- 
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+         -->
+
+        <!-- go comment -->
+        <!-- 
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+         -->
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li> 
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+        // 确保在 KEEP 对象初始化后再执行
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof KEEP !== 'undefined' && KEEP.utils) {
+                KEEP.utils.mermaidInit();
+            }
+        });
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/mermaid.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+     
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
