@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'Fira Code';
+    src: url('./common/fonts/FiraCode-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('./common/fonts/FiraCode-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('./common/fonts/FiraCode-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+/*
+
+@font-face {
+    font-family: 'LXGW Bright';
+    src: url('./common/fonts/LXGWBright-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LXGW Bright';
+    src: url('./common/fonts/LXGWBright-MediumItalic.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LXGW Bright';
+    src: url('./common/fonts/LXGWBright-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LXGW Bright';
+    src: url('./common/fonts/LXGWBright-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}*/
+/*
+
+@font-face {
+    font-family: 'Ysabeau';
+    src: url('./common/fonts/Ysabeau-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ysabeau';
+    src: url('./common/fonts/Ysabeau-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ysabeau';
+    src: url('./common/fonts/Ysabeau-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ysabeau';
+    src: url('./common/fonts/Ysabeau-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}*/
