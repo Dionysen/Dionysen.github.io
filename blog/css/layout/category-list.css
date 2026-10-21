@@ -1,0 +1,69 @@
+.category-list-container .subtitle-info {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  line-height: 3.5rem;
+}
+.category-list-container .post-info {
+  float: right;
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 1rem;
+  color: var(--item-border-color);
+  line-height: 1.5rem;
+}
+.category-list-container .post-title-link {
+  font-size: 1rem;
+  margin-left: 1rem;
+  line-height: 2.1rem;
+  display: inline-block;
+}
+.category-list-container .category-list-content .archive-main-category {
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+.category-list-container .category-list-content .all-category-list {
+  line-height: 2;
+  position: relative;
+  transition: border 0.5s;
+  margin-top: 1em;
+  padding-bottom: 0.5em;
+  align-items: baseline;
+}
+.category-list-container .category-list-content .all-category-list > .all-category-list-item > .all-category-list-link {
+  font-size: 1.2rem;
+  line-height: 2.7rem;
+  font-weight: bold;
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item {
+  border-bottom: 1px dashed var(--item-border-color);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+  border-bottom: 1px dashed var(--item-border-color);
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item span.all-category-list-count {
+  float: right;
+  color: var(--text-color-3);
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item span.all-category-list-count::before {
+  content: '(';
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item span.all-category-list-count::after {
+  content: ')';
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item ul.all-category-list-child {
+  margin-top: 1rem;
+  margin-left: 0.9rem;
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item ul.all-category-list-child li {
+  margin-bottom: 0.9rem;
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item ul.all-category-list-child li::before {
+  content: '▪ ';
+}
+.category-list-container .category-list-content .all-category-list li.all-category-list-item ul.all-category-list-child li:last-child {
+  margin-bottom: 0;
+}
